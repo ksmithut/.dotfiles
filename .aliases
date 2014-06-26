@@ -1,48 +1,31 @@
+# starts simple http server in current directory
 alias http='python -m SimpleHTTPServer'
+
+# get the local ip
 alias ip-local='ipconfig getifaddr en0'
+
+# get the external ip
 alias ip-external='curl ipecho.net/plain; echo'
+
+# update brew
 alias brew-upgrade='brew update && brew upgrade `brew outdated`'
+
+# get various hinting files for projects
 alias get-jshint='wget https://raw.github.com/ksmithut/standards/master/lint/.jshintrc'
 alias get-csslint='wget https://raw.github.com/ksmithut/standards/master/lint/.csslintrc'
 alias get-htmlhint='wget https://raw.github.com/ksmithut/standards/master/lint/.htmlhintrc'
 
-function show-hidden() {
-  defaults write com.apple.finder AppleShowAllFiles -bool TRUE;
-  killall Finder;
-}
+# clears out the current directory/
+alias clear-dir='rm -rf ./*'
 
-function hide-hidden() {
-  defaults write com.apple.finder AppleShowAllFiles -bool FALSE;
-  killall Finder;
-}
+# show hidden files in finder
+alias show-hidden='defaults write com.apple.finder AppleShowAllFiles -bool TRUE; killall Finder;'
 
-function clear-dir() {
-  result=${PWD##*/}
-  cd ../;
-  rm -rf -- "$result";
-  mkdir "$result";
-  cd "$result";
-}
+# hide hidden files in finder
+alias hide-hidden='defaults write com.apple.finder AppleShowAllFiles -bool FALSE; killall Finder;'
 
-function dir() {
-  mkdir $1 && cd $1;
-}
+# clears all of the duplicate app names in using 'open with...'
+alias clear-duplicates='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;'
 
-function clear-duplicates() {
-  /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;
-}
-
-alias gs='git status'
-alias ga='git add'
-alias gc='git commit -m'
-alias gp='git push'
-
-function br() {
-  git checkout -b $1;
-  git push --set-upstream origin $1;
-}
-
-function ch() {
-  git checkout $1;
-  git pull;
-}
+# makes a directory and moves to it
+function dir() { mkdir $1 && cd $1; }

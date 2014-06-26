@@ -1,7 +1,33 @@
-[user]
-	name = {{gitName}}
-	email = {{gitEmail}}
+[alias]
+	s = status
+	a = add .
+	c = commit
+	p = push
+	br = "!f() { git checkout -b \"$1\"; git push -u origin \"$1\"; } f"
+	ch = "!f() { get checkout \"$1\"; git pull; } f"
 [core]
 	excludesfile = {{dotfilesLocation}}/.gitignore
 [push]
 	default = simple
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold # line info
+	old = red # deletions
+	new = green # additions
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[diff]
+	# Detect copies as well as renames
+	renames = copies
+[help]
+	# Automatically correct and execute mistyped commands
+	autocorrect = 1
+[url "git@github.com:"]
+	insteadOf = "gh:"
+	pushInsteadOf = "github:"
