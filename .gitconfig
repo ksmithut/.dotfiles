@@ -1,0 +1,7 @@
+[user]
+	name = {{gitName}}
+	email = {{gitEmail}}
+[core]
+	excludesfile = {{dotfilesLocation}}/.gitignore
+[push]
+	default = simple

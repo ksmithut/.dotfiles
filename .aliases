@@ -1,0 +1,48 @@
+alias http='python -m SimpleHTTPServer'
+alias ip-local='ipconfig getifaddr en0'
+alias ip-external='curl ipecho.net/plain; echo'
+alias brew-upgrade='brew update && brew upgrade `brew outdated`'
+alias get-jshint='wget https://raw.github.com/ksmithut/standards/master/lint/.jshintrc'
+alias get-csslint='wget https://raw.github.com/ksmithut/standards/master/lint/.csslintrc'
+alias get-htmlhint='wget https://raw.github.com/ksmithut/standards/master/lint/.htmlhintrc'
+
+function show-hidden() {
+  defaults write com.apple.finder AppleShowAllFiles -bool TRUE;
+  killall Finder;
+}
+
+function hide-hidden() {
+  defaults write com.apple.finder AppleShowAllFiles -bool FALSE;
+  killall Finder;
+}
+
+function clear-dir() {
+  result=${PWD##*/}
+  cd ../;
+  rm -rf -- "$result";
+  mkdir "$result";
+  cd "$result";
+}
+
+function dir() {
+  mkdir $1 && cd $1;
+}
+
+function clear-duplicates() {
+  /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;
+}
+
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit -m'
+alias gp='git push'
+
+function br() {
+  git checkout -b $1;
+  git push --set-upstream origin $1;
+}
+
+function ch() {
+  git checkout $1;
+  git pull;
+}

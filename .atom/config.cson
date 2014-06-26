@@ -1,0 +1,29 @@
+'release-notes':
+  'viewedVersion': '0.106.0'
+'welcome':
+  'showOnStartup': false
+'metrics': {}
+'editor':
+  'showIndentGuide': true
+  'fontFamily': 'Menlo'
+'core':
+  'themes': [
+    'atom-dark-ui'
+    'monokai'
+  ]
+  'disabledPackages': [
+    'metrics'
+    'exception-reporting'
+  ]
+'whitespace':
+  'ensureSingleTrailingNewline': false
+  'ignoreWhitespaceOnCurrentLine': false
+'markdown-preview':
+  'grammars': [
+    'source.gfm'
+    'source.litcoffee'
+    'text.plain'
+    'text.plain.null-grammar'
+  ]
+'jshint':
+  'validateOnlyOnSave': true
