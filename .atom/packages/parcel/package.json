@@ -1,0 +1,29 @@
+{
+  "name": "parcel",
+  "main": "./lib/parcel",
+  "version": "0.0.3",
+  "description": "Atom package synchronization",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamescmartinez/parcel"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "season": "~1.0"
+  },
+  "readme": "# Parcel: Package Sync for Atom\n\nParcel uses `~/.atom/packages.cson` to keep track of the packages that you have installed.\n\n---\n\n### Development\nTo work on Parcel symlink your local copy of Parcel to `~/.atom/packages/parcel`. This looks something like this:\n\n``\nln -s ~/Development/parcel ~/.atom/packages/parcel\n``\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/jamescmartinez/parcel/issues"
+  },
+  "homepage": "https://github.com/jamescmartinez/parcel",
+  "_id": "parcel@0.0.3",
+  "dist": {
+    "shasum": "55767f4ef0c241b20dd343b308e66e4ab0b2e3b2"
+  },
+  "_resolved": "/var/folders/d6/65sx6ch93s936zhjn4jnxd_00000gn/T/d-114526-16783-29ytvn/package.tgz",
+  "_from": "/var/folders/d6/65sx6ch93s936zhjn4jnxd_00000gn/T/d-114526-16783-29ytvn/package.tgz"
+}
