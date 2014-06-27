@@ -3,8 +3,8 @@
 	a = add .
 	c = commit
 	p = push
-	br = "!f() { git checkout -b \"$1\"; git push -u origin \"$1\"; } f"
-	ch = "!f() { get checkout \"$1\"; git pull; } f"
+	ignore = git update-index --assume-unchanged
+	unignore = update-index --no-assume-unchanged
 [core]
 	excludesfile = {{dotfilesLocation}}/.gitignore
 [push]
