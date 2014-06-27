@@ -1,10 +1,4 @@
-rm ~/.atom
-rm ~/.aliases
-rm ~/.bash_profile
-rm ~/.clean-install
-rm ~/.git-completion
-rm ~/.gitconfig
-rm ~/.gitignore
+./uninit
 
 ln -s ~/.dotfiles/.atom ~/.atom
 ln -s ~/.dotfiles/.aliases ~/.aliases
