@@ -3,7 +3,7 @@
 	a = add .
 	c = commit
 	p = push
-	ignore = git update-index --assume-unchanged
+	ignore = update-index --assume-unchanged
 	unignore = update-index --no-assume-unchanged
 [core]
 	excludesfile = {{dotfilesLocation}}/.gitignore
