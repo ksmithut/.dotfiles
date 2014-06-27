@@ -3,7 +3,6 @@
 rm ~/.atom
 rm ~/.aliases
 rm ~/.bash_profile
-rm ~/.clean-install
 rm ~/.git-completion
 rm ~/.gitconfig
 rm ~/.gitignore
