@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+open "https://www.google.com/intl/en/chrome/browser/"
+open "http://www.mozilla.org/en-US/firefox/new/"
+open "http://signup.leagueoflegends.com/en/signup/redownload"
+open "https://minecraft.net/download"
+open "http://www.airsquirrels.com/reflector/download/"
+open "http://www.skype.com/en/download-skype/skype-for-computer/"
+open "http://store.steampowered.com/about/"
+open "https://us.battle.net/account/download/"
+open "https://www.adobe.com/account/account-orders.html"
+open "https://www.microsoftstore.com/store/msusa/en_US/DisplayDownloadHistoryPage/"
+open "https://www.microsoft.com/getsilverlight"
+open "https://atom.io/"
+open "http://www.sublimetext.com/"
+open "http://pencil.evolus.vn/"

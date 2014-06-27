@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 rm ~/.atom
 rm ~/.aliases
 rm ~/.bash_profile

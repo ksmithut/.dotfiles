@@ -1,4 +1,4 @@
-./uninit
+#!/usr/bin/env bash
 
 ln -s ~/.dotfiles/.atom ~/.atom
 ln -s ~/.dotfiles/.aliases ~/.aliases
