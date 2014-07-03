@@ -1,5 +1,4 @@
 'packages': [
-  'file-icons'
   'jshint'
   'language-jade'
   'monokai'
