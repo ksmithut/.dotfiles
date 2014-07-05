@@ -29,3 +29,6 @@ alias clear-duplicates='/System/Library/Frameworks/CoreServices.framework/Framew
 
 # makes a directory and moves to it
 function dir() { mkdir $1 && cd $1; }
+
+# Sets the gopath to the cwd
+alias gopath='export GOPATH=`pwd`;'

@@ -12,3 +12,11 @@
 #   editor = editorView.getEditor()
 #   if path.extname(editor.getPath()) is '.md'
 #     editor.setSoftWrap(true)
+
+path = require 'path'
+
+atom.workspaceView.eachEditorView (editorView) ->
+  editor = editorView.getEditor()
+  if path.extname(editor.getPath()) is '.go'
+    editor.setSoftTabs false
+    editor.setTabLength 4
