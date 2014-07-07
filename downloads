@@ -1,16 +1,33 @@
 #!/usr/bin/env bash
 
-open "https://www.google.com/intl/en/chrome/browser/"
-open "http://www.mozilla.org/en-US/firefox/new/"
-open "http://signup.leagueoflegends.com/en/signup/redownload"
-open "https://minecraft.net/download"
-open "http://www.airsquirrels.com/reflector/download/"
-open "http://www.skype.com/en/download-skype/skype-for-computer/"
-open "http://store.steampowered.com/about/"
-open "https://us.battle.net/account/download/"
-open "https://www.adobe.com/account/account-orders.html"
-open "https://www.microsoftstore.com/store/msusa/en_US/DisplayDownloadHistoryPage/"
-open "https://www.microsoft.com/getsilverlight"
+# atom editor
 open "https://atom.io/"
+# chrome browser
+open "https://www.google.com/intl/en-US/chrome/browser/"
+# firefox browser
+open "http://www.mozilla.org/en-US/firefox/new/"
+# sublime text 2 editor
 open "http://www.sublimetext.com/"
+# skype chat
+open "http://www.skype.com/en/download-skype/skype-for-computer/"
+# reflector testing
+open "http://www.airsquirrels.com/reflector/download/"
+# pencil prototyping
 open "http://pencil.evolus.vn/"
+# adobe design
+open "https://www.adobe.com/account/account-orders.html"
+# virtual box testing
+open "https://www.virtualbox.org/wiki/Downloads"
+open "https://www.modern.ie/en-us/virtualization-tools#downloads"
+# microsoft office
+open "https://www.microsoftstore.com/store/msusa/en_US/DisplayDownloadHistoryPage/"
+
+# GAMES
+# minecraft
+open "https://minecraft.net/download"
+# starcraft
+open "https://us.battle.net/account/download/"
+# league of legends
+open "http://signup.leagueoflegends.com/en/signup/redownload"
+# steam
+open "http://store.steampowered.com/about/"
