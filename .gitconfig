@@ -6,7 +6,7 @@
 	ignore = update-index --assume-unchanged
 	unignore = update-index --no-assume-unchanged
 [core]
-	excludesfile = {{dotfilesLocation}}/.gitignore
+	excludesfile = ~/.gitignore
 [push]
 	default = simple
 [color "branch"]
