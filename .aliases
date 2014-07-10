@@ -8,7 +8,7 @@ alias ip-local='ipconfig getifaddr en0'
 alias ip-external='curl ipecho.net/plain; echo'
 
 # update brew
-alias brew-upgrade='brew update && brew upgrade `brew outdated`'
+alias brew-upgrade='brew update && brew upgrade `brew outdated` && brew cleanup'
 
 # get various hinting files for projects
 alias get-jshint='wget https://raw.github.com/ksmithut/standards/master/lint/.jshintrc'

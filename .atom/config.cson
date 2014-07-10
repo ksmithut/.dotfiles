@@ -6,7 +6,7 @@
 'editor':
   'showIndentGuide': true
   'fontFamily': 'Menlo'
-  'lineHeight': 1.4
+  'lineHeight': 1.45
 'core':
   'themes': [
     'atom-dark-ui'
