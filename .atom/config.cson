@@ -16,6 +16,7 @@
     'metrics'
     'exception-reporting'
   ]
+  'useReactEditor': true
 'whitespace':
   'ensureSingleTrailingNewline': false
   'ignoreWhitespaceOnCurrentLine': false
