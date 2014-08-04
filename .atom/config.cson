@@ -1,5 +1,5 @@
 'release-notes':
-  'viewedVersion': '0.106.0'
+  'viewedVersion': '0.120.0'
 'welcome':
   'showOnStartup': false
 'metrics': {}
@@ -15,6 +15,7 @@
   'disabledPackages': [
     'metrics'
     'exception-reporting'
+    'jshint'
   ]
 'whitespace':
   'ensureSingleTrailingNewline': false
@@ -26,5 +27,6 @@
     'text.plain'
     'text.plain.null-grammar'
   ]
-'jshint':
-  'validateOnlyOnSave': true
+'atom-lint':
+  'jshint':
+    'path': '/usr/local/bin/jshint'

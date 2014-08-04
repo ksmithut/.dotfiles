@@ -1,5 +1,5 @@
 'packages': [
-  'jshint'
+  'atom-lint'
   'language-jade'
   'monokai'
   'parcel'
@@ -9,6 +9,7 @@
   'atom-light-syntax'
   'atom-light-ui'
   'base16-tomorrow-dark-theme'
+  'base16-tomorrow-light-theme'
   'solarized-dark-syntax'
   'solarized-light-syntax'
   'archive-view'
