@@ -30,6 +30,7 @@
   'go-to-line'
   'grammar-selector'
   'image-view'
+  'incompatible-packages'
   'keybinding-resolver'
   'link'
   'markdown-preview'
