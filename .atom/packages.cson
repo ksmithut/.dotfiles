@@ -2,6 +2,7 @@
   'atom-lint'
   'language-jade'
   'monokai'
+  'pain-split'
   'parcel'
   'Zen'
   'atom-dark-syntax'
