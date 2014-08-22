@@ -5,6 +5,7 @@ upgrade
 install git
 install go
 install mongodb
+install redis
 install n
 install trash
 install wget
