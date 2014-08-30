@@ -11,9 +11,9 @@ alias ip-external='curl ipecho.net/plain; echo'
 alias brew-upgrade='brew update && brew upgrade `brew outdated` && brew cleanup'
 
 # get various hinting files for projects
-alias get-jshint='wget https://raw.github.com/ksmithut/standards/master/lint/.jshintrc'
-alias get-csslint='wget https://raw.github.com/ksmithut/standards/master/lint/.csslintrc'
-alias get-htmlhint='wget https://raw.github.com/ksmithut/standards/master/lint/.htmlhintrc'
+alias get-jshint='wget https://raw.githubusercontent.com/ksmithut/standards/master/lint/.jshintrc'
+alias get-csslint='wget https://raw.githubusercontent.com/ksmithut/standards/master/lint/.csslintrc'
+alias get-htmlhint='wget https://raw.githubusercontent.com/ksmithut/standards/master/lint/.htmlhintrc'
 
 # clears out the current directory/
 alias clear-dir='rm -rf ./*'
