@@ -6,4 +6,4 @@ rm ~/.bash_profile
 rm ~/.git-completion
 rm ~/.gitconfig
 rm ~/.gitignore
-rm ~/.brewfile
+rm ~/.inputrc
