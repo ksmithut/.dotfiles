@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# cask setup
+# ----------
+caskapps=(
+  alfred
+  dropbox
+  google-chrome
+  firefox
+  virtualbox
+  atom
+  skype
+  sublime-text
+  steam
+  league-of-legends
+  minecraft
+  sequel-pro
+  mamp
+)
+
+echo "Installing apps..."
+brew cask install --appdir="/Applications" ${apps[@]}
+
+brew cask alfred link

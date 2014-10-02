@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# brew setup
+# ----------
+if test ! $(which brew); then
+  echo "Installing homebrew..."
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+brew doctor
+brew update
+brew upgrade `brew outdated`
+brew cleanup
+
+echo "Installing brew stuff..."
+
+brew install brew-cask
+brew install git
+brew install imagemagick
+brew install mongodb
+brew install redis
+brew install trash
+brew install go
+brew install n
+brew install speedtest_cli
+brew install wget
+brew install bash
+brew install caskroom/cask/brew-cask
+
+brew doctor
+brew update
+brew upgrade `brew outdated`
+brew cleanup

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Remove existing dotfiles
+# ------------------------
+[[ -r ~/.atom ]]           && rm ~/.atom
+[[ -r ~/.bash_profile ]]   && rm ~/.bash_profile
+[[ -r ~/.gitconfig ]]      && rm ~/.gitconfig
+[[ -r ~/.inputrc ]]        && rm ~/.inputrc
+
+# Symlink dotfiles
+# ----------------
+ln -s ~/.dotfiles/.atom ~/.atom
+ln -s ~/.dotfiles/.bash_profile ~/.bash_profile
+ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+ln -s ~/.dotfiles/.inputrc ~/.inputrc
