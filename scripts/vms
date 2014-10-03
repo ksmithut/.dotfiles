@@ -31,7 +31,7 @@ for i in *.ova; do
   open -a /Applications/VirtualBox.app "$i";
 done
 # wait until everything's been imported
-read -p "Press [Enter] key to start backup..."
+read -p "Press [Enter] after importing..."
 # delete tmp folder
 cd ~
 rm -rf ~/tmp_vms
