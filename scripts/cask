@@ -2,7 +2,7 @@
 
 # cask setup
 # ----------
-caskapps=(
+apps=(
   alfred
   dropbox
   google-chrome

@@ -2,13 +2,12 @@
   'viewedVersion': '0.120.0'
 'welcome':
   'showOnStartup': false
-'metrics': {}
 'editor':
   'showIndentGuide': true
   'fontFamily': 'Menlo'
   'lineHeight': 1.45
-  'invisibles': {}
   'fontSize': 19
+  'invisibles': {}
 'core':
   'themes': [
     'atom-dark-ui'

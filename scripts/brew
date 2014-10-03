@@ -14,7 +14,6 @@ brew cleanup
 
 echo "Installing brew stuff..."
 
-brew install brew-cask
 brew install git
 brew install imagemagick
 brew install mongodb
