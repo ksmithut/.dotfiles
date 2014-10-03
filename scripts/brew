@@ -24,7 +24,6 @@ brew install go
 brew install n
 brew install speedtest_cli
 brew install wget
-brew install bash
 brew install caskroom/cask/brew-cask
 
 brew doctor
