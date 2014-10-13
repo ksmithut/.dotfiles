@@ -6,8 +6,8 @@
   'showIndentGuide': true
   'fontFamily': 'Menlo'
   'lineHeight': 1.45
-  'fontSize': 19
   'invisibles': {}
+  'fontSize': 19
 'core':
   'themes': [
     'atom-dark-ui'

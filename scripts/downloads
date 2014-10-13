@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-# PRODUCTIVITY
-open "https://www.adobe.com/account/account-orders.html"
-open "https://www.microsoftstore.com/store/msusa/en_US/DisplayDownloadHistoryPage/"
-
-# GAMES
-open "https://us.battle.net/account/download/"

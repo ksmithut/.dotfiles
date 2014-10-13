@@ -15,6 +15,7 @@ apps=(
   minecraft
   sequel-pro
   mamp
+  silverlight
 )
 
 echo "Installing apps..."
