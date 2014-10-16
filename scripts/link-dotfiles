@@ -13,3 +13,6 @@ ln -s ~/.dotfiles/.atom ~/.atom
 ln -s ~/.dotfiles/.bash_profile ~/.bash_profile
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.inputrc ~/.inputrc
+
+# For u-limit in .bash_profile:
+(echo "limit maxfiles 16384 16384"; echo "limit maxproc 2048 2048") | sudo tee -a /etc/launchd.conf > /dev/null

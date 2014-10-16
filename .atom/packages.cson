@@ -1,6 +1,7 @@
 'packages': [
   'atom-lint'
   'language-jade'
+  'language-jsx'
   'monokai'
   'pain-split'
   'parcel'

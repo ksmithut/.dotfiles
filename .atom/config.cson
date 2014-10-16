@@ -1,33 +1,34 @@
-'release-notes':
-  'viewedVersion': '0.120.0'
-'welcome':
-  'showOnStartup': false
-'editor':
-  'showIndentGuide': true
-  'fontFamily': 'Menlo'
-  'lineHeight': 1.45
-  'invisibles': {}
-  'fontSize': 19
-'core':
-  'themes': [
-    'atom-dark-ui'
-    'monokai'
-  ]
-  'disabledPackages': [
-    'metrics'
-    'exception-reporting'
-    'jshint'
-  ]
-'whitespace':
-  'ensureSingleTrailingNewline': false
-  'ignoreWhitespaceOnCurrentLine': false
-'markdown-preview':
-  'grammars': [
-    'source.gfm'
-    'source.litcoffee'
-    'text.plain'
-    'text.plain.null-grammar'
-  ]
-'atom-lint':
-  'jshint':
-    'path': '/usr/local/bin/jshint'
+'global':
+  'release-notes':
+    'viewedVersion': '0.120.0'
+  'welcome':
+    'showOnStartup': false
+  'editor':
+    'showIndentGuide': true
+    'fontFamily': 'Menlo'
+    'lineHeight': 1.45
+    'fontSize': 20
+    'invisibles': {}
+  'core':
+    'themes': [
+      'atom-dark-ui'
+      'monokai'
+    ]
+    'disabledPackages': [
+      'metrics'
+      'exception-reporting'
+      'jshint'
+    ]
+  'whitespace':
+    'ensureSingleTrailingNewline': false
+    'ignoreWhitespaceOnCurrentLine': false
+  'markdown-preview':
+    'grammars': [
+      'source.gfm'
+      'source.litcoffee'
+      'text.plain'
+      'text.plain.null-grammar'
+    ]
+  'atom-lint':
+    'jshint':
+      'path': '/usr/local/bin/jshint'
