@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+read -e -p "Path to Backup from: " DIRECTORY
+read -e -p "Path to ~: " HOME
+
+if [ ! -d "$DIRECTORY" ]; then
+  echo "$DIRECTORY is not a valid directory"
+  exit
+fi
+
+if [ ! -d "$HOME" ]; then
+  echo "$HOME is not a valid directory"
+  exit
+fi
+
+echo "Copying ~/.ssh"
+cp -r "$DIRECTORY"/.ssh "$HOME"/.ssh
+
+echo "Copying ~/Code"
+cp -r "$DIRECTORY"/Code "$HOME"/Code
+
+echo "Copying ~/Documents"
+cp -r "$DIRECTORY"/Documents "$HOME"/Documents
+
+echo "Copying ~/Pictures"
+cp -r "$DIRECTORY"/Pictures "$HOME"/Pictures
+
+echo "Copying Warcraft III"
+# cp -r "$DIRECTORY"/Warcraft\ III /Applications/Warcraft\ III/
+
+echo "Copying Minecraft Saves"
+mkdir -p "$HOME"/Library/Application\ Support/minecraft/saves
+cp -r "$DIRECTORY"/saves "$HOME"/Library/Application\ Support/minecraft/
+
+echo "done!"

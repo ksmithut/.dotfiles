@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+read -e -p "Path to Backup to: " DIRECTORY
+
+if [ ! -d "$DIRECTORY" ]; then
+  echo "$DIRECTORY is not a valid directory"
+  exit
+fi
+
+echo "Copying ~/.ssh"
+cp -r ~/.ssh "$DIRECTORY"/.ssh
+
+echo "Copying ~/Code"
+cp -r ~/Code "$DIRECTORY"/Code
+
+echo "Copying ~/Documents"
+cp -r ~/Documents "$DIRECTORY"/Documents
+
+echo "Copying ~/Pictures"
+cp -r ~/Pictures "$DIRECTORY"/Pictures
+
+echo "Copying Warcraft III"
+cp -r /Applications/Warcraft\ III/ "$DIRECTORY"/Warcraft\ III
+
+echo "Copying Minecraft Saves"
+cp -r ~/Library/Application\ Support/minecraft/saves/ "$DIRECTORY"/saves
+
+echo "done!"

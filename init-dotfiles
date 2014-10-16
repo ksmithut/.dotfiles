@@ -12,5 +12,5 @@ read -p "Press [Enter] to install cask stuff..."
 ./scripts/cask
 read -p "Press [Enter] to install node stuff..."
 ./scripts/node
-read -p "Press [Enter] to install IE virtual machines..."
-./scripts/vms
+read -p "Press [Enter] to initialize some cool settings..."
+./scripts/settings
