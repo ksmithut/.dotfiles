@@ -26,7 +26,7 @@ echo "Copying ~/Pictures"
 cp -r "$DIRECTORY"/Pictures "$HOME"/Pictures
 
 echo "Copying Warcraft III"
-# cp -r "$DIRECTORY"/Warcraft\ III /Applications/Warcraft\ III/
+cp -r "$DIRECTORY"/Warcraft\ III /Applications/Warcraft\ III/
 
 echo "Copying Minecraft Saves"
 mkdir -p "$HOME"/Library/Application\ Support/minecraft/saves
