@@ -11,7 +11,7 @@
     'invisibles': {}
   'core':
     'themes': [
-      'atom-dark-ui'
+      'unity-dark-ui'
       'monokai'
     ]
     'disabledPackages': [

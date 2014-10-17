@@ -11,3 +11,33 @@
 .editor .hard-tab {
   background-color: rgba(0,0,0,0.15);
 }
+
+.pane .tab-bar .tab {
+  font-size: 14px;
+  &.modified {
+    text-decoration: underline;
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      right: 7px;
+      top: 7px;
+      background: #008bbe;
+      width: 10px;
+      height: 10px;
+      border-radius: 5px;
+    }
+  }
+}
+
+.workspace .tree-view {
+  font-size: 14px;
+
+  &.list-tree,
+  &.list-group {
+    li:not(.list-nested-item),
+    li.list-nested-item > .list-item { line-height: 24px; }
+  }
+  .status-added:after { color: #27cd00; }
+  .status-modified:after { color: #ffb400; }
+}
