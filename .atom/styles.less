@@ -8,36 +8,54 @@
  * http://www.lesscss.org
  */
 
+ @blue: #0096f5;
+ @green: #27cd00;
+ @orange: #ffb400;
+
 .editor .hard-tab {
   background-color: rgba(0,0,0,0.15);
 }
 
 .pane .tab-bar .tab {
   font-size: 14px;
+  // in the tab bar in the top, modified files should have an underline and a
+  // little blue dot off to the side.
   &.modified {
     text-decoration: underline;
+    // Blue dot
     &:after {
+      @fullHeight: 24px;
+      @width: 12px;
       content: '';
       display: block;
       position: absolute;
-      right: 7px;
-      top: 7px;
-      background: #008bbe;
-      width: 10px;
-      height: 10px;
-      border-radius: 5px;
+      right: (@fullHeight - @width) / 2;
+      top: (@fullHeight - @width) / 2;
+      background: @blue;
+      width: @width;
+      height: @width;
+      border-radius: @width / 2;
     }
   }
 }
 
+// Change the line-height and the font fize of the items in the tree view.
+// also makes git change icons orange and git add icons green. There is a
+// blue border to the left of each file (not folder)
 .workspace .tree-view {
   font-size: 14px;
-
   &.list-tree,
   &.list-group {
     li:not(.list-nested-item),
-    li.list-nested-item > .list-item { line-height: 24px; }
+    li.list-nested-item > .list-item {
+      line-height: 24px;
+      &.file {
+        border-left: 3px solid @blue;
+        padding-left: 4px;
+      }
+    }
   }
-  .status-added:after { color: #27cd00; }
-  .status-modified:after { color: #ffb400; }
+  .status-added:after { color: @green; }
+  .status-modified:after { color: @orange; }
+  .selected:before { opacity: 0.75; }
 }
