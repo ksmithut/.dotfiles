@@ -13,3 +13,53 @@
 #     'prefix': 'log'
 #     'body': 'console.log $1'
 #
+
+'.source.js':
+  'Use Strict':
+    'prefix': 'strict'
+    'body': '\'use strict\';\n\n';
+  'Require':
+    'prefix': 'req'
+    'body': 'var $1 = require(\'$2\');\n$3'
+
+'.source.jsx':
+  'Use Strict':
+    'prefix': 'strict'
+    'body': '\'use strict\';\n\n';
+  'Require':
+    'prefix': 'req'
+    'body': 'var $1 = require(\'$2\');\n$3'
+  'React jsx prefix':
+    'prefix': 'jsx'
+    'body': '/** @jsx React.DOM */'
+  'Reach CommonJS boilerplate':
+    'prefix': 'reactcommon'
+    'body': [
+      '/** @jsx React.DOM */'
+      '\'use strict\''
+      ''
+      'var React = require(\'react\');'
+      ''
+      'var $1 = React.createClass({'
+      '  // mixins: [],'
+      '  // propTypes: {},'
+      '  // statics: {},'
+      '  // getDefaultProps: function () { return {}; },'
+      '  // getInitialState: function () { return {}; },'
+      '  // componentWillMount: function () {},'
+      '  // componentDidMount: function () {},'
+      '  // componentWillReceiveProps: function () {},'
+      '  // shouldComponentUpdate: function () {},'
+      '  // componentWillUpdate: function () {},'
+      '  // componentDidUpdate: function () {},'
+      '  // componentWillUnmount: function () {},'
+      '  render: function () {'
+      '    return ('
+      '      <div className=\'myClass\'></div>'
+      '    );'
+      '  }'
+      '});'
+      ''
+      'module.exports = $1;'
+      ''
+    ].join '\n'

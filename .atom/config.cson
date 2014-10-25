@@ -11,8 +11,8 @@
     'invisibles': {}
   'core':
     'themes': [
-      'unity-dark-ui'
-      'monokai'
+      'seti-ui'
+      'seti-syntax'
     ]
     'disabledPackages': [
       'metrics'
