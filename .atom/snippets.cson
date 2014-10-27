@@ -14,15 +14,18 @@
 #     'body': 'console.log $1'
 #
 
-'.source.js':
+'.source.jsx':
   'Use Strict':
     'prefix': 'strict'
     'body': '\'use strict\';\n\n';
   'Require':
     'prefix': 'req'
     'body': 'var $1 = require(\'$2\');\n$3'
+  'React jsx prefix':
+    'prefix': 'jsx'
+    'body': '/** @jsx React.DOM */'
 
-'.source.jsx':
+'.source.js':
   'Use Strict':
     'prefix': 'strict'
     'body': '\'use strict\';\n\n';
@@ -36,7 +39,7 @@
     'prefix': 'reactcommon'
     'body': [
       '/** @jsx React.DOM */'
-      '\'use strict\''
+      '\'use strict\';'
       ''
       'var React = require(\'react\');'
       ''
