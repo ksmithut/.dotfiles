@@ -17,6 +17,6 @@ path = require 'path'
 
 atom.workspaceView.eachEditorView (editorView) ->
   editor = editorView.getEditor()
-  if path.extname(editor.getPath()) is '.go'
+  if path.extname(editor.getPath()) in ['.go']
     editor.setSoftTabs false
-    editor.setTabLength 4
+    editor.setTabLength 2

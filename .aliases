@@ -1,5 +1,6 @@
 # starts simple http server in current directory
 alias http='python -m SimpleHTTPServer'
+alias httphp='php -S localhost:8000'
 
 # get ip addresses
 alias ip='ipconfig getifaddr en0 && curl ipecho.net/plain; echo'

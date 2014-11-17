@@ -17,7 +17,6 @@
     'disabledPackages': [
       'metrics'
       'exception-reporting'
-      'jshint'
     ]
   'whitespace':
     'ensureSingleTrailingNewline': false
@@ -32,3 +31,8 @@
   'atom-lint':
     'jshint':
       'path': '/usr/local/bin/jshint'
+    'showViolationMetadata': false
+  'linter':
+    'showHighlighting': false
+    'lintOnEditorFocus': false
+    'lintOnChange': false

@@ -14,17 +14,6 @@
 #     'body': 'console.log $1'
 #
 
-'.source.jsx':
-  'Use Strict':
-    'prefix': 'strict'
-    'body': '\'use strict\';\n\n';
-  'Require':
-    'prefix': 'req'
-    'body': 'var $1 = require(\'$2\');\n$3'
-  'React jsx prefix':
-    'prefix': 'jsx'
-    'body': '/** @jsx React.DOM */'
-
 '.source.js':
   'Use Strict':
     'prefix': 'strict'
@@ -32,13 +21,9 @@
   'Require':
     'prefix': 'req'
     'body': 'var $1 = require(\'$2\');\n$3'
-  'React jsx prefix':
-    'prefix': 'jsx'
-    'body': '/** @jsx React.DOM */'
   'Reach CommonJS boilerplate':
     'prefix': 'reactcommon'
     'body': [
-      '/** @jsx React.DOM */'
       '\'use strict\';'
       ''
       'var React = require(\'react\');'

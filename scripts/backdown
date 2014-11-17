@@ -14,19 +14,22 @@ if [ ! -d "$HOME" ]; then
 fi
 
 echo "Copying ~/.ssh"
-cp -r "$DIRECTORY"/.ssh "$HOME"/.ssh
+cp -r "$DIRECTORY"/.ssh "$HOME"
 
 echo "Copying ~/Code"
-cp -r "$DIRECTORY"/Code "$HOME"/Code
+cp -r "$DIRECTORY"/Code "$HOME"
 
 echo "Copying ~/Documents"
-cp -r "$DIRECTORY"/Documents "$HOME"/Documents
+cp -r "$DIRECTORY"/Documents "$HOME"
 
 echo "Copying ~/Pictures"
-cp -r "$DIRECTORY"/Pictures "$HOME"/Pictures
+cp -r "$DIRECTORY"/Pictures "$HOME"
+
+echo "Copying ~/Music"
+cp -r "$DIRECTORY"/Music "$HOME"
 
 echo "Copying Warcraft III"
-cp -r "$DIRECTORY"/Warcraft\ III /Applications/Warcraft\ III/
+cp -r "$DIRECTORY"/Warcraft\ III /Applications
 
 echo "Copying Minecraft Saves"
 mkdir -p "$HOME"/Library/Application\ Support/minecraft/saves

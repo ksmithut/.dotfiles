@@ -8,21 +8,24 @@ if [ ! -d "$DIRECTORY" ]; then
 fi
 
 echo "Copying ~/.ssh"
-cp -r ~/.ssh "$DIRECTORY"/.ssh
+cp -r ~/.ssh "$DIRECTORY"
 
 echo "Copying ~/Code"
-cp -r ~/Code "$DIRECTORY"/Code
+cp -r ~/Code "$DIRECTORY"
 
 echo "Copying ~/Documents"
-cp -r ~/Documents "$DIRECTORY"/Documents
+cp -r ~/Documents "$DIRECTORY"
 
 echo "Copying ~/Pictures"
-cp -r ~/Pictures "$DIRECTORY"/Pictures
+cp -r ~/Pictures "$DIRECTORY"
+
+echo "Copying ~/Music"
+cp -r ~/Music "$DIRECTORY"
 
 echo "Copying Warcraft III"
-cp -r /Applications/Warcraft\ III/ "$DIRECTORY"/Warcraft\ III
+cp -r /Applications/Warcraft\ III/ "$DIRECTORY"
 
 echo "Copying Minecraft Saves"
-cp -r ~/Library/Application\ Support/minecraft/saves/ "$DIRECTORY"/saves
+cp -r ~/Library/Application\ Support/minecraft/saves/ "$DIRECTORY"
 
 echo "done!"

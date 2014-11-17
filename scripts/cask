@@ -3,7 +3,6 @@
 # cask setup
 # ----------
 apps=(
-  alfred
   google-chrome
   firefox
   virtualbox
@@ -16,6 +15,7 @@ apps=(
   sequel-pro
   mamp
   silverlight
+  reflector
 )
 
 echo "Installing apps..."
