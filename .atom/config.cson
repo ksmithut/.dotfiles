@@ -19,8 +19,8 @@
       'exception-reporting'
     ]
   'whitespace':
-    'ensureSingleTrailingNewline': false
     'ignoreWhitespaceOnCurrentLine': false
+    'ensureSingleTrailingNewline': false
   'markdown-preview':
     'grammars': [
       'source.gfm'

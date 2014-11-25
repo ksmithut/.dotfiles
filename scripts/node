@@ -7,4 +7,6 @@ mkdir ~/.npm
 sudo chown -R `whoami` ~/.npm
 sudo chown -R `whoami` /usr/local/lib/node_modules
 
-npm install -g travis-encrypt slush mocha jshint gulp grunt-cli bower
+heroku login
+
+npm install -g npm travis-encrypt slush mocha jshint gulp grunt-cli bower
