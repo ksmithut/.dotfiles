@@ -31,3 +31,7 @@ function dir() { mkdir $1 && cd $1; }
 
 # Sets the gopath to the cwd
 alias gopath='export GOPATH=`pwd`;'
+
+# Create OSX Installer
+
+alias osxinstaller='read -e -p "Path Installer.app: " APP; read -e -p "Path to Volume: " VOLUME; echo "sudo \"${APP}\"Contents/Resources/createinstallmedia --volume "${VOLUME}" --applicationpath "${APP}" --nointeraction"'
