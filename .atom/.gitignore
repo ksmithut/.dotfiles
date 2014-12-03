@@ -3,6 +3,4 @@ compile-cache
 dev
 .npm
 .node-gyp
-!packages/
-packages/*
-!packages/parcel/
+packages

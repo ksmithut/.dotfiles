@@ -17,14 +17,11 @@ brew cleanup
 echo "Installing brew stuff..."
 
 brew install git
-brew install imagemagick
-brew install graphicsmagick
 brew install mongodb
 brew install redis
 brew install trash
 brew install go
 brew install n
-brew install speedtest_cli
 brew install wget
 brew install heroku-toolbelt
 brew install caskroom/cask/brew-cask

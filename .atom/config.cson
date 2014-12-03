@@ -7,16 +7,18 @@
     'showIndentGuide': true
     'fontFamily': 'Menlo'
     'lineHeight': 1.45
-    'fontSize': 20
-    'invisibles': {}
+    'autoIndentOnPaste': false
+    'zoomFontWhenCtrlScrolling': true
+    'useShadowDOM': true
+    'fontSize': 19
   'core':
     'themes': [
       'seti-ui'
       'seti-syntax'
     ]
     'disabledPackages': [
-      'metrics'
       'exception-reporting'
+      'metrics'
     ]
   'whitespace':
     'ignoreWhitespaceOnCurrentLine': false
@@ -36,3 +38,7 @@
     'showHighlighting': false
     'lintOnEditorFocus': false
     'lintOnChange': false
+'.go.source':
+  'editor':
+    'softTabs': false
+    'tabLength': 4

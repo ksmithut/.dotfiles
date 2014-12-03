@@ -14,5 +14,8 @@ ln -s ~/.dotfiles/.bash_profile ~/.bash_profile
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.inputrc ~/.inputrc
 
-# For u-limit in .bash_profile:
-(echo "limit maxfiles 16384 16384"; echo "limit maxproc 2048 2048") | sudo tee -a /etc/launchd.conf > /dev/null
+# Symlink plist files
+# http://docs.basho.com/riak/latest/ops/tuning/open-files-limit/#Mac-OS-X
+# -------------------
+ln -s ~/.dotfiles/files/limit.maxfiles.plist /Library/LaunchDaemons/limit.maxfiles.plist
+ln -s ~/.dotfiles/files/limit.maxproc.plist /Library/LaunchDaemons/limit.maxproc.plist

@@ -20,4 +20,4 @@
   'alt-down': 'editor:move-to-end-of-line'
   'alt-up': 'editor:move-to-beginning-of-line'
   'alt-shift-down': 'editor:select-to-end-of-line'
-  'alt-shift-up': 'editor:select-to-first-character-of-line'
+  'alt-shift-up': 'editor:select-to-beginning-of-line'

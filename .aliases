@@ -13,8 +13,6 @@ alias cask='brew cask'
 
 # get various hinting files for projects
 alias get-jshint='wget https://raw.githubusercontent.com/ksmithut/standards/master/lint/.jshintrc'
-alias get-csslint='wget https://raw.githubusercontent.com/ksmithut/standards/master/lint/.csslintrc'
-alias get-htmlhint='wget https://raw.githubusercontent.com/ksmithut/standards/master/lint/.htmlhintrc'
 
 # clears out the current directory/
 alias clear-dir='rm -rf ./*'

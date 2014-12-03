@@ -8,17 +8,13 @@ apps=(
   virtualbox
   atom
   skype
-  sublime-text
   steam
   league-of-legends
   minecraft
   sequel-pro
   mamp
   silverlight
-  reflector
 )
 
 echo "Installing apps..."
 brew cask install --appdir="/Applications" ${apps[@]}
-
-brew cask alfred link
