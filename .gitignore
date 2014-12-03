@@ -1,2 +1,11 @@
+.log
+Thumbs.db
+.sql
+.sass-cache/
 .DS_Store
-npm-debug.log
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
