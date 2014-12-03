@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 read -e -p "Path to Backup from: " DIRECTORY
-read -e -p "Path to ~: " HOME
+HOME="/Users/`whoami`"
 
 if [ ! -d "$DIRECTORY" ]; then
   echo "$DIRECTORY is not a valid directory"
