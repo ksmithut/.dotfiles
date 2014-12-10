@@ -38,6 +38,8 @@
     'showHighlighting': false
     'lintOnEditorFocus': false
     'lintOnChange': false
+  'atom-beautify':
+    'analytics': false
 '.go.source':
   'editor':
     'softTabs': false
