@@ -19,3 +19,5 @@ ln -s ~/.dotfiles/.inputrc ~/.inputrc
 # -------------------
 ln -s ~/.dotfiles/files/limit.maxfiles.plist /Library/LaunchDaemons/limit.maxfiles.plist
 ln -s ~/.dotfiles/files/limit.maxproc.plist /Library/LaunchDaemons/limit.maxproc.plist
+chmod root:wheel ~/.dotfiles/files/limit.max*
+launchctl limit
