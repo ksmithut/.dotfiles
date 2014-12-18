@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 read -e -p "Path to Backup from: " DIRECTORY
-HOME="/Users/`whoami`"
+#HOME="/Users/`whoami`"
 
 if [ ! -d "$DIRECTORY" ]; then
   echo "$DIRECTORY is not a valid directory"
@@ -12,6 +12,9 @@ if [ ! -d "$HOME" ]; then
   echo "$HOME is not a valid directory"
   exit
 fi
+
+echo "Copying ~/.dotfiles"
+cp -r "$DIRECTORY"/.dotfiles "$HOME"
 
 echo "Copying ~/.ssh"
 cp -r "$DIRECTORY"/.ssh "$HOME"

@@ -7,6 +7,9 @@ if [ ! -d "$DIRECTORY" ]; then
   exit
 fi
 
+echo "Copying ~/.dotfiles"
+cp -r ~/.dotfiles "$DIRECTORY"
+
 echo "Copying ~/.ssh"
 cp -r ~/.ssh "$DIRECTORY"
 
