@@ -8,6 +8,7 @@ if [ ! -d "$DIRECTORY" ]; then
 fi
 
 echo "Copying ~/.dotfiles"
+rm -rf ~/.dotfiles/.atom/.atom
 cp -r ~/.dotfiles "$DIRECTORY"
 
 echo "Copying ~/.ssh"
