@@ -7,4 +7,9 @@ mkdir ~/.npm
 sudo chown -R `whoami` ~/.npm
 sudo chown -R `whoami` /usr/local
 
-npm install -g npm travis-encrypt slush gulp bower
+npm install -g npm
+npm install -g travis-encrypt
+npm install -g slush
+npm install -g gulp
+npm install -g bower
+

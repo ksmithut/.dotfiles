@@ -17,7 +17,6 @@ ln -s ~/.dotfiles/.inputrc ~/.inputrc
 # Symlink plist files
 # http://docs.basho.com/riak/latest/ops/tuning/open-files-limit/#Mac-OS-X
 # -------------------
-ln -s ~/.dotfiles/files/limit.maxfiles.plist /Library/LaunchDaemons/limit.maxfiles.plist
-ln -s ~/.dotfiles/files/limit.maxproc.plist /Library/LaunchDaemons/limit.maxproc.plist
-chmod root:wheel ~/.dotfiles/files/limit.max*
-launchctl limit
+sudo ln -s ~/.dotfiles/files/limit.maxfiles.plist /Library/LaunchDaemons/limit.maxfiles.plist
+sudo ln -s ~/.dotfiles/files/limit.maxproc.plist /Library/LaunchDaemons/limit.maxproc.plist
+sudo chown root:wheel ~/.dotfiles/files/limit.max*
