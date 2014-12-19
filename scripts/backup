@@ -1,35 +1,41 @@
 #!/usr/bin/env bash
 
-read -e -p "Path to Backup to: " DIRECTORY
+read -e -p "Volume to Backup to: " DIRECTORY
 
 if [ ! -d "$DIRECTORY" ]; then
   echo "$DIRECTORY is not a valid directory"
   exit
 fi
 
+# Add /backup to the end of the directory
+DIRECTORY="$DIRECTORY"/backup
+
+# remove any duplicate / from the path for visual reasons
+DIRECTORY=${DIRECTORY//\/\//\/}
+
 echo "Copying ~/.dotfiles"
-rm -rf ~/.dotfiles/.atom/.atom
-cp -r ~/.dotfiles "$DIRECTORY"
+rm ~/.dotfiles/.atom/.atom
+rsync -rv --exclude=*.DS_Store --exclude=.atom/.node-gyp --exclude=.atom/compile-cache --exclude=.atom/packages --exclude=.atom/storage ~/.dotfiles "$DIRECTORY"
 
 echo "Copying ~/.ssh"
-cp -r ~/.ssh "$DIRECTORY"
+rsync -rv --exclude=*.DS_Store ~/.ssh "$DIRECTORY"
 
 echo "Copying ~/Code"
-cp -r ~/Code "$DIRECTORY"
+rsync -rv --exclude=*.DS_Store --exclude=*/node_modules --exclude=*/bower_components ~/Code "$DIRECTORY"
 
 echo "Copying ~/Documents"
-cp -r ~/Documents "$DIRECTORY"
+rsync -rv --exclude=*.DS_Store ~/Documents "$DIRECTORY"
 
 echo "Copying ~/Pictures"
-cp -r ~/Pictures "$DIRECTORY"
+rsync -rv --exclude=*.DS_Store ~/Pictures "$DIRECTORY"
 
 echo "Copying ~/Music"
-cp -r ~/Music "$DIRECTORY"
+rsync -rv --exclude=*.DS_Store ~/Music "$DIRECTORY"
 
 echo "Copying Warcraft III"
-cp -r /Applications/Warcraft\ III/ "$DIRECTORY"
+rsync -rv --exclude=*.DS_Store /Applications/Warcraft\ III "$DIRECTORY"
 
 echo "Copying Minecraft Saves"
-cp -r ~/Library/Application\ Support/minecraft/saves/ "$DIRECTORY"
+rsync -rv --exclude=*.DS_Store ~/Library/Application\ Support/minecraft/saves "$DIRECTORY"
 
 echo "done!"
