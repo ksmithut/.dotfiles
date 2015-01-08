@@ -26,68 +26,12 @@
   'Require':
     'prefix': 'req'
     'body': 'var $1 = require(\'$2\');\n$3'
-  'Gulp':
-    'prefix': 'gulp'
+  'Class':
+    'prefix': 'class'
     'body': """
-      'use strict';
+      function $1($2) {
+        if (!(this instanceof $1)) { return new $1($2); }
 
-      var gulp = require('gulp');
-      var $    = require('gulp-load-plugins')();
 
-      ${1:npm install --save-dev gulp gulp-load-plugins}
-
-    """
-  'Gulp JavaScript':
-    'prefix': 'gulp.js'
-    'body': """
-      gulp.task('${1:scripts}', function () {
-        return gulp.src(${2:'src/scripts/**/*.js'})
-          .pipe($.plumber())
-          .pipe($.sourcemaps.init())
-          .pipe($.concat(${3:'app.min.js'}))
-          .pipe($.uglify())
-          .pipe($.sourcemaps.write(${4:'../maps'}))
-          .pipe(gulp.dest(${5:'dist/js'}));
-      });
-      gulp.task('${1:scripts}.watch', ['${1:scripts}'], function () {
-        gulp.watch(${2:'src/scripts/**/*.js'}, ['${1:scripts}']);
-      });
-
-      ${6:npm install --save-dev gulp-plumber gulp-sourcemaps gulp-concat gulp-uglify}
-
-    """
-  'Gulp Stylus':
-    'prefix': 'gulp.styl'
-    'body': """
-      gulp.task('${1:styles}', function () {
-        return gulp.src(${2:'src/styles/}${3:main.styl'})
-          .pipe($.plumber())
-          .pipe($.stylus({sourcemap: {inline: true}}))
-          .pipe($.sourcemaps.init({loadMaps: true}))
-          .pipe($.concat(${4:'app.min.css'}))
-          .pipe($.pleeease())
-          .pipe($.sourcemaps.write(${5:'../maps'}))
-          .pipe(gulp.dest(${6:'dist/css'}));
-      });
-      gulp.task('${1:styles}.watch', ['${1:styles}'], function () {
-        gulp.watch(${2:'src/styles/}**/*.styl', ['${1:styles}']);
-      });
-
-      ${7:npm install --save-dev gulp-plumber gulp-stylus gulp-sourcemaps gulp-concat gulp-pleeease}
-
-    """
-  'Gulp Static':
-    'prefix': 'gulp.static'
-    'body': """
-      gulp.task('${1:static}', function () {
-        return gulp.src(${2:'src/static/**/*'})
-          .pipe($.plumber())
-          .pipe(gulp.dest(${3:'dist'}));
-      });
-      gulp.task('${1:static}.watch', ['${1:static}'], function () {
-        gulp.watch(${2:'src/static/**/*'}, ['${1:static}']);
-      });
-
-      ${4:npm install --save-dev gulp-plumber}
-
+      }
     """

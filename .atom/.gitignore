@@ -3,5 +3,5 @@ compile-cache
 dev
 .npm
 .node-gyp
-.atom
+.atom/.atom
 packages

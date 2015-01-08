@@ -1,24 +1,25 @@
-'global':
+'*':
   'release-notes':
     'viewedVersion': '0.120.0'
   'welcome':
     'showOnStartup': false
   'editor':
-    'showIndentGuide': true
     'fontFamily': 'Menlo'
+    'fontSize': 18
     'lineHeight': 1.45
+    'showIndentGuide': true
     'autoIndentOnPaste': false
-    'zoomFontWhenCtrlScrolling': true
     'useShadowDOM': true
-    'fontSize': 19
+    'invisibles': {}
+    'zoomFontWhenCtrlScrolling': true
   'core':
-    'themes': [
-      'seti-ui'
-      'seti-syntax'
-    ]
     'disabledPackages': [
       'exception-reporting'
       'metrics'
+    ]
+    'themes': [
+      'seti-ui'
+      'seti-syntax'
     ]
   'whitespace':
     'ignoreWhitespaceOnCurrentLine': false
@@ -35,12 +36,8 @@
       'path': '/usr/local/bin/jshint'
     'showViolationMetadata': false
   'linter':
-    'showHighlighting': false
-    'lintOnEditorFocus': false
     'lintOnChange': false
+    'lintOnEditorFocus': false
+    'showHighlighting': false
   'atom-beautify':
     'analytics': false
-'.go.source':
-  'editor':
-    'softTabs': false
-    'tabLength': 4
