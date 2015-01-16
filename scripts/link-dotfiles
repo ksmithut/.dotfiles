@@ -2,10 +2,10 @@
 
 # Remove existing dotfiles
 # ------------------------
-[[ -r ~/.atom ]]         && rm ~/.atom
-[[ -r ~/.bash_profile ]] && rm ~/.bash_profile
-[[ -r ~/.gitconfig ]]    && rm ~/.gitconfig
-[[ -r ~/.inputrc ]]      && rm ~/.inputrc
+rm ~/.atom
+rm ~/.bash_profile
+rm ~/.gitconfig
+rm ~/.inputrc
 
 # Symlink dotfiles
 # ----------------
