@@ -2,21 +2,14 @@
 
 # Remove existing dotfiles
 # ------------------------
-[[ -r ~/.atom ]]           && rm ~/.atom
-[[ -r ~/.bash_profile ]]   && rm ~/.bash_profile
-[[ -r ~/.gitconfig ]]      && rm ~/.gitconfig
-[[ -r ~/.inputrc ]]        && rm ~/.inputrc
+[[ -r ~/.atom ]]         && rm ~/.atom
+[[ -r ~/.bash_profile ]] && rm ~/.bash_profile
+[[ -r ~/.gitconfig ]]    && rm ~/.gitconfig
+[[ -r ~/.inputrc ]]      && rm ~/.inputrc
 
 # Symlink dotfiles
 # ----------------
-ln -s ~/.dotfiles/.atom ~/.atom
-ln -s ~/.dotfiles/.bash_profile ~/.bash_profile
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/.inputrc ~/.inputrc
-
-# Symlink plist files
-# http://docs.basho.com/riak/latest/ops/tuning/open-files-limit/#Mac-OS-X
-# -------------------
-sudo ln -s ~/.dotfiles/files/limit.maxfiles.plist /Library/LaunchDaemons/limit.maxfiles.plist
-sudo ln -s ~/.dotfiles/files/limit.maxproc.plist /Library/LaunchDaemons/limit.maxproc.plist
-sudo chown root:wheel ~/.dotfiles/files/limit.max*
+ln -s ~/.dotfiles/config/.atom ~/.atom
+ln -s ~/.dotfiles/config/.bash_profile ~/.bash_profile
+ln -s ~/.dotfiles/config/.gitconfig ~/.gitconfig
+ln -s ~/.dotfiles/config/.inputrc ~/.inputrc

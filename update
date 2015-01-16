@@ -16,4 +16,11 @@ echo "Reputting git user config..."
 git config --global user.name "$NAME"
 git config --global user.email "$EMAIL"
 
+echo "Relinking dotfiles (configuration)";
+./scripts/link-dotfiles
+
+echo "Updating Atom packages..."
+# Install all starred atom packages
+apm --stars install
+
 echo "Done!"

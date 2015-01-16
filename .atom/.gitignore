@@ -5,3 +5,4 @@ dev
 .node-gyp
 .atom/.atom
 packages
+.DS_Store
