@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Get github config
+EMAIL=`git config --get user.email`
+NAME=`git config --get user.name`
+
+# reset all config
+git checkout -- .
+# pull the latest
+git pull
+
+# Reset the user config
+git config --global user.name "$NAME"
+git config --global user.email "$EMAIL"

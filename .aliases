@@ -14,9 +14,6 @@ alias cask='brew cask'
 # get various hinting files for projects
 alias get-jshint='wget https://raw.githubusercontent.com/ksmithut/standards/master/lint/.jshintrc'
 
-# clears out the current directory/
-alias clear-dir='rm -rf ./*'
-
 # show hidden files in finder
 alias show-hidden='defaults write com.apple.finder AppleShowAllFiles -bool TRUE; killall Finder;'
 
@@ -31,10 +28,3 @@ function dir() { mkdir $1 && cd $1; }
 
 # Sets the gopath to the cwd
 alias gopath='export GOPATH=`pwd`;'
-
-# clones from my repo
-function clone() { git clone git@github.com:ksmithut/$1.git; cd $1; }
-
-# Create OSX Installer
-
-alias osxinstaller='read -e -p "Path to Volume: " VOLUME; sudo /Applications/Install\ OS\ X\ Yosemite.app/Contents/Resources/createinstallmedia --volume "${VOLUME}" --applicationpath /Applications/Install\ OS\ X\ Yosemite.app --nointeraction'
