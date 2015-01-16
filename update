@@ -1,14 +1,19 @@
 #!/usr/bin/env bash
 
+echo "Getting git user config..."
 # Get github config
 EMAIL=`git config --get user.email`
 NAME=`git config --get user.name`
 
+echo "Updated repo..."
 # reset all config
 git checkout -- .
 # pull the latest
 git pull
 
+echo "Reputting git user config..."
 # Reset the user config
 git config --global user.name "$NAME"
 git config --global user.email "$EMAIL"
+
+echo "Done!"
