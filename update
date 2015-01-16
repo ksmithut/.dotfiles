@@ -21,6 +21,6 @@ echo "Relinking dotfiles (configuration)";
 
 echo "Updating Atom packages..."
 # Install all starred atom packages
-apm --stars install
+apm stars --install
 
 echo "Done!"
