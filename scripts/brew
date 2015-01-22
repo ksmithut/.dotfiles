@@ -21,7 +21,7 @@ brew install mongodb
 brew install redis
 brew install trash
 brew install go
-brew install n
+brew install nvm
 brew install wget
 brew install caskroom/cask/brew-cask
 

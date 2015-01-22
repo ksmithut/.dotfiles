@@ -16,6 +16,7 @@
     disabledPackages: [
       "exception-reporting"
       "metrics"
+      "background-tips"
     ]
     themes: [
       "seti-ui"

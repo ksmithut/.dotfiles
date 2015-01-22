@@ -12,3 +12,14 @@
 #   editor = editorView.getEditor()
 #   if path.extname(editor.getPath()) is '.md'
 #     editor.setSoftWrap(true)
+
+path = require 'path'
+
+hardTabs = [
+  '.go'
+  '.yml'
+]
+
+atom.workspace.observeTextEditors (editor) ->
+  if path.extname(editor.getPath()) in hardTabs
+    editor.softTabs = false
