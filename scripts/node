@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-nvm install latest
+nvm install stable
 nvm alias default `nvm current`
 
 mkdir ~/.npm
@@ -9,8 +9,8 @@ mkdir ~/.nvm
 sudo chown -R `whoami` ~/.npm
 sudo chown -R `whoami` /usr/local
 
+npm adduser
+
 npm install -g npm
-npm install -g travis-encrypt
-npm install -g slush
-npm install -g gulp
-npm install -g bower
+
+npm install -g `npm stars`

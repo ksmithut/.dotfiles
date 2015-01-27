@@ -45,4 +45,4 @@
   react:
     jsxTagStartPattern: "(?x)((^|=|return)\\s*<([^!/?](?!.+?(</.+?>))))"
     jsxComplexAttributePattern: "(?x)\\{ [^}\"']* $|\\( [^)\"']* $"
-    decreaseIndentForNextLinePattern: "/>\\s*,?\\s*$"
+    decreaseIndentForNextLinePattern: "(?x) />\\s*(,|;)?\\s*$ | ^\\s*\\S+.*</[-_\\.A-Za-z0-9]+>$"

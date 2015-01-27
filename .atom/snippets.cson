@@ -32,6 +32,8 @@
       function $1($2) {
         if (!(this instanceof $1)) { return new $1($2); }
 
-
+        $3
       }
+
+
     """

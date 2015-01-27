@@ -24,7 +24,10 @@ alias hide-hidden='defaults write com.apple.finder AppleShowAllFiles -bool FALSE
 alias clear-duplicates='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;'
 
 # makes a directory and moves to it
-function dir() { mkdir $1 && cd $1; }
+alias dir='mkdir test && cd $_'
 
 # Sets the gopath to the cwd
 alias gopath='export GOPATH=`pwd`;'
+
+# update nvm to the latest stable version
+alias nvm-update='nvm install stable; nvm alias default `nvm current`;'
