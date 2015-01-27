@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
 
+# install latest version of node
 nvm install stable
 nvm alias default `nvm current`
 
+# make the required directories
 mkdir ~/.npm
 mkdir ~/.nvm
 
+# make it so we don't have to sudo npm
 sudo chown -R `whoami` ~/.npm
 sudo chown -R `whoami` /usr/local
 
+# add your npm user
 npm adduser
 
+# update npm
 npm install -g npm
 
+# install of the stars packages as global packages
 npm install -g `npm stars`
