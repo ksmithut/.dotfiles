@@ -5,7 +5,6 @@
 apps=(
   google-chrome
   firefox
-  virtualbox
   atom
   skype
   steam
