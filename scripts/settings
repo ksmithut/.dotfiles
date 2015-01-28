@@ -35,10 +35,6 @@ echo "Increasing sound quality for Bluetooth headphones/headsets"
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
 echo ""
-echo "Enabling full keyboard access for all controls (enable Tab in modal dialogs, menu windows, etc.)"
-defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
-
-echo ""
 echo "Disabling press-and-hold for special keys in favor of key repeat"
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
