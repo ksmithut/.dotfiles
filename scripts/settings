@@ -152,7 +152,7 @@ git config --global core.editor "atom"
 
 # Post install GitConfig setup
 # ----------------------------
-git update-index --assume-unchanged .gitconfig
+git update-index --assume-unchanged config/.gitconfig
 read -e -p "git username: " GIT_USER
 read -e -p "git email: " GIT_EMAIL
 git config --global user.name "$GIT_USER"
