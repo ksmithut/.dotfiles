@@ -23,6 +23,7 @@ brew install trash
 brew install go
 brew install nvm
 brew install wget
+brew install tree
 brew install caskroom/cask/brew-cask
 
 brew doctor
