@@ -18,6 +18,7 @@ echo "Installing brew stuff..."
 
 brew install git
 brew install mongodb
+brew install postgres
 brew install redis
 brew install trash
 brew install go
@@ -30,3 +31,15 @@ brew doctor
 brew update
 brew upgrade `brew outdated`
 brew cleanup
+
+# Load mongodb automatically
+# ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents
+# launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
+
+# Load postres automatically
+# ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+# launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+
+# Load redis automatically
+# ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
+# launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
