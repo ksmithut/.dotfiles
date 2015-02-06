@@ -24,7 +24,7 @@ alias hide-hidden='defaults write com.apple.finder AppleShowAllFiles -bool FALSE
 alias clear-duplicates='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;'
 
 # makes a directory and moves to it
-alias dir='mkdir test && cd $_'
+dir() { mkdir $1 && cd $_; }
 
 # Sets the gopath to the cwd
 alias gopath='export GOPATH=`pwd`;'
