@@ -24,7 +24,7 @@
 
     """
   'Require':
-    'prefix': 'req'
+    'prefix': 'require'
     'body': 'var $1 = require(\'$2\');\n$3'
   'Class':
     'prefix': 'class'
