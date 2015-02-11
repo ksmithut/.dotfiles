@@ -162,6 +162,10 @@ git config --global user.email "$GIT_EMAIL"
 # Kill affected applications
 ###############################################################################
 
+# Do a restart instead
+echo ""
+echo "Restart your computer when you get a chance"
+
 # echo ""
 # cecho "Done!"
 # echo ""
