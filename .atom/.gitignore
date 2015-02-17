@@ -4,5 +4,6 @@ dev
 .npm
 .node-gyp
 .atom/.atom
+.apm
 packages
 .DS_Store

@@ -5,13 +5,13 @@
     showOnStartup: false
   editor:
     fontFamily: "Menlo"
-    fontSize: 18
     lineHeight: 1.45
     showIndentGuide: true
     autoIndentOnPaste: false
     useShadowDOM: true
     invisibles: {}
     zoomFontWhenCtrlScrolling: true
+    fontSize: 17
   core:
     disabledPackages: [
       "exception-reporting"
@@ -42,7 +42,4 @@
     showHighlighting: false
   "atom-beautify":
     analytics: false
-  react:
-    jsxTagStartPattern: "(?x)((^|=|return)\\s*<([^!/?](?!.+?(</.+?>))))"
-    jsxComplexAttributePattern: "(?x)\\{ [^}\"']* $|\\( [^)\"']* $"
-    decreaseIndentForNextLinePattern: "(?x) />\\s*(,|;)?\\s*$ | ^\\s*\\S+.*</[-_\\.A-Za-z0-9]+>$"
+  react: {}
