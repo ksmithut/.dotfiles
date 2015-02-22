@@ -1,6 +1,6 @@
 # starts simple http server in current directory
-alias http='python -m SimpleHTTPServer'
-alias httphp='php -S localhost:8000'
+alias static='python -m SimpleHTTPServer'
+alias staticphp='php -S localhost:8000'
 
 # get ip addresses
 alias ip='ipconfig getifaddr en0 && curl ipecho.net/plain; echo'
@@ -26,16 +26,8 @@ alias clear-duplicates='/System/Library/Frameworks/CoreServices.framework/Framew
 # makes a directory and moves to it
 dir() { mkdir $1 && cd $_; }
 
-# Sets the gopath to the cwd
-alias gopath='export GOPATH=`pwd`;'
-
 # update nvm to the latest stable version
 alias nvm-update='nvm install stable; nvm alias default `nvm current`;'
 
 # sets default ls action to have trailing slashes at the end of directories
 alias ls='ls -p'
-
-
-alias mongo-up='mongod --config /usr/local/etc/mongod.conf'
-alias redis-up='redis-server /usr/local/etc/redis.conf'
-alias postgres-up='postgres -D /usr/local/var/postgres'
