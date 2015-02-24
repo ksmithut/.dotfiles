@@ -25,8 +25,6 @@ brew install go
 brew install nvm
 brew install wget
 brew install tree
-brew install docker
-brew install boot2docker
 brew install caskroom/cask/brew-cask
 
 brew doctor
