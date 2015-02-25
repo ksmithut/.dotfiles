@@ -7,7 +7,6 @@
 	unignore = update-index --no-assume-unchanged
 [core]
 	excludesfile = ~/.dotfiles/config/.gitignore
-	editor = atom
 [push]
 	default = simple
 [color "branch"]

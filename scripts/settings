@@ -146,10 +146,6 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # GIT
 ###############################################################################
 
-echo ""
-echo "Setting Git to use Atom as default editor"
-git config --global core.editor "atom"
-
 # Post install GitConfig setup
 # ----------------------------
 git update-index --assume-unchanged config/.gitconfig
