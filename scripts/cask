@@ -14,6 +14,7 @@ apps=(
   mamp
   silverlight
   virtualbox
+  battle-net
 )
 
 echo "Installing apps..."
@@ -21,3 +22,17 @@ brew cask install --appdir="/Applications" ${apps[@]}
 
 # Atom specific setup
 apm stars --install
+
+echo ""
+echo "Would you like to install the games?  (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  # Battle.net specific setup
+  open "/opt/homebrew-cask/Caskroom/battle-net/latest/Battle.net-Setup-enUS.app"
+  # League of Legends specific setup
+  open "/Applications/League of Legends.app"
+  # Steam specific setup
+  open "/Applications/Steam.app"
+  # Minecraft specific setup
+  open "/Applications/Minecraft.app"
+fi

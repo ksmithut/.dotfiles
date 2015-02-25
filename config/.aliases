@@ -33,6 +33,6 @@ alias gopath='export GOPATH=`pwd`;'
 alias nvm-update='nvm install stable; nvm alias default `nvm current`;'
 
 
-alias start-mongo='mongod --config /usr/local/etc/mongod.conf'
-alias start-redis='redis-server /usr/local/etc/redis.conf'
-alias start-postgres='postgres -D /usr/local/var/postgres'
+alias mongo-up='mongod --config /usr/local/etc/mongod.conf'
+alias redis-up='redis-server /usr/local/etc/redis.conf'
+alias postgres-up='postgres -D /usr/local/var/postgres'

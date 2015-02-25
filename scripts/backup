@@ -13,10 +13,6 @@ DIRECTORY="$DIRECTORY"/backup
 # remove any duplicate / from the path for visual reasons
 DIRECTORY=${DIRECTORY//\/\//\/}
 
-echo "Copying ~/.dotfiles"
-rm ~/.dotfiles/.atom/.atom
-rsync -rv --exclude=*.DS_Store --exclude=.atom/.node-gyp --exclude=.atom/compile-cache --exclude=.atom/packages --exclude=.atom/storage ~/.dotfiles "$DIRECTORY"
-
 echo "Copying ~/.ssh"
 rsync -rv --exclude=*.DS_Store ~/.ssh "$DIRECTORY"
 

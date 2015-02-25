@@ -18,9 +18,6 @@ if [ ! -d "$HOME" ]; then
   exit
 fi
 
-echo "Copying ~/.dotfiles"
-rsync -rv "$DIRECTORY"/.dotfiles "$HOME"
-
 echo "Copying ~/.ssh"
 rsync -rv "$DIRECTORY"/.ssh "$HOME"
 
