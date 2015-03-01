@@ -28,9 +28,6 @@ rsync -rv --exclude=*.DS_Store ~/Pictures "$DIRECTORY"
 echo "Copying ~/Music"
 rsync -rv --exclude=*.DS_Store ~/Music "$DIRECTORY"
 
-echo "Copying Warcraft III"
-rsync -rv --exclude=*.DS_Store /Applications/Warcraft\ III "$DIRECTORY"
-
 echo "Copying Minecraft Saves"
 rsync -rv --exclude=*.DS_Store ~/Library/Application\ Support/minecraft/saves "$DIRECTORY"
 

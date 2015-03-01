@@ -33,9 +33,6 @@ rsync -rv "$DIRECTORY"/Pictures/ "$HOME"/Pictures
 echo "Copying ~/Music"
 rsync -rv "$DIRECTORY"/Music/ "$HOME"/Music
 
-echo "Copying Warcraft III"
-rsync -rv "$DIRECTORY"/Warcraft\ III /Applications
-
 echo "Copying Minecraft Saves"
 mkdir -p "$HOME"/Library/Application\ Support/minecraft/saves
 rsync -rv "$DIRECTORY"/saves "$HOME"/Library/Application\ Support/minecraft/
