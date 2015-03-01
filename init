@@ -14,3 +14,4 @@ read -p "Press [Enter] to install node stuff..."
 ./scripts/node
 read -p "Press [Enter] to initialize some cool settings..."
 ./scripts/settings
+
