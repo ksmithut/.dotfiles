@@ -8,12 +8,15 @@ for f in /usr/local/etc/bash_completion.d/*; do . $f; done;
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
-# ◢
-user_host="\u@\h"
-user_path="\[\033[36m\]\W\[\033[00m\]"
-git_branch="\[\033[33m\]\$(parse_git_branch)\[\033[00m\]"
-export PS1="$user_host $user_path $git_branch $ "
-unset user_host user_path git_branch
+fg_white="\[\033[37m\]"
+fg_cyan="\[\033[36m\]"
+fg_yellow="\[\033[33m\]"
+reset="\[\033[00m\]"
+user_host="$fg_white\u@\h "
+user_path="$fg_cyan\W "
+git_branch="$fg_yellow(\$(parse_git_branch)) "
+export PS1="$user_host$user_path$git_branch$reset$ "
+unset user_host user_path git_branch reset fg_white fg_cyan fg_yellow
 # export environment variables
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export NVM_DIR=~/.nvm
