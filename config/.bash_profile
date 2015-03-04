@@ -6,7 +6,7 @@
 for f in /usr/local/etc/bash_completion.d/*; do . $f; done;
 # put the git branch name in the terminal
 parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
 }
 fg_white="\[\033[37m\]"
 fg_cyan="\[\033[36m\]"
@@ -14,7 +14,7 @@ fg_yellow="\[\033[33m\]"
 reset="\[\033[00m\]"
 user_host="$fg_white\u@\h "
 user_path="$fg_cyan\W "
-git_branch="$fg_yellow(\$(parse_git_branch)) "
+git_branch="$fg_yellow\$(parse_git_branch)"
 export PS1="$user_host$user_path$git_branch$reset$ "
 unset user_host user_path git_branch reset fg_white fg_cyan fg_yellow
 # export environment variables
