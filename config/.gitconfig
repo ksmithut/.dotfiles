@@ -1,12 +1,23 @@
 [alias]
-	s = status
-	a = add .
+	s = status -s
+	cl = git clone
+	co = git checkout
+	br = git branch
+	diff = diff --word-diff
+	a = add
+	aa = add .
 	c = commit
+	cm = commit -m
+	pr = pull --rebase
 	p = push
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	filelog = log -u
+	fl = log -u
+	la = "!git config -l | grep alias | cut -c 7-"
 	ignore = update-index --assume-unchanged
 	unignore = update-index --no-assume-unchanged
 [core]
-	excludesfile = ~/.dotfiles/config/.gitignore
+	excludesfile = /Users/ksmith/.dotfiles/config/.gitignore
 [push]
 	default = simple
 [color "branch"]
