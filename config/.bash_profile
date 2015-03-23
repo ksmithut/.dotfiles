@@ -13,7 +13,7 @@ fg_cyan="\[\033[36m\]"
 fg_yellow="\[\033[33m\]"
 reset="\[\033[00m\]"
 user_host="$fg_white\u@\h "
-user_path="$fg_cyan\W "
+user_path="$fg_cyan\w "
 git_branch="$fg_yellow\$(parse_git_branch)"
 export PS1="$user_host$user_path$git_branch$reset$ "
 unset user_host user_path git_branch reset fg_white fg_cyan fg_yellow
