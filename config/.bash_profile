@@ -21,7 +21,7 @@ unset user_host user_path git_branch reset fg_white fg_cyan fg_yellow
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export NVM_DIR=~/.nvm
 export ATOM_HOME=~/.dotfiles/config/.atom
-# export CLICOLOR=1
-# export LSCOLORS=gxfxcxdxhxegedabagacad # http://geoff.greer.fm/lscolors/
+export CLICOLOR=1
+export LSCOLORS=gxfxcxdxhxegedabagacad # http://geoff.greer.fm/lscolors/
 # Include nvm
 source $(brew --prefix nvm)/nvm.sh
