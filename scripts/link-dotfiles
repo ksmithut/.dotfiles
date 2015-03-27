@@ -5,9 +5,12 @@
 rm ~/.bash_profile
 rm ~/.gitconfig
 rm ~/.inputrc
+rm -rf ~/.atom
 
 # Symlink dotfiles
 # ----------------
 ln -s ~/.dotfiles/config/.bash_profile ~/.bash_profile
 ln -s ~/.dotfiles/config/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/config/.inputrc ~/.inputrc
+ln -s ~/.dotfiles/config/.atom ~/.atom
+
