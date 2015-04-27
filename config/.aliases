@@ -6,7 +6,7 @@ alias httphp='php -S localhost:8000'
 alias ip='ipconfig getifaddr en0 && curl ipecho.net/plain; echo'
 
 # update brew
-alias brew-upgrade='brew update && brew upgrade `brew outdated` && brew cleanup'
+alias brew-upgrade='brew update; brew upgrade --all; brew cleanup'
 
 # cask shortcut
 alias cask='brew cask'
