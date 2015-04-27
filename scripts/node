@@ -4,8 +4,8 @@ export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
 # install latest version of node
-nvm install stable
-nvm alias default `nvm current`
+nvm install node
+nvm alias default node
 
 # make the required directories
 mkdir ~/.npm

@@ -7,13 +7,12 @@ apps=(
   firefox
   atom
   skype
+  sequel-pro
+  mamp
+  virtualbox
   steam
   league-of-legends
   minecraft
-  sequel-pro
-  mamp
-  silverlight
-  virtualbox
   battle-net
 )
 
@@ -24,7 +23,7 @@ brew cask install --appdir="/Applications" ${apps[@]}
 apm stars --install
 
 echo ""
-echo "Would you like to install the games?  (y/n)"
+echo "Would you like to install the games?  (y/N)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   # Battle.net specific setup
