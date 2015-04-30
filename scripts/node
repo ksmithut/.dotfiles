@@ -5,7 +5,8 @@ source $(brew --prefix nvm)/nvm.sh
 
 # install latest version of node
 nvm install node
-nvm alias default node
+nvm install iojs
+nvm alias default iojs
 
 # make the required directories
 mkdir ~/.npm
