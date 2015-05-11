@@ -17,7 +17,6 @@ path = require 'path'
 
 hardTabs = [
   '.go'
-  '.yml'
 ]
 
 atom.workspace.observeTextEditors (editor) ->
