@@ -16,8 +16,8 @@
 #   'ctrl-P': 'core:move-up'
 #   'ctrl-p': 'core:move-down'
 #
-'.editor':
-  'alt-down': 'atom-text-editor:move-to-end-of-line'
-  'alt-up': 'atom-text-editor:move-to-beginning-of-line'
-  'alt-shift-down': 'atom-text-editor:select-to-end-of-line'
-  'alt-shift-up': 'atom-text-editor:select-to-beginning-of-line'
+'atom-text-editor':
+  'alt-down': 'editor:move-to-end-of-line'
+  'alt-up': 'editor:move-to-beginning-of-line'
+  'alt-shift-down': 'editor:select-to-end-of-line'
+  'alt-shift-up': 'editor:select-to-beginning-of-line'
