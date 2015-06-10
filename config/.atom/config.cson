@@ -46,6 +46,8 @@
     {}
   "autocomplete-plus":
     confirmCompletion: "tab"
+  tabs:
+    usePreviewTabs: true
   "tool-bar":
     position: "Left"
     visible: false
