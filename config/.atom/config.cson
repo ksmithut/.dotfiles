@@ -46,3 +46,8 @@
     {}
   "autocomplete-plus":
     confirmCompletion: "tab"
+  "tool-bar":
+    position: "Left"
+    visible: false
+  "flex-tool-bar":
+    {}
