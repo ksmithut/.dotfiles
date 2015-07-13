@@ -39,6 +39,7 @@
     lintOnChange: false
     lintOnEditorFocus: false
     showHighlighting: false
+    showErrorPanel: false
   "atom-beautify":
     analytics: false
   react: {}
@@ -49,5 +50,5 @@
   "tool-bar":
     position: "Left"
     visible: false
-  "flex-tool-bar":
-    {}
+  "flex-tool-bar": {}
+  "spell-check": {}
