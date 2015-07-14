@@ -9,8 +9,7 @@
     showIndentGuide: true
     autoIndentOnPaste: false
     useShadowDOM: true
-    invisibles:
-      {}
+    invisibles: {}
     zoomFontWhenCtrlScrolling: true
   core:
     disabledPackages: [
@@ -42,8 +41,7 @@
     showHighlighting: false
   "atom-beautify":
     analytics: false
-  react:
-    {}
+  react: {}
   "autocomplete-plus":
     confirmCompletion: "tab"
   tabs:
