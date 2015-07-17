@@ -19,6 +19,9 @@ hardTabs = [
   '.go'
 ]
 
+# workaround to get env variables into this app
+process.env.PATH = ["/usr/local/bin", process.env.PATH].join(":")
+
 atom.workspace.observeTextEditors (editor) ->
   if path.extname(editor.getPath()) in hardTabs
     editor.softTabs = false
