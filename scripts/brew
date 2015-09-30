@@ -24,12 +24,17 @@ brew install nvm
 brew install wget
 brew install tree
 brew install httpie
+brew install siege
 brew install caskroom/cask/brew-cask
 
 brew doctor
 brew update
 brew upgrade `brew outdated`
 brew cleanup
+
+# Make the default directory for mongodb
+sudo mkdir -p /data/db
+sudo chown -R `whoami` /data/db
 
 # Load mongodb automatically
 # ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents

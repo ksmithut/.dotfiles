@@ -25,7 +25,4 @@ rsync -rv --exclude=*.DS_Store ~/Documents "$DIRECTORY"
 echo "Copying ~/Pictures"
 rsync -rv --exclude=*.DS_Store ~/Pictures "$DIRECTORY"
 
-echo "Copying Minecraft Saves"
-rsync -rv --exclude=*.DS_Store ~/Library/Application\ Support/minecraft/saves "$DIRECTORY"
-
 echo "done!"
