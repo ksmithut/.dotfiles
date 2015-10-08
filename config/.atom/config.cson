@@ -52,3 +52,7 @@
     visible: false
   "flex-tool-bar": {}
   "spell-check": {}
+  "linter-jshint":
+    disableWhenNoJshintrcFileInPath: true
+  "linter-eslint":
+    disableWhenNoEslintrcFileInPath: true
