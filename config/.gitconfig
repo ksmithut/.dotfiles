@@ -1,23 +1,14 @@
 [alias]
 	s = status -s
-	cl = git clone
-	co = git checkout
-	br = git branch
 	diff = diff --word-diff
-	a = add
-	aa = add .
-	c = commit
-	cm = commit -m
 	pr = pull --rebase
-	p = push
 	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 	filelog = log -u
-	fl = log -u
 	la = "!git config -l | grep alias | cut -c 7-"
 	ignore = update-index --assume-unchanged
 	unignore = update-index --no-assume-unchanged
 [core]
-	excludesfile = /Users/ksmith/.dotfiles/config/.gitignore
+	excludesfile = ~/.dotfiles/config/.gitignore
 [push]
 	default = simple
 [color "branch"]
@@ -36,9 +27,6 @@
 [diff]
 	# Detect copies as well as renames
 	renames = copies
-[help]
-	# Automatically correct and execute mistyped commands
-	autocorrect = 1
 [url "git@github.com:"]
 	insteadOf = "gh:"
 	pushInsteadOf = "github:"

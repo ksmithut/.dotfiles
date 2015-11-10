@@ -35,5 +35,12 @@
         $3
       }
 
+      $1.prototype = {
+
+
+
+      };
+
+      module.exports = $1;
 
     """
