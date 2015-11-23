@@ -20,7 +20,6 @@ brew install git
 brew install mongodb
 brew install redis
 brew install trash
-brew install nvm
 brew install wget
 brew install tree
 brew install httpie

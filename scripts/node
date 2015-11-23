@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+# install nvm https://github.com/creationix/nvm#install-script
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
+
 export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # install latest version of node
 nvm install node stable
