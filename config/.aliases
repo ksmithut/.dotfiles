@@ -24,7 +24,7 @@ alias hide-hidden='defaults write com.apple.finder AppleShowAllFiles -bool FALSE
 alias clear-duplicates='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;'
 
 # makes a directory and moves to it
-dir() { mkdir $1 && cd $_; }
+function dir { mkdir $1 && cd $_; }
 
 # update nvm to the latest stable version
 alias nvm-update='nvm install stable; nvm alias default `nvm current`;'
@@ -32,6 +32,6 @@ alias nvm-update='nvm install stable; nvm alias default `nvm current`;'
 # sets default ls action to have trailing slashes at the end of directories
 alias ls='ls -p'
 
-
+# database startups
 alias mongo-up='mongod --config /usr/local/etc/mongod.conf'
 alias redis-up='redis-server /usr/local/etc/redis.conf'

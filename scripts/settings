@@ -8,17 +8,6 @@
 defaults write -g NSWindowResizeTime -float 0.003
 
 ################################################################################
-# GIT
-################################################################################
-
-# Post install GitConfig setup
-git update-index --assume-unchanged config/.gitconfig
-read -e -p "git username: " GIT_USER
-read -e -p "git email: " GIT_EMAIL
-git config --global user.name "$GIT_USER"
-git config --global user.email "$GIT_EMAIL"
-
-################################################################################
 # Kill affected applications
 ################################################################################
 
