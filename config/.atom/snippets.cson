@@ -37,3 +37,37 @@
 
 
     """
+
+'.source.yaml':
+  'Main Swagger Definition':
+    'prefix': 'swagger'
+    'body': """
+      swagger: '2.0'
+      info:
+        title: $1
+        description: $2
+        version: ${3:1.0.0}
+      produces:
+        - application/json
+      parameters: {}
+      responses: {}
+      paths: {}
+      definitions: {}
+      $4
+    """
+  'Swagger Path Verb':
+    'prefix': 'verb'
+    'body': """
+      ${1:get}:
+        summary: $2
+        description: |
+          $3
+        tags:
+          - $4
+        parameters:
+          ${5:- }
+        responses:
+          ${6:200}:
+            ${7:description: Success}
+      $8
+    """

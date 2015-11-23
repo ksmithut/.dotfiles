@@ -39,7 +39,6 @@
     lintOnChange: false
     lintOnEditorFocus: false
     showHighlighting: false
-    showErrorPanel: false
   "atom-beautify":
     analytics: false
   react: {}
