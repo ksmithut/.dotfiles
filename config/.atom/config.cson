@@ -11,11 +11,15 @@
     useShadowDOM: true
     invisibles: {}
     zoomFontWhenCtrlScrolling: true
+    fontSize: 13
   core:
     disabledPackages: [
       "exception-reporting"
       "metrics"
       "background-tips"
+      "about"
+      "autosave"
+      "bookmarks"
     ]
     themes: [
       "seti-ui"
