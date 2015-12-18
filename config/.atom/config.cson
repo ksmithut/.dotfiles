@@ -11,7 +11,7 @@
     useShadowDOM: true
     invisibles: {}
     zoomFontWhenCtrlScrolling: true
-    fontSize: 13
+    fontSize: 16
   core:
     disabledPackages: [
       "exception-reporting"
