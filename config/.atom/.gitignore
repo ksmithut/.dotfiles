@@ -8,3 +8,4 @@ dev
 .apm
 packages
 .DS_Store
+blob-store
