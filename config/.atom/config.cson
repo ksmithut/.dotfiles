@@ -1,16 +1,12 @@
 "*":
-  "release-notes":
-    viewedVersion: "0.179.0"
-  welcome:
-    showOnStartup: false
-  editor:
-    fontFamily: "Menlo"
-    lineHeight: 1.45
-    showIndentGuide: true
-    autoIndentOnPaste: false
-    useShadowDOM: true
-    invisibles: {}
-    zoomFontWhenCtrlScrolling: true
+  "atom-beautify":
+    analytics: false
+  "atom-lint":
+    jshint:
+      path: "/usr/local/bin/jshint"
+    showViolationMetadata: false
+  "autocomplete-plus":
+    confirmCompletion: "tab"
   core:
     disabledPackages: [
       "exception-reporting"
@@ -24,9 +20,23 @@
       "seti-ui"
       "seti-syntax"
     ]
-  whitespace:
-    ignoreWhitespaceOnCurrentLine: false
-    ensureSingleTrailingNewline: false
+  editor:
+    autoIndentOnPaste: false
+    fontFamily: "Menlo"
+    invisibles: {}
+    lineHeight: 1.45
+    showIndentGuide: true
+    useShadowDOM: true
+    zoomFontWhenCtrlScrolling: true
+  "flex-tool-bar": {}
+  linter:
+    lintOnChange: false
+    lintOnEditorFocus: false
+    showHighlighting: false
+  "linter-eslint":
+    disableWhenNoEslintrcFileInPath: true
+  "linter-jshint":
+    disableWhenNoJshintrcFileInPath: true
   "markdown-preview":
     grammars: [
       "source.gfm"
@@ -34,27 +44,15 @@
       "text.plain"
       "text.plain.null-grammar"
     ]
-  "atom-lint":
-    jshint:
-      path: "/usr/local/bin/jshint"
-    showViolationMetadata: false
-  linter:
-    lintOnChange: false
-    lintOnEditorFocus: false
-    showHighlighting: false
-  "atom-beautify":
-    analytics: false
   react: {}
-  "autocomplete-plus":
-    confirmCompletion: "tab"
+  "spell-check": {}
   tabs:
     usePreviewTabs: true
   "tool-bar":
     position: "Left"
     visible: false
-  "flex-tool-bar": {}
-  "spell-check": {}
-  "linter-jshint":
-    disableWhenNoJshintrcFileInPath: true
-  "linter-eslint":
-    disableWhenNoEslintrcFileInPath: true
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ensureSingleTrailingNewline: false
+    ignoreWhitespaceOnCurrentLine: false
