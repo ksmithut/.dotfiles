@@ -44,7 +44,8 @@
       "text.plain"
       "text.plain.null-grammar"
     ]
-  "project-manager": {}
+  "project-manager":
+    closeCurrent: true
   react: {}
   "spell-check": {}
   tabs:
