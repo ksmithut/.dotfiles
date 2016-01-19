@@ -9,3 +9,4 @@ dev
 packages
 .DS_Store
 blob-store
+projects.cson
