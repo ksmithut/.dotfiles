@@ -27,6 +27,60 @@ alias redis-up='redis-server /usr/local/etc/redis.conf'
 alias static='python -m SimpleHTTPServer'
 alias staticphp='php -S localhost:8000'
 
+# Get current get branch
+function _parse_git_branch {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+# custom shell prefix
+# function to get branch name of current directory
+function setprompt {
+  # colors
+  local black="\[\033[30m\]"
+  local red="\[\033[31m\]"
+  local green="\[\033[32m\]"
+  local yellow="\[\033[33m\]"
+  local blue="\[\033[34m\]"
+  local purple="\[\033[35m\]"
+  local cyan="\[\033[36m\]"
+  local white="\[\033[37m\]"
+
+  # http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
+  # vars
+  local user="\u" # the username of the current user
+  local host="\h" # the hostname up to the first '.'
+  local cwd="\w" # the current working directory, with $HOME abbreviated with a tilde
+  local git_branch="\$(_parse_git_branch)"
+
+  # print colors
+  function color { echo "$1$2\[\033[00m\]"; }
+
+  local output=""
+
+  # arguments
+  for i in "$@"
+  do
+    case $i in
+      -u|--user)
+        output+="$(color $white $user@$host) "
+        ;;
+      -p|--path)
+        output+="$(color $cyan $cwd) "
+        ;;
+      -b|--branch)
+        output+="$(color $yellow $git_branch) "
+        ;;
+    esac
+  done
+
+  output+="$ "
+
+  export PS1=$output
+}
+
+# makes it possible to switch to shorter prompt
+alias shortprompt='setprompt --path'
+alias resetprompt='setprompt --user --path --branch'
+
 # creates a github repo from a local git repository
 github-create() {
   repo_name=$1
