@@ -29,7 +29,7 @@ alias staticphp='php -S localhost:8000'
 
 # Get current get branch
 function _parse_git_branch {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) / '
 }
 # custom shell prefix
 # function to get branch name of current directory
@@ -67,7 +67,7 @@ function setprompt {
         output+="$(color $cyan $cwd) "
         ;;
       -b|--branch)
-        output+="$(color $yellow $git_branch) "
+        output+="$(color $yellow $git_branch)"
         ;;
     esac
   done
