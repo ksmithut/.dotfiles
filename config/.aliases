@@ -83,9 +83,10 @@ alias resetprompt='setprompt --user --path --branch'
 
 # creates a github repo from a local git repository
 github-create() {
-  repo_name=$1
+  local invalid_credentials=0
+  local repo_name=$1
 
-  dir_name=`basename $(pwd)`
+  local dir_name=`basename $(pwd)`
 
   if [ "$repo_name" = "" ]; then
     echo "Repo name (hit enter to use '$dir_name')?"
@@ -93,19 +94,19 @@ github-create() {
   fi
 
   if [ "$repo_name" = "" ]; then
-    repo_name=$dir_name
+    local repo_name=$dir_name
   fi
 
-  username=`git config github.user`
+  local username=`git config github.user`
   if [ "$username" = "" ]; then
     echo "Could not find username, run 'git config --global github.user <username>'"
-    invalid_credentials=1
+    local invalid_credentials=1
   fi
 
-  token=`git config github.token`
+  local token=`git config github.token`
   if [ "$token" = "" ]; then
     echo "Could not find token, run 'git config --global github.token <token>'"
-    invalid_credentials=1
+    local invalid_credentials=1
   fi
 
   if [ "$invalid_credentials" == "1" ]; then
