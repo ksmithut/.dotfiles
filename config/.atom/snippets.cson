@@ -23,58 +23,80 @@
       $1
 
     """
-  'Require':
-    'prefix': 'require'
-    'body': 'var $1 = require(\'$2\');\n$3'
-  'Class':
-    'prefix': 'class'
+  'Redux Reducer':
+    'prefix': 'reducer'
     'body': """
-      function $1($2) {
-        if (!(this instanceof $1)) { return new $1($2); }
+      'use strict';
 
-        $3
+      const DEFAULT_STATE = $1
+
+      const $2 = (state = DEFAULT_STATE, action) => {
+        switch (action.type) {
+          default:
+            return state;
+        }
       }
 
-      $1.prototype = {
-
-
-
-      };
-
-      module.exports = $1;
+      export default $2;
 
     """
+  'Redux Container':
+    'prefix': 'container'
+    'body': """
+      'use strict';
 
-'.source.yaml':
-  'Main Swagger Definition':
-    'prefix': 'swagger'
-    'body': """
-      swagger: '2.0'
-      info:
-        title: $1
-        description: $2
-        version: ${3:1.0.0}
-      produces:
-        - application/json
-      parameters: {}
-      responses: {}
-      paths: {}
-      definitions: {}
-      $4
+      import { connect } from 'react-redux';
+      import $1 from '../components/$2';
+
+      const mapStateToProps = (state) => ({
+
+      });
+
+      const mapDispatchToProps = (dispatch) => ({
+
+      });
+
+      const $3 = connect(
+        mapStateToProps,
+        mapDispatchToProps
+      )($1);
+
+      export default $3
+
     """
-  'Swagger Path Verb':
-    'prefix': 'verb'
+  'Redux Action':
+    'prefix': 'action'
     'body': """
-      ${1:get}:
-        summary: $2
-        description: |
-          $3
-        tags:
-          - $4
-        parameters:
-          ${5:- }
-        responses:
-          ${6:200}:
-            ${7:description: Success}
-      $8
+      export const $1 = ($2) => ({
+        type: '$3',
+        $3
+      });
+    """
+  'React Component':
+    'prefix': 'component'
+    'body': """
+      'use strict';
+
+      import React, { Component, PropTypes } from 'react';
+
+      class $1 extends Component {
+
+        render() {
+          return (
+            <div />
+          )
+        }
+
+      }
+
+      $1.propTypes = {
+
+      }
+
+      $1.defaultProps = {
+
+      }
+
+      export default $1;
+
     """
