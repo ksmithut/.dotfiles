@@ -82,7 +82,7 @@ alias shortprompt='setprompt --path'
 alias resetprompt='setprompt --user --path --branch'
 
 # creates a github repo from a local git repository
-github-create() {
+function github-create {
   local invalid_credentials=0
   local repo_name=$1
 

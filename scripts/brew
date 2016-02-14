@@ -25,7 +25,6 @@ brew install tree
 brew install httpie
 brew install siege
 brew install brew-cask
-brew install zsh
 
 brew doctor
 brew update

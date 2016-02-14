@@ -3,19 +3,23 @@
 # cask setup
 # ----------
 apps=(
-  google-chrome
-  firefox
   atom
+  battle-net
+  discord
+  firefox
+  google-chrome
+  league-of-legends
+  macid
+  mamp
+  minecraft
+  sequel-pro
+  sketch
   skype
   slack
-  sequel-pro
-  mamp
-  virtualbox
+  spacemonkey
   steam
-  league-of-legends
-  minecraft
-  battle-net
-  macid
+  virtualbox
+  visual-studio-code
 )
 
 echo "Installing apps..."
