@@ -35,7 +35,7 @@
           default:
             return state;
         }
-      }
+      };
 
       export default $2;
 
@@ -61,7 +61,7 @@
         mapDispatchToProps
       )($1);
 
-      export default $3
+      export default $3;
 
     """
   'Redux Action':
@@ -84,18 +84,18 @@
         render() {
           return (
             <div />
-          )
+          );
         }
 
       }
 
       $1.propTypes = {
 
-      }
+      };
 
       $1.defaultProps = {
 
-      }
+      };
 
       export default $1;
 
