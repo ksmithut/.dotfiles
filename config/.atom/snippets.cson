@@ -69,7 +69,7 @@
     'body': """
       export const $1 = ($2) => ({
         type: '$3',
-        $3
+        $4
       });
     """
   'React Component':
