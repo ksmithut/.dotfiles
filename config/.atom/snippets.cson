@@ -76,7 +76,7 @@
     'prefix': 'action-async'
     'body': """
       export const $1 = ($2) => (dispatch) => {
-        d
+        $3
       };
     """
   'React Component':
