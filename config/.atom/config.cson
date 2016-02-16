@@ -53,8 +53,6 @@
   "tool-bar":
     position: "Left"
     visible: false
-  "tree-view":
-    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
   whitespace:
