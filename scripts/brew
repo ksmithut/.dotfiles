@@ -24,7 +24,7 @@ brew install wget
 brew install tree
 brew install httpie
 brew install siege
-brew install brew-cask
+brew tap caskroom/cask
 
 brew doctor
 brew update
