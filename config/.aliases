@@ -78,8 +78,9 @@ function setprompt {
 }
 
 # makes it possible to switch to shorter prompt
-alias shortprompt='setprompt --path'
-alias resetprompt='setprompt --user --path --branch'
+alias shortprompt='setprompt --path --branch'
+alias longprompt='setprompt --user --path --branch'
+alias resetprompt='shortprompt'
 
 # creates a github repo from a local git repository
 function github-create {
