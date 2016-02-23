@@ -14,17 +14,32 @@ brew update
 brew upgrade `brew outdated`
 brew cleanup
 
-echo "Installing brew stuff..."
+echo "Installing brew recipes..."
 
-brew install git
-brew install mongodb
-brew install redis
-brew install trash
-brew install wget
-brew install tree
-brew install httpie
-brew install siege
-brew tap caskroom/cask
+recipes=(
+  git
+  mongodb
+  redix
+  trash
+  wget
+  tree
+  httpie
+  siege
+)
+
+for recipe in "${recipes[@]}"; do
+  brew install $recipe
+done
+
+echo "Installing brew taps..."
+
+taps=(
+  caskroom/cask
+)
+
+for tap in "${taps[@]}"; do
+  brew install $tap
+done
 
 brew doctor
 brew update
