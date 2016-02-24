@@ -5,6 +5,9 @@ _latest=`echo $(curl https://api.github.com/repos/creationix/nvm/releases/latest
 curl -o- https://raw.githubusercontent.com/creationix/nvm/$_latest/install.sh | bash
 unset _latest
 
+# make the required directories
+mkdir ~/.npm
+
 export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
@@ -12,21 +15,10 @@ export NVM_DIR=~/.nvm
 nvm install node stable
 nvm alias default node stable
 
-# make the required directories
-mkdir ~/.npm
-mkdir ~/.nvm
-
 # make it so we don't have to sudo npm
 sudo chown -R `whoami` ~/.npm
-sudo chown -R `whoami` /usr/local
 
-echo "Add npm user"
+echo "Add npm user..."
 
 # add your npm user
 npm adduser
-
-# update npm
-npm install -g npm
-
-# install of the stars packages as global packages
-npm install -g `npm stars`

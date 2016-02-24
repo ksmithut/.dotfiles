@@ -1,3 +1,6 @@
+# Allow myself to use my software without asking myself for permission
+sudo chown -R `whoami` /usr/local
+
 # Install Homebrew.
 if [[ ! "$type -P brew" ]]; then
   echo "Installing Homebrew..."
@@ -8,22 +11,12 @@ fi
 [[ ! "$(type -P brew)" ]] && e_error "Homebrew failed to install." && return 1
 
 echo "Updating Homebrew..."
-brew docter
+brew doctor
 brew update
 brew cleanup
 
-echo "Installing brew recipes..."
 
-recipes=(
-  git
-  mongodb
-  redix
-  trash
-  wget
-  tree
-  httpie
-  siege
-)
+echo "Installing brew recipes..."
 
 for recipe in "${recipes[@]}"; do
   brew install $recipe
@@ -31,14 +24,11 @@ done
 
 echo "Installing brew taps..."
 
-taps=(
-  caskroom/cask
-)
-
 for tap in "${taps[@]}"; do
   brew tap $tap
 done
 
+# Cleaning up again
 brew doctor
 brew update
 brew upgrade `brew outdated`
