@@ -3,7 +3,9 @@ alias ip='ipconfig getifaddr en0 && curl ipecho.net/plain; echo'
 
 # update brew
 alias brew-upgrade='brew update; brew upgrade --all; brew cleanup'
-alias upgrade='brew-upgrade; apm upgrade --confirm false'
+alias atom-upgrade='apm upgrade --confirm false'
+alias nvm-upgrade='cd "$NVM_DIR" && git pull origin master && git checkout `git describe --abbrev=0 --tags`'
+alias upgrade='brew-upgrade; atom-upgrade'
 
 # cask shortcut
 alias cask='brew cask'

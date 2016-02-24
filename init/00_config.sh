@@ -11,26 +11,26 @@ recipes=(
 )
 
 # Brew Taps
-taps=(
+kegs=(
   caskroom/cask
 )
 
 # Cask Apps
-apps=(
+casks=(
+  1password
   atom
-  battle-net
   discord
   firefox
   google-chrome
-  league-of-legends
-  macid
-  mamp
-  minecraft
   sequel-pro
   sketch
-  skype
   slack
-  spacemonkey
+)
+
+# Games
+game_casks=(
+  battle-net
+  league-of-legends
+  minecraft
   steam
-  virtualbox
 )

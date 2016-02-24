@@ -18,14 +18,16 @@ brew cleanup
 
 echo "Installing brew recipes..."
 
+recipes=($(setdiff "${recipes[*]}" "$(brew list)"))
 for recipe in "${recipes[@]}"; do
   brew install $recipe
 done
 
 echo "Installing brew taps..."
 
-for tap in "${taps[@]}"; do
-  brew tap $tap
+kegs=($(setdiff "${kegs[*]}" "$(brew tap)"))
+for keg in "${kegs[@]}"; do
+  brew tap $keg
 done
 
 # Cleaning up again

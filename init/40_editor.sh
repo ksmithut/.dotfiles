@@ -1,2 +1,2 @@
 # Atom specific setup
-apm upgrade --confirm false
+apm stars --install
