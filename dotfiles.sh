@@ -10,6 +10,7 @@ export DOTFILES=~/.dotfiles
 # Makes glob return dotfiles
 shopt -s dotglob
 
+# Init files
 echo "System initializing..."
 
 for file in $DOTFILES/init/*; do
@@ -17,6 +18,7 @@ for file in $DOTFILES/init/*; do
   source "$file"
 done
 
+# Copy Files
 echo "Copying files to $HOME..."
 
 for file in $DOTFILES/copy/*; do
@@ -25,6 +27,7 @@ for file in $DOTFILES/copy/*; do
   cp "$file" "$HOME/`basename $file`"
 done
 
+# Link Files
 echo "Linking files to $HOME..."
 
 for file in $DOTFILES/link/*; do
