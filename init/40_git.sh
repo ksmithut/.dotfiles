@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # sets up the git config
 read -e -p "github username: " GITHUB_USER
 read -e -p "github email: " GITHUB_EMAIL

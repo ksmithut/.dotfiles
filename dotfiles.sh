@@ -10,21 +10,17 @@ export DOTFILES=~/.dotfiles
 # Makes glob return dotfiles
 shopt -s dotglob
 
-# Init files
-echo "System initializing..."
-
-for file in $DOTFILES/init/*; do
-  echo "Init `basename $file`..."
-  source "$file"
-done
-
 # Copy Files
 echo "Copying files to $HOME..."
 
 for file in $DOTFILES/copy/*; do
   echo "Copying `basename $file`..."
-  rm -rf "$HOME/`basename $file`"
-  cp "$file" "$HOME/`basename $file`"
+  dest="$HOME/`basename $file`"
+  if test -f $dest; then
+    echo "$dest already exists"
+  else
+    cp "$file" "$HOME/`basename $file`"
+  fi
 done
 
 # Link Files
@@ -34,4 +30,12 @@ for file in $DOTFILES/link/*; do
   echo "Linking `basename $file`..."
   rm -rf "$HOME/`basename $file`"
   ln -s "$file" "$HOME/`basename $file`"
+done
+
+# Init files
+echo "System initializing..."
+
+for file in $DOTFILES/init/*; do
+  echo "Init `basename $file`..."
+  source "$file"
 done

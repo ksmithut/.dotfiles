@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # install nvm https://github.com/creationix/nvm#install-script
 _latest=`echo $(curl https://api.github.com/repos/creationix/nvm/releases/latest --silent) | grep -o '"tag_name": .*[^\\]"' | cut -d '"' -f 4`
 curl -o- https://raw.githubusercontent.com/creationix/nvm/$_latest/install.sh | bash
