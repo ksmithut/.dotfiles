@@ -25,6 +25,7 @@ casks=(
   sequel-pro
   sketch
   slack
+  virtualbox
 )
 
 # Games
