@@ -2,13 +2,13 @@
 sudo chown -R `whoami` /usr/local
 
 # Install Homebrew.
-if [[ ! "$type -P brew" ]]; then
+if [[ ! `which brew` ]]; then
   echo "Installing Homebrew..."
   true | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # Exit if, for some reason, Homebrew is not installed.
-[[ ! "$(type -P brew)" ]] && e_error "Homebrew failed to install." && return 1
+[[ ! `which brew` ]] && e_error "Homebrew failed to install." && return 1
 
 echo "Updating Homebrew..."
 brew doctor
