@@ -41,14 +41,14 @@ function _parse_git_branch {
 # function to get branch name of current directory
 function setprompt {
   # colors
-  local black="\[\033[30m\]"
-  local red="\[\033[31m\]"
-  local green="\[\033[32m\]"
-  local yellow="\[\033[33m\]"
-  local blue="\[\033[34m\]"
-  local purple="\[\033[35m\]"
-  local cyan="\[\033[36m\]"
-  local white="\[\033[37m\]"
+  local black="\[\033[1;30m\]"
+  local red="\[\033[1;31m\]"
+  local green="\[\033[1;32m\]"
+  local yellow="\[\033[1;33m\]"
+  local blue="\[\033[1;34m\]"
+  local purple="\[\033[1;35m\]"
+  local cyan="\[\033[1;36m\]"
+  local white="\[\033[1;37m\]"
 
   # http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
   # vars
