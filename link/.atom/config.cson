@@ -15,10 +15,11 @@
       "about"
       "autosave"
       "bookmarks"
+      "linter-jshint"
     ]
     themes: [
       "seti-ui"
-      "seti-syntax"
+      "an-old-hope-syntax"
     ]
   editor:
     autoIndentOnPaste: false
