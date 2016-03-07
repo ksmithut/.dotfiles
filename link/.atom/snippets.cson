@@ -18,9 +18,9 @@
   'Use Strict':
     'prefix': 'strict'
     'body': """
-      'use strict';
+      'use strict'$1
 
-      $1
+      $2
 
     """
   'Redux Reducer':
