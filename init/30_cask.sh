@@ -12,3 +12,5 @@ for cask in "${casks[@]}"; do
   echo $cask
   brew cask install --appdir="/Applications" $cask
 done
+
+brew cask cleanup
