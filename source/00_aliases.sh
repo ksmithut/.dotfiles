@@ -4,7 +4,7 @@ alias ip='ipconfig getifaddr en0 && curl ipecho.net/plain; echo'
 # update brew
 alias brew-upgrade='brew update; brew upgrade --all; brew cleanup'
 alias atom-upgrade='apm upgrade --confirm false'
-alias nvm-upgrade='cd "$NVM_DIR" && git pull origin master && git checkout `git describe --abbrev=0 --tags`'
+alias nvm-upgrade='cd "$NVM_DIR" && git pull origin master && git checkout `git describe --abbrev=0 --tags` && cd'
 alias upgrade='brew-upgrade; atom-upgrade'
 
 # Open up npm package on npmjs.com
