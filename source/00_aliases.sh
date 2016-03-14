@@ -82,6 +82,7 @@ function setprompt {
   output+="$ "
 
   export PS1=$output
+  unset color
 }
 
 # makes it possible to switch to shorter prompt
