@@ -8,6 +8,7 @@ recipes=(
   tree
   httpie
   siege
+  dnsmasq
 )
 
 # Brew Taps
