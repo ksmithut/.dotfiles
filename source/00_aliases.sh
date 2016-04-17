@@ -7,6 +7,7 @@ alias atom-upgrade='apm upgrade --confirm false'
 alias nvm-upgrade='cd "$NVM_DIR" && git pull origin master && git checkout `git describe --abbrev=0 --tags` && cd'
 alias nvm-default='nvm alias default `nvm current`'
 alias upgrade='brew-upgrade; atom-upgrade'
+alias fix-permissions='find * -type d -print0 | xargs -0 chmod 0755 && find . -type f -print0 | xargs -0 chmod 0644'
 
 # Open up npm package on npmjs.com
 function nopen { open "https://www.npmjs.com/packages/$1"; }
