@@ -25,7 +25,7 @@ The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 cd # Move to home directory
 xcode-select --install # Install the XCode Command Line Utilities (mostly for git and other build tools that brew might use)
 git clone https://github.com/ksmithut/.dotfiles.git
-./.dotfiles/.install.sh
+./.dotfiles/install.sh
 ```
 
 [cowboy]: https://github.com/cowboy/dotfiles

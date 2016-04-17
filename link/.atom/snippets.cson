@@ -23,45 +23,24 @@
       $2
 
     """
-  'Redux Reducer':
-    'prefix': 'reducer'
-    'body': """
-      'use strict';
-
-      const DEFAULT_STATE = $1
-
-      const $2 = (state = DEFAULT_STATE, action) => {
-        switch (action.type) {
-          default:
-            return state;
-        }
-      };
-
-      export default $2;
-
-    """
   'Redux Container':
     'prefix': 'container'
     'body': """
-      'use strict';
-
-      import { connect } from 'react-redux';
-      import $1 from '../components/$2';
+      import { connect } from 'react-redux'
+      import $1 from '$2'
 
       const mapStateToProps = (state) => ({
 
-      });
+      })
 
       const mapDispatchToProps = (dispatch) => ({
 
-      });
+      })
 
-      const $3 = connect(
+      export default connect(
         mapStateToProps,
         mapDispatchToProps
-      )($1);
-
-      export default $3;
+      )($1)
 
     """
   'Redux Action':
@@ -69,41 +48,41 @@
     'body': """
       export const $1 = ($2) => ({
         type: '$3',
-        $4
-      });
+        payload: $4
+      })
     """
   'Redux Async Action':
     'prefix': 'action-async'
     'body': """
       export const $1 = ($2) => (dispatch) => {
         $3
-      };
+      }
     """
   'React Component':
     'prefix': 'component'
     'body': """
-      'use strict';
-
-      import React, { Component, PropTypes } from 'react';
+      import React, { Component, PropTypes } from 'react'
 
       class $1 extends Component {
 
         render() {
           return (
             <div />
-          );
+          )
         }
 
       }
 
+      $1.displayName = '$1'
+
       $1.propTypes = {
 
-      };
+      }
 
       $1.defaultProps = {
 
-      };
+      }
 
-      export default $1;
+      export default $1
 
     """
