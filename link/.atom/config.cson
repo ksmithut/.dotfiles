@@ -29,6 +29,7 @@
     fontFamily: "Menlo"
     invisibles: {}
     lineHeight: 1.45
+    scrollPastEnd: true
     showIndentGuide: true
     useShadowDOM: true
     zoomFontWhenCtrlScrolling: true
