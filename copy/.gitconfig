@@ -10,7 +10,7 @@
 [core]
 	excludesfile = ~/.gitignore
 [push]
-	default = current
+	default = simple
 [color "branch"]
 	current = yellow reverse
 	local = yellow
