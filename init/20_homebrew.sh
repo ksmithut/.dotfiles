@@ -1,6 +1,8 @@
 # Allow myself to use my software without asking myself for permission
 sudo chown -R `whoami` /usr/local
 
+export HOMEBREW_NO_ANALYTICS=1
+
 # Install Homebrew.
 if [[ ! `which brew` ]]; then
   echo "Installing Homebrew..."
