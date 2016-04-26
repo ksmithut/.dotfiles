@@ -14,7 +14,6 @@ DIRECTORY="$DIRECTORY"/backup
 DIRECTORY=${DIRECTORY//\/\//\/}
 
 copy_dirs=(
-  ~/.ssh
   ~/Code
   ~/Documents
   ~/Pictures
