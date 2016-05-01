@@ -19,7 +19,7 @@ kegs=(
 # Cask Apps
 casks=(
   1password
-  atom
+  visual-studio-code
   discord
   firefox
   google-chrome
