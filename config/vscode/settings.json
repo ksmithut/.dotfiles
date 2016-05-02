@@ -19,7 +19,7 @@
   "editor.glyphMargin": false,
 
   // Columns at which to show vertical rulers
-  "editor.rulers": [ 80, 100 ],
+  "editor.rulers": [ 80 ],
 
   // Characters that will be used as word separators when doing word related navigations or operations
   "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
