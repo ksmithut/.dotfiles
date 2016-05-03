@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+
+copy_dirs=(
+  ~/Code
+  ~/Documents
+  ~/Pictures
+)
+
+
+
 read -e -p "Volume to Backup to: " DIRECTORY
 
 if [ ! -d "$DIRECTORY" ]; then
@@ -12,12 +21,6 @@ DIRECTORY="$DIRECTORY"/backup
 
 # remove any duplicate / from the path for visual reasons
 DIRECTORY=${DIRECTORY//\/\//\/}
-
-copy_dirs=(
-  ~/Code
-  ~/Documents
-  ~/Pictures
-)
 
 for copy_dir in "${copy_dirs[@]}"; do
   echo "Copying $copy_dir"

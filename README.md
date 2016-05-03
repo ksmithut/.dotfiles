@@ -28,4 +28,24 @@ git clone https://github.com/ksmithut/.dotfiles.git
 ./.dotfiles/install.sh
 ```
 
+# Backup
+
+Before you begin a clean install, you may wish to backup other non-dotfile
+related files (such as pictures and documents and such). There is a backup
+script to help facilitate that in `./backup.sh`. Open that file and look at the
+line that looks like this:
+
+```sh
+copy_dirs=(
+  ~/Code
+  ~/Documents
+  ~/Pictures
+)
+```
+
+Add or remove paths in that group as you wish. To run the back up, just `cd`
+into the .dotfiles directory and run `./backup.sh` and follow the prompts. You
+must enter an absolute path to the directory/volume you wish to download to (no
+`~` in the path).
+
 [cowboy]: https://github.com/cowboy/dotfiles
