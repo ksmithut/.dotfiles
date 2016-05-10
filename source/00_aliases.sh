@@ -12,6 +12,9 @@ alias fix-permissions='find * -type d -print0 | xargs -0 chmod 0755 && find . -t
 # Open up npm package on npmjs.com
 function nopen { open "https://www.npmjs.com/packages/$1"; }
 
+# Set the terminal title
+function title { echo -n -e "\033]0;$1\007"; }
+
 # cask shortcut
 alias cask='brew cask'
 
