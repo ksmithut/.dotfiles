@@ -9,6 +9,7 @@ recipes=(
   httpie
   siege
   dnsmasq
+  postgresql
 )
 
 # Brew Taps

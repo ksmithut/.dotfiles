@@ -33,6 +33,7 @@ alias ls='ls -p'
 # database startups
 alias mongo-up='mongod --config /usr/local/etc/mongod.conf'
 alias redis-up='redis-server /usr/local/etc/redis.conf'
+alias postgres-up='postgres -D /usr/local/var/postgres'
 
 # starts simple http server in current directory
 alias static='python -m SimpleHTTPServer'
