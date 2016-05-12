@@ -15,6 +15,9 @@ function nopen { open "https://www.npmjs.com/packages/$1"; }
 # Set the terminal title
 function title { echo -n -e "\033]0;$1\007"; }
 
+# Get the date of a timestamp
+function timestamp { node -e "console.log(new Date($1))"; }
+
 # cask shortcut
 alias cask='brew cask'
 
