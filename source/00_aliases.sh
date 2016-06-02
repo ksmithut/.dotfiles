@@ -147,4 +147,5 @@ function libjs {
   echo -e "{\n  \"name\": \"$name\",\n  \"version\": \"0.0.0\",\n  \"main\": \"$name.js\"\n}" > $name/package.json
   echo -e "'use strict'\n\n" > $name/$name.js
   echo -e "'use strict'\n\nconst expect = require('chai').expect\nconst $name = require('./')\n\ndescribe('$name', () => {\n\n\n})" > $name/$name.spec.js
+  echo -e "# $name\n\n" > $name/README.md
 }
