@@ -1,1 +1,1 @@
-apm stars --install
+code --install-extension Shan.code-settings-sync

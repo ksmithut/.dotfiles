@@ -4,6 +4,8 @@ recipes=(
   mongodb
   redis
   trash
+  heroku
+  heroku-toolbelt
   wget
   tree
   httpie
@@ -20,14 +22,15 @@ kegs=(
 # Cask Apps
 casks=(
   1password
-  visual-studio-code
   discord
   firefox
   google-chrome
+  mongohub
   sequel-pro
   sketch
   slack
   virtualbox
+  visual-studio-code
 )
 
 # Games
