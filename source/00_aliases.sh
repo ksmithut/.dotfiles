@@ -1,12 +1,13 @@
 # get ip addresses
-alias ip='ipconfig getifaddr en0 && curl ipecho.net/plain; echo'
+alias ip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
 
 # update brew
 alias brew-upgrade='brew update; brew upgrade --all; brew cleanup'
-alias atom-upgrade='apm upgrade --confirm false'
 alias nvm-upgrade='cd "$NVM_DIR" && git pull origin master && git checkout `git describe --abbrev=0 --tags` && cd'
 alias nvm-default='nvm alias default `nvm current`'
-alias upgrade='brew-upgrade; atom-upgrade'
+alias upgrade='brew-upgrade'
+
+# Make all directories 755 and files 644
 alias fix-permissions='find * -type d -print0 | xargs -0 chmod 0755 && find . -type f -print0 | xargs -0 chmod 0644'
 
 # Open up npm package on npmjs.com
@@ -16,7 +17,7 @@ function nopen { open "https://www.npmjs.com/packages/$1"; }
 function title { echo -n -e "\033]0;$1\007"; }
 
 # Get the date of a timestamp
-function timestamp { node -e "console.log(new Date($1))"; }
+function ts { node -e "console.log(new Date($1))"; }
 
 # cask shortcut
 alias cask='brew cask'
@@ -147,5 +148,4 @@ function libjs {
   echo -e "{\n  \"name\": \"$name\",\n  \"version\": \"0.0.0\",\n  \"main\": \"$name.js\"\n}" > $name/package.json
   echo -e "'use strict'\n\n" > $name/$name.js
   echo -e "'use strict'\n\nconst expect = require('chai').expect\nconst $name = require('./')\n\ndescribe('$name', () => {\n\n\n})" > $name/$name.spec.js
-  echo -e "# $name\n\n" > $name/README.md
 }
