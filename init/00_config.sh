@@ -23,6 +23,7 @@ kegs=(
 casks=(
   1password
   discord
+  docker
   firefox
   google-chrome
   mongohub
