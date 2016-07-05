@@ -9,8 +9,3 @@ git clone https://github.com/creationix/nvm.git $NVM_DIR && cd $NVM_DIR && git c
 # install latest version of node
 nvm install node stable
 nvm alias default node stable
-
-echo "Add npm user..."
-
-# add your npm user
-npm adduser
