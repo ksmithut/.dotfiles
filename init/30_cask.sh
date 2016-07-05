@@ -9,7 +9,6 @@ fi
 
 casks=($(setdiff "${casks[*]}" "$(brew cask list 2>/dev/null)"))
 for cask in "${casks[@]}"; do
-  echo $cask
   brew cask install --appdir="/Applications" $cask
 done
 

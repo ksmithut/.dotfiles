@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+'use strict'
+
+const assert = require('assert')
+const args = process.argv.slice(2)
+
+const HELP = `
+Usage:
+  base [[<from>]/[<to>]] ...<nums>    Converts <nums> from base <from> to base
+                                      <to>. <from> defaults to 10, <to> defaults
+                                      to 16
+
+Example:
+  base 10               a       Convert "10" (base 10) to base 16
+  base /10 10           10      Convert "10" (base 10) to base 10
+  base 16/ 10           10      Convert "10" (base 16) to base 16
+  base 16/10 10         16      Convert "10" (base 16) to base 10
+`
+
+if (args[0] && args[0].indexOf('help') !== -1 || args[0] === '-h') {
+  console.log(HELP)
+  process.exit(0)
+}
+
+let from = 10
+let to = 16
+
+if (args[0].indexOf('/') !== -1) {
+  let parts = args.shift().split('/')
+  if (parts[0]) from = parseInt(parts[0], 10)
+  if (parts[1]) to = parseInt(parts[1], 10)
+}
+
+if (!args.length) {
+  console.log('You must pass in an argument')
+  console.log(HELP)
+  return process.exit(1)
+}
+
+args.forEach((arg) => {
+  try {
+    const num = parseInt(arg, from)
+    assert(!Number.isNaN(num))
+    console.log(num.toString(to))
+  } catch (ex) {
+    console.log(`Could not parse ${arg}`)
+  }
+})

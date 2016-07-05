@@ -3,9 +3,17 @@ alias ip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
 
 # update brew
 alias brew-upgrade='brew update; brew upgrade --all; brew cleanup'
-alias nvm-upgrade='_PREV_DIR=`pwd` && cd "$NVM_DIR" && git pull origin master && git checkout `git describe --abbrev=0 --tags` && cd $_PREV_DIR && unset _PREV_DIR'
 alias nvm-default='nvm alias default `nvm current`'
 alias upgrade='brew-upgrade'
+function nvm-upgrade {
+  local PREV_DIR=`pwd`
+  cd "$NVM_DIR"
+  git checkout master
+  git pull origin master
+  git checkout `git describe --abbrev=0 --tags`
+  cd $PREV_DIR
+  unset PREV_DIR
+}
 
 # Make all directories 755 and files 644
 alias fix-permissions='find * -type d -print0 | xargs -0 chmod 0755 && find . -type f -print0 | xargs -0 chmod 0644'
@@ -13,16 +21,8 @@ alias fix-permissions='find * -type d -print0 | xargs -0 chmod 0755 && find . -t
 # Open up npm package on npmjs.com
 function nopen { open "https://www.npmjs.com/packages/$1"; }
 
-# convert base 10 to base 16
-function 2hex { node -e "console.log(($1).toString(16))"; }
-# convert base 16 to base 10
-function 2dec { node -e "console.log(parseInt('$1', 16))"; }
-
 # Set the terminal title
 function title { echo -n -e "\033]0;$1\007"; }
-
-# Get the date of a timestamp
-function ts { node -e "console.log(new Date($1))"; }
 
 # cask shortcut
 alias cask='brew cask'
@@ -34,7 +34,7 @@ alias show='defaults write com.apple.finder AppleShowAllFiles -bool TRUE; killal
 alias hide='defaults write com.apple.finder AppleShowAllFiles -bool FALSE; killall Finder;'
 
 # makes a directory and moves to it
-function dir { mkdir $1 && cd $_; }
+function dir { mkdir -p $1 && cd $_; }
 
 # sets default ls action to have trailing slashes at the end of directories
 alias ls='ls -p'
@@ -144,13 +144,4 @@ function github-create {
   git remote add origin git@github.com:$username/$repo_name.git > /dev/null 2>&1
   git push -u origin master > /dev/null 2>&1
   echo " done."
-}
-
-function libjs {
-  local name=$1
-
-  mkdir $1
-  echo -e "{\n  \"name\": \"$name\",\n  \"version\": \"0.0.0\",\n  \"main\": \"$name.js\"\n}" > $name/package.json
-  echo -e "'use strict'\n\n" > $name/$name.js
-  echo -e "'use strict'\n\nconst expect = require('chai').expect\nconst $name = require('./')\n\ndescribe('$name', () => {\n\n\n})" > $name/$name.spec.js
 }

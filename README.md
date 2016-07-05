@@ -6,6 +6,10 @@ on your machine.
 
 The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 
+* `bin/` All files in here will be available as commands in your terminal. If
+  you add files here, you'll need to run `chmod a+x "$DOTFILES/bin/*" in order
+  to execute them.
+
 * `copy/` All files in here will be copied over to `~`. Use this for files that
   will carry sensitive information, such as git credentials.
 
@@ -21,7 +25,7 @@ The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 
 # Installation
 
-```
+```sh
 cd # Move to home directory
 xcode-select --install # Install the XCode Command Line Utilities (mostly for git and other build tools that brew might use)
 git clone https://github.com/ksmithut/.dotfiles.git

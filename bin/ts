@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+'use strict'
+
+const args = process.argv.slice(2)
+
+const HELP = `
+Usage:
+  ts ...<timestamps>        Convert the timestamp(s) (ms) to human readable date
+
+Example:
+  ts 1467755773827      Tue Jul 05 2016 15:56:13 GMT-0600 (MDT)
+  ts 0                  Wed Dec 31 1969 17:00:00 GMT-0700 (MST)
+`
+
+if (args[0] && args[0].indexOf('help') !== -1 || args[0] === '-h') {
+  console.log(HELP)
+  process.exit(0)
+}
+
+if (!args.length) {
+  console.log('You must pass in an argument')
+  console.log(HELP)
+  return process.exit(1)
+}
+
+args.forEach((arg) => {
+  try {
+    console.log(new Date(parseInt(args[0], 10)))
+  } catch (ex) {
+    console.log(`Could not parse ${arg}`)
+  }
+})
