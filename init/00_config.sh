@@ -10,7 +10,6 @@ recipes=(
   tree
   httpie
   siege
-  dnsmasq
   postgresql
 )
 

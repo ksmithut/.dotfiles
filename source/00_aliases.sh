@@ -3,7 +3,7 @@ alias ip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
 
 # update brew
 alias brew-upgrade='brew update; brew upgrade --all; brew cleanup'
-alias nvm-upgrade='cd "$NVM_DIR" && git pull origin master && git checkout `git describe --abbrev=0 --tags` && cd'
+alias nvm-upgrade='_PREV_DIR=`pwd` && cd "$NVM_DIR" && git pull origin master && git checkout `git describe --abbrev=0 --tags` && cd $_PREV_DIR && unset _PREV_DIR'
 alias nvm-default='nvm alias default `nvm current`'
 alias upgrade='brew-upgrade'
 
@@ -12,6 +12,11 @@ alias fix-permissions='find * -type d -print0 | xargs -0 chmod 0755 && find . -t
 
 # Open up npm package on npmjs.com
 function nopen { open "https://www.npmjs.com/packages/$1"; }
+
+# convert base 10 to base 16
+function 2hex { node -e "console.log(($1).toString(16))"; }
+# convert base 16 to base 10
+function 2dec { node -e "console.log(parseInt('$1', 16))"; }
 
 # Set the terminal title
 function title { echo -n -e "\033]0;$1\007"; }
