@@ -83,7 +83,7 @@ must enter an absolute path to the directory/volume you wish to download to (no
   user/host information.
 - `resetprompt` - Shortcut for `shortprompt`.
 
-# Commands
+# Commands (from bin/)
 
 - `base [--from <x>] [--too <y>] <n ...>` - Converts numbers from base(x) to
   base(y).
