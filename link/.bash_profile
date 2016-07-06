@@ -1,4 +1,6 @@
 export DOTFILES=~/.dotfiles
+export HOMEBREW_NO_ANALYTICS=1
+export PATH="/usr/local/bin:/usr/local/sbin:$DOTFILES/bin:$PATH"
 
 for file in $DOTFILES/source/*; do
   source "$file"

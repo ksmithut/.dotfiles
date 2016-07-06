@@ -7,8 +7,9 @@ on your machine.
 The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 
 * `bin/` All files in here will be available as commands in your terminal. If
-  you add files here, you'll need to run `chmod a+x "$DOTFILES/bin/*" in order
-  to execute them.
+  you add files here, you'll need to run
+  `[[ -r $DOTFILES ]] && chmod a+x "$DOTFILES/bin/{filename}"` in order to
+  execute them.
 
 * `copy/` All files in here will be copied over to `~`. Use this for files that
   will carry sensitive information, such as git credentials.
@@ -51,5 +52,48 @@ Add or remove paths in that group as you wish. To run the back up, just `cd`
 into the .dotfiles directory and run `./backup.sh` and follow the prompts. You
 must enter an absolute path to the directory/volume you wish to download to (no
 `~` in the path).
+
+# Aliases/Functions
+
+- `ip` - Echoes the local ip address, then a more internet facing ip address.
+- `brew-upgrade` - Upgrades brew, all of the outdates brew packages, then cleans
+  up after itself.
+- `nvm-upgrade` - Upgrades nvm.
+- `upgrade` - For now, just runs `brew-upgrade`, but if there were more system
+  upgrades to do, put them in here. `nvm` didn't quite qualify.
+- `cask` - Shortcut for `brew cask`.
+- `nvm-default` - Sets the currently selected version of node to the default.
+- `fix-permissions` - Finds all of the directories under the cwd and sets their
+  permissions to `0755` and then finds all of the files under cwd and sets their
+  permissions to `0644`.
+- `npen` - Open up a package's npm page on npm's website.
+- `title` - Set the current terminal tab's title.
+- `show` - Show hidden files in the finder.
+- `hide` - Hide hidden files in the finder.
+- `dir` - Like `mkdir -p`, but it moves you to the directory that was created.
+- `ls` - Just automatically adds `-p` as an argument to `ls`, which adds
+  trailing slashes to the end of directories.
+- `mongo-up` - Starts up mongo with default config.
+- `redis-up` - Starts up redis with default config.
+- `postgres-up` - Starts up postgres with default config.
+- `static` - Starts up a static http server in the current directory.
+- `staticphp` - Starts up a static php server in the current directory.
+- `shortprompt` - Sets the prompt to show the current path and the git branch.
+- `longprompt` - Sets the prompt to show the currentpath, git branch, and
+  user/host information.
+- `resetprompt` - Shortcut for `shortprompt`.
+
+# Commands
+
+- `base [--from <x>] [--too <y>] <n ...>` - Converts numbers from base(x) to
+  base(y).
+- `github-create [repo_name]` - Creates a new public repository on github from
+  the repository in the current directory.
+- `. prompt [--user] [--path] [--branch]` - Sets the the PS1 environment
+  variable to change the prompt content. The flags indicate which components to
+  include in the prompt, and the order of the flags are important to the order
+  of the output.
+- `ts [<timestamp ...>]` - If no argument is passed, gives you the current
+  timestamp (in ms). If arguments are passed, it returns a formatted date.
 
 [cowboy]: https://github.com/cowboy/dotfiles

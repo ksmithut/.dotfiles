@@ -1,0 +1,45 @@
+function _parse_git_branch {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) / '
+}
+export -f _parse_git_branch
+
+# colors
+black="\[\033[1;30m\]"
+red="\[\033[1;31m\]"
+green="\[\033[1;32m\]"
+yellow="\[\033[1;33m\]"
+blue="\[\033[1;34m\]"
+purple="\[\033[1;35m\]"
+cyan="\[\033[1;36m\]"
+white="\[\033[1;37m\]"
+
+# http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
+# vars
+user="\u" # the username of the current user
+host="\h" # the hostname up to the first '.'
+cwd="\w" # the current working directory, with $HOME abbreviated with a tilde
+git_branch="\$(_parse_git_branch)"
+
+# print colors
+function color { echo "$1$2\[\033[00m\]"; }
+
+output=""
+
+# arguments
+for i in "$@"; do
+  case $i in
+    -u|--user)
+      output+="$(color $white $user@$host) "
+      ;;
+    -p|--path)
+      output+="$(color $cyan $cwd) "
+      ;;
+    -b|--branch)
+      output+="$(color $yellow $git_branch)"
+      ;;
+  esac
+done
+
+output+="$ "
+
+export PS1=$output

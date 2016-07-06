@@ -1,48 +1,29 @@
 #!/usr/bin/env node
 'use strict'
 
-const assert = require('assert')
-const args = process.argv.slice(2)
+process.title = 'base'
 
-const HELP = `
-Usage:
-  base [[<from>]/[<to>]] ...<nums>    Converts <nums> from base <from> to base
-                                      <to>. <from> defaults to 10, <to> defaults
-                                      to 16
+const program = require('commander')
 
-Example:
-  base 10               a       Convert "10" (base 10) to base 16
-  base /10 10           10      Convert "10" (base 10) to base 10
-  base 16/ 10           10      Convert "10" (base 16) to base 16
-  base 16/10 10         16      Convert "10" (base 16) to base 10
-`
+program
+  .version('0.0.1')
+  .usage('[options] <nums ...>')
+  .description('Converts numbers from base(x) to base(y)')
+  .option('-f, --from <n>', 'The base to expect input from [10]', 10)
+  .option('-t, --to <n>', 'The base to output to [16]', 16)
+  .option('-v, --verbose', 'Display full information')
+  .parse(process.argv)
 
-if (args[0] && args[0].indexOf('help') !== -1 || args[0] === '-h') {
-  console.log(HELP)
-  process.exit(0)
-}
+if (!program.args.length) return program.help()
 
-let from = 10
-let to = 16
-
-if (args[0].indexOf('/') !== -1) {
-  let parts = args.shift().split('/')
-  if (parts[0]) from = parseInt(parts[0], 10)
-  if (parts[1]) to = parseInt(parts[1], 10)
-}
-
-if (!args.length) {
-  console.log('You must pass in an argument')
-  console.log(HELP)
-  return process.exit(1)
-}
-
-args.forEach((arg) => {
-  try {
-    const num = parseInt(arg, from)
-    assert(!Number.isNaN(num))
-    console.log(num.toString(to))
-  } catch (ex) {
-    console.log(`Could not parse ${arg}`)
+program.args.forEach((arg) => {
+  let output = convert(arg, program.from, program.to)
+  if (program.verbose) {
+    output = `${arg} (${program.from}) = ${output} (${program.to})`
   }
+  console.log(output)
 })
+
+function convert(num, from, to) {
+  return parseInt(num, from).toString(to)
+}
