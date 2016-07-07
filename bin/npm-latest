@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+'use strict'
+
+process.title = 'npm-latest'
+
+const path = require('path')
+const program = require('commander')
+const pkg = require(path.resolve('package.json'))
+
+const DEP_TYPES = [
+  {
+    deps: pkg.dependencies,
+    flag: '--save'
+  },
+  {
+    deps: pkg.devDependencies,
+    flag: '--save-dev'
+  },
+  {
+    deps: pkg.optionalDependencies,
+    flag: '--save-optional'
+  }
+]
+
+program
+  .version('0.0.1')
+  .usage('[options]')
+  .description('Prints out command to update all dependencies to the latest')
+  .option('-e, --exact', 'Add --save-exact to the script')
+  .parse(process.argv)
+
+const output = DEP_TYPES.map((depType) => {
+  const deps = Object.keys(depType.deps || {}).map((dep) => `${dep}@latest`)
+  let flags = depType.flag
+  if (!deps.length) return null
+  if (program.exact) flags += ' --save-exact'
+  return `npm install ${flag} ${deps.join(' ')}`
+}).filter(Boolean)
+
+console.log(`\n${output.join(';\n\n')}\n`)

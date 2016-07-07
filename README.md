@@ -98,6 +98,8 @@ must enter an absolute path to the directory/volume you wish to download to (no
   base(y).
 - `github-create [repo_name]` - Creates a new public repository on github from
   the repository in the current directory.
+- `npm-latest [--exact]` - Prints out a command to update all of the
+  npm dependencies and devDependencies.
 - `. prompt [--user] [--path] [--branch]` - Sets the the PS1 environment
   variable to change the prompt content. The flags indicate which components to
   include in the prompt, and the order of the flags are important to the order
