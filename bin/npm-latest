@@ -34,7 +34,7 @@ const output = DEP_TYPES.map((depType) => {
   let flags = depType.flag
   if (!deps.length) return null
   if (program.exact) flags += ' --save-exact'
-  return `npm install ${flag} ${deps.join(' ')}`
+  return `npm install ${flags} ${deps.join(' ')}`
 }).filter(Boolean)
 
 console.log(`\n${output.join(';\n\n')}\n`)
