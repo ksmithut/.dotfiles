@@ -3,14 +3,14 @@ alias ip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
 
 # upgrade/update shortcuts
 alias brew-upgrade='brew update; brew upgrade --all; brew cleanup'
-alias nvm-upgrade='PREV_DIR=`pwd` && cd "$NVM_DIR" && git checkout master && git pull origin master && git checkout `git describe --abbrev=0 --tags`; cd $PREV_DIR; unset PREV_DIR;'
+alias nvm-upgrade='PREV_DIR=$(pwd) && cd "$NVM_DIR" && git checkout master && git pull origin master && git checkout $(git describe --abbrev=0 --tags); cd $PREV_DIR; unset PREV_DIR;'
 alias upgrade='brew-upgrade'
 
 # cask shortcut
 alias cask='brew cask'
 
 # nvm set current version as default
-alias nvm-default='nvm alias default `nvm current`'
+alias nvm-default='nvm alias default $(nvm current)'
 
 # Make all directories 755 and files 644
 alias fix-permissions='find * -type d -print0 | xargs -0 chmod 0755 && find . -type f -print0 | xargs -0 chmod 0644'

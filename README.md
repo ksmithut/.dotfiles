@@ -26,6 +26,15 @@ The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 
 # Installation
 
+If you want to create a bootable installer for macOS, follow the instructions
+[here][createinstallmedia].
+
+tl;dr
+```sh
+# Change /Volumes/MyVolume to the volume you want it to be
+sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction
+```
+
 ```sh
 cd # Move to home directory
 xcode-select --install # Install the XCode Command Line Utilities (mostly for git and other build tools that brew might use)
@@ -97,3 +106,4 @@ must enter an absolute path to the directory/volume you wish to download to (no
   timestamp (in ms). If arguments are passed, it returns a formatted date.
 
 [cowboy]: https://github.com/cowboy/dotfiles
+[createinstallmedia]: https://support.apple.com/en-us/HT201372

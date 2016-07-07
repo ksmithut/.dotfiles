@@ -1,7 +1,4 @@
-function _parse_git_branch {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) / '
-}
-export -f _parse_git_branch
+#!/usr/bin/env sh
 
 # colors
 black="\[\033[1;30m\]"
@@ -43,3 +40,8 @@ done
 output+="$ "
 
 export PS1=$output
+
+function _parse_git_branch {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) / '
+}
+export -f _parse_git_branch

@@ -43,12 +43,12 @@ shopt -s dotglob
 e_header "Copying files to $HOME"
 
 for file in $DOTFILES/copy/*; do
-  echo "Copying `basename $file`..."
-  dest="$HOME/`basename $file`"
+  echo "Copying $(basename $file)..."
+  dest="$HOME/$(basename $file)"
   if test -f $dest; then
     echo "$dest already exists"
   else
-    cp "$file" "$HOME/`basename $file`"
+    cp "$file" "$HOME/$(basename $file)"
   fi
 done
 
@@ -56,14 +56,14 @@ done
 e_header "Linking files to $HOME"
 
 for file in $DOTFILES/link/*; do
-  echo "Linking `basename $file`..."
-  rm -rf "$HOME/`basename $file`"
-  ln -s "$file" "$HOME/`basename $file`"
+  echo "Linking $(basename $file)..."
+  rm -rf "$HOME/$(basename $file)"
+  ln -s "$file" "$HOME/$(basename $file)"
 done
 
 # System Initialization
 for file in $DOTFILES/init/*; do
-  e_header "Init `basename $file`"
+  e_header "Init $(basename $file)"
   source "$file"
   echo "done!"
 done

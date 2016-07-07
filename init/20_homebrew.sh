@@ -1,16 +1,16 @@
 # Allow myself to use my software without asking myself for permission
-sudo chown -R `whoami` /usr/local
+sudo chown -R $(whoami) /usr/local
 
 export HOMEBREW_NO_ANALYTICS=1
 
 # Install Homebrew.
-if [[ ! `which brew` ]]; then
+if [[ ! $(which brew) ]]; then
   echo "Installing Homebrew..."
   true | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # Exit if, for some reason, Homebrew is not installed.
-[[ ! `which brew` ]] && e_error "Homebrew failed to install." && return 1
+[[ ! $(which brew) ]] && e_error "Homebrew failed to install." && return 1
 
 echo "Updating Homebrew..."
 brew doctor
@@ -35,5 +35,5 @@ done
 # Cleaning up again
 brew doctor
 brew update
-brew upgrade `brew outdated`
+brew upgrade $(brew outdated)
 brew cleanup
