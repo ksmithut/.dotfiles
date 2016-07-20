@@ -5,6 +5,7 @@ copy_dirs=(
   ~/Code
   ~/Documents
   ~/Pictures
+  ~/Library/Application\ Support/OpenEmu
 )
 
 
