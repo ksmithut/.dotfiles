@@ -39,4 +39,5 @@ game_casks=(
   league-of-legends
   minecraft
   steam
+  openemu
 )

@@ -12,6 +12,9 @@ alias cask='brew cask'
 # nvm set current version as default
 alias nvm-default='nvm alias default $(nvm current)'
 
+# Open up coverage report
+alias coverage='open coverage/lcov-report/index.html'
+
 # Make all directories 755 and files 644
 alias fix-permissions='find * -type d -print0 | xargs -0 chmod 0755 && find . -type f -print0 | xargs -0 chmod 0644'
 
