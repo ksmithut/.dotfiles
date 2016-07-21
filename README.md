@@ -87,10 +87,7 @@ must enter an absolute path to the directory/volume you wish to download to (no
 - `postgres-up` - Starts up postgres with default config.
 - `static` - Starts up a static http server in the current directory.
 - `staticphp` - Starts up a static php server in the current directory.
-- `shortprompt` - Sets the prompt to show the current path and the git branch.
-- `longprompt` - Sets the prompt to show the currentpath, git branch, and
-  user/host information.
-- `resetprompt` - Shortcut for `shortprompt`.
+- `resetprompt` - Resets prompt
 
 # Commands (from bin/)
 
@@ -100,7 +97,7 @@ must enter an absolute path to the directory/volume you wish to download to (no
   the repository in the current directory.
 - `npm-latest [--exact]` - Prints out a command to update all of the
   npm dependencies and devDependencies.
-- `. prompt [--user] [--path] [--branch]` - Sets the the PS1 environment
+- `. prompt [date] [time] [user] [host] [path] [branch]` - Sets the the PS1 environment
   variable to change the prompt content. The flags indicate which components to
   include in the prompt, and the order of the flags are important to the order
   of the output.

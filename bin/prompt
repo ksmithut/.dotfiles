@@ -12,6 +12,8 @@ white="\[\033[1;37m\]"
 
 # http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
 # vars
+date="\d" # The system date
+tim="\t" # The system time
 user="\u" # the username of the current user
 host="\h" # the hostname up to the first '.'
 cwd="\w" # the current working directory, with $HOME abbreviated with a tilde
@@ -25,13 +27,22 @@ output=""
 # arguments
 for i in "$@"; do
   case $i in
-    -u|--user)
-      output+="$(color $white $user@$host) "
+    d|date)
+      output+="$(color $white $date) "
       ;;
-    -p|--path)
+    t|time)
+      output+="$(color $white $tim) "
+      ;;
+    u|user)
+      output+="$(color $white $user) "
+      ;;
+    h|host)
+      output+="$(color $blue $host) "
+      ;;
+    p|path)
       output+="$(color $cyan $cwd) "
       ;;
-    -b|--branch)
+    b|branch)
       output+="$(color $yellow $git_branch)"
       ;;
   esac

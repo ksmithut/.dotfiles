@@ -44,6 +44,4 @@ alias static='python -m SimpleHTTPServer'
 alias staticphp='php -S localhost:8000'
 
 # makes it possible to switch to shorter prompt
-alias shortprompt='. prompt --path --branch'
-alias longprompt='. prompt --user --path --branch'
-alias resetprompt='shortprompt'
+alias resetprompt='. prompt path branch'
