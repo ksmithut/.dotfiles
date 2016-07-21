@@ -29,7 +29,7 @@ alias show='defaults write com.apple.finder AppleShowAllFiles -bool TRUE; killal
 alias hide='defaults write com.apple.finder AppleShowAllFiles -bool FALSE; killall Finder;'
 
 # makes a directory and moves to it
-function dir { mkdir -p $1 && cd $_; }
+function dir { mkdir -p "${1}" && cd $_; }
 
 # sets default ls action to have trailing slashes at the end of directories
 alias ls='ls -p'
