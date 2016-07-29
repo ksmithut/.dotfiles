@@ -19,17 +19,17 @@ alias coverage='open coverage/lcov-report/index.html'
 alias fix-permissions='find * -type d -print0 | xargs -0 chmod 0755 && find . -type f -print0 | xargs -0 chmod 0644'
 
 # Open up npm package on npmjs.com
-function npen { open "https://www.npmjs.com/packages/$1"; }
+function npen() { open "https://www.npmjs.com/packages/$1"; }
 
 # Set the terminal title
-function title { echo -n -e "\033]0;$1\007"; }
+function title() { echo -n -e "\033]0;$1\007"; }
 
 # show/hide hidden files in finder
 alias show='defaults write com.apple.finder AppleShowAllFiles -bool TRUE; killall Finder;'
 alias hide='defaults write com.apple.finder AppleShowAllFiles -bool FALSE; killall Finder;'
 
 # makes a directory and moves to it
-function dir { mkdir -p "${1}" && cd $_; }
+function dir() { mkdir -p "${1}" && cd $_; }
 
 # sets default ls action to have trailing slashes at the end of directories
 alias ls='ls -p'
@@ -45,3 +45,5 @@ alias staticphp='php -S localhost:8000'
 
 # makes it possible to switch to shorter prompt
 alias resetprompt='. prompt path branch'
+
+function dotfiles() { cd $DOTFILES; }
