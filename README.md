@@ -88,6 +88,8 @@ must enter an absolute path to the directory/volume you wish to download to (no
 - `static` - Starts up a static http server in the current directory.
 - `staticphp` - Starts up a static php server in the current directory.
 - `resetprompt` - Resets prompt
+- `clone <user/repo> [folder name]` - Clones a repo into the given folder name.
+  If no folder name is given, the folder name will be the repository slug name.
 
 # Commands (from bin/)
 

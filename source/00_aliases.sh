@@ -49,6 +49,7 @@ alias resetprompt='. prompt path branch'
 # display size of directory
 alias space='du -sh'
 
+# clone a repo
 function clone() {
   local arr=(${1//\// })
   local length=${#arr[@]}
@@ -64,6 +65,7 @@ function clone() {
   cd "$folder_name"
 }
 
+# dotfiles commands
 function dotfiles() {
   case $1 in
     update)
