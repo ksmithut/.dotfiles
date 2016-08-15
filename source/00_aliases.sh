@@ -3,7 +3,7 @@ alias ip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
 
 # upgrade/update shortcuts
 alias brew-upgrade='brew update; brew upgrade --all; brew cleanup'
-alias nvm-upgrade='PREV_DIR=$(pwd) && cd "$NVM_DIR" && git checkout master && git pull && git checkout $(git describe --abbrev=0 --tags); cd $PREV_DIR; unset PREV_DIR;'
+alias nvm-upgrade='cd "$NVM_DIR" && git checkout master && git pull && git checkout $(git describe --abbrev=0 --tags); cd -;'
 alias upgrade='brew-upgrade'
 
 # cask shortcut
@@ -69,10 +69,9 @@ function clone() {
 function dotfiles() {
   case $1 in
     update)
-      local prev_pwd="$(pwd)"
       cd $DOTFILES
       git pull --rebase
-      cd "$prev_pwd"
+      cd -
       ;;
     source)
       source ~/.bash_profile
