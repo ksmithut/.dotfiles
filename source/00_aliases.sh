@@ -49,4 +49,19 @@ alias resetprompt='. prompt path branch'
 # display size of directory
 alias space='du -sh'
 
-function dotfiles() { cd $DOTFILES; }
+function dotfiles() {
+  case $1 in
+    update)
+      local prev_pwd="$(pwd)"
+      cd $DOTFILES
+      git pull --rebase
+      cd "$prev_pwd"
+      ;;
+    source)
+      source ~/.bash_profile
+      ;;
+    *)
+      cd $DOTFILES
+      ;;
+  esac
+}
