@@ -46,4 +46,7 @@ alias staticphp='php -S localhost:8000'
 # makes it possible to switch to shorter prompt
 alias resetprompt='. prompt path branch'
 
+# display size of directory
+alias space='du -sh'
+
 function dotfiles() { cd $DOTFILES; }
