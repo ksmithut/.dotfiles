@@ -49,6 +49,21 @@ alias resetprompt='. prompt path branch'
 # display size of directory
 alias space='du -sh'
 
+function clone() {
+  local arr=(${1//\// })
+  local length=${#arr[@]}
+  local folder_name="$2"
+  if [ "$length" != "2" ]; then
+    echo 'Non-repo path given'
+    return
+  fi
+  if [ "$2" = "" ]; then
+    folder_name=${arr[1]}
+  fi
+  git clone "git@github.com:$1.git" "$folder_name"
+  cd "$folder_name"
+}
+
 function dotfiles() {
   case $1 in
     update)
