@@ -29,7 +29,6 @@ casks=(
   sequel-pro
   sketch
   slack
-  virtualbox
   visual-studio-code
 )
 
@@ -39,5 +38,4 @@ game_casks=(
   league-of-legends
   minecraft
   steam
-  openemu
 )

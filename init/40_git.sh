@@ -16,3 +16,4 @@ pbcopy < ~/.ssh/id_rsa.pub
 
 echo "Paste in your public key in the opened window"
 open "https://github.com/settings/keys"
+read -e

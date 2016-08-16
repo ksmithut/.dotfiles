@@ -6,7 +6,7 @@ repo_name=$1
 dir_name=$(basename $(pwd))
 
 if [ "$repo_name" = "" ]; then
-  read -p "Repo name (hit enter to use '$dir_name')? " repo_name
+  read -e -p "Repo name (hit enter to use '$dir_name')? " repo_name
 fi
 
 if [ "$repo_name" = "" ]; then
