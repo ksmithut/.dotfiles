@@ -7,10 +7,9 @@ dir_name=$(basename $(pwd))
 
 if [ "$repo_name" = "" ]; then
   read -e -p "Repo name (hit enter to use '$dir_name')? " repo_name
-fi
-
-if [ "$repo_name" = "" ]; then
-  repo_name=$dir_name
+  if [ "$repo_name" = "" ]; then
+    repo_name=$dir_name
+  fi
 fi
 
 username=$(git config github.user)
