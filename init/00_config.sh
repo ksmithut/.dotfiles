@@ -30,6 +30,7 @@ casks=(
   sketch
   slack
   visual-studio-code
+  watch
 )
 
 # Games
