@@ -1,5 +1,5 @@
 # get ip addresses
-alias ip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
+alias myip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
 
 # upgrade/update shortcuts
 alias brew-upgrade='brew update; brew upgrade --all; brew cleanup'

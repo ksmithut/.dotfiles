@@ -64,7 +64,7 @@ must enter an absolute path to the directory/volume you wish to download to (no
 
 # Aliases/Functions
 
-- `ip` - Echoes the local ip address, then a more internet facing ip address.
+- `myip` - Echoes the local ip address, then a more internet facing ip address.
 - `brew-upgrade` - Upgrades brew, all of the outdates brew packages, then cleans
   up after itself.
 - `nvm-upgrade` - Upgrades nvm.
@@ -105,6 +105,8 @@ must enter an absolute path to the directory/volume you wish to download to (no
   of the output.
 - `ts [<timestamp ...>]` - If no argument is passed, gives you the current
   timestamp (in ms). If arguments are passed, it returns a formatted date.
+- `cidr range [<cidr range ...>]` - Gives you the ip range and total addressable
+  hosts of a given CIDR block
 
 [cowboy]: https://github.com/cowboy/dotfiles
 [createinstallmedia]: https://support.apple.com/en-us/HT201372

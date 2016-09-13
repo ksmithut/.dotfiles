@@ -1,0 +1,124 @@
+#!/usr/bin/env node
+
+process.title = 'cidr'
+
+const assert = require('assert')
+const program = require('commander')
+
+const BYTE_LENGTH = 8 // Number of digits in a byte
+const LEADING_BYTE_VAL = '0' // Default value to fill in leading
+const NUM_IP_BLOCKS = 4 // Number of blocks in an IPv4 address
+const DEFAULT_IP_BLOCK_VALUE = '0' // Assumed trailing IPv4 blocks when omitted
+const IP_LENGTH = BYTE_LENGTH * NUM_IP_BLOCKS // Number of binary digits in an ip address
+const MAX_IP_BLOCK_VALUE = 255
+const CIDR_SPLIT = '/'
+const IP_SPLIT = '.'
+
+program
+  .version('0.0.1')
+
+program
+  .command('range <cidrs...>')
+  .description('Get the ip range of CIDR or list of CIDRs')
+  .action((cidrs) => {
+    const DIVIDER = '-'.repeat(30)
+    console.log(DIVIDER)
+    cidrs
+      .map(calculateRange)
+      .forEach((range) => {
+        console.log(range.cidr)
+        console.log(`${range.start} - ${range.end}`)
+        console.log(`${range.total} total addressable hosts`)
+        console.log(DIVIDER)
+      })
+  })
+
+program
+  .command('help')
+  .description('Display command usage')
+  .action(() => program.help())
+
+
+function calculateRange(input) {
+  const cidr = parseIpCidr(input)
+  const binaryIp = cidr.ip.map(toBinary).join('')
+  const ipPrefix = binaryIp.slice(0, cidr.range)
+  const startIp = rightPad(ipPrefix, '0', IP_LENGTH)
+  const endIp = rightPad(ipPrefix, '1', IP_LENGTH)
+  return {
+    cidr: input,
+    start: ipBinaryToArray(startIp).join('.'),
+    end: ipBinaryToArray(endIp).join('.'),
+    total: Math.pow(2, IP_LENGTH - cidr.range)
+  }
+}
+
+/**
+ * ============
+ * CIDR methods
+ * ============
+ */
+function parseIpCidr(input) {
+  const parts = input.split(CIDR_SPLIT)
+  return {
+    ip: parseIp(parts[0]),
+    range: between(parts[1], 0, IP_LENGTH),
+  }
+}
+
+function parseIp(ipStr) {
+  const ip = ipStr.split(IP_SPLIT)
+  return padArray(ip, DEFAULT_IP_BLOCK_VALUE, NUM_IP_BLOCKS)
+    .map((num) => parseInt(num, 10))
+}
+
+function ipBinaryToArray(ipBinaryStr) {
+  return splitInterval(ipBinaryStr, BYTE_LENGTH)
+    .map((num) => parseInt(num, 2))
+}
+
+function toBinary(num) {
+  return leftPad(num.toString(2), LEADING_BYTE_VAL, BYTE_LENGTH)
+}
+
+/**
+ * ============
+ * Util methods
+ * ============
+ */
+
+function padStr(str, char, maxLength, leftPad) {
+  char = char || ' '
+  const fillLength = Math.max(maxLength - str.length, 0)
+  const fill = char.charAt(0).repeat(fillLength)
+  return leftPad ? `${fill}${str}` : `${str}${fill}`
+}
+function leftPad(str, char, maxLength) {
+  return padStr(str, char, maxLength, true)
+}
+function rightPad(str, char, maxLength) {
+  return padStr(str, char, maxLength, false)
+}
+
+function splitInterval(str, interval) {
+  return str.split('').reduce((arr, char, i) => {
+    if (i % interval) arr[arr.length - 1] += char
+    else arr.push(char)
+    return arr
+  }, [])
+}
+
+function between(val, min, max) {
+  return Math.min(Math.max(parseInt(val, 10), min), max)
+}
+
+function padArray(arr, val, maxLength) {
+  const fillLength = Math.max(maxLength - arr.length, 0)
+  return arr
+    .concat(new Array(fillLength).fill(val))
+    .slice(0, maxLength)
+}
+
+program.parse(process.argv)
+
+if (!program.args.length) program.help()
