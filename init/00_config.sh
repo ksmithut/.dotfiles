@@ -11,6 +11,7 @@ recipes=(
   httpie
   siege
   postgresql
+  watch
 )
 
 # Brew Taps
