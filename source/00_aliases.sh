@@ -1,3 +1,6 @@
+# beep
+alias beep='echo -e "\a"'
+
 # get ip addresses
 alias myip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
 
