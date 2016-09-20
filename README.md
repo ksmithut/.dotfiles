@@ -31,8 +31,8 @@ If you want to create a bootable installer for macOS, follow the instructions
 
 tl;dr
 ```sh
-# Change /Volumes/MyVolume to the volume you want it to be
-sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction
+# Change /Volumes/Untitled to the volume you want it to be
+sudo /Applications/Install\ macOS\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ macOS\ Sierra.app --nointeraction
 ```
 
 ```sh
