@@ -1,17 +1,15 @@
 # Brew Recipes
 recipes=(
   git
-  mongodb
-  redis
-  trash
-  heroku
-  heroku-toolbelt
-  wget
-  tree
   httpie
-  siege
+  mongodb
   postgresql
+  redis
+  siege
+  trash
+  tree
   watch
+  wget
 )
 
 # Brew Taps
@@ -27,6 +25,7 @@ casks=(
   firefox
   google-chrome
   mongohub
+  postman
   sequel-pro
   sketch
   slack
