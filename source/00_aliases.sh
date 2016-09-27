@@ -21,9 +21,6 @@ alias coverage='open coverage/lcov-report/index.html'
 # Make all directories 755 and files 644
 alias fix-permissions='find * -type d -print0 | xargs -0 chmod 0755 && find . -type f -print0 | xargs -0 chmod 0644'
 
-# Open up npm package on npmjs.com
-function npen() { open "https://www.npmjs.com/packages/$1"; }
-
 # Set the terminal title
 function title() { echo -n -e "\033]0;$1\007"; }
 
@@ -41,6 +38,12 @@ alias ls='ls -p'
 alias mongo-up='mongod --config /usr/local/etc/mongod.conf'
 alias redis-up='redis-server /usr/local/etc/redis.conf'
 alias postgres-up='postgres -D /usr/local/var/postgres'
+
+function mongo-drop-all() {
+  read -p "Press Enter to delete all databases (or ctrl+c to cancel)"
+  mongo --quiet --eval 'db.getMongo().getDBNames().forEach(function(i){db.getSiblingDB(i).dropDatabase()})'
+  echo 'Done!'
+}
 
 # starts simple http server in current directory
 alias static='python -m SimpleHTTPServer'
