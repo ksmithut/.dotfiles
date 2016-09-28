@@ -55,6 +55,9 @@ alias resetprompt='. prompt path branch'
 # display size of directory
 alias space='du -sh'
 
+# set GOPATH environment variable
+alias gopath='export GOPATH=$(pwd)'
+
 # clone a repo
 function clone() {
   local arr=(${1//\// })
