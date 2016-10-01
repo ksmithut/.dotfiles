@@ -56,7 +56,7 @@ alias resetprompt='. prompt path branch'
 alias space='du -sh'
 
 # set GOPATH environment variable
-alias gopath='export GOPATH=$(pwd)'
+alias gopath='export GOPATH=$(pwd); export PATH=$GOPATH/bin:$PATH'
 
 # clone a repo
 function clone() {
