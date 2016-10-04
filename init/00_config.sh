@@ -1,6 +1,7 @@
 # Brew Recipes
 recipes=(
   git
+  go
   httpie
   mongodb
   postgresql

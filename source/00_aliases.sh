@@ -5,7 +5,7 @@ alias beep='echo -e "\a"'
 alias myip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
 
 # upgrade/update shortcuts
-alias brew-upgrade='brew update; brew upgrade --all; brew cleanup'
+alias brew-upgrade='brew update; brew upgrade; brew cleanup'
 alias nvm-upgrade='cd "$NVM_DIR" && git checkout master && git pull && git checkout $(git describe --abbrev=0 --tags); cd - > /dev/null; . "$NVM_DIR/nvm.sh";'
 alias upgrade='brew-upgrade'
 
