@@ -64,11 +64,6 @@ __powerline() {
     local BG_CYAN='\[\033[46m\]'
     local BG_WHITE='\[\033[47m\]'
 
-    local CHECK_MARK_SYMBOL='✓'
-    local HEAVY_CHECK_MARK_SYMBOL='✔'
-    local BALLOT_X_SYMBOL='✗'
-    local HEAVY_BALLOT_X_SYMBOL='✘'
-
     local DATE="\d"
     local TIME="\t"
     local USER="\u"
@@ -77,11 +72,10 @@ __powerline() {
 
     local _USER="$BG_WHITE$BOLD_BLACK $USER $RESET"
     local _DIR="$BG_CYAN$BOLD_BLACK $CWD $RESET"
-    local _GIT="$BG_YELLOW$BOLD_BLACK\$(__git_info)$RESET"
+    local _GIT="$BG_WHITE$BOLD_BLACK\$(__git_info)$RESET"
     local _PS_SYMBOL="$BG_BLACK$BOLD_WHITE $ $RESET"
 
     PS1=""
-    PS1+="$_PREV_CMD"
     # PS1+="$_USER"
     PS1+="$_DIR"
     PS1+="$_GIT"
