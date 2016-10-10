@@ -70,10 +70,10 @@ __powerline() {
     local HOST="\h"
     local CWD="\w"
 
-    local _USER="$BG_WHITE$BOLD_BLACK $USER $RESET"
-    local _DIR="$BG_CYAN$BOLD_BLACK $CWD $RESET"
-    local _GIT="$BG_WHITE$BOLD_BLACK\$(__git_info)$RESET"
-    local _PS_SYMBOL="$BG_BLACK$BOLD_WHITE $ $RESET"
+    local _USER="$BLACK$BG_WHITE $USER $RESET"
+    local _DIR="$BLACK$BG_CYAN $CWD $RESET"
+    local _GIT="$BLACK$BG_WHITE\$(__git_info)$RESET"
+    local _PS_SYMBOL="$WHITE$BG_BLACK \$ $RESET"
 
     PS1=""
     # PS1+="$_USER"
