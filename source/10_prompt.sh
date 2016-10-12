@@ -72,8 +72,8 @@ __powerline() {
 
     local _USER="$BLACK$BG_WHITE $USER $RESET"
     local _TIME="$BLACK$BG_YELLOW $TIME $RESET"
-    local _DIR="$BLACK$BG_CYAN $CWD $RESET"
-    local _GIT="$BLACK$BG_WHITE\$(__git_info)$RESET"
+    local _DIR="$BLACK$BG_WHITE $CWD $RESET"
+    local _GIT="$BLACK$BG_CYAN\$(__git_info)$RESET"
     local _PS_SYMBOL="$WHITE$BG_BLACK \$ $RESET"
 
     PS1=""
