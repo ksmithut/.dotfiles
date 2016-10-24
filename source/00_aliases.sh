@@ -52,8 +52,8 @@ alias staticphp='php -S localhost:8000'
 # display size of directory
 alias space='du -sh'
 
-# set GOPATH environment variable
-alias gopath='export GOPATH=$(pwd); export PATH=$GOPATH/bin:$PATH'
+# Stops all docker containers
+alias docker-stop-all='docker stop $(docker ps -a -q)'
 
 # clone a repo
 function clone() {

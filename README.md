@@ -90,6 +90,8 @@ must enter an absolute path to the directory/volume you wish to download to (no
 - `resetprompt` - Resets prompt
 - `clone <user/repo> [folder name]` - Clones a repo into the given folder name.
   If no folder name is given, the folder name will be the repository slug name.
+- `space` - Displays how much space the current repo takes up
+- `docker-stop-all` - Stop all docker containers
 
 # Commands (from bin/)
 
@@ -99,10 +101,6 @@ must enter an absolute path to the directory/volume you wish to download to (no
   the repository in the current directory.
 - `npm-latest [--exact]` - Prints out a command to update all of the
   npm dependencies and devDependencies.
-- `. prompt [date] [time] [user] [host] [path] [branch]` - Sets the the PS1 environment
-  variable to change the prompt content. The flags indicate which components to
-  include in the prompt, and the order of the flags are important to the order
-  of the output.
 - `ts [<timestamp ...>]` - If no argument is passed, gives you the current
   timestamp (in ms). If arguments are passed, it returns a formatted date.
 - `cidr range [<cidr range ...>]` - Gives you the ip range and total addressable
