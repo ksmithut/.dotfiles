@@ -22,8 +22,8 @@ const stdin = new Promise((resolve, reject) => {
 program
   .command('sign [payload]')
   .option('--algorithm [algorithm]', 'The algorithm to use')
-  .option('--expiresIn [seconds]', 'The amount of time the token is good for')
-  .option('--notBefore [seconds]', 'Token will be good after this many seconds')
+  .option('--expiresIn [ms]', 'The amount of time the token is good for')
+  .option('--notBefore [ms]', 'Token will be good after this amount of time')
   .option('--audience [aud]', 'The token audience')
   .option('--issuer [iss]', 'The issuer')
   .option('--jwtid [id]', 'The jwt id')
