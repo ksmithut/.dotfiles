@@ -3,6 +3,7 @@ recipes=(
   git
   go
   httpie
+  jq
   mongodb
   postgresql
   redis

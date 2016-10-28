@@ -1,0 +1,98 @@
+#!/usr/bin/env node
+'use strict'
+
+process.title = 'jwt'
+
+const program = require('commander')
+const jwt = require('jsonwebtoken')
+
+program.version('0.0.1')
+
+const stdin = new Promise((resolve, reject) => {
+  let data = ''
+  process.stdin.on('data', (chunk) => {
+    data += chunk
+  })
+  process.stdin.on('error', reject)
+  process.stdin.on('end', () => resolve(data))
+})
+
+program
+  .command('sign [payload]')
+  .option('--algorithm [algorithm]', 'The algorithm to use')
+  .option('--expiresIn [seconds]', 'The amount of time the token is good for')
+  .option('--notBefore [seconds]', 'Token will be good after this many seconds')
+  .option('--audience [aud]', 'The token audience')
+  .option('--issuer [iss]', 'The issuer')
+  .option('--jwtid [id]', 'The jwt id')
+  .option('--subject [sub]', 'The subject')
+  .option('--noTimestamp', 'Remove the "iat" (issued at) key from the payload')
+  .option('--header [header]', 'The header')
+  .option('--secret [secret]', 'The secret to sign with [secret]', 'secret')
+  .action((rawPayload, action) => {
+    return getMainValue(rawPayload)
+      .then((payload) => JSON.parse(payload || '{}'))
+      .then((payload) => {
+        const options = pick(action, [
+          'algorithm',
+          'expiresIn',
+          'notBefore',
+          'audience',
+          'issuer',
+          'jwtid',
+          'subject',
+          'noTimestamp',
+          'header',
+        ])
+        const token = jwt.sign(payload, action.secret, options)
+        process.stdout.write(token)
+        process.stderr.write('\n')
+      })
+      .catch(console.error)
+  })
+
+program
+  .command('verify [token]')
+  .option('--algorithm [algorithm]', 'The list of allowed algorithms', (val, memo) => {
+    if (memo) memo = []
+    return memo.concat(val)
+  })
+  .option('--audience [aud]', 'The token audience')
+  .option('--issuer [iss]', 'The issuer')
+  .option('--ignoreExpiration', 'Ignore the expiration')
+  .option('--ignoreNotBefore', 'Ignore not before')
+  .option('--subject [sub]', 'The subject')
+  .option('--clockTolerance [tolerance]', 'Number of seconds of difference to tolerate for nbf and exp')
+  .option('--secret [secret]', 'The secret to verify against [secret]', 'secret')
+  .option('--pretty', 'Display the payload in a pretty format')
+  .action((rawToken, action) => {
+    return getMainValue(rawToken)
+      .then((token) => {
+        const prettyVal = action.pretty ? 2 : 0
+        const options = pick(action, [
+          'audience',
+          'issuer',
+          'ignoreExpiration',
+          'ignoreNotBefore',
+          'subject',
+          'clockTolerance',
+        ])
+        const payload = jwt.verify(token, action.secret, options)
+        process.stdout.write(JSON.stringify(payload, null, prettyVal))
+        process.stderr.write('\n')
+      })
+      .catch(console.error)
+  })
+
+function pick(obj, keys) {
+  return keys.reduce((newObj, key) => {
+    if (typeof obj[key] !== 'undefined') newObj[key] = obj[key]
+    return newObj
+  }, {})
+}
+
+function getMainValue(val) {
+  return val ? Promise.resolve(val) : stdin
+}
+
+program.parse(process.argv)
