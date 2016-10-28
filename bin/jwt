@@ -10,7 +10,9 @@ program.version('0.0.1')
 
 const stdin = new Promise((resolve, reject) => {
   let data = ''
-  process.stdin.on('data', (chunk) => {
+  process.stdin.on('readable', () => {
+    const chunk = process.stdin.read()
+    if (chunk === null) return process.stdin.emit('end')
     data += chunk
   })
   process.stdin.on('error', reject)
@@ -28,11 +30,12 @@ program
   .option('--subject [sub]', 'The subject')
   .option('--noTimestamp', 'Remove the "iat" (issued at) key from the payload')
   .option('--header [header]', 'The header')
-  .option('--secret [secret]', 'The secret to sign with [secret]', 'secret')
+  .option('--secret [secret]', 'The secret to sign with')
   .action((rawPayload, action) => {
     return getMainValue(rawPayload)
       .then((payload) => JSON.parse(payload || '{}'))
       .then((payload) => {
+        if (!action.secret) throw new Error('--secret is required')
         const options = pick(action, [
           'algorithm',
           'expiresIn',
@@ -48,7 +51,7 @@ program
         process.stdout.write(token)
         process.stderr.write('\n')
       })
-      .catch(console.error)
+      .catch((err) => console.error(err.message))
   })
 
 program
@@ -63,11 +66,12 @@ program
   .option('--ignoreNotBefore', 'Ignore not before')
   .option('--subject [sub]', 'The subject')
   .option('--clockTolerance [tolerance]', 'Number of seconds of difference to tolerate for nbf and exp')
-  .option('--secret [secret]', 'The secret to verify against [secret]', 'secret')
+  .option('--secret [secret]', 'The secret to verify against')
   .option('--pretty', 'Display the payload in a pretty format')
   .action((rawToken, action) => {
     return getMainValue(rawToken)
       .then((token) => {
+        if (!action.secret) throw new Error('--secret is required')
         const prettyVal = action.pretty ? 2 : 0
         const options = pick(action, [
           'audience',
@@ -81,7 +85,7 @@ program
         process.stdout.write(JSON.stringify(payload, null, prettyVal))
         process.stderr.write('\n')
       })
-      .catch(console.error)
+      .catch((err) => console.error(err.message))
   })
 
 function pick(obj, keys) {
