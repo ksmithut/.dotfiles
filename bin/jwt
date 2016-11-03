@@ -16,8 +16,12 @@ const stdin = new Promise((resolve, reject) => {
     data += chunk
   })
   process.stdin.on('error', reject)
-  process.stdin.on('end', () => resolve(data))
+  process.stdin.on('end', () => resolve(data.trim()))
 })
+
+program
+  .command('help')
+  .action(() => program.help())
 
 program
   .command('sign [payload]')
@@ -32,6 +36,7 @@ program
   .option('--header [header]', 'The header')
   .option('--secret [secret]', 'The secret to sign with')
   .action((rawPayload, action) => {
+    if (rawPayload === 'help') return action.help()
     return getMainValue(rawPayload)
       .then((payload) => JSON.parse(payload || '{}'))
       .then((payload) => {
@@ -69,6 +74,7 @@ program
   .option('--secret [secret]', 'The secret to verify against')
   .option('--pretty', 'Display the payload in a pretty format')
   .action((rawToken, action) => {
+    if (rawToken === 'help') return action.help()
     return getMainValue(rawToken)
       .then((token) => {
         if (!action.secret) throw new Error('--secret is required')
@@ -100,3 +106,5 @@ function getMainValue(val) {
 }
 
 program.parse(process.argv)
+
+if (!program.args.length) program.help()
