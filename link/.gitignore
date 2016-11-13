@@ -1,5 +1,5 @@
 *.env
-.log
+*.log
 Thumbs.db
 .sql
 .sass-cache/
@@ -10,3 +10,4 @@ Thumbs.db
 .Trashes
 ehthumbs.db
 Thumbs.db
+dump.rdb
