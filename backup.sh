@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 copy_dirs=(
   ~/.ssh
   ~/Code
@@ -8,9 +7,7 @@ copy_dirs=(
   ~/Pictures
 )
 
-
-
-read -e -p "Volume to Backup to: " DIRECTORY
+DIRECTORY=$1
 
 if [ ! -d "$DIRECTORY" ]; then
   echo "$DIRECTORY is not a valid directory"
@@ -25,7 +22,15 @@ DIRECTORY=${DIRECTORY//\/\//\/}
 
 for copy_dir in "${copy_dirs[@]}"; do
   echo "Copying $copy_dir"
-  rsync -rv --exclude=*.DS_Store --exclude=*/node_modules --exclude=*/bower_components "$copy_dir" "$DIRECTORY"
+  rsync -rv \
+    --exclude=*.DS_Store \
+    --exclude=*/node_modules \
+    --exclude=*/bower_components \
+    --exclude=*/coverage \
+    --exclude=*/.data \
+    --exclude=*/dump.rdb \
+    --excluce=*/*.log \
+    "$copy_dir" "$DIRECTORY"
 done
 
 echo "done!"

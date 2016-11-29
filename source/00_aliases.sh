@@ -9,12 +9,6 @@ alias brew-upgrade='brew update; brew upgrade; brew cleanup'
 alias nvm-upgrade='cd "$NVM_DIR" && git checkout master && git pull && git checkout $(git describe --abbrev=0 --tags); cd - > /dev/null; . "$NVM_DIR/nvm.sh";'
 alias upgrade='brew-upgrade'
 
-# cask shortcut
-alias cask='brew cask'
-
-# nvm set current version as default
-alias nvm-default='nvm alias default $(nvm current)'
-
 # Open up coverage report
 alias coverage='open coverage/lcov-report/index.html'
 
@@ -47,7 +41,6 @@ function mongo-drop-all() {
 
 # starts simple http server in current directory
 alias static='python -m SimpleHTTPServer'
-alias staticphp='php -S localhost:8000'
 
 # display size of directory
 alias space='du -sh'
@@ -56,16 +49,16 @@ alias space='du -sh'
 alias docker-stop-all='docker stop $(docker ps -a -q)'
 
 function rgb2hex() {
-  local first=$(base -f 10 -t 16 $1)
-  local second=$(base -f 10 -t 16 $2)
-  local third=$(base -f 10 -t 16 $3)
-  echo $first$second$third
+  local first=$(base -l 2 -f 10 -t 16 $1)
+  local second=$(base -l 2 -f 10 -t 16 $2)
+  local third=$(base -l 2 -f 10 -t 16 $3)
+  echo "$first$second$third"
 }
 
 function hex2rgb() {
-  local first=$(base -f 16 -t 10 $1)
-  local second=$(base -f 16 -t 10 $2)
-  local third=$(base -f 16 -t 10 $3)
+  local first=$(base -f 16 -t 10 ${1:0:2})
+  local second=$(base -f 16 -t 10 ${1:2:2})
+  local third=$(base -f 16 -t 10 ${1:4:2})
   echo "$first $second $third"
 }
 

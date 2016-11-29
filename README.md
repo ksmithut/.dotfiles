@@ -58,24 +58,21 @@ copy_dirs=(
 ```
 
 Add or remove paths in that group as you wish. To run the back up, just `cd`
-into the .dotfiles directory and run `./backup.sh` and follow the prompts. You
-must enter an absolute path to the directory/volume you wish to download to (no
-`~` in the path).
+into the .dotfiles directory and run `./backup.sh [backup directory]`.
 
 # Aliases/Functions
 
+- `beep` - Makes a beep sound
 - `myip` - Echoes the local ip address, then a more internet facing ip address.
 - `brew-upgrade` - Upgrades brew, all of the outdates brew packages, then cleans
   up after itself.
 - `nvm-upgrade` - Upgrades nvm.
 - `upgrade` - For now, just runs `brew-upgrade`, but if there were more system
   upgrades to do, put them in here. `nvm` didn't quite qualify.
-- `cask` - Shortcut for `brew cask`.
-- `nvm-default` - Sets the currently selected version of node to the default.
+- `coverage` - Opens up the coverage report for istanbul coverage
 - `fix-permissions` - Finds all of the directories under the cwd and sets their
   permissions to `0755` and then finds all of the files under cwd and sets their
   permissions to `0644`.
-- `npen` - Open up a package's npm page on npm's website.
 - `title` - Set the current terminal tab's title.
 - `show` - Show hidden files in the finder.
 - `hide` - Hide hidden files in the finder.
@@ -85,26 +82,31 @@ must enter an absolute path to the directory/volume you wish to download to (no
 - `mongo-up` - Starts up mongo with default config.
 - `redis-up` - Starts up redis with default config.
 - `postgres-up` - Starts up postgres with default config.
+- `mongo-drop-all` - Drops all mongo databases
 - `static` - Starts up a static http server in the current directory.
-- `staticphp` - Starts up a static php server in the current directory.
-- `resetprompt` - Resets prompt
-- `clone <user/repo> [folder name]` - Clones a repo into the given folder name.
-  If no folder name is given, the folder name will be the repository slug name.
 - `space` - Displays how much space the current repo takes up
 - `docker-stop-all` - Stop all docker containers
+- `rgb2hex <n> <n> <n>` - Returns hex code for given rgb values
+- `hex2rgb <n>` - Returns the rgb values for the given hex code
+- `clone <user/repo> [folder name]` - Clones a repo into the given folder name.
+  If no folder name is given, the folder name will be the repository slug name.
+- `dotfiles` - Moves to the dotfiles directory
+- `dotfiles update` - updates the dotfiles repo
+- `dotfiles source` - Resources the .bash_profile
 
 # Commands (from bin/)
 
-- `base [--from <x>] [--too <y>] <n ...>` - Converts numbers from base(x) to
+- `base [--from <x>] [--to <y>] <n ...>` - Converts numbers from base(x) to
   base(y).
+- `cidr range [<cidr range ...>]` - Gives you the ip range and total addressable
+  hosts of a given CIDR block
 - `github-create [repo_name]` - Creates a new public repository on github from
   the repository in the current directory.
+- `jwt` - A utility for signing/verifying jwts.
 - `npm-latest [--exact]` - Prints out a command to update all of the
   npm dependencies and devDependencies.
 - `ts [<timestamp ...>]` - If no argument is passed, gives you the current
   timestamp (in ms). If arguments are passed, it returns a formatted date.
-- `cidr range [<cidr range ...>]` - Gives you the ip range and total addressable
-  hosts of a given CIDR block
 
 [cowboy]: https://github.com/cowboy/dotfiles
 [createinstallmedia]: https://support.apple.com/en-us/HT201372
