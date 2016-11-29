@@ -2,6 +2,7 @@
 
 
 copy_dirs=(
+  ~/.ssh
   ~/Code
   ~/Documents
   ~/Pictures

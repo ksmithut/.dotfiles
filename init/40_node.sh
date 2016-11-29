@@ -8,8 +8,6 @@ export NVM_DIR="$HOME/.nvm" && (
   cd "$NVM_DIR"
   git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" origin`
 ) && . "$NVM_DIR/nvm.sh"
-# source nvm
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # install latest version of node
 nvm install node stable
