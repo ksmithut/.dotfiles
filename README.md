@@ -48,10 +48,9 @@ install the OS.
 Once in the OS open up the terminal:
 
 ```sh
-cd # Move to home directory
-xcode-select --install # Install the XCode Command Line Utilities (mostly for git and other build tools that brew might use)
-git clone https://github.com/ksmithut/.dotfiles.git
-./.dotfiles/install.sh
+git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles\
+# be sure to install the command line tools before running this command
+~/.dotfiles/install.sh
 ```
 
 You need to manually move over your backup info.
