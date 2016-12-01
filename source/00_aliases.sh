@@ -27,6 +27,7 @@ function dir() { mkdir -p "${1}" && cd $_; }
 
 # sets default ls action to have trailing slashes at the end of directories
 alias ls='ls -p'
+alias ll='ls -la'
 
 # database startups
 alias mongo-up='mongod --config /usr/local/etc/mongod.conf'
