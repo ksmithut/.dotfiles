@@ -23,7 +23,7 @@ brew tap Homebrew/bundle
 echo "Installing brew recipes..."
 
 cd $HOME
-brew bundle
+brew bundle --global
 
 # Cleaning up again
 brew doctor
