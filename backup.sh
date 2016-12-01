@@ -29,7 +29,8 @@ for copy_dir in "${copy_dirs[@]}"; do
     --exclude=*/coverage \
     --exclude=*/.data \
     --exclude=*/dump.rdb \
-    --excluce=*/*.log \
+    --exclude=*/*.log \
+    --exclude=*/Pictures/Photos\ Library.photoslibrary/* \
     "$copy_dir" "$DIRECTORY"
 done
 
