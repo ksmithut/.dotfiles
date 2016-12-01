@@ -35,12 +35,26 @@ tl;dr
 sudo /Applications/Install\ macOS\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ macOS\ Sierra.app --nointeraction
 ```
 
+Then backup:
+
+```sh
+cd ~/.dotfiles # Or wherever this repo exists
+./backup.sh ~/Desktop # after it's done, move the backup/ folder to removable media
+```
+
+Then boot into the install media holding down option key, format the drive, and
+install the OS.
+
+Once in the OS open up the terminal:
+
 ```sh
 cd # Move to home directory
 xcode-select --install # Install the XCode Command Line Utilities (mostly for git and other build tools that brew might use)
 git clone https://github.com/ksmithut/.dotfiles.git
 ./.dotfiles/install.sh
 ```
+
+You need to manually move over your backup info.
 
 # Backup
 
