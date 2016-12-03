@@ -1,6 +1,9 @@
 # beep
 alias beep='echo -e "\a"'
 
+# get the weather
+function weather() { curl "wttr.in/$1"; }
+
 # get ip addresses
 alias myip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
 

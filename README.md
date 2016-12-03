@@ -76,6 +76,7 @@ into the .dotfiles directory and run `./backup.sh [backup directory]`.
 # Aliases/Functions
 
 - `beep` - Makes a beep sound
+- `weather <zip|city>` - Checks the weather for the zip or city
 - `myip` - Echoes the local ip address, then a more internet facing ip address.
 - `brew-upgrade` - Upgrades brew, all of the outdates brew packages, then cleans
   up after itself.
