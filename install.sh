@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
+# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
 echo "Enter your password here. You should only have to enter it once through this whole process"
 sudo -v
-# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-export DOTFILES=~/.dotfiles
+# Set a reference to where dotfiles is.
+export DOTFILES=$( cd "$(dirname "$0")"; pwd -P )
 
+# Helper util to make headers more readable
 function e_header() {
   echo
   echo "======================================================================="
@@ -17,9 +19,9 @@ function e_header() {
 # Makes glob return dotfiles
 shopt -s dotglob
 
-# Copy Files
+# 1. Copy Files
+# =============
 e_header "Copying files to $HOME"
-
 for file in $DOTFILES/copy/*; do
   echo "Copying $(basename $file)..."
   dest="$HOME/$(basename $file)"
@@ -30,7 +32,8 @@ for file in $DOTFILES/copy/*; do
   fi
 done
 
-# Link Files
+# 2. Link Files
+# =============
 e_header "Linking files to $HOME"
 
 for file in $DOTFILES/link/*; do
@@ -39,7 +42,8 @@ for file in $DOTFILES/link/*; do
   ln -s "$file" "$HOME/$(basename $file)"
 done
 
-# System Initialization
+# 3. System Initialization
+# ========================
 for file in $DOTFILES/init/*; do
   e_header "Init $(basename $file)"
   source "$file"

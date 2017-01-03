@@ -2,6 +2,7 @@ cask_args appdir: '/Applications'
 
 # Tools
 brew 'git'
+brew 'gpg'
 brew 'httpie'
 brew 'jq'
 brew 'siege'
@@ -13,6 +14,7 @@ brew 'yarn'
 
 # Languages/Runtimes
 brew 'go'
+brew 'elixir'
 
 # Databases
 brew 'mongodb'

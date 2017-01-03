@@ -21,7 +21,6 @@ echo "Installing Homebrew/bundle"
 brew tap Homebrew/bundle
 
 echo "Installing brew recipes..."
-
 brew bundle --global
 
 # Cleaning up again

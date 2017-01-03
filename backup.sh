@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 copy_dirs=(
+  ~/.gnupg
   ~/.ssh
   ~/Code
   ~/Pictures

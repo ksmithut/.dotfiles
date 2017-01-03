@@ -1,4 +1,4 @@
-export DOTFILES=~/.dotfiles
+export DOTFILES=~/.dotfiles # TODO make this more dynamic
 export HOMEBREW_NO_ANALYTICS=1
 export PATH="/usr/local/bin:/usr/local/sbin:$DOTFILES/bin:$PATH"
 
