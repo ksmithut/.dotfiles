@@ -52,20 +52,6 @@ alias space='du -sh'
 # Stops all docker containers
 alias docker-stop-all='docker stop $(docker ps -a -q)'
 
-function rgb2hex() {
-  local first=$(base -l 2 -f 10 -t 16 $1)
-  local second=$(base -l 2 -f 10 -t 16 $2)
-  local third=$(base -l 2 -f 10 -t 16 $3)
-  echo "$first$second$third"
-}
-
-function hex2rgb() {
-  local first=$(base -f 16 -t 10 ${1:0:2})
-  local second=$(base -f 16 -t 10 ${1:2:2})
-  local third=$(base -f 16 -t 10 ${1:4:2})
-  echo "$first $second $third"
-}
-
 # clone a repo
 function clone() {
   local arr=(${1//\// })

@@ -29,7 +29,6 @@ The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 If you want to create a bootable installer for macOS, follow the instructions
 [here][createinstallmedia].
 
-tl;dr
 ```sh
 # Change /Volumes/Untitled to the volume you want it to be
 sudo /Applications/Install\ macOS\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ macOS\ Sierra.app --nointeraction
@@ -48,7 +47,7 @@ install the OS.
 Once in the OS open up the terminal:
 
 ```sh
-git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles\
+git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
 # be sure to install the command line tools before running this command
 ~/.dotfiles/install.sh
 ```
@@ -65,7 +64,6 @@ line that looks like this:
 ```sh
 copy_dirs=(
   ~/Code
-  ~/Documents
   ~/Pictures
 )
 ```
@@ -100,8 +98,6 @@ into the .dotfiles directory and run `./backup.sh [backup directory]`.
 - `static` - Starts up a static http server in the current directory.
 - `space` - Displays how much space the current repo takes up
 - `docker-stop-all` - Stop all docker containers
-- `rgb2hex <n> <n> <n>` - Returns hex code for given rgb values
-- `hex2rgb <n>` - Returns the rgb values for the given hex code
 - `clone <user/repo> [folder name]` - Clones a repo into the given folder name.
   If no folder name is given, the folder name will be the repository slug name.
 - `dotfiles` - Moves to the dotfiles directory
@@ -110,17 +106,8 @@ into the .dotfiles directory and run `./backup.sh [backup directory]`.
 
 # Commands (from bin/)
 
-- `base [--from <x>] [--to <y>] <n ...>` - Converts numbers from base(x) to
-  base(y).
-- `cidr range [<cidr range ...>]` - Gives you the ip range and total addressable
-  hosts of a given CIDR block
 - `github-create [repo_name]` - Creates a new public repository on github from
   the repository in the current directory.
-- `jwt` - A utility for signing/verifying jwts.
-- `npm-latest [--exact]` - Prints out a command to update all of the
-  npm dependencies and devDependencies.
-- `ts [<timestamp ...>]` - If no argument is passed, gives you the current
-  timestamp (in ms). If arguments are passed, it returns a formatted date.
 
 [cowboy]: https://github.com/cowboy/dotfiles
 [createinstallmedia]: https://support.apple.com/en-us/HT201372
