@@ -15,12 +15,6 @@ alias upgrade='brew-upgrade'
 # Open up coverage report
 alias coverage='open coverage/lcov-report/index.html'
 
-# Make all directories 755 and files 644
-alias fix-permissions='find * -type d -print0 | xargs -0 chmod 0755 && find . -type f -print0 | xargs -0 chmod 0644'
-
-# Set the terminal title
-function title() { echo -n -e "\033]0;$1\007"; }
-
 # show/hide hidden files in finder
 alias show='defaults write com.apple.finder AppleShowAllFiles -bool TRUE; killall Finder;'
 alias hide='defaults write com.apple.finder AppleShowAllFiles -bool FALSE; killall Finder;'
@@ -45,12 +39,6 @@ function mongo-drop-all() {
 
 # starts simple http server in current directory
 alias static='python -m SimpleHTTPServer'
-
-# display size of directory
-alias space='du -sh'
-
-# Stops all docker containers
-alias docker-stop-all='docker stop $(docker ps -a -q)'
 
 # clone a repo
 function clone() {
