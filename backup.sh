@@ -4,6 +4,8 @@ copy_dirs=(
   ~/.gnupg
   ~/.ssh
   ~/Code
+  ~/Documents
+  ~/Desktop
   ~/Pictures
 )
 

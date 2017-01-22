@@ -1,11 +1,14 @@
-cask_args appdir: '/Applications'
+cask_args appdir: '~/Applications'
 tap 'caskroom/cask'
 
 # Tools
+brew 'bash'
 brew 'git'
 brew 'gpg'
+brew 'gpg-agent'
 brew 'httpie'
 brew 'jq'
+brew 'pinentry-mac'
 brew 'siege'
 brew 'trash'
 brew 'tree'
@@ -24,6 +27,7 @@ brew 'redis'
 
 # Apps
 cask '1password'
+cask 'brave'
 cask 'discord'
 cask 'docker'
 cask 'firefox'
@@ -35,6 +39,7 @@ cask 'sequel-pro'
 cask 'screenhero'
 cask 'sketch'
 cask 'slack'
+cask 'tunnelblick'
 cask 'virtualbox'
 cask 'visual-studio-code'
 

@@ -106,8 +106,34 @@ into the .dotfiles directory and run `./backup.sh [backup directory]`.
 
 # Commands (from bin/)
 
-- `github-create [repo_name]` - Creates a new public repository on github from
-  the repository in the current directory.
+(No commands in here. Been trying to live pretty minimalistic.)
+
+# Fonts
+
+- I like the [Noto Mono Font](https://www.google.com/get/noto/#mono-mono)
+
+# SSH/GPG keys
+
+```sh
+# generate ssh key
+# https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/"
+ssh-keygen -t rsa -b 4096 -C '<your email>'
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+pbcopy < ~/.ssh/id_rsa.pub
+open https://github.com/settings/keys
+```
+
+```sh
+# add gpg key
+# https://help.github.com/articles/generating-a-new-gpg-key/
+# https://github.com/pstadler/keybase-gpg-github#optional-dont-ask-for-password-every-time
+gpg --gen-key
+gpg --list-secret-keys --keyid-format LONG
+git config --global user.signingkey '<secret key id>'
+gpg --armor --export '<secret key id>' | pbcopy
+open https://github.com/settings/keys
+```
 
 [cowboy]: https://github.com/cowboy/dotfiles
 [createinstallmedia]: https://support.apple.com/en-us/HT201372
