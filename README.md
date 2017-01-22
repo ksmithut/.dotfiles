@@ -71,43 +71,6 @@ copy_dirs=(
 Add or remove paths in that group as you wish. To run the back up, just `cd`
 into the .dotfiles directory and run `./backup.sh [backup directory]`.
 
-# Aliases/Functions
-
-- `beep` - Makes a beep sound
-- `weather <zip|city>` - Checks the weather for the zip or city
-- `myip` - Echoes the local ip address, then a more internet facing ip address.
-- `brew-upgrade` - Upgrades brew, all of the outdates brew packages, then cleans
-  up after itself.
-- `nvm-upgrade` - Upgrades nvm.
-- `upgrade` - For now, just runs `brew-upgrade`, but if there were more system
-  upgrades to do, put them in here. `nvm` didn't quite qualify.
-- `coverage` - Opens up the coverage report for istanbul coverage
-- `fix-permissions` - Finds all of the directories under the cwd and sets their
-  permissions to `0755` and then finds all of the files under cwd and sets their
-  permissions to `0644`.
-- `title` - Set the current terminal tab's title.
-- `show` - Show hidden files in the finder.
-- `hide` - Hide hidden files in the finder.
-- `dir` - Like `mkdir -p`, but it moves you to the directory that was created.
-- `ls` - Just automatically adds `-p` as an argument to `ls`, which adds
-  trailing slashes to the end of directories.
-- `mongo-up` - Starts up mongo with default config.
-- `redis-up` - Starts up redis with default config.
-- `postgres-up` - Starts up postgres with default config.
-- `mongo-drop-all` - Drops all mongo databases
-- `static` - Starts up a static http server in the current directory.
-- `space` - Displays how much space the current repo takes up
-- `docker-stop-all` - Stop all docker containers
-- `clone <user/repo> [folder name]` - Clones a repo into the given folder name.
-  If no folder name is given, the folder name will be the repository slug name.
-- `dotfiles` - Moves to the dotfiles directory
-- `dotfiles update` - updates the dotfiles repo
-- `dotfiles source` - Resources the .bash_profile
-
-# Commands (from bin/)
-
-(No commands in here. Been trying to live pretty minimalistic.)
-
 # Fonts
 
 - I like the [Noto Mono Font](https://www.google.com/get/noto/#mono-mono)
