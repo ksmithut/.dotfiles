@@ -8,7 +8,7 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 ################################################################################
 
 # Change default shell to use updated bash
-chsh -s /usr/local/bin/bash
+sudo chsh -s /usr/local/bin/bash
 
 ################################################################################
 # iTunes
@@ -66,18 +66,18 @@ sudo pmset -a sms 0
 ################################################################################
 
 # Destroy Filevault keys
-sudo pmset -a destroyfvkeyonstandby 1
+# sudo pmset -a destroyfvkeyonstandby 1
 
 # Disable Creation of Metadata Files
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Power off memory during standby
-sudo pmset -a hibernatemode 25
-sudo pmset -a powernap 0
-sudo pmset -a standby 0
-sudo pmset -a standbydelay 0
-sudo pmset -a autopoweroff 0
+# sudo pmset -a hibernatemode 25
+# sudo pmset -a powernap 0
+# sudo pmset -a standby 0
+# sudo pmset -a standbydelay 0
+# sudo pmset -a autopoweroff 0
 
 # Save to disk by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
