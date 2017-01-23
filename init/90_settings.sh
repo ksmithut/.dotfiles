@@ -66,14 +66,14 @@ sudo pmset -a sms 0
 ################################################################################
 
 # Destroy Filevault keys
-sudo pmset destroyfvkeyonstandby 1
+sudo pmset -a destroyfvkeyonstandby 1
 
 # Disable Creation of Metadata Files
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Power off memory during standby
-sudo pmset hibernatemode 25
+sudo pmset -a hibernatemode 25
 sudo pmset -a powernap 0
 sudo pmset -a standby 0
 sudo pmset -a standbydelay 0
