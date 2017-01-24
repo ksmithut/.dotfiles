@@ -82,7 +82,7 @@ into the .dotfiles directory and run `./backup.sh [backup directory]`.
 # https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/"
 ssh-keygen -t rsa -b 4096 -C '<your email>'
 eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
+ssh-add -K ~/.ssh/id_rsa
 pbcopy < ~/.ssh/id_rsa.pub
 open https://github.com/settings/keys
 ```
