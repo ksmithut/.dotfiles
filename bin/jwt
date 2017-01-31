@@ -1,0 +1,330 @@
+#!/usr/bin/env node
+
+const path = require('path')
+const crypto = require('crypto')
+
+const usage = () => console.log(`
+  Usage: jwt <command> [options]
+
+  A utility to sign and verify JSON Web Tokens
+
+  Commands:
+
+    sign [options] <claims>\t Signs a jwt withthe given options
+    verify [options] <token>\t Verifies a jwt with the given options
+    help <command>\t\t Prints out help information for the given command
+`)
+const usageSign = () => console.log(`
+  Usage: jwt sign [options] <additional_claims>
+
+  Signs a JSON Web Token
+
+  <additional_claims> must be valid JSON
+
+  Options:
+
+    -h, --help\t Output usage information
+   HEADER
+    --alg=<algorithm>\t The algorithm to use. Available algorithms: TODO
+   CLAIMS
+    --iss=<issuer>
+    --sub=<subject>
+    --aud=<audience>
+    --exp=<expiration>
+    --nbf=<not_before>
+    --iat[=issued_at]
+    --jti=<jwt_id>
+   SIGNATURE
+    --secret=<val>\t The secret to use when signing the jwt
+`)
+const usageVerify = () => console.log(`
+  Usage: jwt sign [options] <additional_claims>
+
+  Signs a JSON Web Token
+
+  <additional_claims> must be valid JSON
+
+  Options:
+
+    -h, --help\t Output usage information
+   HEADER
+    --alg=<algorithm>\t The algorithm to use. Available algorithms: TODO
+   CLAIMS
+    --iss=<issuer>
+    --sub=<subject>
+    --aud=<audience>
+   SIGNATURE
+    --secret=<val>\t The secret to use when verifying the jwt
+`)
+
+/**
+ * sign
+ */
+function sign(argv) {
+  const args = parseArgs(argv, {
+    help: { long: 'help', short: 'h', flag: true },
+    alg: { long: 'alg', default: 'none' },
+    iss: { long: 'iss' },
+    sub: { long: 'sub' },
+    aud: { long: 'aud' },
+    exp: { long: 'exp' },
+    nbf: { long: 'nbf' },
+    iat: { long: 'iat', flag: 'optional' },
+    jti: { long: 'jti' },
+    secret: { long: 'secret' },
+  })
+  if (args.help) return usageSign()
+  // Create header
+  let claims = args.args[0] || '{}'
+  const header = { alg: args.alg, typ: 'JWT' }
+  // Convert numeric args to numbers
+  if (args.exp) args.exp = Number(args.exp)
+  if (args.nbf) args.nbf = Number(args.nbf)
+  if (args.iat === true) args.iat = Math.floor(new Date() / 1000)
+  if (args.iat) args.iat = Number(args.iat)
+  // Get claims from args
+  try {
+    claims = JSON.parse(claims)
+  }
+  catch (ex) {
+    fault(`Error parsing claims: ${ex.message}`)
+  }
+  // Copy args into claims
+  claims = Object.assign(
+    pick(args, [ 'iss', 'sub', 'aud', 'exp', 'nbf', 'iat', 'jti' ]),
+    claims
+  )
+  // Create signature
+  const headerString = base64encode(header)
+  const payloadString = base64encode(claims)
+  const body = `${headerString}.${payloadString}`
+  const signature = makeSignature(args.alg, args.secret, body)
+  // Print out token
+  process.stdout.write(`${body}.${signature}`)
+  process.stderr.write(`\n`)
+}
+
+/**
+ * verify
+ */
+function verify(argv) {
+  const args = parseArgs(argv, {
+    help: { long: 'help', short: 'h', flag: true },
+    alg: { long: 'alg', default: 'none' },
+    iss: { long: 'iss' },
+    sub: { long: 'sub' },
+    aud: { long: 'aud' },
+    secret: { long: 'secret' },
+  })
+  const token = args.args[0]
+  if (!token) fault('Token not passed in')
+  // Parse token
+  const parts = token.split('.')
+  const headerString = parts[0]
+  const payloadString = parts[1]
+  const signature = parts[2]
+  const header = base64decode(headerString, true)
+  const payload = base64decode(payloadString, true)
+  // Check if algorithms match
+  if (args.alg && args.alg !== header.alg) {
+    failValidation('Algorithms do not match')
+  }
+  // Validate signature
+  const validSignature = verifySignature(
+    header.alg,
+    args.secret,
+    `${headerString}.${payloadString}`,
+    signature
+  )
+  if (!validSignature) {
+    failValidation('Signature failed validation')
+  }
+  // TODO validate time base keys (exp, nbf)
+  // Print out payload
+  console.log(JSON.stringify(payload, null, 2))
+}
+
+/**
+ * help
+ */
+function help(argv) {
+  const command = argv[0]
+  switch (command) {
+    case 'sign':
+      usageSign()
+      break
+    case 'verify':
+      usageVerify()
+      break
+    case undefined:
+      usage()
+      break
+    default:
+      console.error(`Command "${command || ''}" not found`)
+      usage()
+      break
+  }
+}
+
+/**
+ * run
+ */
+function run(argv) {
+  const args = process.argv.slice(2)
+  const commandName = args[0]
+  const commands = {
+    sign: () => sign(args.slice(1)),
+    verify: () => verify(args.slice(1)),
+    help: () => help(args.slice(1)),
+    _default: () => {
+      console.log(`Command "${command || ''}" not found`)
+      usage()
+    },
+  }
+  const command = commands[commandName] || commands._default
+  command()
+}
+
+run(process.argv)
+
+/**
+ * Helpers
+ */
+function parseArgs(argv, definition) {
+  const OPTION_PARSE = /^--?([a-z-]*)(=(.*))?$/
+
+  const argsObject = {
+    args: [],
+  }
+
+  const mapper = Object.keys(definition).reduce((map, key) => {
+    const def = definition[key]
+    let set = (obj, val) => obj[key] = val
+    if (def.flag === true) set = (obj) => obj[key] = true
+    if (def.flag === 'optional') set = (obj, val) => obj[key] = val || true
+    if (def.long) map[def.long] = set
+    if (def.short) map[def.short] = set
+    if (def.default) argsObject[key] = def.default
+    return map
+  }, {})
+
+  return argv.reduce((args, rawArg) => {
+    const match = rawArg.match(OPTION_PARSE)
+    if (!match) {
+      args.args.push(rawArg)
+      return args
+    }
+    const flag = match[1]
+    const val = match[3]
+    const setter = mapper[flag]
+    if (setter) setter(args, val)
+    else fault(`Unknown option: "${match[0]}"`)
+    return args
+  }, argsObject)
+}
+
+function pick(obj, keys) {
+  return keys.reduce((newObj, key) => {
+    if (typeof obj[key] !== 'undefined') {
+      newObj[key] = obj[key]
+    }
+    return newObj
+  }, {})
+}
+
+function isObject(val) {
+  return Object.prototype.toString.call(val) === '[object Object]'
+}
+
+function base64encode(val) {
+  if (isObject(val)) val = JSON.stringify(val)
+  return new Buffer(val)
+    .toString('base64')
+    .replace(/=*$/, '')
+}
+
+function base64decode(val, json) {
+  val = new Buffer(val, 'base64').toString()
+  return json ? JSON.parse(val) : val
+}
+
+function makeSignature(alg, secret, payload) {
+  const notImplemented = () => fault(`Algorithm not implemented: ${alg}`)
+  const hmac = (bits) => () => crypto
+    .createHmac(`sha${bits}`, secret || '')
+    .update(payload)
+    .digest('base64')
+    .replace(/=*$/, '')
+  // TODO support rsa and ecdsa
+  // Will need to support file-as-a-secret
+  const rsa = () => notImplemented
+  const ecdsa = () => notImplemented
+  // const rsa = (bits) => crypto
+  //   .createSign(`RSA-SHA${bits}`)
+  //   .update(payload)
+  //   .sign(secret)
+  //   .toString('base64')
+  //   .replace(/=*$/, '')
+  // const ecdsa = (bits) => crypto
+  //   .createSign(`sha${bits}`)
+  //   .update(payload)
+  //   .sign(secret)
+  //   .toString('base64')
+  //   .replace(/=*?/, '')
+  const algorithms = {
+    none: () => {
+      if (secret) fault(`Cannot use algorithm "none" if secret is provided`)
+      return ''
+    },
+    HS256: hmac('256'),
+    HS384: hmac('384'),
+    HS512: hmac('512'),
+    RS256: rsa('256'),
+    RS354: rsa('354'),
+    RS512: rsa('512'),
+    ES256: ecdsa('256'),
+    ES384: ecdsa('354'),
+    ES512: ecdsa('512'),
+  }
+  if (!algorithms[alg]) fault(`Algorithm not found: ${alg}`)
+  return algorithms[alg]()
+}
+
+function verifySignature(alg, secret, payload, signature) {
+  const notImplemented = () => {
+    failValidation(`Algorithm not implemented: ${alg}`)
+  }
+  const hmac = (bits) => () => {
+    return makeSignature(alg, secret, payload) === signature
+  }
+  // TODO support rsa and ecdsa
+  // Will need to support file-as-a-secret
+  const rsa = () => notImplemented
+  const ecdsa = () => notImplemented
+  const algorithms = {
+    none: () => {
+      if (secret) failValidation('Token used "none" but secret was passed')
+      return signature === ''
+    },
+    HS256: hmac('256'),
+    HS384: hmac('384'),
+    HS512: hmac('512'),
+    RS256: rsa('256'),
+    RS354: rsa('354'),
+    RS512: rsa('512'),
+    ES256: ecdsa('256'),
+    ES384: ecdsa('354'),
+    ES512: ecdsa('512'),
+  }
+  if (!algorithms[alg]) failValidation(`Token gave invalid algorithm`)
+  return algorithms[alg]()
+}
+
+function fault(message) {
+  console.error(message)
+  process.exit(1)
+}
+
+function failValidation(message) {
+  fault(`Failed Validation: ${message}`)
+}
