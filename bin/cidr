@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+'use strict'
+
+const assert = require('assert')
+
+const args = process.argv.slice(2)
+const input = (/(\d+)\.?(\d+)?\.?(\d+)?\.?(\d+)?\/?(\d+)?/).exec(args[0])
+
+assert(input, 'You must pass in a valid cidr')
+
+const [,
+  block1 = '0',
+  block2 = '0',
+  block3 = '0',
+  block4 = '0',
+  cidrStr = '32',
+] = input
+
+function decimalToBinary(num) {
+  const decimal = limit(num, 0, 255)
+  const binary = decimal.toString(2)
+  const leadingZeros = '0'.repeat(8 - binary.length)
+  return `${leadingZeros}${binary}`
+}
+
+function binaryToDecimal(binary) {
+  return parseInt(binary, 2)
+}
+
+function limit(num, min, max) {
+  num = parseInt(num, 10)
+  return Math.min(max, Math.max(min, num))
+}
+
+function splitByInterval(str, interval) {
+  return str.split('').reduce((arr, char, i) => {
+    const index = Math.floor(i / interval)
+    arr[index] = (arr[index] || '') + char
+    return arr
+  }, [])
+}
+
+const cidr = limit(cidrStr, 0, 32)
+const binaryIp = [ block1, block2, block3, block4 ]
+  .map(decimalToBinary)
+  .join('')
+const firstBinaryIp = binaryIp.substr(0, cidr) + '0'.repeat(32 - cidr)
+const lastBinaryIp = binaryIp.substr(0, cidr) + '1'.repeat(32 - cidr)
+
+const firstIp = splitByInterval(firstBinaryIp, 8).map(binaryToDecimal).join('.')
+const lastIp = splitByInterval(lastBinaryIp, 8).map(binaryToDecimal).join('.')
+
+console.log(`${firstIp} - ${lastIp}`)

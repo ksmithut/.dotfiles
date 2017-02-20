@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 'use strict'
 
-const path = require('path')
 const crypto = require('crypto')
 
 const usage = () => console.log(`
@@ -171,7 +170,7 @@ function help(argv) {
  * run
  */
 function run(argv) {
-  const args = process.argv.slice(2)
+  const args = argv.slice(2)
   const commandName = args[0]
   const commands = {
     sign: () => sign(args.slice(1)),

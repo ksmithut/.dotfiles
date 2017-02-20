@@ -40,6 +40,16 @@ function mongo-drop-all() {
 # starts simple http server in current directory
 alias static='python -m SimpleHTTPServer'
 
+# reverts to a given commit
+function oh_crap() {
+  if [ "$1" = "" ]; then
+    echo 'You must pass in a commit id'
+  fi
+  git reset --hard $1
+  git reset --soft HEAD@{1}
+  git commit -m "Revert to $1"
+}
+
 # clone a repo
 function clone() {
   local arr=(${1//\// })
