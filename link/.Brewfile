@@ -27,6 +27,7 @@ brew 'redis'
 
 # Apps
 cask '1password'
+cask 'apptivate'
 cask 'brave'
 cask 'discord'
 cask 'docker'
