@@ -177,7 +177,7 @@ function run(argv) {
     verify: () => verify(args.slice(1)),
     help: () => help(args.slice(1)),
     _default: () => {
-      console.log(`Command "${command || ''}" not found`)
+      console.log(`Command "${commandName || ''}" not found`)
       usage()
     },
   }
