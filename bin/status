@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+'use strict'
+
+const STATUS_CODES = require('http').STATUS_CODES
+
+const args = process.argv.slice(2)
+const usage = () => console.log(`
+  Usage: status <status_code>
+
+  Print out the status phrase for the given status code
+`)
+
+if (args.length) {
+  console.log(STATUS_CODES[args[0]])
+}
+else {
+  usage()
+  process.exit(1)
+}
