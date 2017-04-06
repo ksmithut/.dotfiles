@@ -1,9 +1,26 @@
 #!/usr/bin/env node
 'use strict'
 
-const args = process.argv.slice(2)
+const R = require('./utils/ramda')
+const program = require('./utils/program')
 
-const base64decode = (val) => new Buffer(val || '', 'base64').toString()
+process.title = 'decode'
 
-process.stdout.write(base64decode(args[0]))
-process.stderr.write('\n')
+program
+  .usage('<base64_encoded_string>')
+  .description('decode a base64 encoded base64_encoded_string')
+  .parse(process.argv)
+
+const log = R.bind(console.log, console)
+const base64decode = R.pipe(
+  R.defaultTo(''),
+  R.constructN(2, Buffer)(R.__, 'base64'),
+  R.toString
+)
+const run = R.pipe(
+  R.path([ 'args', '0' ]),
+  base64decode,
+  log
+)
+
+run(program)

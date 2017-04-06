@@ -2,15 +2,24 @@
 	s = status -s
 	diff = diff --word-diff
 	pr = pull --rebase
-	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 	filelog = log -u
 	la = "!git config -l | grep alias | cut -c 7-"
 	ignore = update-index --assume-unchanged
 	unignore = update-index --no-assume-unchanged
+	prune = fetch --prune
+	undo = reset --soft HEAD^
+	stash-all = stash save --include-untracked
+	glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+[merge]
+	ff = only
+	conflictstyle = diff3
 [core]
 	excludesfile = ~/.gitignore
 [push]
 	default = simple
+	followTags = true
+[status]
+	showUntrackedFiles = all
 [color "branch"]
 	current = yellow reverse
 	local = yellow
