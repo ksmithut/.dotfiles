@@ -27,7 +27,7 @@ __powerline() {
         [ -n "$behindN" ] && marks+=" $GIT_NEED_PULL_SYMBOL$behindN"
 
         # print the git branch segment without a trailing newline
-        printf " $GIT_BRANCH_SYMBOL $branch$marks "
+        printf "$GIT_BRANCH_SYMBOL $branch$marks"
     }
 
     local RESET='\[\033[00m\]'
@@ -71,13 +71,13 @@ __powerline() {
     local CWD="\w"
 
     local _USER="$BLACK$BG_WHITE $USER $RESET"
-    local _TIME="$BLACK$BG_YELLOW $TIME $RESET"
-    local _DIR="$BLACK$BG_WHITE $CWD $RESET"
-    local _GIT="$BLACK$BG_CYAN\$(__git_info)$RESET"
+    local _TIME="$CYAN$TIME $RESET"
+    local _DIR="$CYAN$CWD $RESET"
+    local _GIT="$YELLOW\$(__git_info)$RESET"
     local _PS_SYMBOL="$WHITE \$ $RESET"
 
     PS1=""
-    # PS1="$_TIME"
+    # PS1+="$_TIME"
     # PS1+="$_USER"
     PS1+="$_DIR"
     PS1+="$_GIT"
