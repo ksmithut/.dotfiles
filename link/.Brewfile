@@ -1,4 +1,4 @@
-cask_args appdir: '~/Applications'
+cask_args appdir: '/Applications'
 tap 'caskroom/cask'
 
 # Tools
@@ -37,6 +37,7 @@ cask 'google-chrome'
 cask 'iterm2'
 cask 'kitematic'
 cask 'mongohub'
+cask 'now'
 cask 'postgres'
 cask 'postman'
 cask 'sequel-pro'
