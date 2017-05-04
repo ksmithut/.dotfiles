@@ -9,7 +9,7 @@ alias myip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
 
 # upgrade/update shortcuts
 alias brew-upgrade='brew update; brew upgrade; brew cleanup'
-alias nvm-upgrade='cd "$NVM_DIR" && git checkout master && git pull && git checkout $(git describe --abbrev=0 --tags); cd - > /dev/null; . "$NVM_DIR/nvm.sh";'
+alias nvm-upgrade='cd "$NVM_DIR" && git checkout master > /dev/null 2>&1 && git pull > /dev/null 2>&1 && git checkout $(git describe --abbrev=0 --tags) > /dev/null 2>&1; cd - > /dev/null; . "$NVM_DIR/nvm.sh";'
 alias upgrade='brew-upgrade'
 
 # Open up coverage report
@@ -25,17 +25,6 @@ function dir() { mkdir -p "${1}" && cd $_; }
 # sets default ls action to have trailing slashes at the end of directories
 alias ls='ls -p'
 alias ll='ls -la'
-
-# database startups
-alias mongo-up='mongod --config /usr/local/etc/mongod.conf'
-alias redis-up='redis-server /usr/local/etc/redis.conf'
-alias postgres-up='postgres -D /usr/local/var/postgres'
-
-function mongo-drop-all() {
-  read -p "Press Enter to delete all databases (or ctrl+c to cancel)"
-  mongo --quiet --eval 'db.getMongo().getDBNames().forEach(function(i){db.getSiblingDB(i).dropDatabase()})'
-  echo 'Done!'
-}
 
 # starts simple http server in current directory
 alias static='python -m SimpleHTTPServer'
@@ -97,6 +86,9 @@ function dotfiles() {
       ;;
     source)
       source ~/.bash_profile
+      ;;
+    bin)
+      [[ -r $DOTFILES ]] && chmod a+x $DOTFILES/bin/*
       ;;
     *)
       cd $DOTFILES

@@ -4,6 +4,4 @@ for f in /usr/local/etc/bash_completion.d/*; do . $f; done;
 # https://github.com/npm/npm/issues/11696
 export COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
 
-# npm autocomplete
-# generated using `npm completion`
-eval "$(npm completion)"
+

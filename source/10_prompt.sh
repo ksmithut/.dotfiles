@@ -72,7 +72,7 @@ __powerline() {
   local _GIT="\$(__git_info)"
   local _PROMPT="\$ "
 
-  local DATE="$_WHITE$_DATE_$_RESET"
+  local DATE="$_WHITE$_DATE$_RESET"
   local TIME="$_WHITE$_TIME$_RESET"
   local USER="$_WHITE$_USER$_RESET"
   local DIR="$_CYAN$_CWD$_RESET"

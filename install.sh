@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
+# Keep-alive: update existing `sudo` time stamp until everything has finished
 echo "Enter your password here. You should only have to enter it once through this whole process"
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
@@ -35,7 +35,6 @@ done
 # 2. Link Files
 # =============
 e_header "Linking files to $HOME"
-
 for file in $DOTFILES/link/*; do
   echo "Linking $(basename $file)..."
   rm -rf "$HOME/$(basename $file)"

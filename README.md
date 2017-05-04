@@ -20,7 +20,7 @@ The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 * `source/` All files in here will be included upon every new terminal session.
   Use this for things like aliases, functions, and customizing the bash prompt.
 
-* `init/` All files in here will be run upon running `./dotfiles.sh`. Use this
+* `init/` All files in here will be run upon running `./install.sh`. Use this
   for things like installing homebrew or other applications that should only
   need to be run once.
 
@@ -47,12 +47,13 @@ install the OS.
 Once in the OS open up the terminal:
 
 ```sh
+# installs the command-line tools
+xcode-select --install
 git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
-# be sure to install the command line tools before running this command
 ~/.dotfiles/install.sh
 ```
 
-You need to manually move over your backup info.
+You need to manually move over your backup data.
 
 # Backup
 
