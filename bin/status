@@ -2,8 +2,8 @@
 'use strict'
 
 const http = require('http')
-const R = require('./utils/ramda')
-const program = require('./utils/program')
+const R = require('../node_modules/ramda/dist/ramda.js')
+const program = require('../node_modules/commander/index.js')
 
 process.title = 'status'
 
@@ -14,14 +14,12 @@ program
 
 const log = R.bind(console.log, console)
 const help = R.bind(program.help, program)
-const getStatusMessage = R.propOr('<Invalid Status Code>', R.__, http.STATUS_CODES)
-const printStatusMessage = R.pipe(
-  getStatusMessage,
-  log
+const getStatusMessage = R.propOr(
+  '<Invalid Status Code>',
+  R.__,
+  http.STATUS_CODES
 )
-const run = R.pipe(
-  R.path([ 'args', '0' ]),
-  R.ifElse(R.isNil, help, printStatusMessage)
-)
+const printStatusMessage = R.pipe(getStatusMessage, log)
+const run = R.ifElse(R.isNil, help, printStatusMessage)
 
-run(program)
+run(program.args[0])

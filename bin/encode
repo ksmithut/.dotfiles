@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 'use strict'
 
-const R = require('./utils/ramda')
-const program = require('./utils/program')
+const R = require('../node_modules/ramda/dist/ramda.js')
+const program = require('../node_modules/commander/index.js')
 
 process.title = 'decode'
 
@@ -17,10 +17,6 @@ const base64encode = R.pipe(
   R.constructN(1, Buffer),
   R.invoker(1, 'toString')('base64')
 )
-const run = R.pipe(
-  R.path([ 'args', '0' ]),
-  base64encode,
-  log
-)
+const run = R.pipe(R.path(['args', '0']), base64encode, log)
 
 run(program)

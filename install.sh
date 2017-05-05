@@ -48,3 +48,8 @@ for file in $DOTFILES/init/*; do
   source "$file"
   echo "done!"
 done
+
+# 4. Install dotfiles dependencies
+# ================================
+cd $DOTFILES
+yarn
