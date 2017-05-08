@@ -19,6 +19,7 @@ brew cleanup
 
 echo "Installing Homebrew/bundle"
 brew tap Homebrew/bundle
+brew tap homebrew/services
 
 echo "Installing brew recipes..."
 brew bundle --global

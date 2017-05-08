@@ -29,6 +29,9 @@ alias ll='ls -la'
 # starts simple http server in current directory
 alias static='python -m SimpleHTTPServer'
 
+# Stop a docker image based on tag name
+function docker-stop() { docker stop $(docker ps -ql -f ancestor=$1); }
+
 # Change version of node on cd
 function _change_node_version() {
   local node_version="$(nvm version)"
