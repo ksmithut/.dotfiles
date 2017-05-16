@@ -26,5 +26,5 @@ brew bundle --global
 # Cleaning up again
 brew doctor
 brew update
-brew upgrade $(brew outdated)
+brew upgrade
 brew cleanup
