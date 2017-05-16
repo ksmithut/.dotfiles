@@ -1,7 +1,18 @@
 {
+  "name": "dotfiles",
+  "private": true,
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "standard"
+    ]
+  },
   "dependencies": {
     "commander": "^2.9.0",
-    "ramda": "^0.23.0",
+    "ramda": "^0.23.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
     "standard": "^10.0.2"
   }
 }

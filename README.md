@@ -14,15 +14,17 @@ The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 * `copy/` All files in here will be copied over to `~`. Use this for files that
   will carry sensitive information, such as git credentials.
 
+* `init/` All files in here will be run upon running `./scripts/setup.sh`. Use this
+  for things like installing homebrew or other applications that should only
+  need to be run once.
+
 * `link/` All files in here will be symlinked with `ln -s` to `~`. Use this for
   config dotfiles such as `.bash_profile` and `.inputrc`.
 
+* `scripts/` Scripts used to install/setup the dotfiles.
+
 * `source/` All files in here will be included upon every new terminal session.
   Use this for things like aliases, functions, and customizing the bash prompt.
-
-* `init/` All files in here will be run upon running `./install.sh`. Use this
-  for things like installing homebrew or other applications that should only
-  need to be run once.
 
 # Installation
 
@@ -37,8 +39,8 @@ sudo /Applications/Install\ macOS\ Sierra.app/Contents/Resources/createinstallme
 Then backup:
 
 ```sh
-cd ~/.dotfiles # Or wherever this repo exists
-./backup.sh ~/Desktop # after it's done, move the backup/ folder to removable media
+~/.dotfiles/scripts/backup.sh ~/Desktop
+# after it's done, move the backup/ folder to removable media
 ```
 
 Then boot into the install media holding down option key, format the drive, and
@@ -50,7 +52,7 @@ Once in the OS open up the terminal:
 # installs the command-line tools
 xcode-select --install
 git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
-~/.dotfiles/install.sh
+~/.dotfiles/scripts/setup.sh
 ```
 
 You need to manually move over your backup data.
@@ -59,7 +61,7 @@ You need to manually move over your backup data.
 
 Before you begin a clean install, you may wish to backup other non-dotfile
 related files (such as pictures and documents and such). There is a backup
-script to help facilitate that in `./backup.sh`. Open that file and look at the
+script to help facilitate that in `./scripts/backup.sh`. Open that file and look at the
 line that looks like this:
 
 ```sh
@@ -70,7 +72,7 @@ copy_dirs=(
 ```
 
 Add or remove paths in that group as you wish. To run the back up, just `cd`
-into the .dotfiles directory and run `./backup.sh [backup directory]`.
+into the .dotfiles directory and run `./scripts/backup.sh [backup directory]`.
 
 # Fonts
 

@@ -6,7 +6,7 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Set a reference to where dotfiles is.
-export DOTFILES=$( cd "$(dirname "$0")"; pwd -P )
+export DOTFILES=$( cd "$(dirname "$0")/../"; pwd -P )
 
 # Helper util to make headers more readable
 function e_header() {

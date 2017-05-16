@@ -1,10 +1,9 @@
 export EDITOR=vi
-export DOTFILES=~/.dotfiles # TODO make this more dynamic
+export DOTFILES=$(cd "$(dirname "$(readlink "${BASH_SOURCE[0]}")" )/../"; pwd -P)
 # Shell config
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 # Paths: Should add one per line to make it easy to add/remove/change/read
-export PATH="~/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$DOTFILES/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"

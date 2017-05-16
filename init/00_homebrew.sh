@@ -10,7 +10,7 @@ if [[ ! $(which brew) ]]; then
 fi
 
 # Exit if, for some reason, Homebrew is not installed.
-[[ ! $(which brew) ]] && e_error "Homebrew failed to install." && return 1
+[[ ! $(which brew) ]] && echo "Homebrew failed to install." && return 1
 
 echo "Updating Homebrew..."
 brew doctor
@@ -19,7 +19,6 @@ brew cleanup
 
 echo "Installing Homebrew/bundle"
 brew tap Homebrew/bundle
-brew tap homebrew/services
 
 echo "Installing brew recipes..."
 brew bundle --global
