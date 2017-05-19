@@ -14,7 +14,7 @@ program
 const log = R.bind(console.log, console)
 const base64decode = R.pipe(
   R.defaultTo(''),
-  R.constructN(2, Buffer)(R.__, 'base64'),
+  R.partialRight(Buffer.from, ['base64']),
   R.toString
 )
 const run = R.pipe(base64decode, log)

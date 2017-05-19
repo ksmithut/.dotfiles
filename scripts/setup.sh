@@ -27,6 +27,11 @@ for file in $DOTFILES/copy/*; do
   dest="$HOME/$(basename $file)"
   if test -f $dest; then
     echo "$dest already exists"
+    read -p "Overwrite? (y/N)" overwrite
+    case $overwrite in
+      [Yy]* ) cp "$file" "$HOME/$(basename $file)"; break;;
+      * ) echo "Skipping copying $file"
+    esac
   else
     cp "$file" "$HOME/$(basename $file)"
   fi
@@ -37,7 +42,7 @@ done
 e_header "Linking files to $HOME"
 for file in $DOTFILES/link/*; do
   echo "Linking $(basename $file)..."
-  rm -rf "$HOME/$(basename $file)"
+  rm "$HOME/$(basename $file)"
   ln -s "$file" "$HOME/$(basename $file)"
 done
 
