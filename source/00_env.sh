@@ -1,5 +1,4 @@
 # Paths: Should add one per line to make it easy to add/remove/change/read
-export PATH="$DOTFILES/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 

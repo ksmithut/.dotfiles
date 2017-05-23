@@ -6,11 +6,6 @@ on your machine.
 
 The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 
-* `bin/` All files in here will be available as commands in your terminal. If
-  you add files here, you'll need to run
-  `[[ -r $DOTFILES ]] && chmod a+x $DOTFILES/bin/*` in order to
-  execute them.
-
 * `copy/` All files in here will be copied over to `~`. Use this for files that
   will carry sensitive information, such as git credentials.
 

@@ -50,6 +50,21 @@ cd() { builtin cd "$@" && _change_node_version; }
 pushd() { builtin pushd "$@" && _change_node_version; }
 popd() { builtin popd "$@" && _change_node_version; }
 
+# Sets up linting for a node project
+function setup_linting() {
+  yarn add -D standard;
+  cat package.json \
+    | jq -M '.eslintConfig = {"root":true,"extends":["standard"]}' \
+    | tee package.json
+}
+# Sets up linting for a react project
+function setup_linting_react() {
+  yarn add -D standard;
+  cat package.json \
+    | jq -M '.eslintConfig = {"root":true,"extends":["standard","standard-jsx"]}' \
+    | tee package.json
+}
+
 # reverts to a given commit
 function oh_crap() {
   if [ "$1" = "" ]; then
@@ -86,9 +101,6 @@ function dotfiles() {
       ;;
     source)
       source ~/.bash_profile
-      ;;
-    bin)
-      [[ -r $DOTFILES ]] && chmod a+x $DOTFILES/bin/*
       ;;
     *)
       cd $DOTFILES
