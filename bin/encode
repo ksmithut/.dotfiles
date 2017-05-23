@@ -15,7 +15,6 @@ const log = R.bind(console.log, console)
 const base64encode = R.pipe(
   R.defaultTo(''),
   Buffer.from,
-  R.constructN(1, Buffer),
   R.invoker(1, 'toString')('base64')
 )
 const run = R.pipe(R.path(['args', '0']), base64encode, log)
