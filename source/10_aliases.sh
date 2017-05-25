@@ -5,9 +5,9 @@ alias beep='echo -e "\a"'
 alias myip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
 
 # upgrade/update shortcuts
-alias brew-upgrade='brew update; brew upgrade; brew cleanup'
-alias nvm-upgrade='cd "$NVM_DIR" && git checkout master > /dev/null 2>&1 && git pull > /dev/null 2>&1 && git checkout $(git describe --abbrev=0 --tags) > /dev/null 2>&1; cd - > /dev/null; . "$NVM_DIR/nvm.sh";'
-alias upgrade='brew-upgrade'
+alias brew_upgrade='brew update; brew upgrade; brew cleanup'
+alias nvm_upgrade='cd "$NVM_DIR" && git checkout master > /dev/null 2>&1 && git pull > /dev/null 2>&1 && git checkout $(git describe --abbrev=0 --tags) > /dev/null 2>&1; cd - > /dev/null; . "$NVM_DIR/nvm.sh";'
+alias upgrade='brew_upgrade'
 
 # Open up coverage report
 alias coverage='open coverage/lcov-report/index.html'
@@ -27,7 +27,7 @@ alias ll='ls -la'
 alias static='python -m SimpleHTTPServer'
 
 # Stop a docker image based on tag name
-function docker-stop() { docker stop $(docker ps -ql -f ancestor=$1); }
+function docker_stop() { docker stop $(docker ps -ql -f ancestor=$1); }
 
 # reverts to a given commit
 function oh_crap() {
