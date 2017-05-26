@@ -26,7 +26,7 @@ function setup_linting() {
   cat package.json \
     | jq -M '.eslintConfig.root = true' \
     | jq -M '.eslintConfig.extends = ["standard"]' \
-    | tee package.json
+    | tee package.json &>/dev/null
 }
 # Sets up linting for a react project
 function setup_linting_react() {
@@ -34,61 +34,32 @@ function setup_linting_react() {
   cat package.json \
     | jq -M '.eslintConfig.root = true' \
     | jq -M '.eslintConfig.extends = ["standard","standard-jsx"]' \
-    | tee package.json
+    | tee package.json &>/dev/null
 }
 
 function setup_testing() {
   yarn add -D jest @types/jest;
   cat package.json \
     | jq -M '.jest.collectCoverage = true' \
-    | tee package.json
+    | tee package.json &>/dev/null
 }
 
 function setup_react_project() {
-  yarn add react react-dom prop-types classnames
-  yarn add -D react-scripts
+  cp -R "${DOTFILES}/source/_templates/react_project/." ./
+  yarn add \
+    react \
+    react-dom \
+    prop-types \
+    react-intl \
+    react-router-dom\
+    classnames \
+    normalize.css
+  yarn add -D \
+    react-scripts
+  setup_linting_react
   cat package.json \
     | jq -M '.scripts.start = "react-scripts start"' \
     | jq -M '.scripts.test = "react-scripts test"' \
     | jq -M '.scripts.build = "react-scripts build"' \
-    | tee package.json
-  mkdir -p public src/components src/pages
-  # public/index.html
-  echo \
-'<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-</head>
-
-<body>
-  <div id="root"></div>
-</body>
-
-</html>
-' > public/index.html
-  # src/App.js
-  echo \
-"import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App'
-
-ReactDOM.render(<App />, document.getElementById('root'))
-" > src/index.js
-echo \
-"import React from 'react'
-
-class App extends React.Component {
-  render() {
-    return <h1>Hello World</h1>
-  }
-}
-
-export default App
-" > src/App.js
-  setup_linting_react
+    | tee package.json &>/dev/null
 }
