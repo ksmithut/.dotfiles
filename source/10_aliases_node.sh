@@ -38,7 +38,7 @@ function setup_linting_react() {
 }
 
 function setup_testing() {
-  yarn add -D jest;
+  yarn add -D jest @types/jest;
   cat package.json \
     | jq -M '.jest.collectCoverage = true' \
     | tee package.json
