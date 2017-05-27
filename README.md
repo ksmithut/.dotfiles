@@ -7,14 +7,16 @@ on your machine.
 The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 
 * `copy/` All files in here will be copied over to `~`. Use this for files that
-  will carry sensitive information, such as git credentials.
+  will carry sensitive information, such as git credentials, or for files that
+  you may want to override on your given installation, but not override for all
+  of your computers.
 
 * `init/` All files in here will be run upon running `./scripts/setup.sh`. Use this
   for things like installing homebrew or other applications that should only
   need to be run once.
 
 * `link/` All files in here will be symlinked with `ln -s` to `~`. Use this for
-  config dotfiles such as `.bash_profile` and `.inputrc`.
+  config dotfiles such as `.bash_profile`.
 
 * `scripts/` Scripts used to install/setup the dotfiles.
 
