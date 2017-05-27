@@ -3,4 +3,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const LOCALE = process.env.REACT_APP_LOCALE
+const messages = require(`./messages/${LOCALE}.json`)
+const rootElement = document.getElementById('root')
+const app = <App locale={LOCALE} messages={messages} />
+
+ReactDOM.render(app, rootElement)

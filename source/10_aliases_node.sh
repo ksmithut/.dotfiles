@@ -30,9 +30,10 @@ function setup_linting() {
 }
 # Sets up linting for a react project
 function setup_linting_react() {
-  yarn add -D standard;
+  yarn add -D standard babel-eslint;
   cat package.json \
     | jq -M '.eslintConfig.root = true' \
+    | jq -M '.eslintConfig.parser = "babel-eslint"' \
     | jq -M '.eslintConfig.extends = ["standard","standard-jsx"]' \
     | tee package.json &>/dev/null
 }
@@ -47,19 +48,18 @@ function setup_testing() {
 function setup_react_project() {
   cp -R "${DOTFILES}/source/_templates/react_project/." ./
   yarn add \
+    classnames \
+    normalize.css \
+    prop-types \
     react \
     react-dom \
-    prop-types \
     react-intl \
-    react-router-dom\
-    classnames \
-    normalize.css
+    react-router-dom
   yarn add -D \
-    react-scripts
+    @types/jest \
+    enzyme \
+    jest-enzyme \
+    react-scripts \
+    react-test-renderer
   setup_linting_react
-  cat package.json \
-    | jq -M '.scripts.start = "react-scripts start"' \
-    | jq -M '.scripts.test = "react-scripts test"' \
-    | jq -M '.scripts.build = "react-scripts build"' \
-    | tee package.json &>/dev/null
 }

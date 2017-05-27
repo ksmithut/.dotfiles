@@ -1,5 +1,4 @@
-*.env
-*.log
+*.log*
 Thumbs.db
 .sql
 .sass-cache/
