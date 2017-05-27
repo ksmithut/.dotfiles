@@ -37,29 +37,10 @@ function setup_linting_react() {
     | jq -M '.eslintConfig.extends = ["standard","standard-jsx"]' \
     | tee package.json &>/dev/null
 }
-
+# Sets up testing for a typical javascript project
 function setup_testing() {
   yarn add -D jest @types/jest;
   cat package.json \
     | jq -M '.jest.collectCoverage = true' \
     | tee package.json &>/dev/null
-}
-
-function setup_react_project() {
-  cp -R "${DOTFILES}/source/_templates/react_project/." ./
-  yarn add \
-    classnames \
-    normalize.css \
-    prop-types \
-    react \
-    react-dom \
-    react-intl \
-    react-router-dom
-  yarn add -D \
-    @types/jest \
-    enzyme \
-    jest-enzyme \
-    react-scripts \
-    react-test-renderer
-  setup_linting_react
 }
