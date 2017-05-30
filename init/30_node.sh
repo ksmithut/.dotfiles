@@ -9,5 +9,5 @@ export NVM_DIR="$HOME/.nvm" && (
 ) && . "$NVM_DIR/nvm.sh"
 
 # install latest version of node
-nvm install node stable
-nvm alias default node stable
+nvm install stable
+nvm alias default stable
