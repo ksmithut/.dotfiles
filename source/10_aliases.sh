@@ -6,7 +6,14 @@ alias myip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
 
 # upgrade/update shortcuts
 alias brew_upgrade='brew update; brew upgrade; brew cleanup'
-alias nvm_upgrade='cd "$NVM_DIR" && git checkout master > /dev/null 2>&1 && git pull > /dev/null 2>&1 && git checkout $(git describe --abbrev=0 --tags) > /dev/null 2>&1; cd - > /dev/null; . "$NVM_DIR/nvm.sh";'
+function nvm_upgrade() {
+  cd "$NVM_DIR";
+  git checkout master;
+  git pull;
+  git checkout $(git describe --abbrev=0 --tags);
+  cd - > /dev/null;
+  . "$NVM_DIR/nvm.sh";
+}
 alias upgrade='brew_upgrade'
 
 # Open up coverage report
