@@ -11,3 +11,5 @@ export NVM_DIR="$HOME/.nvm" && (
 # install latest version of node
 nvm install stable
 nvm alias default stable
+
+yarn global add now
