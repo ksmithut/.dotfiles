@@ -5,8 +5,8 @@ alias beep='echo -e "\a"'
 alias myip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
 
 # upgrade/update shortcuts
-alias brew_upgrade='brew update; brew upgrade; brew cleanup'
-function nvm_upgrade() {
+alias brew-upgrade='brew update; brew upgrade; brew cleanup'
+function nvm-upgrade() {
   cd "$NVM_DIR";
   git checkout master;
   git pull;
@@ -14,7 +14,7 @@ function nvm_upgrade() {
   cd - > /dev/null;
   . "$NVM_DIR/nvm.sh";
 }
-alias upgrade='brew_upgrade'
+alias upgrade='brew-upgrade'
 
 # Open up coverage report
 alias coverage='open coverage/lcov-report/index.html'
@@ -34,10 +34,10 @@ alias ll='ls -la'
 alias static='python -m SimpleHTTPServer'
 
 # Stop a docker image based on tag name
-function docker_stop() { docker stop $(docker ps -ql -f ancestor=$1); }
+function docker-stop() { docker stop $(docker ps -ql -f ancestor=$1); }
 
 # reverts to a given commit
-function oh_crap() {
+function oh-crap() {
   if [ "$1" = "" ]; then
     echo 'You must pass in a commit id'
   fi

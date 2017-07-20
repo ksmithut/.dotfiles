@@ -1,5 +1,5 @@
 # Sets up linting for a node project
-function setup_linting() {
+function setup-linting() {
   yarn add -D standard;
   cat package.json \
     | jq -M '.eslintConfig.root = true' \
@@ -7,7 +7,7 @@ function setup_linting() {
     | tee package.json &>/dev/null
 }
 # Sets up linting for a react project
-function setup_linting_react() {
+function setup-linting-react() {
   yarn add -D standard babel-eslint;
   cat package.json \
     | jq -M '.eslintConfig.root = true' \
@@ -16,9 +16,11 @@ function setup_linting_react() {
     | tee package.json &>/dev/null
 }
 # Sets up testing for a typical javascript project
-function setup_testing() {
+function setup-testing() {
   yarn add -D jest @types/jest;
   cat package.json \
     | jq -M '.jest.collectCoverage = true' \
     | tee package.json &>/dev/null
 }
+
+alias upgrade-interactive='npx npm-upgrade'
