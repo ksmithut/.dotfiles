@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 # Keep-alive: update existing `sudo` time stamp until everything has finished
 echo "Enter your password here. You should only have to enter it once through this whole process"
 sudo -v
