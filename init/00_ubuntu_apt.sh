@@ -13,9 +13,9 @@ sudo apt install -y \
 mkdir -p "$DOTFILES/caches/installers/"
 
 # Remove LibreOffice
-sudo apt-get remove --purge libreoffice*
-sudo apt-get clean
-sudo apt-get autoremove
+sudo apt-get remove --purge libreoffice* -y
+sudo apt-get clean -y
+sudo apt-get autoremove -y
 
 # Visual Studio Code
 # https://code.visualstudio.com/docs/setup/linux
