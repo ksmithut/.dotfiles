@@ -50,6 +50,7 @@ for file in $DOTFILES/link/*; do
   rm "$HOME/$(basename $file)" 2> /dev/null
   ln -s "$file" "$HOME/$(basename $file)"
 done
+for file in $DOTFILES/source/*.sh; do source "$file"; done
 
 # 3. System Initialization
 # ========================
