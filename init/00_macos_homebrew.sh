@@ -1,3 +1,6 @@
+# OSX-only stuff. Abort if not OSX.
+is_macos || return 1
+
 # Allow myself to use my software without asking myself for permission
 sudo chown -R $(whoami) /usr/local
 

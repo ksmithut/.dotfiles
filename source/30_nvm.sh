@@ -3,6 +3,16 @@ export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 export NODEJS_ORG_MIRROR="$NVM_NODEJS_ORG_MIRROR"
 
+# Upgrade nvm
+function nvm-upgrade() {
+  cd "$NVM_DIR";
+  git checkout master;
+  git pull;
+  git checkout $(git describe --abbrev=0 --tags);
+  cd - > /dev/null;
+  . "$NVM_DIR/nvm.sh";
+}
+
 # Change version of node on cd
 function _change_node_version() {
   local node_version="$(nvm version)"
