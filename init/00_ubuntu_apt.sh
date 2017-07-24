@@ -1,10 +1,10 @@
 # Ubuntu-only stuff. Abort if not OSX.
 is_ubuntu || return 1
 
-sudo apt update -y
-sudo apt upgrade -y
+sudo apt-get update -y
+sudo apt-get upgrade -y
 
-sudo apt install -y \
+sudo apt-get install -y \
   build-essential \
   jq \
   tree
