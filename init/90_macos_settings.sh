@@ -1,3 +1,6 @@
+# OSX-only stuff. Abort if not OSX.
+is_macos || return 1
+
 # Prevent Photos from opening automatically
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 # to Revert

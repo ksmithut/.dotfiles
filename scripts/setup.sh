@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # Keep-alive: update existing `sudo` time stamp until everything has finished
 echo "Enter your password here. You should only have to enter it once through this whole process"
 sudo -v
@@ -45,7 +47,7 @@ done
 e_header "Linking files to $HOME"
 for file in $DOTFILES/link/*; do
   echo "Linking $(basename $file)..."
-  rm "$HOME/$(basename $file)"
+  rm "$HOME/$(basename $file)" 2> /dev/null
   ln -s "$file" "$HOME/$(basename $file)"
 done
 

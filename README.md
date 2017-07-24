@@ -23,7 +23,7 @@ The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 * `source/` All files in here will be included upon every new terminal session.
   Use this for things like aliases, functions, and customizing the bash prompt.
 
-# Installation
+# Mac Installation
 
 If you want to create a bootable installer for macOS, follow the instructions
 [here][createinstallmedia].
@@ -53,6 +53,16 @@ git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
 ```
 
 You need to manually move over your backup data.
+
+# Ubuntu Installation
+
+```
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install git -y
+git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
+~/.dotfiles/scripts/setup.sh
+```
 
 # Backup
 
