@@ -107,6 +107,6 @@ fi
 # ========================
 if is_ubuntu; then
   # upgrade/update shortcuts
-  alias apt-upgrade='sudo apt update -y; sudo apt upgrade -y'
+  alias apt-upgrade='sudo apt-get update -y; sudo apt-get upgrade -y'
   alias upgrade='apt-upgrade'
 fi
