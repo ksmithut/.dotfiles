@@ -40,6 +40,10 @@ sudo apt-get update -y && sudo apt-get install yarn -y
 wget -O "$DOTFILES/caches/installers/docker.deb" "https://download.docker.com/linux/ubuntu/dists/$(lsb_release -cs)/pool/stable/amd64/docker-ce_17.06.0~ce-0~ubuntu_amd64.deb"
 sudo dpkg -i "$DOTFILES/caches/installers/docker.deb"
 sudo apt-get install -fy
+# Add current user to docker group
+sudo groupadd docker
+sudo gpasswd -a $USER docker
+newgrp docker
 
 # Slack
 wget -O "$DOTFILES/caches/installers/slack.deb" https://downloads.slack-edge.com/linux_releases/slack-desktop-2.6.3-amd64.deb
