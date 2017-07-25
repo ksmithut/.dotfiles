@@ -56,19 +56,22 @@ function dotfiles() {
 
 # Sets up linting for a node project
 function setup-linting() {
-  yarn add -D standard;
+  yarn add -D standard prettier prettier-eslint;
   cat package.json \
+    | jq -M '.scripts.lint = "standard"' \
     | jq -M '.eslintConfig.root = true' \
     | jq -M '.eslintConfig.extends = ["standard"]' \
     | tee package.json &>/dev/null
 }
 # Sets up linting for a react project
 function setup-linting-react() {
-  yarn add -D standard babel-eslint;
+  yarn add -D standard babel-eslint prettier prettier-eslint;
   cat package.json \
+    | jq -M '.scripts.lint = "standard"' \
     | jq -M '.eslintConfig.root = true' \
     | jq -M '.eslintConfig.parser = "babel-eslint"' \
     | jq -M '.eslintConfig.extends = ["standard","standard-jsx"]' \
+    | jq -M '.standard.parser = "babel-eslint"' \
     | tee package.json &>/dev/null
 }
 # Sets up testing for a typical javascript project
@@ -76,6 +79,10 @@ function setup-testing() {
   yarn add -D jest @types/jest;
   cat package.json \
     | jq -M '.jest.collectCoverage = true' \
+    | jq -M '.jest.coverageThreshold.global.statements = 100' \
+    | jq -M '.jest.coverageThreshold.global.branch = 100' \
+    | jq -M '.jest.coverageThreshold.global.functions = 100' \
+    | jq -M '.jest.coverageThreshold.global.lines = 100' \
     | tee package.json &>/dev/null
 }
 
