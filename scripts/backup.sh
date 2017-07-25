@@ -3,6 +3,7 @@
 copy_dirs=(
   ~/.gnupg
   ~/.ssh
+  ~/.aws
   ~/Code
   ~/Documents
   ~/Pictures
