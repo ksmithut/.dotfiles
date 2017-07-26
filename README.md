@@ -64,6 +64,23 @@ git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
 ~/.dotfiles/scripts/setup.sh
 ```
 
+You'll want to make sure you copy over your gpg keys from your main machine:
+
+```sh
+# On root machine
+gpg --export-secret-keys -a [keyid] > private_key.asc
+gpg --export -a [keyid] > public_key.asc
+```
+
+```sh
+# On new machine
+gpg --import private_key.asc
+gpg --import public_key.asc
+
+gpg --edit-key [email for key]
+> trust
+```
+
 # Backup
 
 Before you begin a clean install, you may wish to backup other non-dotfile
