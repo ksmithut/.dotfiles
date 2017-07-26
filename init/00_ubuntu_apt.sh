@@ -7,7 +7,8 @@ sudo apt-get upgrade -y
 sudo apt-get install -y \
   build-essential \
   jq \
-  tree
+  tree \
+  pass
 
 # Create installers foler
 mkdir -p "$DOTFILES/caches/installers/"
