@@ -25,9 +25,9 @@ sudo dpkg -i "$DOTFILES/caches/installers/vscode.deb"
 sudo apt-get install -fy
 
 # Chrome
-# wget -O "$DOTFILES/caches/installers/chrome.deb" https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-# sudo dpkg -i "$DOTFILES/caches/installers/chrome.deb"
-# sudo apt-get install -fy
+wget -O "$DOTFILES/caches/installers/chrome.deb" https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i "$DOTFILES/caches/installers/chrome.deb"
+sudo apt-get install -fy
 
 # yarn
 # https://yarnpkg.com/en/docs/install#linux-tab
