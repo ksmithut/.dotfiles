@@ -1,3 +1,6 @@
+# This file is for aliases/functions/scripts that are to be used only by the
+# the files in this repo, mostly just to detect platform differences.
+
 # OS detection
 function is_macos() {
   [[ "$OSTYPE" =~ ^darwin ]] || return 1

@@ -1,3 +1,5 @@
+# Start the ssh agent if it hasn't started
+
 if [ "$(pgrep ssh-agent)" == "" ]; then
   eval $(ssh-agent -s > /dev/null 2>&1)
   # adds all of the private keys to the agent

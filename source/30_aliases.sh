@@ -1,3 +1,5 @@
+# A list of functions/aliases to use to make some things easier
+
 # makes a directory and moves to it
 function dir() { mkdir -p "${1}" && cd $_; }
 
