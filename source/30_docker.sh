@@ -10,3 +10,6 @@ alias dock-mongo='docker run -p 27017:27017 mongo:latest'
 
 # Redis
 alias dock-redis='docker run -p 6379:6379 redis:alpine'
+
+# PostgreSQL
+alias dock-postgres='docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres postgres:alpine'
