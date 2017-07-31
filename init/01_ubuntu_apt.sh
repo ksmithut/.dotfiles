@@ -8,7 +8,8 @@ sudo apt-get install -y \
   build-essential \
   jq \
   tree \
-  pass
+  pass \
+  vim
 
 # Create installers foler
 mkdir -p "$DOTFILES/caches/installers/"
@@ -45,6 +46,9 @@ sudo apt-get install -fy
 sudo groupadd docker
 sudo gpasswd -a $USER docker
 newgrp docker
+# docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.14.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 # Slack
 wget -O "$DOTFILES/caches/installers/slack.deb" https://downloads.slack-edge.com/linux_releases/slack-desktop-2.6.3-amd64.deb
