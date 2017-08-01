@@ -3,16 +3,22 @@
 
 function dock() {
   case $1 in
-    -h|--help)
-      echo
-      echo "  Usage: dock [application]"
-      echo
-      echo "    An application to run common daemons"
-      echo
-      echo "  Examples:"
-      echo
-      echo "    $ dock elasticsearch"
-      echo
+    -h|--help|help)
+      echo "
+  Usage: dock [application]
+
+    An application to run common daemons
+
+  Commands:
+
+    dock ls|list         List available applications
+    dock -h|--help|help  Display this message
+    dock [application]   Run the specified application
+
+  Examples:
+
+    $ dock elasticsearch
+"
       ;;
 
     ls|list)
@@ -36,7 +42,7 @@ function dock() {
 
     # MongoDB
     # =======
-    mongo)
+    mongodb)
       docker run \
         -p 27017:27017 \
         mongo:latest
@@ -72,7 +78,7 @@ function dock() {
   esac
 }
 
-function _complete_dock() {
+function _dock_complete() {
   local cur
   COMPREPLY=()
   cur=${COMP_WORDS[COMP_CWORD]}
@@ -86,4 +92,4 @@ function _complete_dock() {
   return 0
 }
 
-complete -F _complete_dock dock
+complete -F _dock_complete dock
