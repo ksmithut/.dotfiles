@@ -41,19 +41,7 @@ function clone() {
 
 # dotfiles commands
 function dotfiles() {
-  case $1 in
-    update)
-      cd $DOTFILES
-      git pull --rebase
-      cd - > /dev/null
-      ;;
-    source)
-      source ~/.bash_profile
-      ;;
-    *)
-      cd $DOTFILES
-      ;;
-  esac
+  cd $DOTFILES
 }
 
 # Sets up linting for a node project
