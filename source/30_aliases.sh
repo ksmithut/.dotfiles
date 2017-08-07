@@ -98,6 +98,9 @@ if is_macos; then
   # show/hide hidden files in finder
   alias show='defaults write com.apple.finder AppleShowAllFiles -bool TRUE; killall Finder;'
   alias hide='defaults write com.apple.finder AppleShowAllFiles -bool FALSE; killall Finder;'
+
+  # Opens current github repo in a browser
+  alias git-open='open $(git remote get-url origin | sed "s/^git@\(.*\)\.com:\(.*\)\.git$/https:\/\/\1.com\/\2/g")'
 fi
 
 # Ubuntu aliases/functions
