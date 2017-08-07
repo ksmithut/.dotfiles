@@ -23,7 +23,7 @@ function dock() {
 
     ls|list)
       echo "elasticsearch"
-      echo "mongo"
+      echo "mongodb"
       echo "postgres"
       echo "redis"
       ;;
