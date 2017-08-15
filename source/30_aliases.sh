@@ -76,6 +76,25 @@ function setup-testing() {
     | tee package.json &>/dev/null
 }
 
+# Get git status of all projects in current directory
+function git-super-status() {
+  for d in *; do
+    if [[ -d $d ]]; then
+      builtin cd $d
+      local directory="\033[0;36m${d}\033[00m"
+      local rawBranch=$(git rev-parse --abbrev-ref HEAD)
+      local branch="\033[0;33m${rawBranch}\033[00m"
+      local status="$(git status -s)"
+      printf "Status for ${directory}:\n"
+      printf "Branch: ${branch}\n"
+      echo "Status: "
+      git status -s
+      echo
+      builtin cd ..
+    fi
+  done
+}
+
 # Upgrade local packages interactively
 alias upgrade-interactive='npx npm-upgrade'
 
