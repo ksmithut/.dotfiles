@@ -11,7 +11,7 @@ sudo apt-get install -y \
   build-essential \
   jq \
   tree \
-  pass \
+  oathtool \
   vim
 
 # Create installers foler
@@ -57,3 +57,16 @@ sudo chmod +x /usr/local/bin/docker-compose
 wget -O "$DOTFILES/caches/installers/slack.deb" https://downloads.slack-edge.com/linux_releases/slack-desktop-2.6.3-amd64.deb
 sudo dpkg -i "$DOTFILES/caches/installers/slack.deb"
 sudo apt-get install -fy
+
+# pass and pass otp
+# https://github.com/tadfisher/pass-otp
+wget -O "$DOTFILES/caches/installers/pass.tar.xz" https://git.zx2c4.com/password-store/snapshot/password-store-1.7.1.tar.xz
+tar xf "$DOTFILES/caches/installers/pass.tar.xz"
+cd "$DOTFILES/caches/installers/password-store-1.7.1"
+sudo make install
+cd -
+
+git clone https://github.com/tadfisher/pass-otp "$DOTFILES/caches/installers/pass-otp"
+cd "$DOTFILES/caches/installers/pass-otp"
+sudo make install
+cd -
