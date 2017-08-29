@@ -10,8 +10,11 @@ alias ll='ls -la'
 # starts simple http server in current directory
 alias static='python -m SimpleHTTPServer'
 
-# Stop a docker image based on tag name
-function docker-stop() { docker stop $(docker ps -ql -f ancestor=$1); }
+# Stop all docker containers
+alias docker-containers-stop='docker stop $(docker ps -a -q)'
+alias docker-containers-remove='docker rm $(docker ps -a -q)'
+alias docker-images-remove='docker rmi $(docker images -q)'
+alias docker-volumes-remove='docker volume rm $(docker volume ls -qf dangling=true)'
 
 # reverts to a given commit
 function oh-crap() {
@@ -120,6 +123,9 @@ if is_macos; then
 
   # Opens current github repo in a browser
   alias git-open='open $(git remote get-url origin | sed "s/^git@\(.*\)\.com:\(.*\)\.git$/https:\/\/\1.com\/\2/g")'
+
+  # MD5 Checksum
+  alias checksum='openssl md5'
 fi
 
 # Ubuntu aliases/functions
@@ -128,4 +134,7 @@ if is_ubuntu; then
   # upgrade/update shortcuts
   alias apt-upgrade='sudo apt-get update -y; sudo apt-get upgrade -y'
   alias upgrade='apt-upgrade'
+
+  # MD5 Checksum
+  alias checksum='md5sum'
 fi
