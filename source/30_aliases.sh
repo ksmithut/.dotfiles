@@ -3,6 +3,9 @@
 # makes a directory and moves to it
 function dir() { mkdir -p "${1}" && cd $_; }
 
+# gpg helpers
+alias gpg-ls='gpg --list-secret-keys --keyid-format LONG'
+
 # sets default ls action to have trailing slashes at the end of directories
 alias ls='ls -p'
 alias ll='ls -la'
