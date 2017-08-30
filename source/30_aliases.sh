@@ -17,7 +17,8 @@ alias static='python -m SimpleHTTPServer'
 alias docker-containers-stop='docker stop $(docker ps -a -q)'
 alias docker-containers-remove='docker rm $(docker ps -a -q)'
 alias docker-images-remove='docker rmi $(docker images -q)'
-alias docker-volumes-remove='docker volume rm $(docker volume ls -qf dangling=true)'
+alias docker-volumes-remove='docker volume rm $(docker volume ls -qf)'
+alias docker-clean='docker-containers-stop; docker-containers-remove; docker-images-remove; docker-volumes-remove;'
 
 # reverts to a given commit
 function oh-crap() {
