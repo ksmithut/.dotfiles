@@ -13,6 +13,13 @@ alias ll='ls -la'
 # starts simple http server in current directory
 alias static='python -m SimpleHTTPServer'
 
+# docker helpers
+alias docker-stop-containers='docker stop $(docker ps -a -q)'
+alias docker-remove-containers='docker rm $(docker ps -a -q)'
+alias docker-remove-images='docker rmi $(docker images -a -q)'
+alias docker-remove-volumes='docker volume rm $(docker volume ls -f dangling=true -q)'
+alias docker-clean='docker-stop-containers; docker-remove-containers; docker-remove-images; docker-remove-volumes;'
+
 # reverts to a given commit
 function oh-crap() {
   if [ "$1" = "" ]; then
