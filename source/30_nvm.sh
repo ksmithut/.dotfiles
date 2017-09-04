@@ -7,11 +7,11 @@ export NODEJS_ORG_MIRROR="$NVM_NODEJS_ORG_MIRROR"
 
 # Upgrade nvm
 function nvm-upgrade() {
-  cd "$NVM_DIR";
+  builtin cd "$NVM_DIR";
   git checkout master;
   git pull;
   git checkout $(git describe --abbrev=0 --tags);
-  cd - > /dev/null;
+  builtin cd - > /dev/null;
   . "$NVM_DIR/nvm.sh";
 }
 

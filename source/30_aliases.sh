@@ -1,7 +1,7 @@
 # A list of functions/aliases to use to make some things easier
 
 # makes a directory and moves to it
-function dir() { mkdir -p "${1}" && cd $_; }
+function dir() { mkdir -p "${1}" && builtin cd $_; }
 
 # gpg helpers
 alias gpg-ls='gpg --list-secret-keys --keyid-format LONG'

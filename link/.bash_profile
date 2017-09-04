@@ -1,5 +1,5 @@
 # Initialize the DOTFILES variable so other scripts can use it
-export DOTFILES=$(cd "$(dirname "$(readlink "${BASH_SOURCE[0]}")" )/../"; pwd -P)
+export DOTFILES=$(builtin cd "$(dirname "$(readlink "${BASH_SOURCE[0]}")" )/../"; pwd -P)
 
 # Source all of the files in ~/.dotfiles/source
 for file in $DOTFILES/source/*.sh; do source "$file"; done

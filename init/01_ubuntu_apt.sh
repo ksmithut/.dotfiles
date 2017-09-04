@@ -6,7 +6,6 @@ sudo apt-get upgrade -y
 
 sudo apt-get install -y \
   curl \
-  pass \
   wget \
   build-essential \
   jq \
@@ -62,11 +61,11 @@ sudo apt-get install -fy
 # https://github.com/tadfisher/pass-otp
 wget -O "$DOTFILES/caches/installers/pass.tar.xz" https://git.zx2c4.com/password-store/snapshot/password-store-1.7.1.tar.xz
 tar xf "$DOTFILES/caches/installers/pass.tar.xz"
-cd "$DOTFILES/caches/installers/password-store-1.7.1"
+builtin cd "$DOTFILES/caches/installers/password-store-1.7.1"
 sudo make install
-cd -
+builtin cd -
 
 git clone https://github.com/tadfisher/pass-otp "$DOTFILES/caches/installers/pass-otp"
-cd "$DOTFILES/caches/installers/pass-otp"
+builtin cd "$DOTFILES/caches/installers/pass-otp"
 sudo make install
-cd -
+builtin cd -
