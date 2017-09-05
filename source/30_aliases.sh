@@ -142,5 +142,6 @@ if is_ubuntu; then
   # MD5 Checksum
   alias checksum='md5sum'
 
+  # Clear back buffer (like cmd + k)
   alias clear='clear && echo -en "\e[3J"'
 fi
