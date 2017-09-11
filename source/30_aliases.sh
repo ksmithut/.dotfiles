@@ -144,4 +144,7 @@ if is_ubuntu; then
 
   # Clear back buffer (like cmd + k)
   alias clear='clear && echo -en "\e[3J"'
+
+  # vim over vi on linux
+  alias vi='vim'
 fi
