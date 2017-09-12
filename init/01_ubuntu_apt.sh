@@ -69,3 +69,7 @@ git clone https://github.com/tadfisher/pass-otp "$DOTFILES/caches/installers/pas
 builtin cd "$DOTFILES/caches/installers/pass-otp"
 sudo make install
 builtin cd -
+
+# Gnome extensions
+# Tiling window manager
+git clone https://github.com/vibou/vibou.gTile.git ~/.local/share/gnome-shell/extensions/gTile@vibou
