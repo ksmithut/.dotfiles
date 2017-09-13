@@ -88,14 +88,13 @@ function git-super-status() {
   for d in *; do
     if [[ -d $d ]]; then
       builtin cd $d
+      git fetch
       local directory="\033[0;36m${d}\033[00m"
       local rawBranch=$(git rev-parse --abbrev-ref HEAD)
-      local branch="\033[0;33m${rawBranch}\033[00m"
-      local status="$(git status -s)"
+      local status="\033[0;33m$(__git_info)\033[00m"
+
       printf "Status for ${directory}:\n"
-      printf "Branch: ${branch}\n"
-      echo "Status: "
-      git status -s
+      printf "Status: ${status}\n"
       echo
       builtin cd ..
     fi
