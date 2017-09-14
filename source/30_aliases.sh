@@ -146,4 +146,9 @@ if is_ubuntu; then
 
   # vim over vi on linux
   alias vi='vim'
+
+  # open for linux
+  function open() {
+    xdg-open "$*" &>/dev/null
+  }
 fi
