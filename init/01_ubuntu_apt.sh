@@ -10,6 +10,7 @@ sudo apt-get install -y \
   build-essential \
   jq \
   tree \
+  trash-cli \
   oathtool \
   vim
 
