@@ -1,4 +1,4 @@
-# Ubuntu-only stuff. Abort if not OSX.
+# Ubuntu-only stuff. Abort if not Ubuntu.
 is_ubuntu || return 1
 
 # Load .bash_profile on load

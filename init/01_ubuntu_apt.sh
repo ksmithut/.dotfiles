@@ -1,4 +1,4 @@
-# Ubuntu-only stuff. Abort if not OSX.
+# Ubuntu-only stuff. Abort if macOS.
 is_ubuntu || return 1
 
 sudo apt-get update -y
@@ -40,20 +40,29 @@ sudo apt-get update -y && sudo apt-get install yarn -y
 
 # docker
 # https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-docker-ce
-# https://download.docker.com/linux/ubuntu/dists/zesty/pool/stable/amd64/
-wget -O "$DOTFILES/caches/installers/docker.deb" "https://download.docker.com/linux/ubuntu/dists/$(lsb_release -cs)/pool/stable/amd64/docker-ce_17.06.0~ce-0~ubuntu_amd64.deb"
-sudo dpkg -i "$DOTFILES/caches/installers/docker.deb"
-sudo apt-get install -fy
+sudo apt-get install \
+  apt-transport-https \
+  ca-certificates \
+  curl \
+  software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository \
+  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) \
+  stable"
+sudo apt-get update
+sudo apt-get install docker-ce
 # Add current user to docker group
 sudo groupadd docker
 sudo gpasswd -a $USER docker
+sudo usermod -aG docker $USER
 newgrp docker
 # docker-compose
-curl -L https://github.com/docker/compose/releases/download/1.14.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
 # Slack
-wget -O "$DOTFILES/caches/installers/slack.deb" https://downloads.slack-edge.com/linux_releases/slack-desktop-2.6.3-amd64.deb
+wget -O "$DOTFILES/caches/installers/slack.deb" https://downloads.slack-edge.com/linux_releases/slack-desktop-2.8.0-amd64.deb
 sudo dpkg -i "$DOTFILES/caches/installers/slack.deb"
 sudo apt-get install -fy
 

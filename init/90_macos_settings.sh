@@ -1,4 +1,4 @@
-# OSX-only stuff. Abort if not OSX.
+# macOS-only stuff. Abort if not macOS.
 is_macos || return 1
 
 # Prevent Photos from opening automatically
