@@ -13,6 +13,9 @@ alias ll='ls -la'
 # starts simple http server in current directory
 alias static='python -m SimpleHTTPServer'
 
+# start a node debugger in an existing process
+alias node-debug='node -e "process.argv[1] && process._debugProcess(process.argv[1])" $(pgrep node | head -1)'
+
 # docker helpers
 alias docker-stop-containers='docker stop $(docker ps -a -q)'
 alias docker-remove-containers='docker rm $(docker ps -a -q)'
