@@ -30,7 +30,7 @@ If you want to create a bootable installer for macOS, follow the instructions
 
 ```sh
 # Change /Volumes/Untitled to the volume you want it to be
-sudo /Applications/Install\ macOS\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ macOS\ Sierra.app --nointeraction
+sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ macOS\ High\ Sierra.app --nointeraction
 ```
 
 Then backup:
