@@ -4,7 +4,6 @@ tap 'homebrew/services'
 
 # Tools
 brew 'bash'
-brew 'exercism'
 brew 'git'
 brew 'gpg'
 brew 'gpg-agent'
@@ -18,13 +17,8 @@ brew 'watchman'
 brew 'wget'
 brew 'yarn'
 
-# Languages/Runtimes
-brew 'go'
-brew 'elixir'
-
 # Databases
 brew 'mongodb'
-brew 'postgresql'
 brew 'redis'
 
 # Mac App Store
@@ -53,6 +47,5 @@ cask 'visual-studio-code'
 cask 'battle-net'
 cask 'league-of-legends'
 cask 'minecraft'
-cask 'starcraft'
 cask 'steam'
 cask 'twitch'
