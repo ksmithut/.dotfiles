@@ -26,6 +26,7 @@ function dock() {
       echo "mongodb"
       echo "postgres"
       echo "redis"
+      echo "rabbitmq"
       ;;
 
     # Elasticsearch
@@ -69,6 +70,15 @@ function dock() {
       docker run \
         -p 6379:6379 \
         redis:alpine
+      ;;
+
+    # RabbitMQ
+    # ========
+    rabbitmq)
+      docker run \
+        -p 5672:5672 \
+        -p 15672:15672 \
+        rabbitmq:management-alpine
       ;;
 
     # All else
