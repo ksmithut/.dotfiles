@@ -13,9 +13,20 @@
   "nats": {
     "info": {
       "port": "4222",
-      "url": "nats://localhost:4222"
+      "url": "nats://localhost:4222",
+      "monitoringUrl": "http://localhost:8222"
     },
-    "run": "docker run -p 4222:4222 nats:latest"
+    "run": "docker run -p 4222:4222 -p 8222:8222 nats:latest"
+  },
+
+
+  "nats_streaming": {
+    "info": {
+      "port": "4222",
+      "url": "nats://localhost:4222",
+      "monitoringUrl": "http://localhost:8222"
+    },
+    "run": "docker run -p 4222:4222 -p 8222:8222 nats-streaming:latest"
   },
 
 
