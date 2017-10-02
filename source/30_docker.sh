@@ -1,6 +1,8 @@
 # These are commands to run software I don't necessarily want to setup on my
 # machine, but could run in a docker container
 
+DOCK_CONFIG_PATH="${HOME}/.dock.json"
+
 function dock() {
   case $1 in
     -h|--help|help)
@@ -21,69 +23,26 @@ function dock() {
 "
       ;;
 
+    # List configured images
     ls|list)
-      echo "elasticsearch"
-      echo "mongodb"
-      echo "postgres"
-      echo "redis"
-      echo "rabbitmq"
-      ;;
-
-    # Elasticsearch
-    # =============
-    elasticsearch)
-      echo "username = elastic"
-      echo "password = changeme"
-      docker run \
-        -p 9200:9200 \
-        -e "http.host=0.0.0.0" \
-        -e "transport.host=127.0.0.1" \
-        docker.elastic.co/elasticsearch/elasticsearch:5.5.1
-      ;;
-
-    # MongoDB
-    # =======
-    mongodb)
-      docker run \
-        -p 27017:27017 \
-        mongo:latest
-      ;;
-
-    # PostgreSQL
-    # ==========
-    postgres)
-      echo "database = postgres"
-      echo "username = postgres"
-      echo "password = postgres"
-      # TODO volume = /var/lib/postgresql/data
-      docker run \
-        -p 5432:5432 \
-        -e "POSTGRES_USER=postgres" \
-        -e "POSTGRES_PASSWORD=postgres" \
-        -e "POSTGRES_DB=postgres" \
-        postgres:alpine
-      ;;
-
-    # Redis
-    # =====
-    redis)
-      docker run \
-        -p 6379:6379 \
-        redis:alpine
-      ;;
-
-    # RabbitMQ
-    # ========
-    rabbitmq)
-      docker run \
-        -p 5672:5672 \
-        -p 15672:15672 \
-        rabbitmq:management-alpine
+      cat "${DOCK_CONFIG_PATH}" | jq 'keys | .[]' -M -r
       ;;
 
     # All else
     *)
-      dock --help
+      local data="$(cat "${DOCK_CONFIG_PATH}" | jq .$1)"
+      # If we have `null`, then we don't have an image for that
+      if [ "${data}" == "null" ]; then
+        dock --help
+        return 1
+      fi
+      local info="$(echo ${data} | jq '.info')"
+      local run=($(echo ${data} | jq '.run' -r))
+      # Print out the info object like this: " - ${key} = ${value}"
+      echo "${info}" | jq 'to_entries | map([ " - " + .key + " = " + .value]) | .[] | .[]' -M -r
+      echo
+      # Actually run the command
+      ${run[@]}
       ;;
   esac
 }

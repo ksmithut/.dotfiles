@@ -1,0 +1,46 @@
+{
+  "elasticsearch": {
+    "info": {
+      "username": "elastic",
+      "password": "changeme",
+      "port": "9200"
+    },
+    "run": "docker run -p 9200:9200 -e 'http.host=0.0.0.0' -e 'transport.host=127.0.0.1' docker.elastic.co/elasticsearch/elasticsearch:5.5.1"
+  },
+
+
+  "mongodb": {
+    "info": {
+      "port": "27017"
+    },
+    "run": "docker run -p 27017:27017 mongo:latest"
+  },
+
+
+  "postgres": {
+    "info": {
+      "database": "postgres",
+      "username": "postgres",
+      "password": "postgres",
+      "port": "5432"
+    },
+    "run": "docker run -p 5432:5432 -e 'POSTGRES_USER=postgres' -e 'POSTGRES_PASSWORD=postgres' -e 'POSTGRES_DB=postgres' postgres:alpine"
+  },
+
+
+  "redis": {
+    "info": {
+      "port": "6379"
+    },
+    "run": "docker run -p 6379:6379 redis:alpine"
+  },
+
+
+  "rabbitmq": {
+    "info": {
+      "port": "5672",
+      "managementPort": "15672"
+    },
+    "run": "docker run -p 5672:5672 -p 15672:15672 rabbitmq:management-alpine"
+  }
+}
