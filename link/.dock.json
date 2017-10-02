@@ -13,7 +13,7 @@
   "nats": {
     "info": {
       "port": "4222",
-      "url": "http://localhost:4222"
+      "url": "nats://localhost:4222"
     },
     "run": "docker run -p 4222:4222 nats:latest"
   },
