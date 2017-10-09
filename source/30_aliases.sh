@@ -56,7 +56,7 @@ function dotfiles() {
 
 # Sets up linting for a node project
 function setup-linting() {
-  yarn add -D standard prettier prettier-eslint;
+  yarn add -D standard;
   cat package.json \
     | jq -M '.scripts.lint = "standard"' \
     | jq -M '.eslintConfig.root = true' \
@@ -65,7 +65,7 @@ function setup-linting() {
 }
 # Sets up linting for a react project
 function setup-linting-react() {
-  yarn add -D standard babel-eslint prettier prettier-eslint;
+  yarn add -D standard babel-eslint;
   cat package.json \
     | jq -M '.scripts.lint = "standard"' \
     | jq -M '.eslintConfig.root = true' \
