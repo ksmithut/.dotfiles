@@ -42,7 +42,7 @@ function dock() {
       echo "${info}" | jq 'to_entries | map([ " - " + .key + " = " + .value]) | .[] | .[]' -M -r
       echo
       # Actually run the command
-      ${run[@]}
+      eval ${run[@]}
       ;;
   esac
 }
