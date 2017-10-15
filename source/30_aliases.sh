@@ -79,10 +79,10 @@ function setup-testing() {
   yarn add -D jest @types/jest;
   cat package.json \
     | jq -M '.jest.collectCoverage = true' \
-    | jq -M '.jest.coverageThreshold.global.statements = 100' \
-    | jq -M '.jest.coverageThreshold.global.branch = 100' \
+    | jq -M '.jest.coverageThreshold.global.branches = 100' \
     | jq -M '.jest.coverageThreshold.global.functions = 100' \
     | jq -M '.jest.coverageThreshold.global.lines = 100' \
+    | jq -M '.jest.coverageThreshold.global.statements = 100' \
     | tee package.json &>/dev/null
 }
 
