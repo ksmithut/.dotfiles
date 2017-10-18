@@ -35,7 +35,7 @@
       "port": "27017",
       "url": "mongodb://localhost:27017"
     },
-    "run": "docker run -p 27017:27017 -v $HOME/.dock/mongodb/data:/adata/db mongo:latest"
+    "run": "docker run -p 27017:27017 -v $HOME/.dock/mongodb/data:/data/db mongo:latest"
   },
 
 
