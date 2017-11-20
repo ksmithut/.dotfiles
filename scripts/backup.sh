@@ -5,6 +5,8 @@ copy_dirs=(
   ~/.ssh
   ~/.aws
   ~/.npmrc
+  ~/.now
+  ~/.bash_profile.local
   ~/Code
   ~/Documents
   ~/Pictures

@@ -1,4 +1,5 @@
-# A list of functions/aliases to use to make some things easier
+# A list of functions/aliases to use to make some things easier. Every software
+# program ever. Except for PHP maybe.
 
 # makes a directory and moves to it
 function dir() { mkdir -p "${1}" && builtin cd $_; }

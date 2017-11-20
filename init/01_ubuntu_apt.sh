@@ -58,11 +58,11 @@ sudo gpasswd -a $USER docker
 sudo usermod -aG docker $USER
 newgrp docker
 # docker-compose
-sudo curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/latest/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
 # Slack
-wget -O "$DOTFILES/caches/installers/slack.deb" https://downloads.slack-edge.com/linux_releases/slack-desktop-2.8.0-amd64.deb
+wget -O "$DOTFILES/caches/installers/slack.deb" https://downloads.slack-edge.com/linux_releases/slack-desktop-2.9.0-amd64.deb
 sudo dpkg -i "$DOTFILES/caches/installers/slack.deb"
 sudo apt-get install -fy
 
