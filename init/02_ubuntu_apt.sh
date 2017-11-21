@@ -51,7 +51,7 @@ sudo add-apt-repository \
   $(lsb_release -cs) \
   stable"
 sudo apt-get update
-sudo apt-get install docker-ce
+sudo apt-get install docker-ce -y
 # Add current user to docker group
 sudo groupadd docker
 sudo gpasswd -a $USER docker
@@ -69,7 +69,7 @@ sudo apt-get install -fy
 # pass and pass otp
 # https://github.com/tadfisher/pass-otp
 wget -O "$DOTFILES/caches/installers/pass.tar.xz" https://git.zx2c4.com/password-store/snapshot/password-store-1.7.1.tar.xz
-tar xf "$DOTFILES/caches/installers/pass.tar.xz"
+tar xf "$DOTFILES/caches/installers/pass.tar.xz" "$DOTFILES/caches/installers/password-store-1.7.1"
 builtin cd "$DOTFILES/caches/installers/password-store-1.7.1"
 sudo make install
 builtin cd -
