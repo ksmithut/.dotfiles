@@ -7,6 +7,7 @@ copy_dirs=(
   ~/.npmrc
   ~/.now
   ~/.bash_profile.local
+  ~/.password-store
   ~/Code
   ~/Documents
   ~/Pictures
