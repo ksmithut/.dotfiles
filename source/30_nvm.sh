@@ -32,7 +32,8 @@ function _change_node_version() {
     nvm use default
   fi
 }
-cd() { builtin cd "$@" && _change_node_version; }
-pushd() { builtin pushd "$@" && _change_node_version; }
-popd() { builtin popd "$@" && _change_node_version; }
+# Uncomment to automatically switch
+# cd() { builtin cd "$@" && _change_node_version; }
+# pushd() { builtin pushd "$@" && _change_node_version; }
+# popd() { builtin popd "$@" && _change_node_version; }
 _change_node_version # Change it when we start a new terminal

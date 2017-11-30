@@ -4,6 +4,6 @@ read -e -p "github email: " GITHUB_EMAIL
 read -e -p "gpg signing key: " GPG_SIGNING_KEY
 echo
 
-git config --global user.name $GITHUB_USER
-git config --global user.email $GITHUB_EMAIL
-git config --global user.signingkey $GPG_SIGNING_KEY
+[[ $GITHUB_USER != "" ]] && git config --global user.name $GITHUB_USER
+[[ $GITHUB_EMAIL != "" ]] && git config --global user.email $GITHUB_EMAIL
+[[ $GPG_SIGNING_KEY != "" ]] && git config --global user.signingkey $GPG_SIGNING_KEY

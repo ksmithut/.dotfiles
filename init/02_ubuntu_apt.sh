@@ -11,9 +11,7 @@ sudo apt-get install -y \
   jq \
   tree \
   oathtool \
-  vim \
-  python3-pip \
-  powerline
+  vim
 
 # Create installers foler
 mkdir -p "$DOTFILES/caches/installers/"
