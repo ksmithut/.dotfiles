@@ -10,7 +10,7 @@ __powerline_git() {
   [ -n "$branch" ] || return # git branch not found
 
   local GIT_BRANCH_SYMBOL=''
-  local GIT_BRANCH_CHANGED_SYMBOL='…'
+  local GIT_BRANCH_CHANGED_SYMBOL='●'
   local GIT_NEED_PUSH_SYMBOL='⬆'
   local GIT_NEED_PULL_SYMBOL='⬇'
   local marks
