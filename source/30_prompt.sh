@@ -85,8 +85,8 @@ __powerline() {
 
 
 # __prompt_node='node:232:048'
-__prompt_cwd='cwd:232:039'
-__prompt_git='git:232:227'
+__prompt_cwd='cwd:234:033'
+__prompt_git='git:234:184'
 POWERLINE_CONFIG="$__prompt_cwd,$__prompt_git"
 
 PS1='$(__powerline)'
