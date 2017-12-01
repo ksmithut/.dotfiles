@@ -7,10 +7,6 @@ function dir() { mkdir -p "${1}" && builtin cd $_; }
 # gpg helpers
 alias gpg-ls='gpg --list-secret-keys --keyid-format LONG'
 
-# sets default ls action to have trailing slashes at the end of directories
-alias ls='ls -p'
-alias ll='ls -la'
-
 # starts simple http server in current directory
 alias static='python -m SimpleHTTPServer'
 
@@ -167,6 +163,10 @@ if is_macos; then
 
   # MD5 Checksum
   alias checksum='openssl md5'
+
+  # sets default ls action to have trailing slashes at the end of directories
+  alias ls='ls -p'
+  alias ll='ls -la'
 fi
 
 # Ubuntu aliases/functions

@@ -93,7 +93,9 @@ PS1='$(__powerline)'
 
 # export environment variables
 export CLICOLOR=1
-export LSCOLORS=gxfxcxdxhxegedabagacad # http://geoff.greer.fm/lscolors/
+# http://geoff.greer.fm/lscolors/
+export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=37:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+export LSCOLORS='gxfxcxdxhxegedabagacad'
 
 # Append to history instead of overriding
 shopt -s histappend
