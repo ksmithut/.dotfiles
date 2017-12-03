@@ -1,19 +1,22 @@
 #!/usr/bin/env sh
 
-# ==================================== git  ====================================
+# ==============================================================================
+# ==================================== git =====================================
+# ==============================================================================
 __powerline_git() {
+  # Config
+  local GIT_BRANCH_SYMBOL=''
+  local GIT_BRANCH_CHANGED_SYMBOL='●'
+  local GIT_NEED_PUSH_SYMBOL='⬆'
+  local GIT_NEED_PULL_SYMBOL='⬇'
+  local marks
+
   [ -x "$(which git)" ] || return # git not found
 
   local git_eng="env LANG=C git" # force git output in English to make our work easier
   # get current branch name or short SHA1 hash for detached head
   local branch="$($git_eng symbolic-ref --short HEAD 2>/dev/null || $git_eng describe --tags --always 2>/dev/null)"
   [ -n "$branch" ] || return # git branch not found
-
-  local GIT_BRANCH_SYMBOL=''
-  local GIT_BRANCH_CHANGED_SYMBOL='●'
-  local GIT_NEED_PUSH_SYMBOL='⬆'
-  local GIT_NEED_PULL_SYMBOL='⬇'
-  local marks
 
   # branch is modified?
   [ -n "$($git_eng status --porcelain)" ] && marks+=" $GIT_BRANCH_CHANGED_SYMBOL"
@@ -29,27 +32,63 @@ __powerline_git() {
   printf "$GIT_BRANCH_SYMBOL $branch$marks"
 }
 
-# ==================================== cwd  ====================================
+# ==============================================================================
+# ==================================== cwd =====================================
+# ==============================================================================
 __powerline_cwd() {
   local escaped_home=$(printf $HOME | sed -e 's/[]\/$*.^|[]/\\&/g')
   printf $PWD | sed -e "s/^$escaped_home/~/"
 }
 
+# ==============================================================================
 # ==================================== node ====================================
+# ==============================================================================
 __powerline_node() {
   node --version
 }
 
-  # local _DATE=' \d '
-  # local _TIME=' \t '
-  # local _USER=' \u '
-  # local _HOST=' \h '
-  # local _CWD=' \w '
-  # local _GIT='$(__git_info)'
-  # local _EXIT_ERROR='$(__exit_code $?)'
+# ==============================================================================
+# ================================== battery ===================================
+# ==============================================================================
+__powerline_battery() {
+  # Config
+  local gamify=0
+  local empty_heart='o'
+  local filled_heart='♥'
+  local num_hearts=10
+  local percent
+  # If Mac, get percentage a different way
+  if [[ "$OSTYPE" =~ ^darwin ]]; then
+    percent=$(pmset -g batt | grep '\d%' | sed -E "s/.*$(printf '\t')([0-9]+)%.*/\1/")
+  else
+    # TODO: figure out how to do this on ubuntu
+    return
+  fi
 
+  if [ "$gamify" -eq "1" ]; then
+    local filled_hearts=$(expr $percent / $num_hearts)
+    for i in $(seq 0 $num_hearts); do
+      printf $([ "$i" -le "$filled_hearts" ] && echo "$filled_heart" || echo "$empty_heart")
+    done
+  else
+    printf "${percent}%%"
+  fi
+}
+
+# ==============================================================================
+# ==================================== time ====================================
+# ==============================================================================
+__powerline_time() {
+  # Config
+  local format='+%Y-%m-%dT%H:%M:%S%z'
+  date $format
+}
+
+# ==============================================================================
 # ================================= powerline  =================================
+# ==============================================================================
 __powerline() {
+  # Config
   local _DIVIDER_SYMBOL=''
   local _SOFT_DIVIDER_SYMBOL=''
   local segments
@@ -57,8 +96,7 @@ __powerline() {
   local prev_background
   local parts
 
-  IFS=',' read -r -a segments <<< "$POWERLINE_CONFIG"
-  for segment in "${segments[@]}"; do
+  for segment in "${POWERLINE_CONFIG[@]}"; do
     IFS=':' read -r -a parts <<< "$segment"
     local function_name=${parts[0]}
     local foreground=${parts[1]}
@@ -83,11 +121,23 @@ __powerline() {
   echo -e "$output"
 }
 
-
-# __prompt_node='node:232:048'
-__prompt_cwd='cwd:232:039'
-__prompt_git='git:232:227'
-POWERLINE_CONFIG="$__prompt_cwd,$__prompt_git"
+# Configuration goes as follows:
+# {function}:{foreground}:{background}
+#
+# {function} is the function to run to get the output. The function should
+# be exported as __powerline_{function}
+#
+# {foreground} and {background} are colors are ascii color codes. In the aliases
+# file there is a function `colorgrid` which prints out the 256 color codes and
+# what they look like in the terminal. Use that to determine the number you put
+# in here.
+POWERLINE_CONFIG=(
+  # 'node:232:048'
+  # 'time:170:016'
+  # 'battery:196:235'
+  'cwd:232:039'
+  'git:232:227'
+)
 
 PS1='$(__powerline)'
 
