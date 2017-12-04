@@ -136,7 +136,7 @@ function colorgrid() {
 }
 
 # Upgrade local packages interactively
-alias upgrade-interactive='npx npm-upgrade'
+alias upgrade-interactive='npx npm-check'
 
 # macOS aliases/functions
 # =======================
