@@ -61,8 +61,7 @@ __powerline_battery() {
   if [[ "$OSTYPE" =~ ^darwin ]]; then
     percent=$(pmset -g batt | grep '\d%' | sed -E "s/.*$(printf '\t')([0-9]+)%.*/\1/")
   else
-    # TODO: figure out how to do this on ubuntu
-    return
+    percent=$(upower -i $(upower -e | grep BAT) | grep --color=never -E percentage|xargs|cut -d' ' -f2|sed s/%//)
   fi
 
   if [ "$gamify" -eq "1" ]; then
