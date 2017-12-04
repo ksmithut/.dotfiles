@@ -185,6 +185,10 @@ if is_ubuntu; then
   # vim over vi on linux
   alias vi='vim'
 
+  # sets default ls action to have trailing slashes at the end of directories
+  alias ls='ls -p --color=auto'
+  alias ll='ls -la --color=auto'
+
   # open for linux
   function open() {
     xdg-open "$*" &>/dev/null
