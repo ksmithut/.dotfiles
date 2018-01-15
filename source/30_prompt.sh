@@ -131,10 +131,10 @@ __powerline() {
 # what they look like in the terminal. Use that to determine the number you put
 # in here.
 POWERLINE_CONFIG=(
-  # 'node:232:048'
   # 'time:170:016'
   # 'battery:196:235'
   'cwd:232:039'
+  'node:232:048'
   'git:232:227'
 )
 
