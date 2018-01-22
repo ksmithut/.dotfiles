@@ -103,7 +103,7 @@ __powerline() {
     local foreground=${parts[1]}
     local background=${parts[2]}
 
-    local segment_output="$(__powerline_${function_name})"
+    local segment_output="$(${function_name})"
     if [ "$segment_output" != "" ]; then
       if [ "$prev_background" != "" ]; then
         output+="\001\033[38;5;${prev_background};48;5;${background}m\002${_DIVIDER_SYMBOL}"
@@ -135,9 +135,9 @@ __powerline() {
 POWERLINE_CONFIG=(
   # 'time:170:016'
   # 'battery:196:235'
-  'cwd:232:039'
-  'node:232:048'
-  'git:232:227'
+  '__powerline_cwd:232:039'
+  '__powerline_node:232:048'
+  '__powerline_git:232:227'
 )
 
 PS1='$(__powerline)'
