@@ -11,7 +11,9 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 ################################################################################
 
 # Change default shell to use updated bash
+echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
 sudo chsh -s /usr/local/bin/bash
+sudo chsh -s /usr/local/bin/bash $USER
 
 ################################################################################
 # iTunes

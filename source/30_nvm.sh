@@ -1,8 +1,8 @@
 # All the scripts necessary for nvm to work/upgrade/auto switch
 
-export NVM_DIR=~/.nvm
+export NVM_DIR="$HOME/.nvm"
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 export NODEJS_ORG_MIRROR="$NVM_NODEJS_ORG_MIRROR"
 
 # Upgrade nvm
@@ -12,7 +12,7 @@ function nvm-upgrade() {
   git pull;
   git checkout $(git describe --abbrev=0 --tags);
   builtin cd - > /dev/null;
-  . "$NVM_DIR/nvm.sh";
+  \. "$NVM_DIR/nvm.sh";
 }
 
 # Change version of node on cd
