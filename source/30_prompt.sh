@@ -37,7 +37,7 @@ __powerline_git() {
 # ==============================================================================
 __powerline_cwd() {
   local escaped_home=$(printf $HOME | sed -e 's/[]\/$*.^|[]/\\&/g')
-  printf $PWD | sed -e "s/^$escaped_home/~/"
+  printf "$PWD" | sed -e "s/^$escaped_home/~/"
 }
 
 # ==============================================================================
