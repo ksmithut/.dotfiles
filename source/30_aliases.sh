@@ -141,6 +141,9 @@ alias upgrade-interactive='npx npm-check'
 # macOS aliases/functions
 # =======================
 if is_macos; then
+  alias chime-off='sudo nvram SystemAudioVolume=%80'
+  alias chime-on='sudo nvram -d SystemAudioVolume'
+
   # beep
   alias beep='echo -e "\a"'
 
