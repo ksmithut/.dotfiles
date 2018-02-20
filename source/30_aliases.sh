@@ -83,24 +83,6 @@ function setup-testing() {
     | tee package.json &>/dev/null
 }
 
-# Get git status of all projects in current directory
-function git-super-status() {
-  for d in *; do
-    if [[ -d $d ]]; then
-      builtin cd $d
-      git fetch
-      local directory="\033[0;36m${d}\033[00m"
-      local rawBranch=$(git rev-parse --abbrev-ref HEAD)
-      local status="\033[0;33m$(__git_info)\033[00m"
-
-      printf "Status for ${directory}:\n"
-      printf "Status: ${status}\n"
-      echo
-      builtin cd ..
-    fi
-  done
-}
-
 # Print out ansii grid colors
 function colorgrid() {
   iter=16
