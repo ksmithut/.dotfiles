@@ -43,7 +43,6 @@ cask 'visual-studio-code'
 
 # Games
 cask 'battle-net'
-cask 'epic-games-launcher'
 cask 'league-of-legends'
 cask 'minecraft'
 cask 'steam'
