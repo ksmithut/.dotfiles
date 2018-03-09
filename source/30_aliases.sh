@@ -158,7 +158,7 @@ fi
 # ========================
 if is_ubuntu; then
   # upgrade/update shortcuts
-  alias apt-upgrade='sudo apt-get update -y; sudo apt-get upgrade -y; sudo apt-get autoremove -y; clear'
+  alias apt-upgrade='sudo apt-get update -y; sudo apt-get upgrade -y; sudo apt-get autoremove -y'
   alias upgrade='apt-upgrade'
 
   # MD5 Checksum
