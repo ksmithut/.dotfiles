@@ -38,21 +38,12 @@
     "run": "docker run -p 4222:4222 -p 8222:8222 nats-streaming:0.7.0"
   },
 
-  "nats_streaming_store": {
-    "info": {
-      "port": "4222",
-      "url": "nats://localhost:4222",
-      "monitoringUrl": "http://localhost:8222"
-    },
-    "run": "docker run -p 4222:4222 -p 8222:8222 -v \"$PWD/data:/datastore\" nats-streaming:latest --store FILE --dir datastore -m 8222"
-  },
-
   "mongodb": {
     "info": {
       "port": "27017",
       "url": "mongodb://localhost:27017"
     },
-    "run": "docker run -p 27017:27017 -v \"$HOME/.dock/mongodb/data:/data/db\" mongo:latest"
+    "run": "docker run -p 27017:27017 -v \"$HOME/.dock/mongodb_latest/data:/data/db\" mongo:latest"
   },
 
   "mongodb_3_4": {
@@ -60,7 +51,7 @@
       "port": "27017",
       "url": "mongodb://localhost:27017"
     },
-    "run": "docker run -p 27017:27017 -v \"$HOME/.dock/mongodb/data:/data/db\" mongo:3.4"
+    "run": "docker run -p 27017:27017 -v \"$HOME/.dock/mongodb_3_4/data:/data/db\" mongo:3.4"
   },
 
 
