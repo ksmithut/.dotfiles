@@ -119,7 +119,7 @@ __powerline() {
 
   output+='\001\033[0m\002 '
 
-  echo -e "\n$output"
+  echo -e "$output"
 }
 
 # Configuration goes as follows:
