@@ -6,6 +6,10 @@ on your machine.
 
 The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 
+* `bin/` commands to be included in the path for custom scripts. You need to
+  make sure you run `chmod a+x "${DOTFILES}/bin/*"` whenever you add a new file
+  to this directory in order to have the correct permissions to run it.
+
 * `copy/` All files in here will be copied over to `~`. Use this for files that
   will carry sensitive information, such as git credentials, or for files that
   you may want to override on your given installation, but not override for all
