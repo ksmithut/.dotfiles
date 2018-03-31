@@ -5,6 +5,7 @@
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="~/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$DOTFILES/bin:$PATH"
 
 # Shell config
 export HOMEBREW_NO_ANALYTICS=1

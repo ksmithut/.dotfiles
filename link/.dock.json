@@ -1,88 +1,91 @@
 {
   "elasticsearch": {
-    "info": {
-      "username": "elastic",
-      "password": "changeme",
-      "port": "9200",
-      "url": "http://elastic:changeme@localhost:9200"
-    },
-    "run": "docker run -p 9200:9200 -e 'http.host=0.0.0.0' -e 'transport.host=127.0.0.1' docker.elastic.co/elasticsearch/elasticsearch:5.5.1"
+    "": "https://www.docker.elastic.co/#",
+    "repo": "docker.elastic.co/elasticsearch/elasticsearch",
+    "tag": "6.2.3",
+    "ports": [
+      "9200",
+      "9300"
+    ],
+    "volumes": [
+      "/usr/share/elasticsearch/data"
+    ],
+    "environment": [
+      "discovery.type=single-node"
+    ],
+    "url": "http://elastic:changeme@localhost:9200"
   },
-
 
   "nats": {
-    "info": {
-      "port": "4222",
-      "url": "nats://localhost:4222",
-      "monitoringUrl": "http://localhost:8222"
-    },
-    "run": "docker run -p 4222:4222 -p 8222:8222 nats:latest"
+    "": "https://hub.docker.com/_/nats/",
+    "repo": "nats",
+    "tag": "latest",
+    "ports": [
+      "4222",
+      "8222"
+    ],
+    "url": "nats://localhost:4222 / http://localhost:8222"
   },
 
-
-  "nats_streaming": {
-    "info": {
-      "port": "4222",
-      "url": "nats://localhost:4222",
-      "monitoringUrl": "http://localhost:8222"
-    },
-    "run": "docker run -p 4222:4222 -p 8222:8222 nats-streaming:latest"
+  "nats-streaming": {
+    "": "https://hub.docker.com/_/nats-streaming/",
+    "repo": "nats-streaming",
+    "tag": "latest",
+    "flags": ["-store", "file", "-dir", "/datastore"],
+    "ports": [
+      "4222",
+      "8222"
+    ],
+    "volumes": [
+      "/datastore"
+    ],
+    "url": "nats://localhost:4222 / http://localhost:8222"
   },
 
-  "nats_streaming_0_7": {
-    "info": {
-      "port": "4222",
-      "url": "nats://localhost:4222",
-      "monitoringUrl": "http://localhost:8222"
-    },
-    "run": "docker run -p 4222:4222 -p 8222:8222 nats-streaming:0.7.0"
+  "mongo": {
+    "": "https://hub.docker.com/_/mongo/",
+    "repo": "mongo",
+    "tag": "latest",
+    "flags": "",
+    "ports": [
+      "27017"
+    ],
+    "volumes": [
+      "/data/db"
+    ],
+    "url": "mongodb://localhost:27017"
   },
-
-  "mongodb": {
-    "info": {
-      "port": "27017",
-      "url": "mongodb://localhost:27017"
-    },
-    "run": "docker run -p 27017:27017 -v \"$HOME/.dock/mongodb_latest/data:/data/db\" mongo:latest"
-  },
-
-  "mongodb_3_4": {
-    "info": {
-      "port": "27017",
-      "url": "mongodb://localhost:27017"
-    },
-    "run": "docker run -p 27017:27017 -v \"$HOME/.dock/mongodb_3_4/data:/data/db\" mongo:3.4"
-  },
-
 
   "postgres": {
-    "info": {
-      "database": "postgres",
-      "username": "postgres",
-      "password": "postgres",
-      "port": "5432",
-      "url": "postgres://postgres:postgres@localhost:5432/postgres"
-    },
-    "run": "docker run -p 5432:5432 -v $HOME/.dock/postgres/data:/var/lib/postgresql/data -e 'POSTGRES_USER=postgres' -e 'POSTGRES_PASSWORD=postgres' -e 'POSTGRES_DB=postgres' postgres:alpine"
+    "": "https://hub.docker.com/_/postgres/",
+    "repo": "postgres",
+    "tag": "alpine",
+    "flags": "",
+    "ports": [
+      "5432"
+    ],
+    "volumes": [
+      "/var/lib/postgresql/data"
+    ],
+    "environment": [
+      "POSTGRES_USER=postgres",
+      "POSTGRES_PASSWORD=postgres",
+      "POSTGRES_DB=postgres"
+    ],
+    "url": "postgres://postgres:postgres@localhost:5432/postgres"
   },
-
 
   "redis": {
-    "info": {
-      "port": "6379",
-      "url": "redis://127.0.0.1:6379"
-    },
-    "run": "docker run -p 6379:6379 redis:alpine"
-  },
-
-
-  "rabbitmq": {
-    "info": {
-      "port": "5672",
-      "managementPort": "15672",
-      "url": "amqp://localhost:5672",
-      "managementUrl": "http://localhost:15672"
-    },
-    "run": "docker run -p 5672:5672 -p 15672:15672 rabbitmq:management-alpine"
+    "": "https://hub.docker.com/_/redis/",
+    "repo": "redis",
+    "tag": "alpine",
+    "flags": "",
+    "ports": [
+      "6379"
+    ],
+    "volumes": [
+      "/data"
+    ],
+    "url": "redis://127.0.0.1:6379"
   }
 }

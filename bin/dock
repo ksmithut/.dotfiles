@@ -1,0 +1,97 @@
+#!/usr/bin/env node
+
+process.title = 'dock'
+
+const path = require('path')
+const childProcess = require('child_process')
+
+const DOCK_CONFIG_PATH = path.resolve(process.env.HOME, '.dock.json')
+const DEFAULT_VOLUME_DIR = path.resolve(process.env.HOME, '.dock')
+
+const HELP_MESSAGE = `
+  Usage: dock [application]
+
+    An application to run common daemons
+
+  Commands:
+
+    dock ls|list         List available applications
+    dock -h|--help|help  Display this message
+    dock [app]           Run the specified application
+
+  Examples:
+
+    $ dock elasticsearch
+`
+
+function help(status) {
+  console.log(HELP_MESSAGE)
+  return status || 0
+}
+
+function list() {
+  const config = require(DOCK_CONFIG_PATH)
+  const appList = Object.keys(config)
+  console.log(appList.join('\n'))
+  return 0
+}
+
+function run(appName, options) {
+  const appConfig = require(DOCK_CONFIG_PATH)[appName]
+  if (!appConfig) return help(2)
+  const repo = appConfig.repo
+  const tag = appConfig.tag
+  const ports = appConfig.ports || []
+  const volumes = appConfig.volumes || []
+  const flags = appConfig.flags || []
+  const environmentVariables = appConfig.environment || []
+  const volumeDirectory = path.join(
+    DEFAULT_VOLUME_DIR,
+    'volumes',
+    `${repo}__${tag}`
+  )
+
+  const args = ['run']
+  ports.forEach(port => args.push('-p', `${port}:${port}`))
+  volumes
+    .map(volume => ({
+      volume,
+      localVolume: path.join(
+        volumeDirectory,
+        volume.replace(new RegExp(path.sep, 'g'), '_')
+      )
+    }))
+    .forEach(volume =>
+      args.push('-v', `${volume.localVolume}:${volume.volume}`)
+    )
+  environmentVariables.map(variable => args.push('-e', `${variable}`))
+  args.push(`${repo}:${tag}`)
+  args.push.apply(args, flags)
+
+  console.log(`----------------------`)
+  console.log(`Running '${appName}'`)
+  if (appConfig.url) console.log(`Service accessible at: ${appConfig.url}`)
+  console.log(`----------------------`)
+  console.log()
+
+  process.title = `${repo}:${tag}`
+
+  const dockerProcess = childProcess.spawn('docker', args, {
+    cwd: process.cwd(),
+    stdio: 'inherit'
+  })
+  dockerProcess.on('close', code => {
+    console.log()
+    process.exit(code)
+  })
+  process.on('SIGINT', () => dockerProcess.kill('SIGINT'))
+}
+
+function dock(args) {
+  if (!args[0]) return help()
+  if (['-h', '--help', 'help'].indexOf(args[0]) !== -1) return help()
+  if (['ls', 'list'].indexOf(args[0]) !== -1) return process.exit(list())
+  return run(args[0])
+}
+
+dock(process.argv.slice(2))
