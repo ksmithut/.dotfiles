@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+'use strict'
 
 process.title = 'dock'
 
@@ -15,9 +16,12 @@ const HELP_MESSAGE = `
 
   Commands:
 
-    dock ls|list         List available applications
-    dock -h|--help|help  Display this message
-    dock [app]           Run the specified application
+    dock ls|list           List available applications
+    dock -h|--help|help    Display this message
+    dock [app]             Run the specified application
+    dock [app] --tag [tag] Run with a specified tag
+    dock [app] --save      Use the configured volume's persistance layers
+    dock [app] --global    Save docker volumes in user's home directory
 
   Examples:
 
@@ -39,17 +43,15 @@ function list() {
 function run(appName, options) {
   const appConfig = require(DOCK_CONFIG_PATH)[appName]
   if (!appConfig) return help(2)
-  const repo = appConfig.repo
-  const tag = appConfig.tag
+  const repo = options['--repo'] || appConfig.repo
+  const tag = options['--tag'] || appConfig.tag
   const ports = appConfig.ports || []
-  const volumes = appConfig.volumes || []
+  const volumes = options['--save'] ? appConfig.volumes || [] : []
   const flags = appConfig.flags || []
   const environmentVariables = appConfig.environment || []
-  const volumeDirectory = path.join(
-    DEFAULT_VOLUME_DIR,
-    'volumes',
-    `${repo}__${tag}`
-  )
+  const volumeDirectory = options['--global']
+    ? path.join(DEFAULT_VOLUME_DIR, `${repo}__${tag}`)
+    : path.join(process.cwd(), '.dock', `${repo}__${tag}`)
 
   const args = ['run', '--rm']
   ports.forEach(port => args.push('-p', `${port}:${port}`))
@@ -88,10 +90,161 @@ function run(appName, options) {
 }
 
 function dock(args) {
-  if (!args[0]) return help()
-  if (['-h', '--help', 'help'].indexOf(args[0]) !== -1) return help()
-  if (['ls', 'list'].indexOf(args[0]) !== -1) return process.exit(list())
-  return run(args[0])
+  const options = parseArgs(
+    {
+      '--help': Boolean,
+      '--tag': String,
+      '--save': Boolean,
+      '--global': Boolean,
+      '-h': '--help',
+      '-t': '--tag',
+      '-s': '--save',
+      '-g': '--global'
+    },
+    { argv: args }
+  )
+  if (options['--help'] || options._.indexOf('help') !== -1) return help()
+  if (options._.indexOf('ls') !== -1 || options._.indexOf('list') !== -1)
+    return process.exit(list())
+  return run(options._[0], options)
 }
 
 dock(process.argv.slice(2))
+
+/**
+ * https://github.com/zeit/arg
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 Zeit, Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+function parseArgs(opts, { argv, permissive = false } = {}) {
+  if (!opts) {
+    throw new Error('Argument specification must be specified')
+  }
+
+  const result = { _: [] }
+
+  argv = argv || process.argv.slice(2)
+
+  const aliases = {}
+  const handlers = {}
+
+  for (const key of Object.keys(opts)) {
+    if (typeof opts[key] === 'string') {
+      aliases[key] = opts[key]
+      continue
+    }
+
+    const type = opts[key]
+
+    if (
+      !type ||
+      (typeof type !== 'function' &&
+        !(
+          Array.isArray(type) &&
+          type.length === 1 &&
+          typeof type[0] === 'function'
+        ))
+    ) {
+      throw new Error(
+        `Type missing or not a function or valid array type: ${key}`
+      )
+    }
+
+    handlers[key] = type
+  }
+
+  for (let i = 0, len = argv.length; i < len; i++) {
+    const arg = argv[i]
+
+    if (arg.length < 2) {
+      result._.push(arg)
+      continue
+    }
+
+    if (arg === '--') {
+      result._ = result._.concat(argv.slice(i + 1))
+      break
+    }
+
+    if (arg[0] === '-') {
+      const [originalArgName, argStr] =
+        arg[1] === '-' ? arg.split('=', 2) : [arg, undefined]
+
+      let argName = originalArgName
+      while (argName in aliases) {
+        argName = aliases[argName]
+      }
+
+      if (!(argName in handlers)) {
+        if (permissive) {
+          result._.push(arg)
+          continue
+        } else {
+          throw new Error(`Unknown or unexpected option: ${originalArgName}`)
+        }
+      }
+
+      /* eslint-disable operator-linebreak */
+      const [type, isArray] = Array.isArray(handlers[argName])
+        ? [handlers[argName][0], true]
+        : [handlers[argName], false]
+      /* eslint-enable operator-linebreak */
+
+      let value
+      if (type === Boolean) {
+        value = true
+      } else if (argStr === undefined) {
+        if (
+          argv.length < i + 2 ||
+          (argv[i + 1].length > 1 && argv[i + 1][0] === '-')
+        ) {
+          const extended =
+            originalArgName === argName ? '' : ` (alias for ${argName})`
+          throw new Error(
+            `Option requires argument: ${originalArgName}${extended}`
+          )
+        }
+
+        value = type(argv[i + 1], argName, result[argName])
+        ++i
+      } else {
+        value = type(argStr, argName, result[argName])
+      }
+
+      if (isArray) {
+        if (result[argName]) {
+          result[argName].push(value)
+        } else {
+          result[argName] = [value]
+        }
+      } else {
+        result[argName] = value
+      }
+    } else {
+      result._.push(arg)
+    }
+  }
+
+  return result
+}

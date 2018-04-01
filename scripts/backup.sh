@@ -34,6 +34,7 @@ for copy_dir in "${copy_dirs[@]}"; do
     --exclude=*/bower_components \
     --exclude=*/coverage \
     --exclude=*/.data \
+    --exclude=*/.dock \
     --exclude=*/dump.rdb \
     --exclude=*/*.log \
     --exclude=*/*.photoslibrary/* \
