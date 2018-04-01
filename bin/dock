@@ -51,7 +51,7 @@ function run(appName, options) {
     `${repo}__${tag}`
   )
 
-  const args = ['run']
+  const args = ['run', '--rm']
   ports.forEach(port => args.push('-p', `${port}:${port}`))
   volumes
     .map(volume => ({
