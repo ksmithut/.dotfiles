@@ -31,7 +31,7 @@
     "": "https://hub.docker.com/_/nats-streaming/",
     "repo": "nats-streaming",
     "tag": "latest",
-    "flags": ["-store", "file", "-dir", "/datastore"],
+    "flags": ["-store", "file", "-dir", "/datastore", "-m", "8222"],
     "ports": [
       "4222",
       "8222"

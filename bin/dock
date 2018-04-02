@@ -53,7 +53,7 @@ function run(appName, options) {
     ? path.join(DEFAULT_VOLUME_DIR, `${repo}__${tag}`)
     : path.join(process.cwd(), '.dock', `${repo}__${tag}`)
 
-  const args = ['run', '--rm', '--name', `dock_${repo}`]
+  const args = ['run', '--rm', '--name', `dock_${repo.replace(/\//g, '_')}`]
   ports.forEach(port => args.push('-p', `${port}:${port}`))
   volumes
     .map(volume => ({
