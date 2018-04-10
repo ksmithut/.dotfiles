@@ -20,6 +20,8 @@ alias docker-remove-images='docker rmi $(docker images -a -q)'
 alias docker-remove-volumes='docker volume rm $(docker volume ls -f dangling=true -q)'
 alias docker-clean='docker-stop-containers; docker-remove-containers; docker-remove-images; docker-remove-volumes;'
 
+alias slack-theme='echo "#1f1f1f,#303030,#21859c,#FFFFFF,#303030,#FFFFFF,#85d14b,#DB6668"'
+
 # reverts to a given commit
 function oh-crap() {
   if [ "$1" = "" ]; then
