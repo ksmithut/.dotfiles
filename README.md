@@ -67,9 +67,6 @@ Add `nouveau.modeset=0` to boot options
 After installation:
 
 ```sh
-sudo add-apt-repository ppa:graphics-drivers/ppa
-sudo apt-get upgrade
-
 # configure required kernel parameter (https://github.com/Bumblebee-Project/bbswitch/issues/148)
 sudo nano /etc/default/grub
 # change this parameter to: GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_rev_override=1"
