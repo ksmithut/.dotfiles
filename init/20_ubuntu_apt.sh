@@ -11,7 +11,8 @@ sudo apt-get install -y \
   jq \
   tree \
   oathtool \
-  vim
+  vim \
+  xclip
 
 # Create installers foler
 mkdir -p "$DOTFILES/caches/installers/"
@@ -75,7 +76,7 @@ sudo apt-get update -y && sudo apt-get install yarn -y
 # pass and pass otp
 # https://github.com/tadfisher/pass-otp
 wget -O "$DOTFILES/caches/installers/pass.tar.xz" https://git.zx2c4.com/password-store/snapshot/password-store-1.7.1.tar.xz
-tar xf "$DOTFILES/caches/installers/pass.tar.xz" # "$DOTFILES/caches/installers/password-store-1.7.1"
+tar xf "$DOTFILES/caches/installers/pass.tar.xz" "$DOTFILES/caches/installers/password-store-1.7.1"
 builtin cd "$DOTFILES/caches/installers/password-store-1.7.1"
 sudo make install
 builtin cd -
