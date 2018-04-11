@@ -6,7 +6,7 @@ copy_dirs=(
   ~/.aws
   ~/.npmrc
   ~/.now
-  ~/.bash_profile.local
+  ~/.bashrc.local
   ~/.password-store
   ~/Code
   ~/Documents
