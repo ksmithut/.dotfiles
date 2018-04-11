@@ -60,6 +60,40 @@ You need to manually move over your backup data.
 
 # Ubuntu Installation
 
+(For Dell XPS 15 9560)
+
+Add `nouveau.modeset=0` to boot options
+
+After installation:
+
+```sh
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get upgrade
+
+# configure required kernel parameter (https://github.com/Bumblebee-Project/bbswitch/issues/148)
+sudo nano /etc/default/grub
+# change this parameter to: GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_rev_override=1"
+# rebuild the bootloader
+sudo update-grub2
+
+# install and configure TLP and PowerTOP
+sudo apt-get install tlp tlp-rdw powertop
+sudo tlp start
+# PowerTOP should be reporting a battery discharge rate of ~8-12W
+sudo powertop --auto-tune     # auto-tune parameter will configure some recommended power-saving tweaks
+
+# install Nvidia 384.90 drivers
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update
+
+# PowerTOP should now be reporting a battery discharge rate of ~15-20W
+sudo powertop
+
+# install Nvidia Prime: so we can disable the dedicated GPU when we don't want it
+sudo apt-get install nvidia-prime
+sudo prime-select intel
+```
+
 * [https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)](<https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)>)
 * [https://gist.github.com/tomwwright/f88e2ddb344cf99f299935e1312da880](https://gist.github.com/tomwwright/f88e2ddb344cf99f299935e1312da880)
 
