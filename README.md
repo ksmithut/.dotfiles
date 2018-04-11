@@ -60,6 +60,9 @@ You need to manually move over your backup data.
 
 # Ubuntu Installation
 
+* [https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)](<https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)>)
+* [https://gist.github.com/tomwwright/f88e2ddb344cf99f299935e1312da880](https://gist.github.com/tomwwright/f88e2ddb344cf99f299935e1312da880)
+
 ```
 sudo apt update -y
 sudo apt upgrade -y
