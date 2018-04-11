@@ -1,5 +1,5 @@
-# A list of functions/aliases to use to make some things easier. Every software
-# program ever. Except for PHP maybe.
+# A list of functions/aliases to use to make some things easier.
+# - every software program ever. except for PHP maybe.
 
 # makes a directory and moves to it
 function dir() { mkdir -p "${1}" && builtin cd $_; }
@@ -8,7 +8,7 @@ function dir() { mkdir -p "${1}" && builtin cd $_; }
 alias gpg-ls='gpg --list-secret-keys --keyid-format LONG'
 
 # starts simple http server in current directory
-alias static='python -m SimpleHTTPServer'
+alias static='npx serve --open'
 
 # start a node debugger in an existing process
 alias node-debug='node -e "process.argv[1] && process._debugProcess(process.argv[1])" $(pgrep node | head -1)'
@@ -20,12 +20,13 @@ alias docker-remove-images='docker rmi $(docker images -a -q)'
 alias docker-remove-volumes='docker volume rm $(docker volume ls -f dangling=true -q)'
 alias docker-clean='docker-stop-containers; docker-remove-containers; docker-remove-images; docker-remove-volumes;'
 
-alias slack-theme='echo "#1f1f1f,#303030,#21859c,#FFFFFF,#303030,#FFFFFF,#85d14b,#DB6668"'
+alias slack-theme='echo "#1f1f1f,#303030,#21859c,#FFFFFF,#303030,#FFFFFF,#85d14b,#DB6668" | pbcopy; echo "copied!"'
 
 # reverts to a given commit
 function oh-crap() {
   if [ "$1" = "" ]; then
     echo 'You must pass in a commit id'
+    return 1
   fi
   git reset --hard $1
   git reset --soft HEAD@{1}
@@ -39,7 +40,7 @@ function clone() {
   local folder_name="$2"
   if [ "$length" != "2" ]; then
     echo 'Non-repo path given'
-    return
+    return 1
   fi
   if [ "$2" = "" ]; then
     folder_name=${arr[1]}
@@ -49,41 +50,7 @@ function clone() {
 }
 
 # dotfiles commands
-function dotfiles() {
-  cd $DOTFILES
-}
-
-# Sets up linting for a node project
-function setup-linting() {
-  yarn add -D standard;
-  cat package.json \
-    | jq -M '.scripts.lint = "standard"' \
-    | jq -M '.eslintConfig.root = true' \
-    | jq -M '.eslintConfig.extends = ["standard"]' \
-    | tee package.json &>/dev/null
-}
-# Sets up linting for a react project
-function setup-linting-react() {
-  yarn add -D standard babel-eslint;
-  cat package.json \
-    | jq -M '.scripts.lint = "standard"' \
-    | jq -M '.eslintConfig.root = true' \
-    | jq -M '.eslintConfig.parser = "babel-eslint"' \
-    | jq -M '.eslintConfig.extends = ["standard","standard-jsx"]' \
-    | jq -M '.standard.parser = "babel-eslint"' \
-    | tee package.json &>/dev/null
-}
-# Sets up testing for a typical javascript project
-function setup-testing() {
-  yarn add -D jest @types/jest;
-  cat package.json \
-    | jq -M '.jest.collectCoverage = true' \
-    | jq -M '.jest.coverageThreshold.global.branches = 100' \
-    | jq -M '.jest.coverageThreshold.global.functions = 100' \
-    | jq -M '.jest.coverageThreshold.global.lines = 100' \
-    | jq -M '.jest.coverageThreshold.global.statements = 100' \
-    | tee package.json &>/dev/null
-}
+function dotfiles() { cd $DOTFILES; }
 
 # Print out ansii grid colors
 function colorgrid() {
