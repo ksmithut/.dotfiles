@@ -89,6 +89,36 @@ function colorgrid() {
 # Upgrade local packages interactively
 alias upgrade-interactive='npx npm-check'
 
+function dock () {
+  local compose_file=~/.dock.docker-compose.yaml
+  case $1 in
+    -h|--help|help)
+      echo "Run docker containers with a single word command using a"
+      echo "docker-compose file in your home directory. This file should be"
+      echo "placed at $compose_file, and should conform to the docker-compose"
+      echo "format that your version of docker-compose supports."
+      echo
+      echo "You must have ruby and jq installed for `dock list` and `dock ls`"
+      echo "to work."
+      ;;
+    ls|list)
+      echo "$(ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))' $compose_file | jq -r '.services | keys[]')"
+      ;;
+    *)
+      docker-compose --file $compose_file --project-name dock up --build $1
+      docker-compose --file $compose_file --project-name dock rm --stop --force $1
+      ;;
+  esac
+}
+function _dock_complete() {
+  local cur
+  COMPREPLY=()
+  cur=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $( compgen -W "$(dock ls)" -- "$cur" ) )
+  return 0
+}
+complete -F _dock_complete dock
+
 # macOS aliases/functions
 # =======================
 if is_macos; then

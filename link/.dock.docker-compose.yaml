@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - /data/db
+
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    volumes:
+      - /data
+
+  postgres:
+    image: postgres:alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - /var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+
+  nats-streaming:
+    image: nats-streaming:latest
+    command: ["-store", "file", "-dir", "/datastore", "-m", "8222"]
+    ports:
+      - 4222:4222
+      - 8222:8222
+    volumes:
+      - /datastore
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.3
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - /usr/share/elasticsearch/data
+    environment:
+      - discovery.type=single-node
