@@ -1,6 +1,8 @@
 version: '3'
 
 services:
+  # https://hub.docker.com/_/mongo/
+  # mongodb://localhost:27017
   mongo:
     image: mongo:latest
     ports:
@@ -8,6 +10,8 @@ services:
     volumes:
       - /data/db
 
+  # https://hub.docker.com/_/redis/
+  # redis://127.0.0.1:6379
   redis:
     image: redis:alpine
     ports:
@@ -15,6 +19,8 @@ services:
     volumes:
       - /data
 
+  # https://hub.docker.com/_/postgres/
+  # postgres://postgres:postgres@localhost:5432/postgres
   postgres:
     image: postgres:alpine
     ports:
@@ -26,6 +32,9 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=postgres
 
+  # https://hub.docker.com/_/nats-streaming/
+  # nats://localhost:4222
+  # http://localhost:8222
   nats-streaming:
     image: nats-streaming:latest
     command: ["-store", "file", "-dir", "/datastore", "-m", "8222"]
@@ -35,6 +44,8 @@ services:
     volumes:
       - /datastore
 
+  # https://www.docker.elastic.co
+  # http://elastic:changeme@localhost:9200
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.2.3
     ports:
@@ -44,3 +55,12 @@ services:
       - /usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
+
+  # https://hub.docker.com/r/eventstore/eventstore/
+  # http://admin:changeit@localhost:1113
+  # http://admin:changeit@localhost:2113
+  eventstore:
+    image: eventstore/eventstore:latest
+    ports:
+      - 2113:2113
+      - 1113:1113
