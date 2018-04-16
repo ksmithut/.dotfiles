@@ -89,6 +89,9 @@ function colorgrid() {
 # Upgrade local packages interactively
 alias upgrade-interactive='npx npm-check'
 
+# dock
+# a cli to run software using docker
+# ==================================
 function dock () {
   local compose_file=~/.dock.docker-compose.yaml
   case $1 in
@@ -118,6 +121,47 @@ function _dock_complete() {
   return 0
 }
 complete -F _dock_complete dock
+
+# project boilerplate snippets
+# ============================
+function setup-linting() {
+  yarn add -D prettier-eslint-cli standard eslint
+  cat package.json \
+    | jq '.scripts.format = "prettier-eslint '"'"'**/*.js'"'"' --write"' \
+    | jq '.scripts.lint = "prettier-eslint '"'"'**/*.js'"'"' --list-different && standard"' \
+    | tee package.json 2>&1 >/dev/null
+  echo '{}' \
+    | jq '.extends = ["standard"]' \
+    | tee .eslintrc 2>&1 >/dev/null
+}
+
+function setup-linting-babel() {
+  setup-linting
+  yarn add -D babel-eslint
+  cat .eslintrc \
+    | jq '.parser = "babel-eslint"' \
+    | tee .eslintrc 2>&1 >/dev/null
+}
+
+function setup-linting-jsx() {
+  setup-linting-babel
+  cat .eslintrc \
+    | jq '.extends = .extends + ["standard-jsx"]' \
+    | tee .eslintrc 2>&1 >/dev/null
+}
+
+function setup-node() {
+  mkdir -p src
+  touch src/index.js
+  yarn init --private --yes
+  cat package.json \
+    | jq '.main = "src/index.js"' \
+    | jq '.scripts = .scripts? + {}' \
+    | jq '.dependencies = .dependencies? + {}' \
+    | jq '.devDependencies = .devDependencies? + {}' \
+    | tee package.json 2>&1 >/dev/null
+  setup-linting
+}
 
 # macOS aliases/functions
 # =======================
