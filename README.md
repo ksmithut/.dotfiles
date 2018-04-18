@@ -102,6 +102,19 @@ git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
 ~/.dotfiles/scripts/setup.sh
 ```
 
+# Windows
+
+Obviously, this is meant for mac/linux based on the bash usage, but I'd like to
+have some scripts ready to setup my gaming machines as well. I don't know what
+the best package manager to use is, but I here chocolatey is a thing, so that's
+what I'll use here:
+
+[Installation instructions][chocolatey]
+
+```
+choco install steam discord origin firefox 1password geforce-experience battle.net uplay -y
+```
+
 # Backup
 
 Before you begin a clean install, you may wish to backup other non-dotfile
@@ -121,3 +134,4 @@ into the .dotfiles directory and run `./scripts/backup.sh [backup directory]`.
 
 [cowboy]: https://github.com/cowboy/dotfiles
 [createinstallmedia]: https://support.apple.com/en-us/HT201372
+[chocolatey]: https://chocolatey.org/install
