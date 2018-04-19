@@ -125,7 +125,7 @@ complete -F _dock_complete dock
 # project boilerplate snippets
 # ============================
 function setup-linting() {
-  yarn add -D prettier-eslint-cli standard eslint
+  yarn add -D prettier-eslint-cli standard
   cat package.json \
     | jq '.scripts.format = "prettier-eslint '"'"'**/*.js'"'"' --write"' \
     | jq '.scripts.lint = "prettier-eslint '"'"'**/*.js'"'"' --list-different && standard"' \
