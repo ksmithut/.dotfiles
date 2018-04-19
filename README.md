@@ -112,7 +112,7 @@ what I'll use here:
 [Installation instructions][chocolatey]
 
 ```
-choco install steam discord origin firefox 1password geforce-experience battle.net uplay -y
+choco install steam discord origin firefox 1password geforce-experience battle.net uplay logitechgaming -y
 ```
 
 # Backup
