@@ -35,13 +35,19 @@ if is_ubuntu_desktop; then
   sudo apt-get install -fy
 
   # Slack
-  wget -O "$DOTFILES/caches/installers/slack.deb" https://downloads.slack-edge.com/linux_releases/slack-desktop-2.9.0-amd64.deb
+  wget -O "$DOTFILES/caches/installers/slack.deb" https://downloads.slack-edge.com/linux_releases/slack-desktop-3.1.1-amd64.deb
   sudo dpkg -i "$DOTFILES/caches/installers/slack.deb"
   sudo apt-get install -fy
 
   # Gnome extensions
   # Tiling window manager
   git clone https://github.com/vibou/vibou.gTile.git ~/.local/share/gnome-shell/extensions/gTile@vibou
+
+  # Insomnia
+  # Add to sources
+  wget -O "$DOTFILES/caches/installers/insomnia.deb" https://builds.insomnia.rest/downloads/ubuntu/latest
+  sudo dpkg -i "$DOTFILES/caches/installers/insomnia.deb"
+  sudo apt-get install -fy
 fi
 
 # yarn

@@ -124,6 +124,18 @@ complete -F _dock_complete dock
 
 # project boilerplate snippets
 # ============================
+function setup-gitignore() {
+  echo '.DS_Store
+*.log*
+node_modules
+coverage
+config/local*
+.env
+.cache
+dist
+build' > .gitignore
+}
+
 function setup-linting() {
   yarn add -D prettier-eslint-cli standard
   cat package.json \
@@ -152,7 +164,7 @@ function setup-linting-jsx() {
 
 function setup-node() {
   mkdir -p src
-  touch src/index.js
+  echo "'use strict'" > src/index.js
   yarn init --private --yes
   cat package.json \
     | jq '.main = "src/index.js"' \
@@ -161,6 +173,7 @@ function setup-node() {
     | jq '.devDependencies = .devDependencies? + {}' \
     | tee package.json 2>&1 >/dev/null
   setup-linting
+  setup-gitignore
 }
 
 # macOS aliases/functions
