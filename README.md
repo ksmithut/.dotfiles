@@ -89,6 +89,10 @@ sudo powertop
 # install Nvidia Prime: so we can disable the dedicated GPU when we don't want it
 sudo apt-get install nvidia-prime
 sudo prime-select intel
+
+# Fix firefox theming
+sudo nano /usr/share/applications/firefox.desktop
+# Change Exec='firefox %u' to Exec=bash -c 'GTK_THEME=" " firefox %u'
 ```
 
 * [https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)](<https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)>)
