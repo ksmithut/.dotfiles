@@ -93,6 +93,22 @@ sudo prime-select intel
 # Fix firefox theming
 sudo nano /usr/share/applications/firefox.desktop
 # Change Exec='firefox %u' to Exec=bash -c 'GTK_THEME=" " firefox %u'
+
+# Change grub background theme
+# Login screen
+# Make backup first before editing
+sudo cp /etc/alternatives/gdm3.css /etc/alternatives/gdm3.css.backup
+sudo nano /etc/alternatives/gdm3.css
+# ^ Look for #lockDialogGroup and change color
+# Grub Screen
+sudo cp /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub.backup
+sudo cp /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.script /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.script.backup
+sudo nano /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub
+# ^ Change rgb color as desired
+sudo nano /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.script
+# ^ Look for Window.SetBackgroundTopColor and change the color
+
+sudo update-grub2
 ```
 
 * [https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)](<https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)>)
