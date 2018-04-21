@@ -12,7 +12,8 @@ sudo apt-get install -y \
   tree \
   oathtool \
   vim \
-  xclip
+  xclip \
+  gnome-tweak-tool
 
 # Create installers foler
 mkdir -p "$DOTFILES/caches/installers/"
@@ -34,14 +35,9 @@ if is_ubuntu_desktop; then
   sudo dpkg -i "$DOTFILES/caches/installers/chrome.deb"
   sudo apt-get install -fy
 
-  # Slack
-  wget -O "$DOTFILES/caches/installers/slack.deb" https://downloads.slack-edge.com/linux_releases/slack-desktop-3.1.1-amd64.deb
-  sudo dpkg -i "$DOTFILES/caches/installers/slack.deb"
-  sudo apt-get install -fy
-
   # Gnome extensions
   # Tiling window manager
-  git clone https://github.com/vibou/vibou.gTile.git ~/.local/share/gnome-shell/extensions/gTile@vibou
+  # git clone https://github.com/vibou/vibou.gTile.git ~/.local/share/gnome-shell/extensions/gTile@vibou
 
   # Insomnia
   # Add to sources
@@ -82,7 +78,7 @@ sudo apt-get update -y && sudo apt-get install yarn -y
 # pass and pass otp
 # https://github.com/tadfisher/pass-otp
 wget -O "$DOTFILES/caches/installers/pass.tar.xz" https://git.zx2c4.com/password-store/snapshot/password-store-1.7.1.tar.xz
-tar xf "$DOTFILES/caches/installers/pass.tar.xz" "$DOTFILES/caches/installers/password-store-1.7.1"
+tar xf "$DOTFILES/caches/installers/pass.tar.xz"
 builtin cd "$DOTFILES/caches/installers/password-store-1.7.1"
 sudo make install
 builtin cd -
