@@ -62,14 +62,31 @@ You need to manually move over your backup data.
 
 (For Dell XPS 15 9560)
 
-Add `nouveau.modeset=0` to boot options
+Add `nouveau.modeset=0` to boot options (by pressing `e` when selecting a boot
+option and adding it before the `---` being sure to leave an extra space)
 
 After installation:
 
 ```sh
+# Remove dock
+sudo apt-get remove gnome-shell-extension-ubuntu-dock
+
 # configure required kernel parameter (https://github.com/Bumblebee-Project/bbswitch/issues/148)
 sudo nano /etc/default/grub
 # change this parameter to: GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_rev_override=1"
+# Change grub background theme
+# Login screen
+# Make backup first before editing
+sudo cp /etc/alternatives/gdm3.css /etc/alternatives/gdm3.css.backup
+sudo nano /etc/alternatives/gdm3.css
+# ^ Look for #lockDialogGroup and change color
+# Grub Screen
+sudo cp /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub.backup
+sudo cp /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.script /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.script.backup
+sudo nano /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub
+# ^ Change rgb color as desired
+sudo nano /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.script
+# ^ Look for Window.SetBackgroundTopColor and change the color
 # rebuild the bootloader
 sudo update-grub2
 
@@ -89,26 +106,6 @@ sudo powertop
 # install Nvidia Prime: so we can disable the dedicated GPU when we don't want it
 sudo apt-get install nvidia-prime
 sudo prime-select intel
-
-# Fix firefox theming
-sudo nano /usr/share/applications/firefox.desktop
-# Change Exec='firefox %u' to Exec=bash -c 'GTK_THEME=" " firefox %u'
-
-# Change grub background theme
-# Login screen
-# Make backup first before editing
-sudo cp /etc/alternatives/gdm3.css /etc/alternatives/gdm3.css.backup
-sudo nano /etc/alternatives/gdm3.css
-# ^ Look for #lockDialogGroup and change color
-# Grub Screen
-sudo cp /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub.backup
-sudo cp /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.script /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.script.backup
-sudo nano /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub
-# ^ Change rgb color as desired
-sudo nano /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.script
-# ^ Look for Window.SetBackgroundTopColor and change the color
-
-sudo update-grub2
 ```
 
 * [https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)](<https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)>)
@@ -120,6 +117,12 @@ sudo apt upgrade -y
 sudo apt install git -y
 git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
 ~/.dotfiles/scripts/setup.sh
+```
+
+```sh
+# Fix firefox theming
+sudo nano /usr/share/applications/firefox.desktop
+# Change Exec='firefox %u' to Exec=bash -c 'GTK_THEME=" " firefox %u'
 ```
 
 # Windows

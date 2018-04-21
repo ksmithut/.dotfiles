@@ -78,8 +78,9 @@ sudo apt-get update -y && sudo apt-get install yarn -y
 # pass and pass otp
 # https://github.com/tadfisher/pass-otp
 wget -O "$DOTFILES/caches/installers/pass.tar.xz" https://git.zx2c4.com/password-store/snapshot/password-store-1.7.1.tar.xz
-tar xf "$DOTFILES/caches/installers/pass.tar.xz"
-builtin cd "$DOTFILES/caches/installers/password-store-1.7.1"
+builtin cd "$DOTFILES/caches/installers"
+tar -xf "$DOTFILES/caches/installers/pass.tar.xz"
+builtin cd "password-store-1.7.1"
 sudo make install
 builtin cd -
 
