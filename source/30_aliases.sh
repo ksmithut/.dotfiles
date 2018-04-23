@@ -136,11 +136,29 @@ dist
 build' > .gitignore
 }
 
+function setup-testing() {
+  yarn add -D jest
+  cat package.json \
+    | jq '.scripts.test = "NODE_ENV=test jest --config jest.config.json"' \
+    | tee package.json 2>&1 >/dev/null
+  echo '{}' \
+    | jq '.testEnvironment = "node"' \
+    | jq '.testPathIgnorePatterns = ["<rootDir>/config/"]' \
+    | jq '.collectCoverage = true' \
+    | jq '.collectCoverageFrom = ["src/**/*.js", "!src/server.js"]' \
+    | jq '.coverageThreshold.global.branches = 100' \
+    | jq '.coverageThreshold.global.functions = 100' \
+    | jq '.coverageThreshold.global.lines = 100' \
+    | jq '.coverageThreshold.global.statements = 100' \
+    | tee jest.config.json 2>&1 >/dev/null
+}
+
 function setup-linting() {
   yarn add -D prettier-eslint-cli standard
   cat package.json \
     | jq '.scripts.format = "prettier-eslint '"'"'**/*.js'"'"' --write"' \
-    | jq '.scripts.lint = "prettier-eslint '"'"'**/*.js'"'"' --list-different && standard"' \
+    | jq '.scripts.lint = "standard && prettier-eslint '"'"'**/*.js'"'"' --list-different"' \
+    | jq '.scripts.pretest = "npm run lint"' \
     | tee package.json 2>&1 >/dev/null
   echo '{}' \
     | jq '.extends = ["standard"]' \
@@ -174,6 +192,7 @@ function setup-node() {
     | tee package.json 2>&1 >/dev/null
   setup-linting
   setup-gitignore
+  setup-testing
 }
 
 # macOS aliases/functions
