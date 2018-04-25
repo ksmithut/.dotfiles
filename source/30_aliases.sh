@@ -107,6 +107,9 @@ function dock () {
     ls|list)
       echo "$(ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))' $compose_file | jq -r '.services | keys[]')"
       ;;
+    info)
+      echo "$(ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))' $compose_file | jq -r ".services.$2 | {"$2": .}" | ruby -ryaml -rjson -e 'puts YAML.dump(JSON.load(ARGF))')"
+      ;;
     *)
       docker-compose --file $compose_file --project-name dock up --build $1
       docker-compose --file $compose_file --project-name dock rm --stop --force $1
