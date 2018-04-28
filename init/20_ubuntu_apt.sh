@@ -18,7 +18,7 @@ sudo apt-get install -y \
 
 if is_ubuntu_desktop; then
   # Remove dock
-  sudo apt-get remove gnome-shell-extension-ubuntu-dock
+  sudo apt-get remove gnome-shell-extension-ubuntu-dock -y
 
   sudo snap install vscode --classic
   sudo snap install chromium
