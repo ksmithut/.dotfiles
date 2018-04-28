@@ -237,7 +237,7 @@ fi
 if is_ubuntu; then
   # upgrade/update shortcuts
   alias apt-upgrade='sudo apt-get update -y; sudo apt-get upgrade -y; sudo apt-get autoremove -y'
-  alias upgrade='apt-upgrade'
+  alias upgrade='apt-upgrade; sudo snap refresh'
 
   # MD5 Checksum
   alias checksum='md5sum'

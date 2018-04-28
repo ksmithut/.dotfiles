@@ -17,6 +17,9 @@ sudo apt-get install -y \
   pass
 
 if is_ubuntu_desktop; then
+  # Remove dock
+  sudo apt-get remove gnome-shell-extension-ubuntu-dock
+
   sudo snap install vscode --classic
   sudo snap install chromium
   sudo snap install insomnia

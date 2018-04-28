@@ -68,9 +68,6 @@ option and adding it before the `---` being sure to leave an extra space)
 After installation:
 
 ```sh
-# Remove dock
-sudo apt-get remove gnome-shell-extension-ubuntu-dock
-
 # configure required kernel parameter (https://github.com/Bumblebee-Project/bbswitch/issues/148)
 sudo nano /etc/default/grub
 # change this parameter to: GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_rev_override=1"
@@ -89,23 +86,6 @@ sudo nano /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.script
 # ^ Look for Window.SetBackgroundTopColor and change the color
 # rebuild the bootloader
 sudo update-grub2
-
-# install and configure TLP and PowerTOP
-sudo apt-get install tlp tlp-rdw powertop
-sudo tlp start
-# PowerTOP should be reporting a battery discharge rate of ~8-12W
-sudo powertop --auto-tune     # auto-tune parameter will configure some recommended power-saving tweaks
-
-# install Nvidia 384.90 drivers
-sudo add-apt-repository ppa:graphics-drivers/ppa
-sudo apt update
-
-# PowerTOP should now be reporting a battery discharge rate of ~15-20W
-sudo powertop
-
-# install Nvidia Prime: so we can disable the dedicated GPU when we don't want it
-sudo apt-get install nvidia-prime
-sudo prime-select intel
 ```
 
 * [https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)](<https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)>)
