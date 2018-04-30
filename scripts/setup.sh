@@ -57,3 +57,4 @@ for file in $DOTFILES/init/*; do
   source "$file"
   echo "done!"
 done
+rm -rf $DOTFILES/caches

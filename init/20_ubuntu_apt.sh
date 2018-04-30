@@ -16,6 +16,8 @@ sudo apt-get install -y \
   gnome-tweak-tool \
   pass
 
+mkdir -p "$DOTFILES/caches/installers/"
+
 if is_ubuntu_desktop; then
   # Remove dock
   sudo apt-get remove gnome-shell-extension-ubuntu-dock -y
@@ -28,7 +30,16 @@ if is_ubuntu_desktop; then
 
   # Gnome extensions
   # Tiling window manager
+  rm -rf ~/.local/share/gnome-shell/extensions/gTile@vibou
   git clone https://github.com/gTile/gTile.git ~/.local/share/gnome-shell/extensions/gTile@vibou
+  # Workspace grid
+  rm -rf "$DOTFILES/caches/installers/workspace-grid"
+  rm -rf ~/.local/share/gnome-shell/extensions/workspace-grid@mathematical.coffee.gmail.com
+  git clone https://github.com/zakkak/workspace-grid.git "$DOTFILES/caches/installers/workspace-grid"
+  builtin cd "$DOTFILES/caches/installers/workspace-grid"
+  make all
+  cp -R workspace-grid@mathematical.coffee.gmail.com ~/.local/share/gnome-shell/extensions/workspace-grid@mathematical.coffee.gmail.com
+  cd -
 
   # docker-compose
   sudo curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
