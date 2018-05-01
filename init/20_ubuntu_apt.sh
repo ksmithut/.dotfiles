@@ -8,6 +8,7 @@ sudo apt-get install -y \
   curl \
   wget \
   build-essential \
+  python \
   jq \
   tree \
   oathtool \
