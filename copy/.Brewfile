@@ -18,10 +18,6 @@ brew 'watchman'
 brew 'wget'
 brew 'yarn'
 
-# Databases
-brew 'mongodb'
-brew 'redis'
-
 # Mac App Store
 mas 'BetterSnapTool', id: 417375580
 
