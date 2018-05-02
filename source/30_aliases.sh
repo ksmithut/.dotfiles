@@ -20,8 +20,6 @@ alias docker-remove-images='docker rmi $(docker images -a -q)'
 alias docker-remove-volumes='docker volume rm $(docker volume ls -f dangling=true -q)'
 alias docker-clean='docker-stop-containers; docker-remove-containers; docker-remove-images; docker-remove-volumes;'
 
-alias slack-theme='echo "#1f1f1f,#303030,#21859c,#FFFFFF,#303030,#FFFFFF,#85d14b,#DB6668" | pbcopy; echo "copied!"'
-
 # reverts to a given commit
 function oh-crap() {
   if [ "$1" = "" ]; then
@@ -201,6 +199,7 @@ function setup-node() {
 # macOS aliases/functions
 # =======================
 if is_macos; then
+  alias slack-theme='echo "#1f1f1f,#303030,#21859c,#FFFFFF,#303030,#FFFFFF,#85d14b,#DB6668" | pbcopy; echo "copied!"'
   alias chime-off='sudo nvram SystemAudioVolume=%80'
   alias chime-on='sudo nvram -d SystemAudioVolume'
 
@@ -235,6 +234,7 @@ fi
 # Ubuntu aliases/functions
 # ========================
 if is_ubuntu; then
+  alias slack-theme='echo "#1f1f1f,#303030,#21859c,#FFFFFF,#303030,#FFFFFF,#85d14b,#DB6668" | xclip -selection clipboard; echo "copied!"'
   # upgrade/update shortcuts
   alias apt-upgrade='sudo apt-get update -y; sudo apt-get upgrade -y; sudo apt-get autoremove -y'
   alias upgrade='apt-upgrade; sudo snap refresh'
