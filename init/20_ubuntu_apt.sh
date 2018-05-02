@@ -1,6 +1,26 @@
 # Ubuntu-only stuff. Abort if macOS.
 is_ubuntu || return 1
 
+function install-gnome-extension() {
+  local url=$1
+  local page_html=$(curl -s "$1")
+  local versions=$(echo $page_html \
+    | sed 's/^.*data-versions="\([^"]*\)".*$/\1/' \
+    | sed 's/&quot;/"/g')
+  local uuid=$(echo $page_html \
+    | grep data-uuid \
+    | sed 's/^.*data-uuid="\([^"]*\)".*$/\1/')
+  local shell_version=$(echo $versions | jq -r 'keys[]' | sort --version-sort | tail -1)
+  local extension_version=$(echo $versions | jq ".[\"$shell_version\"] | .[] | .version" | sort --version-sort | tail -1)
+  local version_tag=$(echo $versions | jq ".[\"$shell_version\"] | .[] | select(.version==$extension_version) | .pk")
+  local filename="$uuid.shell-extension.zip?version_tag=$version_tag"
+  rm $filename
+  wget "https://extensions.gnome.org/download-extension/$filename"
+  rm -rf "$HOME/.local/share/gnome-shell/extensions/$uuid"
+  unzip "$filename" -d "$HOME/.local/share/gnome-shell/extensions/$uuid"
+  rm $filename
+}
+
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
@@ -15,6 +35,7 @@ sudo apt-get install -y \
   vim \
   xclip \
   gnome-tweak-tool \
+  gnome-shell-extensions \
   pass
 
 mkdir -p "$DOTFILES/caches/installers/"
@@ -27,6 +48,7 @@ if is_ubuntu_desktop; then
   sudo snap install chromium
   sudo snap install insomnia
   sudo snap install docker
+  sudo snap install vlc
   sudo snap install slack --classic
 
   # Gnome extensions
@@ -34,11 +56,8 @@ if is_ubuntu_desktop; then
   install-gnome-extension https://extensions.gnome.org/extension/484/workspace-grid/
   install-gnome-extension https://extensions.gnome.org/extension/28/gtile/
 
-  # docker-compose
-  sudo curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-  sudo chmod +x /usr/local/bin/docker-compose
-
   # docker permissions
+  sudo snap connect docker:home
   sudo groupadd docker || true
   sudo gpasswd -a $USER docker
   sudo usermod -aG docker $USER

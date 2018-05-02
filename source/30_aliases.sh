@@ -256,26 +256,4 @@ if is_ubuntu; then
   function open() {
     xdg-open "$*" &>/dev/null
   }
-
-  function install-gnome-extension() {
-    local url=$1
-    local page_html=$(curl -s "$1")
-    local versions=$(echo $page_html \
-      | sed 's/^.*data-versions="\([^"]*\)".*$/\1/' \
-      | sed 's/&quot;/"/g')
-    local uuid=$(echo $page_html \
-      | grep data-uuid \
-      | sed 's/^.*data-uuid="\([^"]*\)".*$/\1/')
-    local shell_version=$(echo $versions | jq -r 'keys[]' | sort --version-sort | tail -1)
-    local extension_version=$(echo $versions | jq ".[\"$shell_version\"] | .[] | .version" | sort --version-sort | tail -1)
-    local version_tag=$(echo $versions | jq ".[\"$shell_version\"] | .[] | select(.version==$extension_version) | .pk")
-    local filename="$uuid.shell-extension.zip?version_tag=$version_tag"
-    rm $filename
-    wget "https://extensions.gnome.org/download-extension/$filename"
-    rm -rf "$HOME/.local/share/gnome-shell/extensions/$uuid"
-    unzip "$filename" -d "$HOME/.local/share/gnome-shell/extensions/$uuid"
-    rm $filename
-  }
-
-  # install-gnome-extension https://extensions.gnome.org/extension/28/gtile/
 fi
