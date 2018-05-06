@@ -142,6 +142,9 @@ function setup-testing() {
   cat package.json \
     | jq '.scripts.test = "NODE_ENV=test jest --config jest.config.json"' \
     | tee package.json 2>&1 >/dev/null
+  cat .eslintrc \
+    | jq '.env.jest = true' \
+    | tee .eslintrc 2>&1 >/dev/null
   echo '{}' \
     | jq '.testEnvironment = "node"' \
     | jq '.testPathIgnorePatterns = ["<rootDir>/config/"]' \
