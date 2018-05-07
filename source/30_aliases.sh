@@ -8,7 +8,7 @@ function dir() { mkdir -p "${1}" && builtin cd $_; }
 alias gpg-ls='gpg --list-secret-keys --keyid-format LONG'
 
 # starts simple http server in current directory
-alias static='npx serve --open'
+alias static='python -m SimpleHTTPServer'
 
 # start a node debugger in an existing process
 alias node-debug='node -e "process.argv[1] && process._debugProcess(process.argv[1])" $(pgrep node | head -1)'
