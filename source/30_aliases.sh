@@ -231,7 +231,7 @@ if is_macos; then
 
   # sets default ls action to have trailing slashes at the end of directories
   alias ls='ls -p'
-  alias ll='ls -la'
+  alias ll='ls -FGlAhp'
 fi
 
 # Ubuntu aliases/functions
@@ -254,7 +254,7 @@ if is_ubuntu; then
 
   # sets default ls action to have trailing slashes at the end of directories
   alias ls='ls -p --color=auto'
-  alias ll='ls -la --color=auto'
+  alias ll='ls -FGlAhp --color=auto'
 
   # open for linux
   function open() {
