@@ -35,8 +35,7 @@ sudo apt-get install -y \
   vim \
   xclip \
   gnome-tweak-tool \
-  gnome-shell-extensions \
-  pass
+  gnome-shell-extensions
 
 sudo apt-get purge -y firefox
 
@@ -71,10 +70,3 @@ fi
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update -y && sudo apt-get install yarn -y
-
-# pass otp
-# https://github.com/tadfisher/pass-otp
-git clone https://github.com/tadfisher/pass-otp "$DOTFILES/caches/installers/pass-otp"
-builtin cd "$DOTFILES/caches/installers/pass-otp"
-sudo make install
-builtin cd -
