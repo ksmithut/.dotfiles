@@ -1,6 +1,10 @@
 # Ubuntu-only stuff. Abort if macOS.
 is_ubuntu || return 1
 
+# Note that this is pretty fragile. This is basically going through and parsing
+# a value out of an attribute on an html page and going through the versions and
+# selecting the latest version. If there were a better cli for installing
+# extensions, I would rather use that, but this will do for now.
 function install-gnome-extension() {
   local url=$1
   local page_html=$(curl -s "$1")
@@ -54,7 +58,6 @@ if is_ubuntu_desktop; then
   sudo snap install firefox --channel=beta
 
   # Gnome extensions
-  # install-gnome-extension command in source/30_aliases.sh
   install-gnome-extension https://extensions.gnome.org/extension/484/workspace-grid/
   install-gnome-extension https://extensions.gnome.org/extension/28/gtile/
 
