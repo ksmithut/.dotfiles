@@ -38,6 +38,8 @@ sudo apt-get install -y \
   gnome-shell-extensions \
   pass
 
+sudo apt-get purge -y firefox
+
 mkdir -p "$DOTFILES/caches/installers/"
 
 if is_ubuntu_desktop; then
@@ -50,6 +52,7 @@ if is_ubuntu_desktop; then
   sudo snap install docker
   sudo snap install vlc
   sudo snap install slack --classic
+  sudo snap install firefox --channel=beta
 
   # Gnome extensions
   # install-gnome-extension command in source/30_aliases.sh

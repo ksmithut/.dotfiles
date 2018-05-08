@@ -1,6 +1,13 @@
 # A list of functions/aliases to use to make some things easier.
 # - every software program ever. except for PHP maybe.
 
+alias ..='cd ../'
+alias ...='cd ../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../../'
+alias .6='cd ../../../../../../'
+
 # makes a directory and moves to it
 function dir() { mkdir -p "${1}" && builtin cd $_; }
 

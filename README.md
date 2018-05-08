@@ -101,22 +101,29 @@ git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
 
 ```sh
 # Fix firefox theming
-sudo nano /usr/share/applications/firefox.desktop
-# Change Exec='firefox %u' to Exec=bash -c 'GTK_THEME=" " firefox %u'
+# Open up about:config
+# add new string key: 'widget.content.gtk-theme-override' with value 'Adwaita:light'
+# change 'layout.css.devPixelsPerPx' to 1.25 for global scaling
 ```
 
 # Windows
 
 Obviously, this is meant for mac/linux based on the bash usage, but I'd like to
-have some scripts ready to setup my gaming machines as well. I don't know what
-the best package manager to use is, but I here chocolatey is a thing, so that's
-what I'll use here:
+have some scripts ready to setup my gaming machines as well. Unfortunately, I've
+failed to find a package manager that has the things I want to install
+(mostly gaming software since I don't do any development on windows).
 
-[Installation instructions][chocolatey]
+Here's my list of apps and the locations to download them manually:
 
-```
-choco install steam discord origin firefox 1password geforce-experience battle.net uplay logitechgaming -y
-```
+* [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+* [1Password](https://1password.com/downloads/)
+* [Discord](https://discordapp.com/download)
+* [Uplay](https://uplay.ubi.com/)
+* [Steam](https://store.steampowered.com/)
+* [Battle.net](https://us.battle.net/account/download/)
+* [Origin](https://www.origin.com/usa/en-us/store/download)
+* [GeForce Experience](https://www.nvidia.com/en-us/geforce/geforce-experience/)
+* [Minecraft](https://minecraft.net/en-us/download/)
 
 # Backup
 
@@ -137,4 +144,3 @@ into the .dotfiles directory and run `./scripts/backup.sh [backup directory]`.
 
 [cowboy]: https://github.com/cowboy/dotfiles
 [createinstallmedia]: https://support.apple.com/en-us/HT201372
-[chocolatey]: https://chocolatey.org/install
