@@ -46,7 +46,7 @@ alias checksum='openssl md5'
 
 # sets default ls action to have trailing slashes at the end of directories
 alias ls='ls -p'
-alias ll='ls -FGlAhp'
+alias la='ls -FGlAhp'
 
 # dotfiles commands
 function dotfiles() { cd $DOTFILES; }
@@ -90,7 +90,7 @@ if is_ubuntu; then
 
   # sets default ls action to have trailing slashes at the end of directories
   alias ls='ls -p --color=auto'
-  alias ll='ls -FGlAhp --color=auto'
+  alias la='ls -FGlAhp --color=auto'
 
   # open for linux
   function open() {
