@@ -55,7 +55,7 @@ if is_ubuntu_desktop; then
   sudo snap install docker
   sudo snap install vlc
   sudo snap install slack --classic
-  sudo snap install firefox --channel=beta
+  sudo snap install firefox
 
   # Gnome extensions
   install-gnome-extension https://extensions.gnome.org/extension/484/workspace-grid/
