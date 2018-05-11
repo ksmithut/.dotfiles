@@ -63,9 +63,10 @@ if is_ubuntu_desktop; then
 
   # docker permissions
   sudo snap connect docker:home
-  sudo groupadd docker || true
-  sudo gpasswd -a $USER docker
-  sudo usermod -aG docker $USER
+  # These might not be needed according to the docker snappy docs
+  # sudo groupadd docker || true
+  # sudo gpasswd -a $USER docker
+  # sudo usermod -aG docker $USER
 fi
 
 # yarn
