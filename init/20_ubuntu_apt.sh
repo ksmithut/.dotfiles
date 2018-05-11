@@ -25,52 +25,51 @@ function install-gnome-extension() {
   rm $filename
 }
 
+# yarn
+# https://yarnpkg.com/en/docs/install#linux-tab
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
 sudo apt-get install -y \
-  curl \
-  wget \
   build-essential \
-  python \
-  jq \
-  tree \
-  oathtool \
-  vim \
-  xclip \
+  curl \
+  gnome-shell-extensions \
   gnome-tweak-tool \
-  gnome-shell-extensions
+  gvfs-bin \
+  jq \
+  oathtool \
+  python \
+  tree \
+  vim \
+  wget \
+  xclip \
+  yarn
 
-sudo apt-get purge -y firefox
+sudo apt-get purge -y \
+  firefox
 
-mkdir -p "$DOTFILES/caches/installers/"
+sudo snap install docker
+sudo snap connect docker:home
+# These might not be needed according to the docker snappy docs
+# sudo groupadd docker || true
+# sudo gpasswd -a $USER docker
+# sudo usermod -aG docker $USER
 
 if is_ubuntu_desktop; then
   # Remove dock
   sudo apt-get remove gnome-shell-extension-ubuntu-dock -y
 
-  sudo snap install vscode --classic
   sudo snap install chromium
-  sudo snap install insomnia
-  sudo snap install docker
-  sudo snap install vlc
-  sudo snap install slack --classic
   sudo snap install firefox
+  sudo snap install insomnia
+  sudo snap install slack --classic
+  sudo snap install vlc
+  sudo snap install vscode --classic
 
   # Gnome extensions
   install-gnome-extension https://extensions.gnome.org/extension/484/workspace-grid/
   install-gnome-extension https://extensions.gnome.org/extension/28/gtile/
-
-  # docker permissions
-  sudo snap connect docker:home
-  # These might not be needed according to the docker snappy docs
-  # sudo groupadd docker || true
-  # sudo gpasswd -a $USER docker
-  # sudo usermod -aG docker $USER
 fi
-
-# yarn
-# https://yarnpkg.com/en/docs/install#linux-tab
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt-get update -y && sudo apt-get install yarn -y

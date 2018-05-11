@@ -47,6 +47,7 @@ alias checksum='openssl md5'
 # sets default ls action to have trailing slashes at the end of directories
 alias ls='ls -p'
 alias la='ls -FGlAhp'
+alias ll='la'
 
 # dotfiles commands
 function dotfiles() { cd $DOTFILES; }
@@ -81,9 +82,6 @@ if is_ubuntu; then
   # upgrade/update shortcuts
   alias apt-upgrade='sudo apt-get update -y; sudo apt-get upgrade -y; sudo apt-get autoremove -y'
   alias upgrade='apt-upgrade; sudo snap refresh'
-
-  # MD5 Checksum
-  alias checksum='md5sum'
 
   # Clear back buffer (like cmd + k)
   alias clear='clear && echo -en "\e[3J"'
