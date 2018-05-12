@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+shopt -s expand_aliases
+[[ ! $(which docker-compose) ]] && alias docker-compose='docker.compose'
+
 compose_file=~/.dock.docker-compose.yaml
 
 case $1 in

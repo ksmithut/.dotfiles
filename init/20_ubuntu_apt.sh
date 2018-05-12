@@ -38,6 +38,7 @@ sudo apt-get install -y \
   jq \
   oathtool \
   python \
+  ruby \
   tree \
   vim \
   wget \
@@ -47,11 +48,11 @@ sudo apt-get purge -y \
   firefox
 
 sudo snap install docker
-sudo snap connect docker:home
-# These might not be needed according to the docker snappy docs
-# sudo groupadd docker || true
+sudo groupadd docker || true
+# We may not need these according to the snappy docs
 # sudo gpasswd -a $USER docker
 # sudo usermod -aG docker $USER
+# sudo snap connect docker:home
 
 if is_ubuntu_desktop; then
   # Remove dock
