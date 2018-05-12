@@ -47,12 +47,10 @@ sudo apt-get install -y \
 sudo apt-get purge -y \
   firefox
 
-sudo snap install docker
-sudo groupadd docker || true
-# We may not need these according to the snappy docs
-# sudo gpasswd -a $USER docker
-# sudo usermod -aG docker $USER
-# sudo snap connect docker:home
+sudo snap install docker --classic
+sudo addgroup --system docker
+sudo adduser $USER docker
+newgrp docker
 
 if is_ubuntu_desktop; then
   # Remove dock
