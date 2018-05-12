@@ -86,6 +86,9 @@ sudo nano /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.script
 # ^ Look for Window.SetBackgroundTopColor and change the color
 # rebuild the bootloader
 sudo update-grub2
+
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
 ```
 
 * [https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)](<https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)>)

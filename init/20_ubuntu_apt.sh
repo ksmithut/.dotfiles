@@ -21,14 +21,10 @@ function install-gnome-extension() {
   rm $filename
   wget "https://extensions.gnome.org/download-extension/$filename"
   rm -rf "$HOME/.local/share/gnome-shell/extensions/$uuid"
+  mkdir -p "$HOME/.local/share/gnome-shell/extensions/"
   unzip "$filename" -d "$HOME/.local/share/gnome-shell/extensions/$uuid"
   rm $filename
 }
-
-# yarn
-# https://yarnpkg.com/en/docs/install#linux-tab
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
 sudo apt-get update -y
 sudo apt-get upgrade -y
@@ -45,8 +41,7 @@ sudo apt-get install -y \
   tree \
   vim \
   wget \
-  xclip \
-  yarn
+  xclip
 
 sudo apt-get purge -y \
   firefox
@@ -73,3 +68,10 @@ if is_ubuntu_desktop; then
   install-gnome-extension https://extensions.gnome.org/extension/484/workspace-grid/
   install-gnome-extension https://extensions.gnome.org/extension/28/gtile/
 fi
+
+# yarn
+# https://yarnpkg.com/en/docs/install#debian-stable
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update -y
+sudo apt-get install yarn -y
