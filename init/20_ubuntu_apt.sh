@@ -39,6 +39,7 @@ sudo apt-get install -y \
   oathtool \
   python \
   ruby \
+  trash-cli \
   tree \
   vim \
   wget \
