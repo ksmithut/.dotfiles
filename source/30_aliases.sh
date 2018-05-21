@@ -52,6 +52,71 @@ alias ll='la'
 # dotfiles commands
 function dotfiles() { cd $DOTFILES; }
 
+# boilerplate
+function setup-package() {
+  yarn init -y -p
+  cat package.json \
+    | jq '.scripts = {}' \
+    | jq '.dependencies = {}' \
+    | jq '.devDependencies = {}' \
+    | tee package.json 2>&1 >/dev/null
+}
+
+function setup-linting() {
+  yarn add -D prettier-eslint-cli standard
+  cat package.json \
+    | jq '.scripts.format = "prettier-eslint '**/*.js' --write"' \
+    | jq '.scripts.lint = "standard && prettier-eslint '**/*.js' --list-different"' \
+    | tee package.json 2>&1 >/dev/null
+  echo '{}' \
+    | jq '.extends = "standard"' \
+    | tee .eslintrc 2>&1 >/dev/null
+}
+
+function setup-gitignore() {
+  echo '.DS_Store
+*.log*
+node_modules
+coverage
+config/local*
+.env
+!.env.example
+.cache
+dist
+build' > .gitignore
+}
+
+function setup-config() {
+  yarn add config dotenv
+  mkdir -p config
+  echo "'use strict'
+
+module.exports = {}" > config/default.js
+  echo "'use strict'
+
+module.exports = {}" > config/production.js
+  echo "'use strict'
+
+require('dotenv').config()
+
+module.exports = {}" > config/custom-environment-variables.js
+}
+
+function setup-project() {
+  git init
+  setup-package
+  setup-gitignore
+  setup-linting
+  mkdir -p src
+  echo "'use strict'" > src/index.js
+  yarn add -D nodemon
+  cat package.json \
+    | jq '.main = "src/index.js"' \
+    | jq '.scripts.start = "node $npm_package_main"' \
+    | jq '.scripts["start.dev"] = "nodemon $npm_package_main --inspect=0.0.0.0:9229"' \
+    | tee package.json 2>&1 >/dev/null
+}
+
 # macOS aliases/functions
 # =======================
 if is_macos; then
