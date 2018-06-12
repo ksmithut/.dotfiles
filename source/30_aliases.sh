@@ -35,6 +35,29 @@ function oh-crap() {
   git commit -m "Revert to $1"
 }
 
+# removes branches that are no longer in origin
+function git-prune-local() {
+  git checkout master
+  git fetch -p
+  local branches="$(git branch -vv | awk '/: gone]/{print $1}')"
+  if [ "$branches" = "" ]; then
+    echo "All up to date"
+    return 0
+  fi
+  echo -e "\nThis will remove the following branches locally:\n"
+  printf '%s\n' "${branches[@]}"
+  echo ''
+  read -e -p 'Proceed? ' remove_branches
+  case $remove_branches in
+    [Yy]*)
+      echo "$branches" | xargs git branch -D
+      ;;
+    *)
+      echo "Alrighty then"
+      ;;
+  esac
+}
+
 # Open up coverage report
 alias coverage='open coverage/lcov-report/index.html'
 
