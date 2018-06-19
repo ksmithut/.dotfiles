@@ -36,6 +36,7 @@ sudo apt-get install -y \
   gnome-tweak-tool \
   gvfs-bin \
   jq \
+  libgconf-2-4 \
   oathtool \
   python \
   ruby \
