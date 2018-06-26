@@ -89,6 +89,21 @@ sudo update-grub2
 
 sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt-get update
+
+# Keyboard shortcuts
+# ==================
+# Prevent gnome resetting keyboard setting in X
+gsettings set org.gnome.settings-daemon.plugins.keyboard active false
+
+# change workspace movement to ctrl + <- and ctrl + ->
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Control>Left']"
+# Undo gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Control><Alt>Left']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Control>Right']"
+# Undo gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Control><Alt>Right']"
+
+# swap super and alt
+# setxkbmap -option altwin:swap_lalt_lwin # TODO make this permanent
+# Undo setxkbmap -option
 ```
 
 - [https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)](<https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)>)
