@@ -148,6 +148,3 @@ export LSCOLORS='gxfxcxdxhxegedabagacad'
 
 # Append to history instead of overriding
 shopt -s histappend
-
-# Change interrupt
-stty intr ^X
