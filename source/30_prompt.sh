@@ -134,7 +134,7 @@ POWERLINE_CONFIG=(
   # 'time:170:016'
   # 'battery:196:235'
   '__powerline_cwd:232:039'
-  '__powerline_node:232:048'
+  # '__powerline_node:232:048'
   '__powerline_git:232:227'
 )
 
