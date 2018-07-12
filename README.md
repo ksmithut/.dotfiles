@@ -47,6 +47,8 @@ Then backup:
 Then boot into the install media holding down option key, format the drive, and
 install the OS.
 
+As of macOS 10.14 (Mojave) you need to install XCode in it's fullest :(
+
 Once in the OS open up the terminal:
 
 ```sh
