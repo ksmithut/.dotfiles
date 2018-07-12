@@ -34,7 +34,7 @@ If you want to create a bootable installer for macOS, follow the instructions
 
 ```sh
 # Change /Volumes/Untitled to the volume you want it to be
-sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ macOS\ High\ Sierra.app --nointeraction
+sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ macOS\ High\ Sierra.app
 ```
 
 Then backup:
@@ -76,14 +76,14 @@ sudo nano /etc/default/grub
 # Make backup first before editing
 sudo cp /etc/alternatives/gdm3.css /etc/alternatives/gdm3.css.backup
 sudo nano /etc/alternatives/gdm3.css
-# ^ Look for #lockDialogGroup and change color
+# ^ Look for #lockDialogGroup and change color to #191919
 # Grub Screen
 sudo cp /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub.backup
 sudo cp /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.script /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.script.backup
 sudo nano /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub
-# ^ Change rgb color as desired
+# ^ Change rgb color to 25,25,25,0
 sudo nano /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.script
-# ^ Look for Window.SetBackgroundTopColor and change the color
+# ^ Look for Window.SetBackgroundTopColor and change the color to (0.10, 0.10, 0.10)
 # rebuild the bootloader
 sudo update-grub2
 
