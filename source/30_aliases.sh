@@ -72,7 +72,8 @@ alias ls='ls -p'
 alias la='ls -FGlAhp'
 alias ll='la'
 
-alias generate-certs='openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365'
+# Generates some self-signed certificates
+alias generate-certs='openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj "/CN=localhost" -keyout key.pem -out cert.pem'
 
 # dotfiles commands
 function dotfiles() { cd $DOTFILES; }
