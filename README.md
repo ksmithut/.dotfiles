@@ -140,6 +140,40 @@ git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
 # change 'layout.css.devPixelsPerPx' to 1.25 for global scaling
 ```
 
+# Pixelbook
+
+You need to enable the dev channel (for now) to enable linux compatibility.
+
+1. Open "Settings"
+2. Click the Menu button on the top left
+3. Click on "About Chrome OS" at the bottom of that menu
+4. Click on "Detailed build information"
+5. Under "Channel" change the channel
+6. Go back one page and wait for the update to complete
+
+In the version I'm currently on, it was stuck updating the firmware for the
+touchpad. I waited about 10 minutes then pressed `ctrl + c` and was fine.
+
+Once you boot back in, open up "Settings" again and scroll down until you reach
+"Linux Apps", and enable that. It will take a bit to download the image.
+
+Once your in, you'll need to change the password of the root user:
+
+```sh
+sudo passwd ${USER}
+```
+
+Next, you'll want to make sure your ssh keys are all setup. Make sure your ssh
+keys are in place at `~/.ssh`, then run:
+
+```sh
+eval $(ssh-agent -s)
+# adds all of the private keys to the agent
+ssh-add ~/.ssh/id_rsa # Or whatever other keys you need to add
+```
+
+After that, clone this repo and run the setup script described above.
+
 # Windows
 
 Obviously, this is meant for mac/linux based on the bash usage, but I'd like to
