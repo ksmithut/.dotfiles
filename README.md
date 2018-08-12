@@ -179,6 +179,13 @@ git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
 ~/.dotfiles/scripts/setup.sh
 ```
 
+You may also want to install terminator because it seems to have better font
+support than the one that comes with the pixelbook:
+
+```sh
+sudo apt-get install -y terminator
+```
+
 # Windows
 
 Obviously, this is meant for mac/linux based on the bash usage, but I'd like to
