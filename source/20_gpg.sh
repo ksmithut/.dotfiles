@@ -5,4 +5,4 @@ if [ "$(pgrep gpg-agent)" == "" ]; then
   echo "started gpg agent"
 fi
 
-is_ubuntu && export GPG_TTY=$(tty)
+export GPG_TTY=$(tty)
