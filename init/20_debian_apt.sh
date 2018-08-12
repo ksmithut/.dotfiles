@@ -23,8 +23,7 @@ sudo apt-get install -y \
   ca-certificates \
   curl \
   gnupg2 \
-  software-properties-common \
-  firefox-esr
+  software-properties-common
 
 # Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O "$DOTFILES/caches/installers/chrome.deb"
