@@ -174,6 +174,11 @@ ssh-add ~/.ssh/id_rsa # Or whatever other keys you need to add
 
 After that, clone this repo and run the setup script described above.
 
+```sh
+git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
+~/.dotfiles/scripts/setup.sh
+```
+
 # Windows
 
 Obviously, this is meant for mac/linux based on the bash usage, but I'd like to
