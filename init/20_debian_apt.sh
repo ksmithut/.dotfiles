@@ -26,6 +26,11 @@ sudo apt-get install -y \
   software-properties-common \
   firefox-esr
 
+# Chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O "$DOTFILES/caches/installers/chrome.deb"
+sudo dpkg -i "$DOTFILES/caches/installers/chrome.deb"
+sudo apt-get install -f -y
+
 # Slack
 wget https://downloads.slack-edge.com/linux_releases/slack-desktop-3.2.1-amd64.deb -O "$DOTFILES/caches/installers/slack.deb"
 sudo dpkg -i "$DOTFILES/caches/installers/slack.deb"
@@ -45,10 +50,10 @@ sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/debian \
    $(lsb_release -cs) \
    stable"
-sudo groupadd docker
-sudo usermod -aG docker $USER
 sudo apt-get update -y
 sudo apt-get install -y docker-ce
+sudo groupadd docker
+sudo usermod -aG docker $USER
 
 # docker-compose
 sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
