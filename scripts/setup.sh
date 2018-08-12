@@ -52,6 +52,8 @@ source "$DOTFILES/source/00_dotfiles.sh"
 
 # 3. System Initialization
 # ========================
+mkdir -p "$DOTFILES/caches/installers"
+mkdir -p "$DOTFILES/caches/fonts"
 for file in $DOTFILES/init/*; do
   e_header "Init $(basename $file)"
   source "$file"
