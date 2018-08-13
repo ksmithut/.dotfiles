@@ -33,9 +33,6 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Time Machine
 ################################################################################
 
-# Disable local backups
-sudo tmutil disablelocal
-
 # Don't prompt new hard drives as backup
 sudo defaults write /Library/Preferences/com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
