@@ -179,12 +179,11 @@ git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
 ~/.dotfiles/scripts/setup.sh
 ```
 
-You may also want to install terminator because it seems to have better font
-support than the one that comes with the pixelbook:
+I also like to change the terminal configuration to work with powerline fonts:
 
-```sh
-sudo apt-get install -y terminator
-```
+1. When in the terminal, press `ctrl + shift + p`
+2. Change `font-family` to `"Source Code Pro", monospace`
+3. Change `user-css` to `https://cdn.rawgit.com/wernight/powerline-web-fonts/e4d967ca4f95d9fa0cf1d51afed2e5a5927d759e/PowerlineFonts.css`
 
 # Windows
 

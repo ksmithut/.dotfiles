@@ -1,8 +1,6 @@
 # Debian-only stuff.
 is_debian || return 1
 
-sudo apt-get remove iceweasel -y
-
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get install -y \
