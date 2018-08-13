@@ -171,7 +171,12 @@ if is_ubuntu || is_debian; then
   alias slack-theme='echo "#1f1f1f,#303030,#21859c,#FFFFFF,#303030,#FFFFFF,#85d14b,#DB6668" | xclip -selection clipboard; echo "copied!"'
   # upgrade/update shortcuts
   alias apt-upgrade='sudo apt-get update -y; sudo apt-get upgrade -y; sudo apt-get autoremove -y'
-  alias upgrade='apt-upgrade; sudo snap refresh'
+  
+  if is_ubuntu; then
+    alias upgrade='apt-upgrade; sudo snap refresh'
+  else
+    alias upgrade='apt-upgrade'
+  fi
 
   # Clear back buffer (like cmd + k)
   alias clear='clear && echo -en "\e[3J"'
