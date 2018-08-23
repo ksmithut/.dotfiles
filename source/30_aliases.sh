@@ -163,6 +163,8 @@ if is_macos; then
   # show/hide hidden files in finder
   alias show='defaults write com.apple.finder AppleShowAllFiles -bool TRUE; killall Finder;'
   alias hide='defaults write com.apple.finder AppleShowAllFiles -bool FALSE; killall Finder;'
+
+  alias uuid='uuidgen | tr ''[:upper:]'' ''[:lower:]'''
 fi
 
 # Ubuntu/Debian aliases/functions
@@ -171,7 +173,7 @@ if is_ubuntu || is_debian; then
   alias slack-theme='echo "#1f1f1f,#303030,#21859c,#FFFFFF,#303030,#FFFFFF,#85d14b,#DB6668" | xclip -selection clipboard; echo "copied!"'
   # upgrade/update shortcuts
   alias apt-upgrade='sudo apt-get update -y; sudo apt-get upgrade -y; sudo apt-get autoremove -y'
-  
+
   if is_ubuntu; then
     alias upgrade='apt-upgrade; sudo snap refresh'
   else
