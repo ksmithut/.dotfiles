@@ -25,7 +25,6 @@ mas 'BetterSnapTool', id: 417375580
 # Apps
 cask '1password'
 cask 'apptivate'
-cask 'bartender'
 cask 'discord'
 cask 'docker'
 cask 'etcher'
