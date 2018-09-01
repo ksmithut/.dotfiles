@@ -56,9 +56,6 @@ defaults write com.apple.finder ShowStatusBar -bool true
 # Makes window resize time instant
 defaults write -g NSWindowResizeTime -float 0.001
 
-# Disable Sudden Movement Sensor (useless on ssd)
-sudo pmset -a sms 0
-
 # Turn off startup chime
 sudo nvram SystemAudioVolume=%80
 
