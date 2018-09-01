@@ -1,0 +1,1 @@
+- [ ] figure out why `@` in a filepath stops autocomplete from happening

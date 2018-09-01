@@ -73,7 +73,7 @@ alias la='ls -FGlAhp'
 alias ll='la'
 
 function cd () {
-  builtin cd $1
+  builtin cd $1 || return # if it fails, just return
   [ -z "$PS1" ] && return # only ls if we're not in an interactive shell
   ls
 }

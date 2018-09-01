@@ -17,7 +17,7 @@ brew 'tree'
 brew 'watch'
 brew 'watchman'
 brew 'wget'
-brew 'yarn'
+brew 'yarn', args: ["without-node"]
 
 # Mac App Store
 mas 'BetterSnapTool', id: 417375580
