@@ -64,6 +64,7 @@ if is_ubuntu_desktop; then
 
   sudo snap install chromium
   sudo snap install firefox
+  sudo snap install htop
   sudo snap install insomnia
   sudo snap install slack --classic
   sudo snap install vlc
