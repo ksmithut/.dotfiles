@@ -1,6 +1,8 @@
 # A list of functions/aliases to use to make some things easier.
 # - every software program ever. except for PHP maybe.
 
+alias nowish='date +%Y-%m-%dT%H:%M:%S%z'
+
 alias ..='cd ../'
 alias ...='cd ../../'
 alias .3='cd ../../../'
