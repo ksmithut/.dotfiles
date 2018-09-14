@@ -1,6 +1,9 @@
 # Debian-only stuff.
 is_debian || return 1
 
+/etc/apt/sources.list.d/debian.list
+deb http://ftp.us.debian.org/debian sid main
+
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get install -y \
@@ -39,6 +42,11 @@ sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt-get update -y
 sudo apt-get install -y code
+
+# Firefox
+sudo sh -c 'echo "deb http://ftp.us.debian.org/debian sid main" > /etc/apt/sources.list.d/debian.list'
+sudo apt-get update -y
+sudo apt-get install -y firefox
 
 # Docker
 sudo apt-get remove docker docker-engine docker.io

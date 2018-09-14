@@ -195,6 +195,9 @@ if is_ubuntu || is_debian; then
   alias ls='ls -p --color=auto'
   alias la='ls -FGlAhp --color=auto'
 
+  # generates uuid
+  alias uuid='cat /proc/sys/kernel/random/uuid'
+
   # open for linux
   function open() {
     xdg-open "$*" &>/dev/null
