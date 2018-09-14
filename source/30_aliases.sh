@@ -77,7 +77,7 @@ alias ll='la'
 function cd () {
   builtin cd $1 || return # if it fails, just return
   [ -z "$PS1" ] && return # only ls if we're not in an interactive shell
-  ls
+  ls -p
 }
 
 # Generates some self-signed certificates
