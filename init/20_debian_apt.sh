@@ -24,7 +24,8 @@ sudo apt-get install -y \
   ca-certificates \
   curl \
   gnupg2 \
-  software-properties-common
+  software-properties-common \
+  tmux
 
 # Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O "$DOTFILES/caches/installers/chrome.deb"
@@ -42,11 +43,6 @@ sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt-get update -y
 sudo apt-get install -y code
-
-# Firefox
-sudo sh -c 'echo "deb http://ftp.us.debian.org/debian sid main" > /etc/apt/sources.list.d/debian.list'
-sudo apt-get update -y
-sudo apt-get install -y firefox
 
 # Docker
 sudo apt-get remove docker docker-engine docker.io
