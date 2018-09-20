@@ -40,6 +40,7 @@ sudo apt-get install -y \
   oathtool \
   python \
   ruby \
+  tmux \
   trash-cli \
   tree \
   vim \
