@@ -34,7 +34,7 @@ If you want to create a bootable installer for macOS, follow the instructions
 
 ```sh
 # Change /Volumes/Untitled to the volume you want it to be
-sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ macOS\ High\ Sierra.app
+sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --nointeraction
 ```
 
 Then backup:
