@@ -20,10 +20,10 @@ alias gpg-ls='gpg --list-secret-keys --keyid-format LONG'
 alias static='python -m SimpleHTTPServer'
 
 # docker helpers
-alias docker-stop-containers='docker stop $(docker ps -a -q)'
-alias docker-remove-containers='docker rm $(docker ps -a -q)'
-alias docker-remove-images='docker rmi $(docker images -a -q)'
-alias docker-remove-volumes='docker volume rm $(docker volume ls -f dangling=true -q)'
+alias docker-stop-containers='[[ "$(docker ps -a -q)" != "" ]] && docker stop $(docker ps -a -q)'
+alias docker-remove-containers='[[ "$(docker ps -a -q)" != "" ]] && docker rm $(docker ps -a -q)'
+alias docker-remove-volumes='[[ "$(docker volume ls -f dangling=true -q)" != "" ]] && docker volume rm $(docker volume ls -f dangling=true -q)'
+alias docker-remove-images='[[ "$(docker images -a -q)" != "" ]] && docker rmi -f $(docker images -a -q)'
 alias docker-clean='docker-stop-containers; docker-remove-containers; docker-remove-images; docker-remove-volumes;'
 
 # reverts to a given commit
