@@ -6,7 +6,6 @@ tap 'homebrew/services'
 brew 'bash'
 brew 'git'
 brew 'gpg'
-brew 'gpg-agent'
 brew 'jq'
 brew 'pinentry-mac'
 brew 'python3'
@@ -20,7 +19,7 @@ brew 'wget'
 brew 'yarn', args: ["without-node"]
 
 # Mac App Store
-mas 'BetterSnapTool', id: 417375580
+# mas 'BetterSnapTool', id: 417375580 # Not working on mojave
 
 # Apps
 cask '1password'
