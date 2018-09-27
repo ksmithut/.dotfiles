@@ -13,3 +13,4 @@ nvm install stable
 nvm alias default stable
 
 yarn global add now
+yarn global add ngrok
