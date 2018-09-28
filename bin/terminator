@@ -1,0 +1,119 @@
+#!/usr/bin/env node
+
+'use strict'
+
+const assert = require('assert')
+const path = require('path')
+const http = require('http')
+const https = require('https')
+
+const PORT = '443'
+const NAME = (process.title = path.basename(__filename))
+const TO_PORT = process.argv.slice(2)[0]
+
+try {
+  assert(TO_PORT, '<port> is required')
+  const parsedPort = Number.parseInt(TO_PORT, 10)
+  assert(!Number.isNaN(parsedPort), '<port> must be a number')
+  assert(parsedPort >= 80, '<port> must be greater than or equal to 80')
+  assert(parsedPort <= 65535, '<port> must be less than or equal to 65535')
+} catch (err) {
+  console.error(`Error: ${err.message}`)
+  console.error(`
+  ${NAME} <port>
+
+    <port> - The port to proxy to
+  `)
+  process.exit(1)
+}
+
+// These will need to be regerated after 27 years (9999 days)
+// They can be generated with the following command:
+// openssl req -x509 -newkey rsa:2048 -nodes -sha256 -days 9999 -subj "/CN=localhost" -keyout localhost.key -out localhost.pem
+// Although, who know if openssl will still be a thing in 27 years and that it
+// will accept the same arguments... oh well
+const DEFAULT_KEY = Buffer.from(`-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDK3UvUYaR3wMJ/
+8NLxrFLk7Y6x7yR9ETYzJOWcuOIA7GrEyTRDhY0UC5aSqu0cG4zb9cJAZLR69u/u
+FVnBFQ00m+VXmWI7TY0mjhFcyeiT8fFzSv5i3GBtDU8Ao+rJGgNrsShan+qXS3Wm
+xZ/h4S2hbYRu2vAizrBO/V1a9Vcx3XfuXGLhjyy+ak81N2vtR4A+1+srC82+R644
+fvjuapDC5TE9SpgrcAN6md0oQjiWfl11U5KXUE5aVC9g8VTfdJL59iFaUTczfacj
+MgnlUtNAj9nPFHa5OHbCFx9osymNKyNbxw+Q8Znk1106VngG0lmVnZT7GN33yQuc
+RW7Y/G7rAgMBAAECggEATT4582JCd36kEIcoKvFMlvKFVOcT47M8CflQnH4hP+zF
+MqzSA6vEbg+Dg9Ele4BaAB7xmgc+WVvRO7xRcp2La664gsRajO4YgsexgL04m6yS
+HS4+8nGrHZrlq/6+FVicWNMZ5HfjoTwQTjINkLpm34KN3I/sw7QjmdALTekBDHDz
+lwgCuxnWhb9mHm7sIZJp/LTtjbkwix4jij80FbhsycVCvaGxAahbKITxATfjLEK4
+s+R+rOWiVn2HZT4Ngfiug9nk89P+hJSqE+5XmcdcKkPwB2CUwUg11jqzGstmXwVp
+L19HpY7euwzG46xWkw16YzYTTT6XJni30xux+w2akQKBgQD0F9F7+2KjtZFQW3xE
+Y+Jm6QpQIyc+crfuZEH5BYB1E9HxPPclQvu7d8kR3xWxWeW7JiGsxmZ7eDXecgQP
+trrhweAI3K1OUD9FmVhstMI2VMYpKZFGqhUaY1kxuCCsVT8GnHJadANXyfsARnI7
+deS7kuYplWppEnCfiv6OhAwUhwKBgQDUwp+620sxU06vzB37j+S5UjQBzC2z6ovt
+INgMhM2akExN/DfODfebaBxYZ8G6tteSliINXCoIGuR1DqHml6703FOkA6xMRQ9o
+u+348aCJCw5MYiA6sFDREg/Clk3oJxRYci3rIK4d5FRkf6VY3cmDAI6vv7GnQY20
+JewyeimPfQKBgQCsl/rj88i3gTcS3t1rbkU0ByvnpjOlkHBF/FY5wo4mOrGEJluK
+2WYuFHD0Vg18rdgnELtW86KbQ1CzzWLZyZcy8md7XK6eZVeX2uoPU3DQAflsOZwj
+nzf0xLLY2R0hPdWm0xB4rPeAJ613cFhtetsVVrWwSZpIWWWRKjL8ipoQGQKBgD22
+3qJS7fK22YJA0QmhaZUf9Rn4YeFoTYJRHpozA3isFpYgbQeGIaaggmhaYGWKl+lb
+RzFc5IxJUK9ruSasJQG9zz0qG5ZcCeY1bQfi/tABtvoNFJAxiJ+8f3nQI3UNsOce
+55bmedsN2jT0mb+3RbaMONdd4WhEqZfx0BusN9X5AoGBAIqj93oTrSeB09aZximf
+kioqv1uhI9y9ixKzDgITE4dvnCTaYYuezIgqmmkse5SCekG7v6ZKzTP/NM/XuMlK
+oDcixOoN00eegmDRy8/lgQTNxilpUjfSsvRnxUYOdTpz90DTFuwKBValL663CFfc
+ScRHd++3Gu4e5UkhkHTpdWu2
+-----END PRIVATE KEY-----
+`)
+const DEFAULT_CERT = Buffer.from(`-----BEGIN CERTIFICATE-----
+MIICpDCCAYwCCQCw9a93uIqE6DANBgkqhkiG9w0BAQsFADAUMRIwEAYDVQQDDAls
+b2NhbGhvc3QwHhcNMTgwOTI4MTMxMDE4WhcNNDYwMjEyMTMxMDE4WjAUMRIwEAYD
+VQQDDAlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDK
+3UvUYaR3wMJ/8NLxrFLk7Y6x7yR9ETYzJOWcuOIA7GrEyTRDhY0UC5aSqu0cG4zb
+9cJAZLR69u/uFVnBFQ00m+VXmWI7TY0mjhFcyeiT8fFzSv5i3GBtDU8Ao+rJGgNr
+sShan+qXS3WmxZ/h4S2hbYRu2vAizrBO/V1a9Vcx3XfuXGLhjyy+ak81N2vtR4A+
+1+srC82+R644fvjuapDC5TE9SpgrcAN6md0oQjiWfl11U5KXUE5aVC9g8VTfdJL5
+9iFaUTczfacjMgnlUtNAj9nPFHa5OHbCFx9osymNKyNbxw+Q8Znk1106VngG0lmV
+nZT7GN33yQucRW7Y/G7rAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAITvjFThkjmv
+/SmJ2oOzQM7a8xgQ7aDUGwAy3pZ62UIRymzyRcSTPEfbkD4lN1CpKsf6QvFlZg2f
+lh4s/CslgfRXQu47LRcmXzFuanBJcgN4iEdBr7uGbBGFYqEMCBsVpYvJhkg5B2Pr
+Wwkx0Fz+6RfrO8GAWLt0J3IVmuPPz97cdjoc/UfOohvkKQ9dxXhwnMXEElR4KNkK
+L7BrCFlSY7fOkLSE6X0BBhmlA4nHxOPVp4cVhRnNqjOu/eqba+g0tVgjTqr4yXmH
+q1uy93Y24lQfoIDiIbslfDAIN+sywbMS8chXVmbkP/L9FqSyjigw7KEMIME22ufV
+qNAfIwbf7Bk=
+-----END CERTIFICATE-----
+`)
+
+const httpsOptions = {
+  key: DEFAULT_KEY,
+  cert: DEFAULT_CERT
+}
+
+const server = https.createServer(httpsOptions, (req, res) => {
+  req.pause()
+  const requestOptions = {
+    protocol: 'http:',
+    hostname: '127.0.0.1',
+    port: TO_PORT,
+    method: req.method,
+    path: req.url,
+    headers: req.headers,
+    agent: false,
+    setHost: false
+  }
+  const connector = http.request(requestOptions, upstreamResponse => {
+    upstreamResponse.pause()
+    res.writeHeader(upstreamResponse.statusCode, upstreamResponse.headers)
+    upstreamResponse.pipe(
+      res,
+      { end: true }
+    )
+    upstreamResponse.resume()
+  })
+  req.pipe(
+    connector,
+    { end: true }
+  )
+  req.resume()
+})
+
+server
+  .listen(PORT)
+  .on('listening', () => console.log(`${NAME}    ${PORT} --> ${TO_PORT}`))
+  .on('error', err => console.error(err))

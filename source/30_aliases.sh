@@ -81,7 +81,7 @@ function cd () {
 }
 
 # Generates some self-signed certificates
-alias generate-certs='openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj "/CN=localhost" -keyout key.pem -out cert.pem'
+alias generate-certs='openssl req -x509 -newkey rsa:2048 -nodes -sha256 -days 9999 -subj "/CN=localhost" -keyout localhost.key -out localhost.pem'
 
 # dotfiles commands
 function dotfiles() { cd $DOTFILES; }
