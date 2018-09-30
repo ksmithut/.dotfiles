@@ -25,12 +25,13 @@ sudo apt-get install -y \
   curl \
   gnupg2 \
   software-properties-common \
-  tmux
+  tmux \
+  chromium
 
 # Chrome
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O "$DOTFILES/caches/installers/chrome.deb"
-sudo dpkg -i "$DOTFILES/caches/installers/chrome.deb"
-sudo apt-get install -f -y
+# wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O "$DOTFILES/caches/installers/chrome.deb"
+# sudo dpkg -i "$DOTFILES/caches/installers/chrome.deb"
+# sudo apt-get install -f -y
 
 # Slack
 wget https://downloads.slack-edge.com/linux_releases/slack-desktop-3.2.1-amd64.deb -O "$DOTFILES/caches/installers/slack.deb"
