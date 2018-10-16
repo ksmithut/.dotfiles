@@ -56,7 +56,7 @@ services:
   # https://hub.docker.com/_/postgres/
   # postgres://postgres:postgres@localhost:5432/postgres
   postgres:
-    image: postgres:alpine
+    image: postgres:11-alpine
     ports:
       - 5432:5432
     volumes:
