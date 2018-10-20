@@ -99,8 +99,8 @@ function setup-package() {
 function setup-linting() {
   yarn add -D prettier-eslint-cli standard
   cat package.json \
-    | jq '.scripts.format = "prettier-eslint '**/*.js' --write"' \
-    | jq '.scripts.lint = "standard && prettier-eslint '**/*.js' --list-different"' \
+    | jq ".scripts.format = \"prettier-eslint '**/*.js' --write\"" \
+    | jq ".scripts.lint = \"standard && prettier-eslint '**/*.js' --list-different\"" \
     | tee package.json 2>&1 >/dev/null
   echo '{}' \
     | jq '.extends = "standard"' \
