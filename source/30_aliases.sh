@@ -146,8 +146,8 @@ function setup-project() {
   yarn add -D nodemon
   cat package.json \
     | jq '.main = "src/index.js"' \
-    | jq '.scripts.start = "node $npm_package_main"' \
-    | jq '.scripts["start.dev"] = "nodemon --inspect=0.0.0.0:9229 $npm_package_main"' \
+    | jq '.scripts.start = "node ."' \
+    | jq '.scripts["start.dev"] = "nodemon --inspect=0.0.0.0:9229"' \
     | tee package.json 2>&1 >/dev/null
 }
 
