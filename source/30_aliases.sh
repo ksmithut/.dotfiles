@@ -103,7 +103,7 @@ function setup-linting() {
     | jq ".scripts.lint = \"standard && prettier-eslint '**/*.js' --list-different\"" \
     | tee package.json 2>&1 >/dev/null
   echo '{}' \
-    | jq '.extends = "standard"' \
+    | jq '.extends = ["standard"]' \
     | tee .eslintrc 2>&1 >/dev/null
 }
 
