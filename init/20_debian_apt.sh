@@ -1,9 +1,6 @@
 # Debian-only stuff.
 is_debian || return 1
 
-/etc/apt/sources.list.d/debian.list
-deb http://ftp.us.debian.org/debian sid main
-
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get install -y \
