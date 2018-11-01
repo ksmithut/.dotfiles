@@ -5,6 +5,10 @@ shopt -s expand_aliases
 
 compose_file=~/.dock.docker-compose.yaml
 
+function yaml_to_json () {
+  echo "$(ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))' ${1})"
+}
+
 case $1 in
   -h|--help|help)
     echo "Run docker containers with a single word command using a"
@@ -16,10 +20,10 @@ case $1 in
     echo "to work."
     ;;
   ls|list)
-    echo "$(ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))' $compose_file | jq -r '.services | keys[]')"
+    echo "$(yaml_to_json ${compose_file} | jq -r '.services | keys[]')"
     ;;
   info)
-    echo "$(ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))' $compose_file | jq -r ".services.$2 | {"$2": .}" | ruby -ryaml -rjson -e 'puts YAML.dump(JSON.load(ARGF))')"
+    echo "$(yaml_to_json ${compose_file} | jq -r ".services.$2 | {"$2": .}" | ruby -ryaml -rjson -e 'puts YAML.dump(JSON.load(ARGF))')"
     ;;
   *)
     docker-compose --file $compose_file --project-name dock up --build $1

@@ -17,5 +17,14 @@ function _dock_complete() {
 }
 complete -F _dock_complete dock
 
+function _dotfiles_complete() {
+  local cur
+  COMPREPLY=()
+  cur=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $( compgen -W "$(dotfiles commands)" -- "$cur" ) )
+  return 0
+}
+complete -F _dotfiles_complete dotfiles
+
 # https://github.com/npm/npm/issues/11696
 export COMP_WORDBREAKS=${COMP_WORDBREAKS//:}

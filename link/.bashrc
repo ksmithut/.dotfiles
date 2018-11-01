@@ -1,5 +1,12 @@
 # Initialize the DOTFILES variable so other scripts can use it
-export DOTFILES=$(builtin cd "$(dirname "$(readlink "${BASH_SOURCE[0]}")" )/../"; pwd -P)
+pushd . > /dev/null
+SCRIPT_PATH="${BASH_SOURCE[0]}";
+if ([ -h "${SCRIPT_PATH}" ]) then
+  while([ -h "${SCRIPT_PATH}" ]) do cd "$(dirname "${SCRIPT_PATH}")"; SCRIPT_PATH="$(readlink "${SCRIPT_PATH}")"; done
+fi
+builtin cd "$(dirname "${SCRIPT_PATH}")" > /dev/null
+export DOTFILES="$( builtin cd "$(dirname "$SCRIPT_PATH")/../"; pwd -P )"
+popd  > /dev/null
 
 # Source all of the files in ~/.dotfiles/source
 for file in $DOTFILES/source/*.sh; do source "$file"; done

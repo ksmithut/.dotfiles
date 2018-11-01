@@ -15,14 +15,12 @@ The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
   you may want to override on your given installation, but not override for all
   of your computers.
 
-- `init/` All files in here will be run upon running `./scripts/setup.sh`. Use this
-  for things like installing homebrew or other applications that should only
-  need to be run once.
+- `init/` All files in here will be run upon running `./bin/dotfiles setup`. Use
+  this for things like installing homebrew or other applications that should
+  only need to be run once.
 
 - `link/` All files in here will be symlinked with `ln -s` to `~`. Use this for
   config dotfiles such as `.bash_profile`.
-
-- `scripts/` Scripts used to install/setup the dotfiles.
 
 - `source/` All files in here will be included upon every new terminal session.
   Use this for things like aliases, functions, and customizing the bash prompt.
@@ -40,7 +38,7 @@ sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallme
 Then backup:
 
 ```sh
-~/.dotfiles/scripts/backup.sh ~/Desktop
+~/.dotfiles/bin/dotfiles backup ~/Desktop
 # after it's done, move the backup/ folder to removable media
 ```
 
@@ -55,7 +53,7 @@ Once in the OS open up the terminal:
 # installs the command-line tools
 xcode-select --install
 git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
-~/.dotfiles/scripts/setup.sh
+~/.dotfiles/bin/dotfiles setup
 ```
 
 You need to manually move over your backup data.
@@ -130,7 +128,7 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo apt install git -y
 git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
-~/.dotfiles/scripts/setup.sh
+~/.dotfiles/bin/dotfiles setup
 ```
 
 ```sh
@@ -176,7 +174,7 @@ After that, clone this repo and run the setup script described above.
 
 ```sh
 git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
-~/.dotfiles/scripts/setup.sh
+~/.dotfiles/bin/dotfiles setup
 ```
 
 I also like to change the terminal configuration to work with powerline fonts:
@@ -223,8 +221,8 @@ than local time.
 
 Before you begin a clean install, you may wish to backup other non-dotfile
 related files (such as pictures and documents and such). There is a backup
-script to help facilitate that in `./scripts/backup.sh`. Open that file and look at the
-line that looks like this:
+script to help facilitate that in `~/.dotfiles/bin/dotfiles`. Open that
+file and look at the line that looks like this:
 
 ```sh
 copy_dirs=(
@@ -234,7 +232,7 @@ copy_dirs=(
 ```
 
 Add or remove paths in that group as you wish. To run the back up, just `cd`
-into the .dotfiles directory and run `./scripts/backup.sh [backup directory]`.
+into the .dotfiles directory and run `~/.dotfiles/bin/dotfiles backup [backup directory]`.
 
 [cowboy]: https://github.com/cowboy/dotfiles
 [createinstallmedia]: https://support.apple.com/en-us/HT201372
