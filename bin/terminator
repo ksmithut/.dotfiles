@@ -100,16 +100,10 @@ const server = https.createServer(httpsOptions, (req, res) => {
   const connector = http.request(requestOptions, upstreamResponse => {
     upstreamResponse.pause()
     res.writeHeader(upstreamResponse.statusCode, upstreamResponse.headers)
-    upstreamResponse.pipe(
-      res,
-      { end: true }
-    )
+    upstreamResponse.pipe(res, { end: true })
     upstreamResponse.resume()
   })
-  req.pipe(
-    connector,
-    { end: true }
-  )
+  req.pipe(connector, { end: true })
   req.resume()
 })
 

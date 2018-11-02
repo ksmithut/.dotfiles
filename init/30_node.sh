@@ -14,3 +14,4 @@ nvm alias default stable
 
 yarn global add now
 yarn global add ngrok
+yarn global add degit
