@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
-pushd . > /dev/null
-SCRIPT_PATH="${BASH_SOURCE[0]}";
-if ([ -h "${SCRIPT_PATH}" ]) then
-  while([ -h "${SCRIPT_PATH}" ]) do cd "$(dirname "${SCRIPT_PATH}")"; SCRIPT_PATH="$(readlink "${SCRIPT_PATH}")"; done
+if [ "${DOTFILES}" == "" ]; then
+  pushd . > /dev/null
+  SCRIPT_PATH="${BASH_SOURCE[0]}";
+  if ([ -h "${SCRIPT_PATH}" ]) then
+    while([ -h "${SCRIPT_PATH}" ]) do cd "$(dirname "${SCRIPT_PATH}")"; SCRIPT_PATH="$(readlink "${SCRIPT_PATH}")"; done
+  fi
+  builtin cd "$(dirname "${SCRIPT_PATH}")" > /dev/null
+  export DOTFILES="$( builtin cd "$(dirname "$SCRIPT_PATH")/../"; pwd -P )"
+  popd  > /dev/null
 fi
-builtin cd "$(dirname "${SCRIPT_PATH}")" > /dev/null
-export DOTFILES="$( builtin cd "$(dirname "$SCRIPT_PATH")/../"; pwd -P )"
-popd  > /dev/null
 
 # Makes glob return dotfiles
 shopt -s dotglob

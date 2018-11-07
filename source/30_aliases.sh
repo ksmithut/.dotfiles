@@ -104,6 +104,19 @@ function setup-linting() {
     | tee .eslintrc 2>&1 >/dev/null
 }
 
+function setup-linting-hard() {
+  yarn add -D \
+    eslint \
+    eslint-config-standard \
+    eslint-config-standard-jsx \
+    eslint-plugin-import \
+    eslint-plugin-node \
+    eslint-plugin-promise \
+    eslint-plugin-react \
+    eslint-plugin-standard
+  setup-linting
+}
+
 function setup-gitignore() {
   echo '.DS_Store
 *.log*
