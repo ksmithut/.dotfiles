@@ -24,7 +24,7 @@ alias docker-stop-containers='[[ "$(docker ps -a -q)" != "" ]] && docker stop $(
 alias docker-remove-containers='docker-stop-containers && [[ "$(docker ps -a -q)" != "" ]] && docker rm $(docker ps -a -q)'
 alias docker-remove-volumes='[[ "$(docker volume ls -f dangling=true -q)" != "" ]] && docker volume rm $(docker volume ls -f dangling=true -q)'
 alias docker-remove-images='[[ "$(docker images -a -q)" != "" ]] && docker rmi -f $(docker images -a -q)'
-alias docker-clean='docker-remove-containers; docker-remove-images; docker-remove-volumes;'
+alias docker-clean='docker-remove-containers; docker-remove-images; docker-remove-volumes; docker system prune -f'
 
 # reverts to a given commit
 function oh-crap() {
