@@ -19,3 +19,7 @@ function get_os() {
     is_$os; [[ $? == ${1:-0} ]] && echo $os
   done
 }
+
+function is_zsh() {
+  [[ "${ZSH_NAME}" != "" ]] || return 1
+}

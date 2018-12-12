@@ -19,7 +19,8 @@ brew 'watch'
 brew 'watchman'
 brew 'wget'
 brew 'yarn', args: ["without-node"]
-brew 'youtube-dl'
+brew 'zsh'
+brew 'zsh-completions'
 
 # Mac App Store
 # mas 'BetterSnapTool', id: 417375580 # Not working on mojave

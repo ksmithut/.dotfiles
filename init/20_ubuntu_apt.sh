@@ -45,7 +45,8 @@ sudo apt-get install -y \
   tree \
   vim \
   wget \
-  xclip
+  xclip \
+  zsh
 
 sudo apt-get purge -y \
   firefox

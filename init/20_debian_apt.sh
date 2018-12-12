@@ -23,7 +23,8 @@ sudo apt-get install -y \
   gnupg2 \
   software-properties-common \
   tmux \
-  chromium
+  chromium \
+  zsh
 
 # Slack
 wget https://downloads.slack-edge.com/linux_releases/slack-desktop-3.2.1-amd64.deb -O "$DOTFILES/caches/installers/slack.deb"

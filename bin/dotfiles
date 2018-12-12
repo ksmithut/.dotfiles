@@ -4,7 +4,10 @@ if [ "${DOTFILES}" == "" ]; then
   pushd . > /dev/null
   SCRIPT_PATH="${BASH_SOURCE[0]}";
   if ([ -h "${SCRIPT_PATH}" ]) then
-    while([ -h "${SCRIPT_PATH}" ]) do cd "$(dirname "${SCRIPT_PATH}")"; SCRIPT_PATH="$(readlink "${SCRIPT_PATH}")"; done
+    while [ -h "${SCRIPT_PATH}" ]; do
+      cd "$(dirname "${SCRIPT_PATH}")" || exit;
+      SCRIPT_PATH="$(readlink "${SCRIPT_PATH}")";
+    done
   fi
   builtin cd "$(dirname "${SCRIPT_PATH}")" > /dev/null
   export DOTFILES="$( builtin cd "$(dirname "$SCRIPT_PATH")/../"; pwd -P )"
@@ -12,7 +15,11 @@ if [ "${DOTFILES}" == "" ]; then
 fi
 
 # Makes glob return dotfiles
-shopt -s dotglob
+if [ "$ZSH_NAME" != "" ]; then
+  setopt dotglob
+else
+  shopt -s dotglob 2>&1 >/dev/null
+fi
 
 function command_source() {
   for file in $DOTFILES/source/*.sh; do source "$file"; done
