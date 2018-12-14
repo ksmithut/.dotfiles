@@ -65,16 +65,30 @@ DEFAULT_USER=${USER}
 plugins=(
   git
   node
+  nvm
+  npx
   yarn
   npm
   docker
   vscode
+  tmux
 )
 
 mac_plugins=(
-  brew
   osx
 )
+
+ubuntu_plugins=(
+  ubuntu
+)
+
+debian_plugins=(
+  debian
+)
+
+is_macos && plugins+=("${mac_plugins[@]}")
+is_ubuntu && plugins+=("${ubuntu_plugins[@]}")
+is_debian && plugins+=("${debian_plugins[@]}")
 
 source $ZSH/oh-my-zsh.sh
 

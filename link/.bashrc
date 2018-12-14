@@ -1,6 +1,7 @@
 # Initialize the DOTFILES variable so other scripts can use it
 pushd . > /dev/null
 SCRIPT_PATH="${BASH_SOURCE[0]}";
+[[ "${ZSH_NAME}" == "zsh" ]] && SCRIPT_PATH="${(%):-%N}"
 if [ -h "${SCRIPT_PATH}" ]; then
   while [ -h "${SCRIPT_PATH}" ]; do
     cd "$(dirname "${SCRIPT_PATH}")" || exit;

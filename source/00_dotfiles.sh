@@ -21,5 +21,5 @@ function get_os() {
 }
 
 function is_zsh() {
-  [[ "${ZSH_NAME}" != "" ]] || return 1
+  [[ "${ZSH_NAME}" == "zsh" ]] || return 1
 }

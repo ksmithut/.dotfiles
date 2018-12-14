@@ -1,8 +1,4 @@
-# All the scripts necessary for nvm to work/upgrade/auto switch
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-export NODEJS_ORG_MIRROR="$NVM_NODEJS_ORG_MIRROR"
+is_zsh && return
 
 # Upgrade nvm
 function nvm-upgrade() {
@@ -13,6 +9,11 @@ function nvm-upgrade() {
   builtin cd - > /dev/null;
   \. "$NVM_DIR/nvm.sh";
 }
+
+# All the scripts necessary for nvm to work/upgrade/auto switch
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+export NODEJS_ORG_MIRROR="$NVM_NODEJS_ORG_MIRROR"
 
 # Change version of node on cd
 function _change_node_version() {

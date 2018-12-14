@@ -3,7 +3,8 @@
 if [ "${DOTFILES}" == "" ]; then
   pushd . > /dev/null
   SCRIPT_PATH="${BASH_SOURCE[0]}";
-  if ([ -h "${SCRIPT_PATH}" ]) then
+  [[ "${ZSH_NAME}" == "zsh" ]] && SCRIPT_PATH="${(%):-%N}"
+  if [ -h "${SCRIPT_PATH}" ]; then
     while [ -h "${SCRIPT_PATH}" ]; do
       cd "$(dirname "${SCRIPT_PATH}")" || exit;
       SCRIPT_PATH="$(readlink "${SCRIPT_PATH}")";
