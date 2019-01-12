@@ -81,7 +81,7 @@ function cd () {
 }
 
 # Generates some self-signed certificates
-alias generate-certs='openssl req -x509 -newkey rsa:2048 -nodes -sha256 -days 9999 -subj "/CN=localhost" -keyout localhost.key -out localhost.pem'
+alias generate-certs='openssl req -x509 -newkey rsa:2048 -nodes -sha256 -days 9999 -subj "/CN=localhost" -keyout localhost.key -out localhost.cert'
 
 # boilerplate
 function setup-package() {
