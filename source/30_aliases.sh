@@ -182,7 +182,7 @@ if is_macos; then
   alias show='defaults write com.apple.finder AppleShowAllFiles -bool TRUE; killall Finder;'
   alias hide='defaults write com.apple.finder AppleShowAllFiles -bool FALSE; killall Finder;'
 
-  alias uuid='uuidgen | tr ''[:upper:]'' ''[:lower:]'''
+  alias uuid='printf "%s" "$(uuidgen | tr ''[:upper:]'' ''[:lower:]'')"'
 fi
 
 # Ubuntu/Debian aliases/functions
