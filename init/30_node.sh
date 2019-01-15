@@ -12,6 +12,5 @@ export NVM_DIR="$HOME/.nvm" && (
 nvm install stable
 nvm alias default stable
 
-yarn global add now
 yarn global add ngrok
 yarn global add degit
