@@ -42,7 +42,7 @@ function command_copy() {
     dest="$HOME/$(basename $file)"
     if test -f $dest; then
       echo "$dest already exists"
-      read -p "Overwrite? (y/N)" overwrite
+      echo -n 'Overwrite? (y/N) '; read overwrite
       case $overwrite in
         [Yy]* ) cp "$file" "$HOME/$(basename $file)"; break;;
         * ) echo "Skipping copying $file"

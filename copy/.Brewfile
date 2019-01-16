@@ -23,7 +23,8 @@ brew 'zsh'
 brew 'zsh-completions'
 
 # Mac App Store
-# mas 'BetterSnapTool', id: 417375580 # Not working on mojave
+# mas 'BetterSnapTool', id: 417375580
+# mas 'Apple Configurator 2', id: 1037126344
 
 # Apps
 cask '1password'
