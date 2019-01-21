@@ -28,7 +28,7 @@ alias docker-clean='docker-stop-containers; docker-remove-containers; docker-rem
 
 # reverts to a given commit
 function oh-crap() {
-  if [ "$1" = "" ]; then
+  if [[ "$1" == "" ]]; then
     echo 'You must pass in a commit id'
     return 1
   fi
@@ -42,7 +42,7 @@ function git-prune-local() {
   git checkout master
   git fetch -p
   local branches="$(git branch -vv | awk '/: gone]/{print $1}')"
-  if [ "$branches" = "" ]; then
+  if [[ "$branches" == "" ]]; then
     echo "All up to date"
     return 0
   fi

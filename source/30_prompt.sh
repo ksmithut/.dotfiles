@@ -66,7 +66,7 @@ __powerline_battery() {
     percent=$(upower -i $(upower -e | grep BAT) | grep --color=never -E percentage|xargs|cut -d' ' -f2|sed s/%//)
   fi
 
-  if [ "$gamify" -eq "1" ]; then
+  if [[ "$gamify" -eq "1" ]]; then
     local filled_hearts=$(expr $percent / $num_hearts)
     for i in $(seq 0 $num_hearts); do
       printf $([ "$i" -le "$filled_hearts" ] && echo "$filled_heart" || echo "$empty_heart")
