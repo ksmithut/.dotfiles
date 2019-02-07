@@ -7,6 +7,9 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="~/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$DOTFILES/bin:$PATH"
 
+# Elixir history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # Shell config
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
