@@ -140,20 +140,8 @@ DOTFILES=~/.dotfiles ~/.dotfiles/bin/dotfiles setup
 
 # Pixelbook
 
-You need to enable the dev channel (for now) to enable linux compatibility.
-
-1. Open "Settings"
-2. Click the Menu button on the top left
-3. Click on "About Chrome OS" at the bottom of that menu
-4. Click on "Detailed build information"
-5. Under "Channel" change the channel
-6. Go back one page and wait for the update to complete
-
-In the version I'm currently on, it was stuck updating the firmware for the
-touchpad. I waited about 10 minutes then pressed `ctrl + c` and was fine.
-
-Once you boot back in, open up "Settings" again and scroll down until you reach
-"Linux Apps", and enable that. It will take a bit to download the image.
+Open up "Settings" again and scroll down until you reach "Linux Apps", and
+enable that. It will take a bit to download the image.
 
 Once your in, you'll need to change the password of the root user:
 
