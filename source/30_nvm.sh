@@ -1,5 +1,3 @@
-is_zsh && return
-
 # Upgrade nvm
 function nvm-upgrade() {
   builtin cd "$NVM_DIR";
@@ -9,6 +7,8 @@ function nvm-upgrade() {
   builtin cd - > /dev/null;
   \. "$NVM_DIR/nvm.sh";
 }
+
+is_zsh && return
 
 # All the scripts necessary for nvm to work/upgrade/auto switch
 export NVM_DIR="$HOME/.nvm"
