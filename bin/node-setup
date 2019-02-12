@@ -1,0 +1,194 @@
+#!/usr/bin/env node
+'use strict'
+
+const { promisify } = require('util')
+const { spawn } = require('child_process')
+const fs = require('fs')
+const path = require('path')
+
+const fsMkdir = promisify(fs.mkdir.bind(fs))
+const fsWriteFile = promisify(fs.writeFile.bind(fs))
+
+const spawnPromise = (command, args) => {
+  const fullCommand = `${command} ${args.join(' ')}`
+  return new Promise((resolve, reject) => {
+    const running = spawn(command, args, { stdio: 'inherit' })
+    running.on('close', code => {
+      return code === 0
+        ? resolve()
+        : reject(new Error(`Exit code ${exitCode}: ${fullCommand}`))
+    })
+  })
+}
+
+const installDependencies = (yarn, dev, dependencies) => {
+  const command = yarn ? 'yarn' : 'npm'
+  const installCommand = yarn ? 'add' : 'install'
+  const devFlag = yarn ? '--dev' : '--save-dev'
+  const args = [installCommand]
+  if (dev) args.push(devFlag)
+  const fullCommand = `${command} ${installCommand} ... ${args.join(' ')}`
+  args.push(...dependencies)
+  return spawnPromise(command, args)
+}
+
+const writeFile = async (filepath, contents) => {
+  const dirname = path.dirname(filepath)
+  await fsMkdir(dirname, { recursive: true, mode: 0o755 })
+  if (typeof contents === 'object') {
+    contents = JSON.stringify(contents, null, 2)
+  }
+  contents += '\n'
+  await fsWriteFile(filepath, contents, { mode: 0o644 })
+}
+
+const writeFiles = files =>
+  Promise.all(
+    Object.entries(files).map(([filepath, contents]) =>
+      writeFile(filepath, contents)
+    )
+  )
+
+const run = async (options, files, dependencies, devDependencies) => {
+  await writeFiles(files)
+  await spawnPromise('git', ['init'])
+  await installDependencies(options.yarn, false, dependencies)
+  await installDependencies(options.yarn, true, devDependencies)
+}
+
+const help = (exitCode = 0) => {
+  console.error(`node-setup [options]
+
+  Options:
+    --help, -h    Display help information
+    --typescript  Add typescript support to the project
+    --linting     Adds linting support to the project
+    --yarn        Install dependencies with yarn instead of npm
+    --strict      Sets --typescript, --linting, --yarn
+`)
+  process.exit(exitCode)
+}
+
+const options = process.argv.slice(2).reduce(
+  (options, arg) => {
+    if (arg === '--help' || arg === '-h') {
+      return help()
+    }
+    if (arg === '--typescript') {
+      return { ...options, typescript: true }
+    }
+    if (arg === '--linting') {
+      return { ...options, linting: true }
+    }
+    if (arg === '--yarn') {
+      return { ...options, yarn: true }
+    }
+    if (arg === '--strict') {
+      return { ...options, typescript: true, linting: true, yarn: true }
+    }
+    console.error(`Unknown arg "${arg}"`)
+    return help(1)
+  },
+  {
+    typescript: false,
+    linting: false,
+    yarn: false
+  }
+)
+
+const files = {}
+const packageJSON = {
+  name: 'placeholder',
+  description: '',
+  version: '0.0.0',
+  main: 'src/index.js',
+  author: 'placeholder',
+  license: 'MIT',
+  private: true,
+  scripts: {},
+  dependencies: {},
+  devDependencies: {}
+}
+const dependencies = new Set()
+const devDependencies = new Set()
+
+devDependencies.add('nodemon')
+packageJSON.scripts['start'] = 'node .'
+packageJSON.scripts['start.dev'] = 'nodemon --inspect=0.0.0.0:9229'
+files[packageJSON.main] = `'use strict'`
+files['README.md'] = `# placeholder`
+
+/**
+ * For setting up eslint standard for no conflict on eslint
+ *  eslint \
+ *  eslint-config-standard \
+ *  eslint-config-standard-jsx \
+ *  eslint-plugin-import \
+ *  eslint-plugin-node \
+ *  eslint-plugin-promise \
+ *  eslint-plugin-react \
+ *  eslint-plugin-standard
+ */
+if (options.linting) {
+  devDependencies.add('prettier-eslint-cli', 'standard')
+  files['.eslintrc'] = {
+    extends: ['standard']
+  }
+  packageJSON.scripts['format'] = `prettier-eslint 'src/**/*.js' --write`
+  packageJSON.scripts[
+    'lint'
+  ] = `standard && prettier-eslint 'src/**/*.js' --list-different`
+  if (options.typescript) {
+    devDependencies.add('@typescript-eslint/parser')
+    files['.eslintrc'].parser = '@typescript-eslint/parser'
+    packageJSON.scripts['format'] = `prettier-eslint 'src/**/*.ts' --write`
+    packageJSON.scripts[
+      'lint'
+    ] = `standard --parser '@typescript-eslint/parser' && prettier-eslint 'src/**/*.ts' --list-different`
+  }
+  packageJSON.scripts['lint']
+}
+
+if (options.typescript) {
+  delete files[packageJSON.main]
+  const outDir = `dist`
+  const newMain = 'src/index.ts'
+  files[newMain] = ``
+  packageJSON.main = `${outDir}/index.js`
+  packageJSON.scripts['build'] = 'tsc'
+  packageJSON.scripts[
+    'start.dev'
+  ] = `nodemon --inspect=0.0.0.0:9229 -r ts-node/register ${newMain}`
+  dependencies.add('typescript').add('@types/node')
+  devDependencies.add('ts-node')
+  files['tsconfig.json'] = {
+    compilerOptions: {
+      module: 'commonjs',
+      esModuleInterop: true,
+      target: 'esnext',
+      alwaysStrict: true,
+      strict: true,
+      sourceMap: true,
+      outDir
+    },
+    include: ['src/**/*'],
+    exclude: ['node_modules', '**/*.spec.ts']
+  }
+}
+
+files['package.json'] = packageJSON
+files['.gitignore'] = `.DS_Store
+*.log*
+node_modules
+coverage
+config/local*
+.env
+!.env.example
+.cache
+dist
+build`
+
+run(options, files, dependencies, devDependencies).catch(err => {
+  console.error(err)
+  process.exit(1)
+})
