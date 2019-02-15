@@ -9,6 +9,20 @@ const path = require('path')
 const fsMkdir = promisify(fs.mkdir.bind(fs))
 const fsWriteFile = promisify(fs.writeFile.bind(fs))
 
+const fileTag = (strings, ...exprs) => {
+  const endResult = strings
+    .reduce((str, part, i) => str + exprs[i - 1] + part)
+    .replace(/^\n/, '')
+  const match = endResult.match(/^[^\S\n]*(?=\S)/gm)
+  const indent = match && Math.min(...match.map(el => el.length))
+  if (indent) {
+    const regexp = new RegExp(`^.{${indent}}`, 'gm')
+    return endResult.replace(regexp, '')
+  }
+  return endResult
+}
+''.indexOf()
+
 const spawnPromise = (command, args) => {
   const fullCommand = `${command} ${args.join(' ')}`
   return new Promise((resolve, reject) => {
@@ -49,23 +63,19 @@ const writeFiles = files =>
     )
   )
 
-const run = async (options, files, dependencies, devDependencies) => {
-  await writeFiles(files)
-  await spawnPromise('git', ['init'])
-  await installDependencies(options.yarn, false, dependencies)
-  await installDependencies(options.yarn, true, devDependencies)
-}
-
 const help = (exitCode = 0) => {
   console.error(`  node-setup [options]
 
   Options:
     --help, -h    Display help information
-    --typescript  Add typescript support to the project
-    --linting     Adds linting support to the project
-    --yarn        Install dependencies with yarn instead of npm
+    --debug       Adds vscode debug configs
     --docker      Puts Dockerfiles in project
-    --strict      Sets --typescript, --linting, --yarn
+    --git         Adds git support
+    --lint        Adds lint support to the project
+    --test        Adds testing
+    --typescript  Add typescript support to the project
+    --yarn        Install dependencies with yarn instead of npm
+    --all         Sets all the flags
 `)
   process.exit(exitCode)
 }
@@ -77,46 +87,84 @@ const options = process.argv.slice(2).reduce(
       case '-h':
       case 'help':
         return help()
+      case '--debug':
+        return { ...options, debug: true }
+      case '--docker':
+        return { ...options, docker: true }
+      case '--git':
+        return { ...options, git: true }
+      case '--lint':
+        return { ...options, lint: true }
+      case '--test':
+        return { ...options, test: true }
       case '--typescript':
         return { ...options, typescript: true }
-      case '--linting':
-        return { ...options, linting: true }
       case '--yarn':
         return { ...options, yarn: true }
-      case '--strict':
-        return { ...options, typescript: true, linting: true, yarn: true }
+      case '--all':
+        return {
+          ...options,
+          debug: true,
+          docker: true,
+          git: true,
+          lint: true,
+          test: true,
+          typescript: true,
+          yarn: true
+        }
     }
     console.error(`Unknown arg "${arg}"`)
     return help(1)
   },
   {
+    name: path.basename(process.cwd()),
+    debug: false,
+    docker: false,
+    git: false,
+    lint: false,
+    test: false,
     typescript: false,
-    linting: false,
     yarn: false
   }
 )
 
 const files = {}
-const files['package.json'] = {
-  name: 'placeholder',
+files['package.json'] = {
+  name: options.name,
   description: '',
   version: '0.0.0',
   main: 'src/index.js',
-  author: 'placeholder',
   license: 'MIT',
   private: true,
-  scripts: {},
+  scripts: {
+    start: 'node .',
+    'start.dev': 'nodemon --inspect=0.0.0.0:9229'
+  },
   dependencies: {},
   devDependencies: {}
 }
 const dependencies = new Set()
 const devDependencies = new Set()
+const genericIgnore = fileTag`
+  .vscode
+  .DS_Store
+  *.log*
+  node_modules
+  coverage
+  config/local*
+  .env
+  !.env.example
+  .cache
+  dist
+  build`
 
 devDependencies.add('nodemon')
-files['package.json'].scripts['start'] = 'node .'
-files['package.json'].scripts['start.dev'] = 'nodemon --inspect=0.0.0.0:9229'
-files['src/index.js'] = `'use strict'`
-files['README.md'] = `# placeholder`
+files['src/index.js'] = fileTag`'use strict'`
+files['README.md'] = fileTag`# ${options.name}`
+
+if (options.git) {
+  files['.gitignore'] = genericIgnore
+}
 
 /**
  * For setting up eslint standard for no conflict on eslint
@@ -129,22 +177,22 @@ files['README.md'] = `# placeholder`
  *  eslint-plugin-react \
  *  eslint-plugin-standard
  */
-if (options.linting) {
-  devDependencies.add('prettier-eslint-cli', 'standard')
+if (options.lint) {
+  devDependencies.add('prettier-eslint-cli').add('standard')
   files['.eslintrc'] = {
     extends: ['standard']
   }
-  files['package.json'].scripts['format'] = `prettier-eslint 'src/**/*.js' --write`
-  files['package.json'].scripts[
-    'lint'
-  ] = `standard && prettier-eslint 'src/**/*.js' --list-different`
+  Object.assign(files['package.json'].scripts, {
+    format: `prettier-eslint 'src/**/*.js' --write`,
+    lint: `standard && prettier-eslint 'src/**/*.js' --list-different`
+  })
   if (options.typescript) {
     devDependencies.add('@typescript-eslint/parser')
     files['.eslintrc'].parser = '@typescript-eslint/parser'
-    files['package.json'].scripts['format'] = `prettier-eslint 'src/**/*.ts' --write`
-    files['package.json'].scripts[
-      'lint'
-    ] = `standard --parser '@typescript-eslint/parser' && prettier-eslint 'src/**/*.ts' --list-different`
+    Object.assign(files['package.json'].scripts, {
+      format: `prettier-eslint 'src/**/*.ts' --write`,
+      lint: `standard --parser '@typescript-eslint/parser' && prettier-eslint 'src/**/*.ts' --list-different`
+    })
   }
 }
 
@@ -153,10 +201,10 @@ if (options.typescript) {
   const outDir = `dist`
   const newMain = 'src/index.ts'
   files['package.json'].main = `${outDir}/index.js`
-  files['package.json'].scripts['build'] = 'tsc'
-  files['package.json'].scripts[
-    'start.dev'
-  ] = `nodemon --inspect=0.0.0.0:9229 -r ts-node/register ${newMain}`
+  Object.assign(files['package.json'].scripts, {
+    build: 'tsc',
+    'start.dev': `nodemon --inspect=0.0.0.0:9229 -r ts-node/register ${newMain}`
+  })
   dependencies.add('typescript').add('@types/node')
   devDependencies.add('ts-node')
   files[newMain] = ``
@@ -171,20 +219,189 @@ if (options.typescript) {
       outDir
     },
     include: ['src/**/*'],
-    exclude: ['node_modules', '**/*.spec.ts']
+    exclude: ['node_modules', '**/*.test.ts', '**/*.spec.ts', '**/__tests__/**']
   }
 }
 
-files['.gitignore'] = `.DS_Store
-*.log*
-node_modules
-coverage
-config/local*
-.env
-!.env.example
-.cache
-dist
-build`
+if (options.docker) {
+  files['package.json'].bin = files['package.json'].main
+  files['.dockerignore'] = genericIgnore
+  files['Dockerfile'] = fileTag`
+    FROM node:10-alpine as base
+
+    ENV NODE node10
+    ENV PLATFORM alpine
+    ENV ARCH x64
+
+    # Needed for git dependency
+    # RUN apk --no-cache add --virtual git
+    # Needed for bcrypt
+    # RUN apk --no-cache add --virtual builds-deps build-base python
+    # Get pkg packages
+    RUN yarn global add pkg pkg-fetch
+    RUN pkg-fetch \${NODE} \${PLATFORM} \${ARCH}
+
+    # Create app directory
+    RUN mkdir -p /usr/src/app
+    WORKDIR /usr/src/app
+
+    # Install dependencies
+    COPY package*.json ./
+    ${options.yarn ? 'COPY yarn.lock .' : ''}
+    RUN ${options.yarn ? 'yarn' : 'npm install'} --production
+
+    # Bundle app source
+    COPY . .
+    ${
+      options.typescript
+        ? `RUN ${options.yarn ? 'yarn' : 'npm run'} build\n`
+        : ''
+    }
+    # Build assets
+    RUN pkg package.json --targets "\${NODE}-\${PLATFORM}-\${ARCH}" --output start
+
+    # --- Release with Alpine ----
+    FROM alpine
+
+    # Needed for the executable
+    RUN apk --no-cache add --virtual libstdc++
+    RUN addgroup -g 1000 appgroup \
+      && adduser -u 1000 -G appgroup -s /bin/sh -D appuser
+
+    RUN mkdir -p /usr/src/app && chown -R appuser:appgroup /usr/src/app
+    WORKDIR /usr/src/app
+    USER appuser
+
+    # Install app dependencies
+    COPY --from=base /usr/src/app/start ./
+    # Needed for bcrypt
+    # COPY --from=base /usr/src/app/node_modules/bcrypt/lib/binding/bcrypt_lib.node ./
+
+    # Exports
+    EXPOSE 3000
+    CMD [ "./start" ]`
+
+  files['Dockerfile.dev'] = fileTag`
+    FROM node:10-alpine
+
+    # Needed for grpc
+    # RUN apk --no-cache add --virtual libc6-compat
+    # Needed for bcrypt
+    # RUN apk --no-cache add --virtual builds-deps build-base python
+
+    # Create app directory
+    RUN mkdir -p /usr/src/app
+    WORKDIR /usr/src/app
+
+    # Install dependencies
+    COPY package*.json ./
+    ${options.yarn ? 'COPY yarn.lock .\n' : ''}
+    RUN ${options.yarn ? 'yarn' : 'npm install'}
+
+    # Bundle app source
+    COPY . .
+
+    # Exports
+    USER node
+    EXPOSE 3000 9229
+    CMD [ ${options.yarn ? '"yarn"' : '"npm", "run"'}, "start.dev" ]`
+
+  files['docker-compose.yaml'] = fileTag`
+    version: '3'
+    services:
+      # Application
+      ${options.name}:
+        image: ${options.name}:dev
+        build:
+          context: .
+          dockerfile: Dockerfile.dev
+        depends_on: []
+        environment: []
+        volumes:
+          - ./:/usr/src/app # For nodemon to watch for file changes
+          - /usr/src/app/node_modules # So it doesn't use the local node_modules
+        ports:
+          - "3000:3000" # Application port
+          - "9229:9229" # Debug port`
+}
+
+if (options.debug) {
+  files['.vscode/launch.json'] = {
+    version: '0.2.0',
+    configurations: [
+      {
+        name: 'Node: Attach to Node',
+        type: 'node',
+        request: 'attach',
+        port: 9229,
+        address: 'localhost',
+        restart: true,
+        protocol: 'inspector'
+      }
+    ]
+  }
+  if (options.docker) {
+    files['.vscode/launch.json'].configurations.push({
+      name: 'Docker: Attach to Node',
+      type: 'node',
+      request: 'attach',
+      port: 9229,
+      address: 'localhost',
+      localRoot: '${workspaceFolder}',
+      remoteRoot: '/usr/src/app',
+      restart: true,
+      protocol: 'inspector'
+    })
+  }
+}
+
+if (options.test) {
+  devDependencies.add('@types/jest').add('jest')
+  files['jest.config.js'] = fileTag`
+    'use strict'
+
+    module.exports = {
+      testEnvironment: 'node',
+      collectCoverage: true,
+      collectCoverageFrom: ['src/**/*.js'],
+      coverageThreshold: {
+        global: {
+          branches: 0,
+          functions: 0,
+          lines: 0,
+          statements: 0
+        }
+      }
+    }`
+  files['package.json'].scripts.test = 'jest'
+  if (options.typescript) {
+    devDependencies.add('ts-jest')
+    files['jest.config.js'] = fileTag`
+      'use strict'
+
+      module.exports = {
+        preset: 'ts-jest',
+        testEnvironment: 'node',
+        collectCoverage: true,
+        collectCoverageFrom: ['src/**/*.ts'],
+        coverageThreshold: {
+          global: {
+            branches: 0,
+            functions: 0,
+            lines: 0,
+            statements: 0
+          }
+        }
+      }`
+  }
+}
+
+const run = async (options, files, dependencies, devDependencies) => {
+  await writeFiles(files)
+  if (options.git) await spawnPromise('git', ['init'])
+  await installDependencies(options.yarn, false, dependencies)
+  await installDependencies(options.yarn, true, devDependencies)
+}
 
 run(options, files, dependencies, devDependencies).catch(err => {
   console.error(err)
