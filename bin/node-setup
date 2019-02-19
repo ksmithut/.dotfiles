@@ -21,7 +21,6 @@ const fileTag = (strings, ...exprs) => {
   }
   return endResult
 }
-''.indexOf()
 
 const spawnPromise = (command, args) => {
   const fullCommand = `${command} ${args.join(' ')}`
