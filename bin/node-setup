@@ -82,35 +82,40 @@ const help = (exitCode = 0) => {
 
 const options = process.argv.slice(2).reduce(
   (options, arg) => {
+    let valToSet = true
+    if (arg.startsWith('--no-')) {
+      valToSet = false
+      arg = arg.replace(/^--no-/, '--')
+    }
     switch (arg) {
       case '--help':
       case '-h':
       case 'help':
         return help()
       case '--debug':
-        return { ...options, debug: true }
+        return { ...options, debug: valToSet }
       case '--docker':
-        return { ...options, docker: true }
+        return { ...options, docker: valToSet }
       case '--git':
-        return { ...options, git: true }
+        return { ...options, git: valToSet }
       case '--lint':
-        return { ...options, lint: true }
+        return { ...options, lint: valToSet }
       case '--test':
-        return { ...options, test: true }
+        return { ...options, test: valToSet }
       case '--typescript':
-        return { ...options, typescript: true }
+        return { ...options, typescript: valToSet }
       case '--yarn':
-        return { ...options, yarn: true }
+        return { ...options, yarn: valToSet }
       case '--all':
         return {
           ...options,
-          debug: true,
-          docker: true,
-          git: true,
-          lint: true,
-          test: true,
-          typescript: true,
-          yarn: true
+          debug: valToSet,
+          docker: valToSet,
+          git: valToSet,
+          lint: valToSet,
+          test: valToSet,
+          typescript: valToSet,
+          yarn: valToSet
         }
     }
     console.error(`Unknown arg "${arg}"`)
@@ -138,7 +143,7 @@ files['package.json'] = {
   private: true,
   scripts: {
     start: 'node .',
-    'start.dev': 'nodemon --inspect=0.0.0.0:9229'
+    'start.dev': `nodemon ${options.debug ? '--inspect=0.0.0.0:9229 ' : ''}`
   },
   dependencies: {},
   devDependencies: {}
@@ -203,7 +208,9 @@ if (options.typescript) {
   files['package.json'].main = `${outDir}/index.js`
   Object.assign(files['package.json'].scripts, {
     build: 'tsc',
-    'start.dev': `nodemon --inspect=0.0.0.0:9229 -r ts-node/register ${newMain}`
+    'start.dev': `nodemon ${
+      options.debug ? '--inspect=0.0.0.0:9229 ' : ''
+    }-r ts-node/register ${newMain}`
   })
   dependencies.add('typescript').add('@types/node')
   devDependencies.add('ts-node')
@@ -265,8 +272,7 @@ if (options.docker) {
 
     # Needed for the executable
     RUN apk --no-cache add --virtual libstdc++
-    RUN addgroup -g 1000 appgroup \
-      && adduser -u 1000 -G appgroup -s /bin/sh -D appuser
+    RUN addgroup -g 1000 appgroup && adduser -u 1000 -G appgroup -s /bin/sh -D appuser
 
     RUN mkdir -p /usr/src/app && chown -R appuser:appgroup /usr/src/app
     WORKDIR /usr/src/app
@@ -303,7 +309,7 @@ if (options.docker) {
 
     # Exports
     USER node
-    EXPOSE 3000 9229
+    EXPOSE 3000${options.debug ? ' 9229' : ''}
     CMD [ ${options.yarn ? '"yarn"' : '"npm", "run"'}, "start.dev" ]`
 
   files['docker-compose.yaml'] = fileTag`
@@ -321,8 +327,12 @@ if (options.docker) {
           - ./:/usr/src/app # For nodemon to watch for file changes
           - /usr/src/app/node_modules # So it doesn't use the local node_modules
         ports:
-          - "3000:3000" # Application port
+          - "3000:3000" # Application port${
+            options.debug
+              ? `
           - "9229:9229" # Debug port`
+              : ''
+          }`
 }
 
 if (options.debug) {
