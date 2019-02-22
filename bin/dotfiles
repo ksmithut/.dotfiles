@@ -9,36 +9,37 @@ fi
 if [ "$ZSH_NAME" != "" ]; then
   setopt dotglob
 else
-  shopt -s dotglob 2>&1 >/dev/null
+  shopt -s dotglob > /dev/null 2>&1
 fi
 
 function command_source() {
-  for file in $DOTFILES/source/*.sh; do source "$file"; done
+  # shellcheck disable=SC1090
+  for file in "$DOTFILES"/source/*.sh; do source "$file"; done
 }
 
 function command_link() {
   e_header "Linking files to $HOME"
-  for file in $DOTFILES/link/*; do
-    echo "Linking $(basename $file)..."
-    rm "$HOME/$(basename $file)" 2> /dev/null
-    ln -s "$file" "$HOME/$(basename $file)"
+  for file in "$DOTFILES"/link/*; do
+    echo "Linking $(basename "$file")..."
+    rm "$HOME/$(basename "$file")" 2> /dev/null
+    ln -s "$file" "$HOME/$(basename "$file")"
   done
 }
 
 function command_copy() {
   e_header "Copying files to $HOME"
-  for file in $DOTFILES/copy/*; do
-    echo "Copying $(basename $file)..."
-    dest="$HOME/$(basename $file)"
-    if test -f $dest; then
+  for file in "$DOTFILES"/copy/*; do
+    echo "Copying $(basename "$file")..."
+    dest="$HOME/$(basename "$file")"
+    if test -f "$dest"; then
       echo "$dest already exists"
-      echo -n 'Overwrite? (y/N) '; read overwrite
+      echo -n 'Overwrite? (y/N) '; read -r overwrite
       case $overwrite in
-        [Yy]* ) cp "$file" "$HOME/$(basename $file)"; break;;
+        [Yy]* ) cp "$file" "$HOME/$(basename "$file")"; break;;
         * ) echo "Skipping copying $file"
       esac
     else
-      cp "$file" "$HOME/$(basename $file)"
+      cp "$file" "$HOME/$(basename "$file")"
     fi
   done
 }
@@ -46,8 +47,9 @@ function command_copy() {
 function command_init() {
   mkdir -p "$DOTFILES/caches/installers"
   mkdir -p "$DOTFILES/caches/fonts"
-  for file in $DOTFILES/init/*; do
-    e_header "Init $(basename $file)"
+  for file in "$DOTFILES"/init/*; do
+    e_header "Init $(basename "$file")"
+    # shellcheck disable=SC1090
     source "$file"
     echo "done!"
   done
@@ -109,9 +111,9 @@ function e_header() {
   echo -e "\033[1;36m$1\033[0m"
   echo "======================================================================="
 }
-function e_success()  { echo -e " \033[1;32m✔\033[0m  $@"; }
-function e_error()    { echo -e " \033[1;31m✖\033[0m  $@"; }
-function e_arrow()    { echo -e " \033[1;34m➜\033[0m  $@"; }
+function e_success()  { echo -e " \033[1;32m✔\033[0m  $*"; }
+function e_error()    { echo -e " \033[1;31m✖\033[0m  $*"; }
+function e_arrow()    { echo -e " \033[1;34m➜\033[0m  $*"; }
 
 case $1 in
   source)
@@ -124,7 +126,7 @@ case $1 in
     command_setup
     ;;
   backup)
-    command_backup $2
+    command_backup "$2"
     ;;
   directory)
     echo "${DOTFILES}"
@@ -137,7 +139,7 @@ case $1 in
     echo 'directory'
     ;;
   '')
-    cd "${DOTFILES}"
+    cd "${DOTFILES}" || exit
     ;;
   *)
     echo "Unknown command '${1}'"

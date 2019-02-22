@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Start the gpg agent if it hasn't started
 
 if [[ "$(pgrep gpg-agent)" == "" ]]; then
@@ -5,4 +6,5 @@ if [[ "$(pgrep gpg-agent)" == "" ]]; then
   echo "started gpg agent"
 fi
 
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY

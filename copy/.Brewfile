@@ -12,6 +12,7 @@ brew 'imagemagick', args: ["with-librsvg"]
 brew 'jq'
 brew 'pinentry-mac'
 brew 'python3'
+brew 'shellcheck'
 brew 'siege'
 brew 'tmux'
 brew 'trash'
@@ -19,7 +20,7 @@ brew 'tree'
 brew 'watch'
 brew 'watchman'
 brew 'wget'
-brew 'yarn', args: ["without-node"]
+brew 'yarn', args: ["ignore-dependencies"]
 brew 'zsh'
 brew 'zsh-completions'
 
@@ -30,9 +31,10 @@ brew 'zsh-completions'
 # Apps
 cask '1password'
 cask 'apptivate'
+cask 'balenaetcher'
+cask 'boostnote'
 cask 'discord'
 cask 'docker'
-cask 'balenaetcher'
 cask 'figma'
 cask 'firefox'
 cask 'google-chrome'

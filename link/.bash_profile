@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1090
 [[ -r ~/.bashrc ]] && . ~/.bashrc
 
 # REMOVE/REPURPOSE EVERYTHING BELOW HERE (except for the comment)

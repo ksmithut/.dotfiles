@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 code --install-extension Shan.code-settings-sync
 
 if is_ubuntu; then

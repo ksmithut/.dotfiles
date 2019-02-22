@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # A list of functions/aliases to use to make some things easier.
 # - every software program ever. except for PHP maybe.
 
@@ -11,7 +12,7 @@ alias .5='cd ../../../../../'
 alias .6='cd ../../../../../../'
 
 # makes a directory and moves to it
-function dir() { mkdir -p "${1}" && builtin cd $_; }
+function dir() { mkdir -p "${1}" && builtin cd "$_" || exit; }
 
 # gpg helpers
 alias gpg-ls='gpg --list-secret-keys --keyid-format LONG'
@@ -32,16 +33,17 @@ function oh-crap() {
     echo 'You must pass in a commit id'
     return 1
   fi
-  git reset --hard $1
-  git reset --soft HEAD@{1}
+  git reset --hard "$1"
+  git reset --soft "HEAD@{1}"
   git commit -m "Revert to $1"
 }
 
 # removes branches that are no longer in origin
 function git-prune-local() {
+  local branches
   git checkout master
   git fetch -p
-  local branches="$(git branch -vv | awk '/: gone]/{print $1}')"
+  branches="$(git branch -vv | awk '/: gone]/{print $1}')"
   if [[ "$branches" == "" ]]; then
     echo "All up to date"
     return 0
@@ -49,7 +51,7 @@ function git-prune-local() {
   echo -e "\nThis will remove the following branches locally:\n"
   printf '%s\n' "${branches[@]}"
   echo ''
-  echo -n 'Proceed? '; read remove_branches
+  echo -n 'Proceed? '; read -r remove_branches
   case $remove_branches in
     [Yy]*)
       echo "$branches" | xargs git branch -D
@@ -73,12 +75,6 @@ alias checksum='openssl md5'
 alias ls='ls -p'
 alias la='ls -FGlAhp'
 alias ll='la'
-
-function cd () {
-  builtin cd $1 || return # if it fails, just return
-  [ -z "$PS1" ] && return # only ls if we're not in an interactive shell
-  ls -p
-}
 
 # Generates some self-signed certificates
 alias generate-certs='openssl req -x509 -newkey rsa:2048 -nodes -sha256 -days 9999 -subj "/CN=localhost" -keyout localhost.key -out localhost.cert'

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # macOS-only stuff. Abort if not macOS.
 is_macos || return 1
 
@@ -9,11 +10,6 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 ################################################################################
 # Terminal
 ################################################################################
-
-# Change default shell to use updated bash
-echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
-sudo chsh -s /usr/local/bin/bash
-sudo chsh -s /usr/local/bin/bash $USER
 
 ################################################################################
 # Safari

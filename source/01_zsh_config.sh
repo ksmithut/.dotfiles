@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 is_zsh || return
 
 # Path to your oh-my-zsh installation.
@@ -7,8 +8,8 @@ export ZSH="${HOME}/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
-DEFAULT_USER=${USER}
+export ZSH_THEME="agnoster"
+export DEFAULT_USER=${USER}
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -90,7 +91,8 @@ is_macos && plugins+=("${mac_plugins[@]}")
 is_ubuntu && plugins+=("${ubuntu_plugins[@]}")
 is_debian && plugins+=("${debian_plugins[@]}")
 
-source $ZSH/oh-my-zsh.sh
+# shellcheck disable=SC1090
+source "$ZSH/oh-my-zsh.sh"
 
 # User configuration
 

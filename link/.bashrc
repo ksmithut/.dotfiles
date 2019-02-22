@@ -1,21 +1,15 @@
+#!/usr/bin/env bash
 # Initialize the DOTFILES variable so other scripts can use it
-pushd . > /dev/null
-SCRIPT_PATH="${BASH_SOURCE[0]}";
-[[ "${ZSH_NAME}" == "zsh" ]] && SCRIPT_PATH="${(%):-%N}"
-if [ -h "${SCRIPT_PATH}" ]; then
-  while [ -h "${SCRIPT_PATH}" ]; do
-    cd "$(dirname "${SCRIPT_PATH}")" || exit;
-    SCRIPT_PATH="$(readlink "${SCRIPT_PATH}")";
-  done
-fi
-builtin cd "$(dirname "${SCRIPT_PATH}")" > /dev/null
-export DOTFILES="$( builtin cd "$(dirname "$SCRIPT_PATH")/../"; pwd -P )"
-popd  > /dev/null
+# TODO make this dynamic?
+DOTFILES="$HOME/.dotfiles"
+export DOTFILES
 
 # Source all of the files in ~/.dotfiles/source
-for file in $DOTFILES/source/*.sh; do source "$file"; done
+# shellcheck disable=SC1090
+for file in "$DOTFILES"/source/*.sh; do source "$file"; done
 
 # include local .bash_profile if it's there
+# shellcheck disable=SC1090
 [[ -r ~/.bashrc.local ]] && . ~/.bashrc.local
 
 # REMOVE/REPURPOSE EVERYTHING BELOW HERE (except for the comment)
