@@ -7,7 +7,7 @@ on your machine.
 The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 
 - `bin/` commands to be included in the path for custom scripts. You need to
-  make sure you run `chmod a+x ${DOTFILES}/bin/*` whenever you add a new file
+  make sure you run `chmod a+x "${DOTFILES}"/bin/*` whenever you add a new file
   to this directory in order to have the correct permissions to run it.
 
 - `copy/` All files in here will be copied over to `~`. Use this for files that
@@ -53,7 +53,7 @@ Once in the OS open up the terminal:
 # installs the command-line tools
 xcode-select --install
 git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
-DOTFILES=~/.dotfiles ~/.dotfiles/bin/dotfiles setup
+~/.dotfiles/bin/dotfiles setup
 ```
 
 You need to manually move over your backup data.
@@ -128,7 +128,7 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo apt install git -y
 git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
-DOTFILES=~/.dotfiles ~/.dotfiles/bin/dotfiles setup
+~/.dotfiles/bin/dotfiles setup
 ```
 
 ```sh
@@ -162,7 +162,7 @@ After that, clone this repo and run the setup script described above.
 
 ```sh
 git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
-DOTFILES=~/.dotfiles ~/.dotfiles/bin/dotfiles setup
+~/.dotfiles/bin/dotfiles setup
 ```
 
 I also like to change the terminal configuration to work with powerline fonts:

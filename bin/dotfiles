@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ "${DOTFILES}" == "" ]]; then
-  echo 'DOTFILES must be set. Try running "DOTFILES=~/.dotfiles !!"'
-  exit 1
+  DOTFILES=~/.dotfiles
 fi
 
 # Makes glob return dotfiles
