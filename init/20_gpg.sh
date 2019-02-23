@@ -25,6 +25,8 @@ echo 'press enter once you have pasted it in'
 # shellcheck disable=SC2034
 read -r CONTINUE
 
-if is_ubuntu || is_debian; then
+if is_macos; then
+  echo 'pinentry-program /usr/local/bin/pinentry-mac' > ~/.gnupg/gpg-agent.conf
+elif is_ubuntu || is_debian; then
   echo 'pinentry-program /usr/bin/pinentry-curses' >  ~/.gnupg/gpg-agent.conf
 fi
