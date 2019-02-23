@@ -37,7 +37,3 @@
 [diff]
 	# Detect copies as well as renames
 	renames = copies
-[commit]
-	gpgsign = true
-[gpg]
-	program = gpg

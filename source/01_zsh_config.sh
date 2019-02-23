@@ -67,7 +67,6 @@ plugins=(
   git
   node
   nvm
-  npx
   yarn
   npm
   docker

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ "${DOTFILES}" == "" ]]; then
-  DOTFILES=~/.dotfiles
+  DOTFILES="$( cd "$(dirname "$0")/../" || exit; pwd -P )"
 fi
 
 # Makes glob return dotfiles

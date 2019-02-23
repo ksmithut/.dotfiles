@@ -89,12 +89,3 @@ services:
       - /usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
-
-  # https://hub.docker.com/r/eventstore/eventstore/
-  # http://admin:changeit@localhost:1113
-  # http://admin:changeit@localhost:2113
-  eventstore:
-    image: eventstore/eventstore:latest
-    ports:
-      - 2113:2113
-      - 1113:1113
