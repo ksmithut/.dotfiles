@@ -10,14 +10,10 @@ SSH_PATH="${HOME}/.ssh/${SSH_FILENAME}"
 
 ssh-keygen -t rsa -C "${SSH_EMAIL}" -f "${SSH_PATH}"
 
-echo
-echo 'Open "https://github.com/settings/keys"'
-echo
-echo '=== vvv Copy everything below vvv ==='
-cat "${SSH_PATH}.pub"
-echo
-echo '=== ^^^ Copy everything above ^^^ ==='
-echo
+cat "${SSH_PATH}.pub" | clipboard
+
+open https://github.com/settings/keys
+
 echo 'press enter once you have entered it'
 # shellcheck disable=SC2034
 read -r CONTINUE

@@ -61,10 +61,12 @@ alias checksum='openssl md5'
 # Generates some self-signed certificates
 alias generate-certs='openssl req -x509 -newkey rsa:2048 -nodes -sha256 -days 9999 -subj "/CN=localhost" -keyout localhost.key -out localhost.cert'
 
+alias slack-theme='echo "#1f1f1f,#303030,#21859c,#FFFFFF,#303030,#FFFFFF,#85d14b,#DB6668" | clipboard; echo "copied!"'
+
 # macOS aliases/functions
 # =======================
 if is_macos; then
-  alias slack-theme='echo "#1f1f1f,#303030,#21859c,#FFFFFF,#303030,#FFFFFF,#85d14b,#DB6668" | pbcopy; echo "copied!"'
+  alias clipboard='pbcopy'
   alias chime-off='sudo nvram SystemAudioVolume=%80'
   alias chime-on='sudo nvram -d SystemAudioVolume'
 
@@ -88,7 +90,7 @@ fi
 # Ubuntu/Debian aliases/functions
 # ========================
 if is_ubuntu || is_debian; then
-  alias slack-theme='echo "#1f1f1f,#303030,#21859c,#FFFFFF,#303030,#FFFFFF,#85d14b,#DB6668" | xclip -selection clipboard; echo "copied!"'
+  alias clipboard='xclip -selection clipboard'
   # upgrade/update shortcuts
   alias apt-upgrade='sudo apt-get update -y; sudo apt-get upgrade -y; sudo apt-get autoremove -y'
 
@@ -102,7 +104,7 @@ if is_ubuntu || is_debian; then
   alias clear='clear && echo -en "\e[3J"'
 
   # generates uuid
-  alias uuid='cat /proc/sys/kernel/random/uuid'
+  alias uuid='printf "%s" "$(cat /proc/sys/kernel/random/uuid)"'
 
   # open for linux
   function open() {

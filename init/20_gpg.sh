@@ -9,14 +9,13 @@ gpg --full-generate-key
 
 KEY_ID="$(gpg --list-secret-keys --keyid-format LONG | grep 'sec   ' | tail -1 | sed -n 's/.*\/\([^ ]*\) .*/\1/p')"
 
-echo
-echo 'Open "https://github.com/settings/keys"'
-echo
-echo '=== vvv Copy everything below vvv ==='
-gpg --armor --export "$KEY_ID"
-echo '=== ^^^ Copy everything above ^^^ ==='
-echo
+gpg --armor --export "$KEY_ID" | clipboard
+
+open https://github.com/settings/keys
+
 echo 'press enter once you have entered it'
+# shellcheck disable=SC2034
+read -r CONTINUE
 
 if is_ubuntu || is_debian; then
   echo 'pinentry-program /usr/bin/pinentry-curses' >  ~/.gnupg/gpg-agent.conf
