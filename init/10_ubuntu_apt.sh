@@ -90,10 +90,12 @@ sudo apt-get update -y
 sudo apt-get install yarn -y
 
 # Erlang/Elixir
-wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb
+# Erlang/Elixir
+wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb -O "$DOTFILES/caches/installers/erlang.deb"
+sudo dpkg -i "$DOTFILES/caches/installers/erlang.deb"
 sudo apt-get update
-sudo apt-get install esl-erlang
-sudo apt-get install elixir
+sudo apt-get install -y esl-erlang
+sudo apt-get install -y elixir
 
 # Boostnote
 wget https://github.com/BoostIO/boost-releases/releases/download/v0.11.15/boostnote_0.11.15_amd64.deb "$DOTFILES/caches/installers/boostnote.deb"
