@@ -36,9 +36,17 @@ else
   ssh-add "${SSH_PATH}"
 fi
 
-echo "
+if is_macos; then
+  echo "
 Host ${SSH_HOST}
   AddKeysToAgent yes
   UseKeychain yes
   IdentityFile ~/.ssh/${SSH_FILENAME}
 " >> ~/.ssh/config
+else
+  echo "
+Host ${SSH_HOST}
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/${SSH_FILENAME}
+" >> ~/.ssh/config
+fi
