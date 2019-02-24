@@ -68,10 +68,11 @@ plugins=(
   node
   nvm
   yarn
-  npm
   docker
   vscode
   tmux
+  gpg-agent
+  ssh-agent
 )
 
 mac_plugins=(

@@ -52,6 +52,16 @@ function oh-crap() {
   git commit -m "Revert to $1"
 }
 
+# Upgrade nvm
+function nvm-upgrade() {
+  builtin cd "$NVM_DIR" || exit
+  git fetch --tags origin
+  git checkout "$(git describe --abbrev=0 --tags --match "v[0-9]*" "$(git rev-list --tags --max-count=1)")"
+  builtin cd - > /dev/null || exit
+  # shellcheck disable=SC1090
+  \. "$NVM_DIR/nvm.sh"
+}
+
 # Open up coverage report
 alias coverage='open coverage/lcov-report/index.html'
 
