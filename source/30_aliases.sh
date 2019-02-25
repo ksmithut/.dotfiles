@@ -73,6 +73,13 @@ alias generate-certs='openssl req -x509 -newkey rsa:2048 -nodes -sha256 -days 99
 
 alias slack-theme='echo "#1f1f1f,#303030,#21859c,#FFFFFF,#303030,#FFFFFF,#85d14b,#DB6668" | clipboard; echo "copied!"'
 
+function ghclone () {
+  local dirname
+  dirname="${1##*/}"
+  git clone git@github.com:"$1"
+  cd "$dirname"
+}
+
 # macOS aliases/functions
 # =======================
 if is_macos; then

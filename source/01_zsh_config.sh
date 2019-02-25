@@ -94,6 +94,9 @@ is_debian && plugins+=("${debian_plugins[@]}")
 # shellcheck disable=SC1090
 source "$ZSH/oh-my-zsh.sh"
 
+autoload -U add-zsh-hook
+add-zsh-hook -Uz chpwd (){ ls -a; }
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
