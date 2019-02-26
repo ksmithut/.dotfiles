@@ -52,6 +52,7 @@ Once in the OS open up the terminal:
 ```sh
 # installs the command-line tools
 xcode-select --install
+# You can install the dotfiles anywhere, it should symlink everything correctly
 git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
 ~/.dotfiles/bin/dotfiles setup
 ```
@@ -147,15 +148,6 @@ Once your in, you'll need to change the password of the root user:
 
 ```sh
 sudo passwd ${USER}
-```
-
-Next, you'll want to make sure your ssh keys are all setup. Make sure your ssh
-keys are in place at `~/.ssh`, then run:
-
-```sh
-eval $(ssh-agent -s)
-# adds all of the private keys to the agent
-ssh-add ~/.ssh/id_rsa # Or whatever other keys you need to add
 ```
 
 After that, clone this repo and run the setup script described above.
