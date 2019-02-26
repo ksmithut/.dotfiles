@@ -95,7 +95,7 @@ is_debian && plugins+=("${debian_plugins[@]}")
 source "$ZSH/oh-my-zsh.sh"
 
 autoload -U add-zsh-hook
-add-zsh-hook -Uz chpwd (){ ls -a; }
+add-zsh-hook -Uz chpwd (){ l; }
 
 # User configuration
 
