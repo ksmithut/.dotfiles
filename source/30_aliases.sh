@@ -76,8 +76,8 @@ alias slack-theme='echo "#1f1f1f,#303030,#21859c,#FFFFFF,#303030,#FFFFFF,#85d14b
 function ghclone () {
   local dirname
   dirname="${1##*/}"
-  git clone git@github.com:"$1"
-  cd "$dirname"
+  git clone git@github.com:"$1" || return 1
+  cd "$dirname" || return 1
 }
 
 # macOS aliases/functions
