@@ -21,6 +21,7 @@ brew 'watch'
 brew 'watchman'
 brew 'wget'
 brew 'yarn', args: ["ignore-dependencies"]
+brew 'ykman'
 brew 'zsh'
 brew 'zsh-completions'
 

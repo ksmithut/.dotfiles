@@ -181,4 +181,4 @@ typings/
 # Ignore all local history of files
 .history
 
-# End of https://www.gitignore.io/api/go,node,redis,macos,linux,elixir,visualstudiocode
+# End of https://www.gitignore.io/api/go,node,redis,macos,linux,elixir,visualstudiocode,sass

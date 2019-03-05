@@ -43,6 +43,12 @@ services:
       - 27017:27017
     volumes:
       - /data/db
+  mongo36:
+    image: mongo:3.6
+    ports:
+      - 27019:27017
+    volumes:
+      - /data/db
 
   # https://hub.docker.com/_/redis/
   # redis://127.0.0.1:6379

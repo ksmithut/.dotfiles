@@ -147,7 +147,7 @@ enable that. It will take a bit to download the image.
 Once your in, you'll need to change the password of the root user:
 
 ```sh
-sudo passwd ${USER}
+sudo passwd "${USER}"
 ```
 
 After that, clone this repo and run the setup script described above.

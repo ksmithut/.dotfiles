@@ -98,6 +98,6 @@ sudo apt-get install -y esl-erlang
 sudo apt-get install -y elixir
 
 # Boostnote
-wget https://github.com/BoostIO/boost-releases/releases/download/v0.11.15/boostnote_0.11.15_amd64.deb "$DOTFILES/caches/installers/boostnote.deb"
+wget https://github.com/BoostIO/boost-releases/releases/download/v0.11.15/boostnote_0.11.15_amd64.deb -O "$DOTFILES/caches/installers/boostnote.deb"
 sudo dpkg -i "$DOTFILES/caches/installers/boostnote.deb"
 sudo apt-get install -f -y

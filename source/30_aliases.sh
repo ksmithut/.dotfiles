@@ -2,6 +2,14 @@
 # A list of functions/aliases to use to make some things easier.
 # - every software program ever. except for PHP maybe.
 
+# base64 encode/decode
+function be () {
+  printf "$1" | base64
+}
+function bd () {
+  printf "$1" | base64 -D
+}
+
 alias nowish='date +%Y-%m-%dT%H:%M:%S%z'
 
 # makes a directory and moves to it
