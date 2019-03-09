@@ -42,6 +42,7 @@ sudo apt-get install -y \
   oathtool \
   python \
   ruby \
+  snapd \
   tmux \
   trash-cli \
   tree \
@@ -62,7 +63,7 @@ sudo usermod -aG docker your-user
 sudo curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-"$(uname -s)"-"$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
-if is_ubuntu_desktop; then
+if is_ubuntu_desktop || is_pop_desktop; then
   # Remove dock
   sudo apt-get remove gnome-shell-extension-ubuntu-dock -y
 

@@ -15,6 +15,9 @@ function is_debian() {
 function is_ubuntu_desktop() {
   dpkg -l ubuntu-desktop >/dev/null 2>&1 || return 1
 }
+function is_pop_desktop() {
+  dpkg -l pop-desktop >/dev/null 2>&1 || return 1
+}
 
 function is_zsh() {
   [[ "${ZSH_NAME}" == "zsh" ]] || return 1
