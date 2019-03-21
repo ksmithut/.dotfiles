@@ -4,6 +4,83 @@ This is for my personal use. Feel free to use any of these scripts, but run them
 at your own discretion. I am not responsible for any effects of these scripts
 on your machine.
 
+# Installation
+
+Each "supported" platform has things you need to run before you clone and run
+things.
+
+- macOS
+
+  Install XCode in it's fullest :(
+
+  ```sh
+  # Install xcode command line tools
+  xcode-select --install
+  ```
+
+- Ubuntu and Pop!\_OS
+
+  ```sh
+  sudo apt update -y
+  sudo apt upgrade -y
+  ```
+
+- Debian (Linux on ChromeOS)
+
+  ```sh
+  sudo apt update -y
+  sudo apt upgrade -y
+  sudo passwd "${USER}"
+  ```
+
+```sh
+# Clone it anywhere you want, it should symlink things correctly
+git clone https://github.com/ksmithut/.dotfiles
+.dotfiles/bin/dotfiles setup
+```
+
+# Supported/Tested installations
+
+- macOS
+- Ubuntu (On Dell XPS)
+- Pop!\_OS (On Dell XPS)
+- Debian (Linux on ChromeOS)
+
+# Create Installation Media
+
+## macOS
+
+[Apple Docs](createinstallmedia)
+
+Download the version of macOS you want to install directly from the App Store.
+When the download completes, it will prompt you to install/upgrade in a dialog.
+Just `cmd + Q` out of that. You'll also want to have a USB Drive that has been
+formated and named `Untitled` plugged into your computer. Then run the following
+command:
+
+```sh
+# Change /Volumes/Untitled to the volume you want it to be
+# Or change the "Install\ macOS\ Mojave.app" to the version of mac you want to
+# install
+sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --nointeraction
+```
+
+After that finishes (it will be a while, 20 minutes to an hour maybe?) you'll
+want to back up all your stuff and shutdown the computer. When you restart, hold
+down the option key with the USB drive plugged in and select your install media
+as the boot drive and continue with installation there.
+
+## Ubuntu and Pop!\_OS
+
+Download the ISOs from their respective sites and write the images to a bootable
+USB drive using something like [balenaEtcher](https://www.balena.io/etcher/).
+
+## Debian (ChromeOS)
+
+Just enable Linux App (Beta) in the settings
+
+# Structure
+
 The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 
 - `bin/` commands to be included in the path for custom scripts. You need to
@@ -25,48 +102,22 @@ The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 - `source/` All files in here will be included upon every new terminal session.
   Use this for things like aliases, functions, and customizing the bash prompt.
 
-# Mac Installation
+# Notes
 
-If you want to create a bootable installer for macOS, follow the instructions
-[here][createinstallmedia].
+## Dell XPS 15 9560 for Ubuntu (Not Pop!\_OS)
 
-```sh
-# Change /Volumes/Untitled to the volume you want it to be
-sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --nointeraction
-```
-
-Then backup:
-
-```sh
-~/.dotfiles/bin/dotfiles backup ~/Desktop
-# after it's done, move the backup/ folder to removable media
-```
-
-Then boot into the install media holding down option key, format the drive, and
-install the OS.
-
-As of macOS 10.14 (Mojave) you need to install XCode in it's fullest :(
-
-Once in the OS open up the terminal:
-
-```sh
-# installs the command-line tools
-xcode-select --install
-# You can install the dotfiles anywhere, it should symlink everything correctly
-git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
-~/.dotfiles/bin/dotfiles setup
-```
-
-You need to manually move over your backup data.
-
-# Ubuntu Installation
-
-(For Dell XPS 15 9560)
-
+If you're installing Ubuntu, you'll need to add a boot flag on install.
 Add `nouveau.modeset=0` to boot options (by pressing `e` when selecting a boot
-option and adding it before the `---` being sure to leave an extra space)
+option and adding it before the `---` being sure to leave an extra space).
 
-After installation:
+To update graphics drivers:
+
+```
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+```
+
+To change grub background from that ugly purple color to a dull gray:
 
 ```sh
 # configure required kernel parameter (https://github.com/Bumblebee-Project/bbswitch/issues/148)
@@ -87,10 +138,11 @@ sudo nano /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.script
 # ^ Look for Window.SetBackgroundTopColor and change the color to (0.10, 0.10, 0.10)
 # rebuild the bootloader
 sudo update-grub2
+```
 
-sudo add-apt-repository ppa:graphics-drivers/ppa
-sudo apt-get update
+Preferred keyboard shortcuts (Might apply to Pop!\_OS)
 
+```
 # Keyboard shortcuts
 # ==================
 # Prevent gnome resetting keyboard setting in X
@@ -124,38 +176,13 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Contro
 - [https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)](<https://github.com/rcasero/doc/wiki/Ubuntu-linux-on-Dell-XPS-15-(9560)>)
 - [https://gist.github.com/tomwwright/f88e2ddb344cf99f299935e1312da880](https://gist.github.com/tomwwright/f88e2ddb344cf99f299935e1312da880)
 
-```
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt install git -y
-git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
-~/.dotfiles/bin/dotfiles setup
-```
+Fix for firefox scaling:
 
-```sh
-# Fix firefox theming
-# Open up about:config
-# add new string key: 'widget.content.gtk-theme-override' with value 'Adwaita:light'
-# change 'layout.css.devPixelsPerPx' to 1.25 for global scaling
-```
+Open up about:config
+
+- change 'layout.css.devPixelsPerPx' to 1.25 for global scaling
 
 # Pixelbook
-
-Open up "Settings" again and scroll down until you reach "Linux Apps", and
-enable that. It will take a bit to download the image.
-
-Once your in, you'll need to change the password of the root user:
-
-```sh
-sudo passwd "${USER}"
-```
-
-After that, clone this repo and run the setup script described above.
-
-```sh
-git clone https://github.com/ksmithut/.dotfiles.git ~/.dotfiles
-~/.dotfiles/bin/dotfiles setup
-```
 
 I also like to change the terminal configuration to work with powerline fonts:
 
@@ -179,6 +206,7 @@ Here's my list of apps and the locations to download them manually:
 - [Steam](https://store.steampowered.com/)
 - [Battle.net](https://us.battle.net/account/download/)
 - [Origin](https://www.origin.com/usa/en-us/store/download)
+- [Epic Launcher](https://www.epicgames.com/unrealtournament/download)
 - [GeForce Experience](https://www.nvidia.com/en-us/geforce/geforce-experience/)
 - [Minecraft](https://minecraft.net/en-us/download/)
 
