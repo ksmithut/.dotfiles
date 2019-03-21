@@ -11,7 +11,7 @@ export NVM_DIR="$HOME/.nvm" && (
 ) && \. "$NVM_DIR/nvm.sh"
 
 # install latest version of node
-nvm install stable
-nvm alias default stable
+nvm install 'lts/*'
+nvm alias default 'lts/*'
 
 yarn global add ngrok

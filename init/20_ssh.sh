@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+echo 'Now we are going to generate a new ssh key for this machine.'
+echo ''
+
 # Sets up ssh keys
 echo -n 'ssh key email (make it the github email if you wish to use with github): '; read -r SSH_EMAIL
 echo -n 'ssh key filename (id_rsa): '; read -r SSH_FILENAME

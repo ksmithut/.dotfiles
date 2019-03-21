@@ -51,14 +51,14 @@ sudo apt-get install -y \
   xclip \
   zsh
 
-sudo apt-get purge -y \
-  firefox
+# sudo apt-get purge -y \
+#   firefox
 
 curl -fsSL get.docker.com -o get-docker.sh
 chmod a+x get-docker.sh
 sudo sh get-docker.sh
 rm get-docker.sh
-sudo usermod -aG docker your-user
+sudo usermod -aG docker "$USER"
 
 sudo curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-"$(uname -s)"-"$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
@@ -67,16 +67,34 @@ if is_ubuntu_desktop || is_pop_desktop; then
   # Remove dock
   sudo apt-get remove gnome-shell-extension-ubuntu-dock -y
 
+  # Slack
+  wget https://downloads.slack-edge.com/linux_releases/slack-desktop-3.3.8-amd64.deb -O "$DOTFILES/caches/installers/slack.deb"
+  sudo dpkg -i "$DOTFILES/caches/installers/slack.deb"
+  sudo apt-get install -f -y
+
+  # VSCode
+  curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+  sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+  sudo apt-get update -y
+  sudo apt-get install -y code
+
+  # Discord
+  wget "https://discordapp.com/api/download?platform=linux&format=deb" -O "$DOTFILES/caches/installers/discord.deb"
+  sudo dpkg -i "$DOTFILES/caches/installers/discord.deb"
+  sudo apt-get install -f -y
+
+  # Keybase
+  wget https://prerelease.keybase.io/keybase_amd64.deb -O "$DOTFILES/caches/installers/keybase.deb"
+  sudo dpkg -i "$DOTFILES/caches/installers/keybase.deb"
+  sudo apt-get install -f -y
+
   sudo snap install chromium
-  sudo snap install discord
   sudo snap install firefox
   sudo snap install htop
   sudo snap install postman
   sudo snap install insomnia
-  sudo snap install keybase
-  sudo snap install slack --classic
   sudo snap install vlc
-  sudo snap install vscode --classic
 
   # Gnome extensions
   install-gnome-extension 484 # workspace-grid
