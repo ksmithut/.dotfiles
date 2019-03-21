@@ -79,7 +79,3 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 ################################################################################
 # Kill affected applications
 ################################################################################
-
-# Do a restart instead
-echo ""
-echo "Restart your computer when you get a chance"

@@ -65,6 +65,10 @@ function command_setup() {
   command_copy
   command_link
   command_init
+
+  # Do a restart instead
+  echo ""
+  echo "Restart your computer when you get a chance"
 }
 
 function command_backup() {
