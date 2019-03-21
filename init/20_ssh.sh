@@ -4,9 +4,7 @@ echo 'Now we are going to generate a new ssh key for this machine.'
 echo ''
 
 # Sets up ssh keys
-echo -n 'ssh key email (make it the github email if you wish to use with github or press enter to skip ssh): '; read -r SSH_EMAIL
-
-[[ $SSH_FILENAME == "" ]] && return
+echo -n 'ssh key email (make it the github email if you wish to use with github): '; read -r SSH_EMAIL
 
 echo -n 'ssh key filename (id_rsa): '; read -r SSH_FILENAME
 echo -n 'ssh key host (*): '; read -r SSH_HOST
