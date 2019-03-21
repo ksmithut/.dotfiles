@@ -90,7 +90,6 @@ if is_ubuntu_desktop || is_pop_desktop; then
   sudo apt-get install -f -y
 
   sudo snap install chromium
-  sudo snap install firefox
   sudo snap install htop
   sudo snap install postman
   sudo snap install insomnia
