@@ -14,9 +14,9 @@ function install-gnome-extension() {
   local extension_info
   local download_path
   local uuid
-  major_version="$(cat /usr/share/gnome/gnome-version.xml | grep '<platform>' | sed -n 's/.*>\([0-9]*\)<.*/\1/p')"
-  minor_version="$(cat /usr/share/gnome/gnome-version.xml | grep '<minor>' | sed -n 's/.*>\([0-9]*\)<.*/\1/p')"
-  patch_version="$(cat /usr/share/gnome/gnome-version.xml | grep '<micro>' | sed -n 's/.*>\([0-9]*\)<.*/\1/p')"
+  major_version="$(grep '<platform>' /usr/share/gnome/gnome-version.xml | sed -n 's/.*>\([0-9]*\)<.*/\1/p')"
+  minor_version="$(grep '<minor>' /usr/share/gnome/gnome-version.xml | sed -n 's/.*>\([0-9]*\)<.*/\1/p')"
+  patch_version="$(grep '<micro>' /usr/share/gnome/gnome-version.xml | sed -n 's/.*>\([0-9]*\)<.*/\1/p')"
   version="$major_version.$minor_version.$patch_version"
   extension_info="$(curl -s "https://extensions.gnome.org/extension-info/?pk=$1&shell_version=$version" | jq 'del(.description)')"
   download_path="$(echo "$extension_info" | jq -r '.download_url')"

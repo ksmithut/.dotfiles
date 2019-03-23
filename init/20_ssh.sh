@@ -25,9 +25,9 @@ echo 'press enter once you have signed into github'
 read -r CONTINUE
 
 if is_macos; then
-  cat "${SSH_PATH}.pub" | pbcopy
+  pbcopy < "${SSH_PATH}.pub"
 elif is_ubuntu || is_debian; then
-  cat "${SSH_PATH}.pub" | xclip -selection clipboard
+  xclip -selection clipboard < "${SSH_PATH}.pub"
 fi
 
 echo 'The public ssh key has been copied to your clipboard.'
