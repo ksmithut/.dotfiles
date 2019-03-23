@@ -81,6 +81,10 @@ alias generate-certs='openssl req -x509 -newkey rsa:2048 -nodes -sha256 -days 99
 
 alias slack-theme='echo "#1f1f1f,#303030,#21859c,#FFFFFF,#303030,#FFFFFF,#85d14b,#DB6668" | clipboard; echo "copied!"'
 
+function node-setup () {
+  yarn create gameplan https://github.com/ksmithut/gameplan-node "$1" --prompt
+}
+
 function ghclone () {
   local dirname
   dirname="${1##*/}"
