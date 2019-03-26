@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 is_zsh || return
 
 # Path to your oh-my-zsh installation.
@@ -93,6 +93,9 @@ is_debian && plugins+=("${debian_plugins[@]}")
 
 # shellcheck disable=SC1090
 source "$ZSH/oh-my-zsh.sh"
+
+# Disable aws prompt
+prompt_aws(){}
 
 autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd (){ l; }
