@@ -94,11 +94,22 @@ is_debian && plugins+=("${debian_plugins[@]}")
 # shellcheck disable=SC1090
 source "$ZSH/oh-my-zsh.sh"
 
-# Disable aws prompt
-prompt_aws(){}
-
 autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd (){ l; }
+
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/agnoster.zsh-theme
+build_prompt() {
+  RETVAL=$?
+  prompt_status
+  prompt_virtualenv
+  # prompt_aws
+  prompt_context
+  prompt_dir
+  prompt_git
+  prompt_bzr
+  prompt_hg
+  prompt_end
+}
 
 # User configuration
 
