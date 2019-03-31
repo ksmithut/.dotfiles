@@ -8,6 +8,7 @@ brew 'elixir'
 brew 'ffmpeg'
 brew 'git'
 brew 'gpg'
+brew 'grep'
 brew 'imagemagick', args: ["with-librsvg"]
 brew 'jq'
 brew 'pinentry-mac'

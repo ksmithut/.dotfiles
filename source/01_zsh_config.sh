@@ -95,7 +95,7 @@ is_debian && plugins+=("${debian_plugins[@]}")
 source "$ZSH/oh-my-zsh.sh"
 
 autoload -U add-zsh-hook
-add-zsh-hook -Uz chpwd (){ l; }
+add-zsh-hook -Uz chpwd (){ la; }
 
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/agnoster.zsh-theme
 build_prompt() {

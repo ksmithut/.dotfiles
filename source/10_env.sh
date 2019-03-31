@@ -3,10 +3,12 @@
 # some other piece of software, like NVM
 
 # Paths: Should add one per line to make it easy to add/remove/change/read
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/bin:$PATH"
-export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="$DOTFILES/bin:$PATH"
+PATH="/usr/local/sbin:$PATH"
+PATH="/usr/local/bin:$PATH"
+PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+PATH="$DOTFILES/bin:$PATH"
+PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+export PATH
 
 # Elixir history
 export ERL_AFLAGS="-kernel shell_history enabled"
