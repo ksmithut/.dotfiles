@@ -4,6 +4,7 @@ tap 'homebrew/services'
 
 # Tools
 brew 'bash'
+brew 'buku'
 brew 'elixir'
 brew 'ffmpeg'
 brew 'git'

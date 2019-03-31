@@ -73,6 +73,7 @@ function command_setup() {
 
 function command_backup() {
   local copy_dirs=(
+    ~/.local/share/buku
     ~/.gnupg
     ~/.ssh
     ~/.aws
