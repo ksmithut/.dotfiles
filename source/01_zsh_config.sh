@@ -73,6 +73,7 @@ plugins=(
   tmux
   gpg-agent
   ssh-agent
+  kubectl
 )
 
 mac_plugins=(
