@@ -77,6 +77,7 @@ plugins=(
 )
 
 mac_plugins=(
+  brew
   osx
 )
 
