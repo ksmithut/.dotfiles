@@ -85,6 +85,10 @@ function node-setup () {
   yarn create gameplan https://github.com/ksmithut/gameplan-node "$1" --prompt
 }
 
+function react-setup () {
+  yarn create gameplan https://github.com/ksmithut/gameplan-react "$1" --prompt
+}
+
 function ghclone () {
   local dirname
   dirname="${1##*/}"
