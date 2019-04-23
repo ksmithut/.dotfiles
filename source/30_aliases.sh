@@ -89,6 +89,22 @@ function react-setup () {
   yarn create gameplan https://github.com/ksmithut/gameplan-react "$1" --prompt
 }
 
+function eslint-setup () {
+  yarn add -D \
+    eslint \
+    eslint-config-standard \
+    eslint-plugin-import \
+    eslint-plugin-node \
+    eslint-plugin-promise \
+    eslint-plugin-standard \
+    prettier-eslint-cli
+  cat package.json \
+    | jq '.scripts.format = "prettier-eslint ''src/**/*.js'' --write"' \
+    | jq '.scripts.lint = "eslint ''src/**/*.js'' && prettier-eslint ''src/**/*.js'' --list-different"' \
+    | tee package.json
+  echo '{}' | jq '.extends = ["standard"]' | tee .eslintrc
+}
+
 function ghclone () {
   local dirname
   dirname="${1##*/}"
