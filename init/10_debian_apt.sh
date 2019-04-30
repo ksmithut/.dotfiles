@@ -2,6 +2,7 @@
 # Debian-only stuff.
 is_debian || return 1
 
+sudo add-apt-repository -y ppa:alexlarsson/flatpak
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get install -y \
@@ -31,26 +32,14 @@ sudo apt-get install -y \
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# Slack
-wget https://downloads.slack-edge.com/linux_releases/slack-desktop-3.3.8-amd64.deb -O "$DOTFILES/caches/installers/slack.deb"
-sudo dpkg -i "$DOTFILES/caches/installers/slack.deb"
-sudo apt-get install -f -y
-
-# VSCode
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-sudo apt-get update -y
-sudo apt-get install -y code
+flatpak install -y slack
+flatpak install -y com.visualstudio.code
+flatpak install -y discord
+flatpak install -y postman
 
 # Boostnote
 wget https://github.com/BoostIO/boost-releases/releases/download/v0.11.15/boostnote_0.11.15_amd64.deb -O "$DOTFILES/caches/installers/boostnote.deb"
 sudo dpkg -i "$DOTFILES/caches/installers/boostnote.deb"
-sudo apt-get install -f -y
-
-# Discord
-wget "https://discordapp.com/api/download?platform=linux&format=deb" -O "$DOTFILES/caches/installers/discord.deb"
-sudo dpkg -i "$DOTFILES/caches/installers/discord.deb"
 sudo apt-get install -f -y
 
 # Insomnia
