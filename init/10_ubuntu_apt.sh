@@ -28,6 +28,7 @@ function install-gnome-extension() {
   rm "$uuid.zip"
 }
 
+sudo add-apt-repository -y ppa:alexlarsson/flatpak
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
@@ -35,6 +36,7 @@ sudo apt-get install -y \
   build-essential \
   buku \
   curl \
+  flatpak \
   gnome-shell-extensions \
   gnome-tweak-tool \
   gvfs-bin \
@@ -70,40 +72,35 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 
 if is_ubuntu_desktop || is_pop_desktop; then
+  # Gnome extensions
+  install-gnome-extension 484 # workspace-grid
+  install-gnome-extension 28 # gtile
+
   # Remove dock
   sudo apt-get remove gnome-shell-extension-ubuntu-dock -y
+  # flatpak gnome software
+  sudo apt install -y gnome-software-plugin-flatpak
 
-  # Slack
-  wget https://downloads.slack-edge.com/linux_releases/slack-desktop-3.3.8-amd64.deb -O "$DOTFILES/caches/installers/slack.deb"
-  sudo dpkg -i "$DOTFILES/caches/installers/slack.deb"
-  sudo apt-get install -f -y
+  flatpak install -y slack
+  flatpak install -y com.visualstudio.code
+  flatpak install -y discord
+  flatpak install -y postman
+  flatpak install -y vlc
+  flatpak install -y steam
 
-  # VSCode
-  curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-  sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-  sudo apt-get update -y
-  sudo apt-get install -y code
-
-  # Discord
-  wget "https://discordapp.com/api/download?platform=linux&format=deb" -O "$DOTFILES/caches/installers/discord.deb"
-  sudo dpkg -i "$DOTFILES/caches/installers/discord.deb"
-  sudo apt-get install -f -y
+  sudo snap install chromium
+  sudo snap install htop
+  sudo snap install insomnia
 
   # Keybase
   wget https://prerelease.keybase.io/keybase_amd64.deb -O "$DOTFILES/caches/installers/keybase.deb"
   sudo dpkg -i "$DOTFILES/caches/installers/keybase.deb"
   sudo apt-get install -f -y
 
-  sudo snap install chromium
-  sudo snap install htop
-  sudo snap install postman
-  sudo snap install insomnia
-  sudo snap install vlc
-
-  # Gnome extensions
-  install-gnome-extension 484 # workspace-grid
-  install-gnome-extension 28 # gtile
+  # Boostnote
+  wget https://github.com/BoostIO/boost-releases/releases/download/v0.11.15/boostnote_0.11.15_amd64.deb -O "$DOTFILES/caches/installers/boostnote.deb"
+  sudo dpkg -i "$DOTFILES/caches/installers/boostnote.deb"
+  sudo apt-get install -f -y
 fi
 
 # yarn
@@ -119,8 +116,3 @@ sudo dpkg -i "$DOTFILES/caches/installers/erlang.deb"
 sudo apt-get update
 sudo apt-get install -y esl-erlang
 sudo apt-get install -y elixir
-
-# Boostnote
-wget https://github.com/BoostIO/boost-releases/releases/download/v0.11.15/boostnote_0.11.15_amd64.deb -O "$DOTFILES/caches/installers/boostnote.deb"
-sudo dpkg -i "$DOTFILES/caches/installers/boostnote.deb"
-sudo apt-get install -f -y

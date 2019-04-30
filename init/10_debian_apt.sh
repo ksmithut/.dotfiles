@@ -8,6 +8,7 @@ sudo apt-get install -y \
   build-essential \
   buku \
   curl \
+  flatpak \
   gvfs-bin \
   jq \
   libgconf-2-4 \
@@ -27,6 +28,8 @@ sudo apt-get install -y \
   tmux \
   chromium \
   zsh
+
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Slack
 wget https://downloads.slack-edge.com/linux_releases/slack-desktop-3.3.8-amd64.deb -O "$DOTFILES/caches/installers/slack.deb"
