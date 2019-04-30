@@ -82,12 +82,12 @@ if is_ubuntu_desktop || is_pop_desktop; then
   # flatpak gnome software
   sudo apt install -y gnome-software-plugin-flatpak
 
-  flatpak install -y slack
+  flatpak install -y com.slack.Slack
   flatpak install -y com.visualstudio.code
-  flatpak install -y discord
-  flatpak install -y postman
-  flatpak install -y vlc
-  flatpak install -y steam
+  flatpak install -y com.discordapp.Discord
+  flatpak install -y com.getpostman.Postman
+  flatpak install -y org.videolan.VLC
+  flatpak install -y com.valvesoftware.Steam
 
   sudo snap install chromium
   sudo snap install htop

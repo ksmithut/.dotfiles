@@ -32,10 +32,10 @@ sudo apt-get install -y \
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-flatpak install -y slack
+flatpak install -y com.slack.Slack
 flatpak install -y com.visualstudio.code
-flatpak install -y discord
-flatpak install -y postman
+flatpak install -y com.discordapp.Discord
+flatpak install -y com.getpostman.Postman
 
 # Boostnote
 wget https://github.com/BoostIO/boost-releases/releases/download/v0.11.15/boostnote_0.11.15_amd64.deb -O "$DOTFILES/caches/installers/boostnote.deb"
