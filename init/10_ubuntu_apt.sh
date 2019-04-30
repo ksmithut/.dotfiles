@@ -72,6 +72,7 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 
 if is_ubuntu_desktop || is_pop_desktop; then
+  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   # Gnome extensions
   install-gnome-extension 484 # workspace-grid
   install-gnome-extension 28 # gtile
