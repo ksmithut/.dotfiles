@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Ubuntu-only stuff. Abort if macOS.
+# Ubuntu/Pop!_OS only stuff. Abort if macOS.
 is_ubuntu || return 1
 
 # Note that this is pretty fragile. This is basically going through and parsing
@@ -33,6 +33,7 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 
 sudo apt-get install -y \
+  autojump \
   build-essential \
   buku \
   curl \
@@ -42,6 +43,7 @@ sudo apt-get install -y \
   gvfs-bin \
   jq \
   libgconf-2-4 \
+  neofetch \
   oathtool \
   python \
   ruby \
@@ -117,3 +119,7 @@ sudo dpkg -i "$DOTFILES/caches/installers/erlang.deb"
 sudo apt-get update
 sudo apt-get install -y esl-erlang
 sudo apt-get install -y elixir
+
+# SDKMan!
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
