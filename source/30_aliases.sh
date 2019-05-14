@@ -22,11 +22,11 @@ alias gpg-ls='gpg --list-secret-keys --keyid-format LONG'
 alias static='python -m SimpleHTTPServer'
 
 # docker helpers
-alias docker-containers-stop='[[ "$(docker ps -a -q)" != "" ]] && docker stop $(docker ps -a -q)'
-alias docker-containers-remove='docker-stop-containers && [[ "$(docker ps -a -q)" != "" ]] && docker rm $(docker ps -a -q)'
-alias docker-volumes-remove='docker-remove-containers && [[ "$(docker volume ls -f dangling=true -q)" != "" ]] && docker volume rm $(docker volume ls -f dangling=true -q)'
-alias docker-images-remove='[[ "$(docker images -a -q)" != "" ]] && docker rmi -f $(docker images -a -q)'
-alias docker-clean='docker-stop-containers; docker-remove-containers; docker-remove-volumes; docker-remove-images; docker system prune -f'
+alias docker-containers-stop='[[ "$(docker ps -a -q)" != "" ]] && docker stop $(docker ps -a -q); true'
+alias docker-containers-remove='docker-containers-stop && [[ "$(docker ps -a -q)" != "" ]] && docker rm $(docker ps -a -q); true'
+alias docker-volumes-remove='docker-containers-remove && [[ "$(docker volume ls -f dangling=true -q)" != "" ]] && docker volume rm $(docker volume ls -f dangling=true -q); true'
+alias docker-images-remove='[[ "$(docker images -a -q)" != "" ]] && docker rmi -f $(docker images -a -q); true'
+alias docker-clean='docker-containers-stop; docker-containers-remove; docker-volumes-remove; docker-images-remove; docker system prune -f; true'
 
 function extract () {
   if [ -f "$1" ] ; then
