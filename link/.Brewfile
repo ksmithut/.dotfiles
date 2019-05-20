@@ -52,6 +52,7 @@ cask 'postman'
 cask 'psequel'
 cask 'slack'
 cask 'visual-studio-code'
+cask 'zoomus'
 
 # Games
 cask 'battle-net'
