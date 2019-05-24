@@ -95,3 +95,11 @@ services:
       - /usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
+
+  # https://danfarrelly.nyc/MailDev/
+  # smtp://localhost:1025/?ignoreTLS=true
+  maildev:
+    image: djfarrelly/maildev
+    ports:
+      - '1080:80'
+      - '1025:25'
