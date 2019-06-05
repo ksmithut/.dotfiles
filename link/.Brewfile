@@ -2,6 +2,7 @@ cask_args appdir: '/Applications'
 tap 'homebrew/services'
 
 # Tools
+brew 'azure/draft/draft'
 brew 'bash'
 brew 'buku'
 brew 'elixir'
