@@ -2,7 +2,6 @@ cask_args appdir: '/Applications'
 tap 'homebrew/services'
 
 # Tools
-brew 'azure/draft/draft'
 brew 'bash'
 brew 'buku'
 brew 'elixir'
@@ -33,13 +32,13 @@ brew 'zsh'
 brew 'zsh-completions'
 
 # Mac App Store
-# mas 'BetterSnapTool', id: 417375580
 # mas 'Apple Configurator 2', id: 1037126344
 
 # Apps
 cask '1password'
 cask 'apptivate'
 cask 'balenaetcher'
+cask 'bartender'
 cask 'bettertouchtool'
 cask 'boostnote'
 cask 'discord'
