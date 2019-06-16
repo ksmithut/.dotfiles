@@ -4,7 +4,7 @@ This is for my personal use. Feel free to use any of these scripts, but run them
 at your own discretion. I am not responsible for any effects of these scripts
 on your machine.
 
-# Installation
+## Installation
 
 Each "supported" platform has things you need to run before you clone and run
 things.
@@ -39,16 +39,16 @@ git clone https://github.com/ksmithut/.dotfiles
 .dotfiles/bin/dotfiles setup
 ```
 
-# Supported/Tested installations
+## Supported/Tested installations
 
 - macOS
 - Ubuntu (On Dell XPS)
 - Pop!\_OS (On Dell XPS)
 - Debian (Linux on ChromeOS)
 
-# Create Installation Media
+## Create Installation Media
 
-## macOS
+### macOS
 
 [Apple Docs](createinstallmedia)
 
@@ -70,16 +70,16 @@ want to back up all your stuff and shutdown the computer. When you restart, hold
 down the option key with the USB drive plugged in and select your install media
 as the boot drive and continue with installation there.
 
-## Ubuntu and Pop!\_OS
+### Ubuntu and Pop!\_OS
 
 Download the ISOs from their respective sites and write the images to a bootable
 USB drive using something like [balenaEtcher](https://www.balena.io/etcher/).
 
-## Debian (ChromeOS)
+### Debian (ChromeOS)
 
 Just enable Linux App (Beta) in the settings
 
-# Structure
+## Structure
 
 The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 
@@ -102,9 +102,9 @@ The directory structure was mostly modeled after [cowboy's dotfiles][cowboy].
 - `source/` All files in here will be included upon every new terminal session.
   Use this for things like aliases, functions, and customizing the bash prompt.
 
-# Notes
+## Notes
 
-## Dell XPS 15 9560 for Ubuntu (Not Pop!\_OS)
+### Dell XPS 15 9560 for Ubuntu (Not Pop!\_OS)
 
 If you're installing Ubuntu, you'll need to add a boot flag on install.
 Add `nouveau.modeset=0` to boot options (by pressing `e` when selecting a boot
@@ -142,7 +142,7 @@ sudo update-grub2
 
 Preferred keyboard shortcuts (Might apply to Pop!\_OS)
 
-```
+```sh
 # Keyboard shortcuts
 # ==================
 # Prevent gnome resetting keyboard setting in X
@@ -182,7 +182,7 @@ Open up about:config
 
 - change 'layout.css.devPixelsPerPx' to 1.25 for global scaling
 
-# Pixelbook
+## Pixelbook
 
 I also like to change the terminal configuration to work with powerline fonts:
 
@@ -190,7 +190,7 @@ I also like to change the terminal configuration to work with powerline fonts:
 2. Change `font-family` to `"Source Code Pro", monospace`
 3. Change `user-css` to `https://cdn.rawgit.com/wernight/powerline-web-fonts/e4d967ca4f95d9fa0cf1d51afed2e5a5927d759e/PowerlineFonts.css`
 
-# Windows
+## Windows
 
 Obviously, this is meant for mac/linux based on the bash usage, but I'd like to
 have some scripts ready to setup my gaming machines as well. Unfortunately, I've
@@ -225,7 +225,7 @@ than local time.
 >
 >     sc config w32time start= disabled
 
-# Backup
+## Backup
 
 Before you begin a clean install, you may wish to backup other non-dotfile
 related files (such as pictures and documents and such). There is a backup

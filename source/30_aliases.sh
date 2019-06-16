@@ -165,6 +165,9 @@ if is_ubuntu || is_debian; then
   }
 fi
 
+  # show off
+  alias neo='clear && neofetch'
+
 function ksmithut () {
   echo -e '
   \033[38;5;247m⣿⣿⣿⣿⣿⣿⣿⡇⠀\033[38;5;075m⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⠋
