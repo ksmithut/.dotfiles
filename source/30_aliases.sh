@@ -2,10 +2,12 @@
 # A list of functions/aliases to use to make some things easier.
 # - every software program ever. except for PHP maybe.
 
-# base64 encode/decode
+# base64 encode
 function be () {
   printf "%s" "$1" | base64
 }
+
+# base64 decode
 function bd () {
   printf "%s" "$1" | base64 -D
 }
@@ -136,10 +138,12 @@ if is_macos; then
   alias uuid='printf "%s" "$(uuidgen | tr '"'"'[:upper:]'"'"' '"'"'[:lower:]'"'"')"'
 fi
 
-# Ubuntu/Debian aliases/functions
-# ========================
+# Ubuntu/Debian/Pop!_OS aliases/functions
+# =======================================
 if is_ubuntu || is_debian; then
+
   alias clipboard='xclip -selection clipboard'
+
   # upgrade/update shortcuts
   alias apt-upgrade='sudo apt-get update -y; sudo apt-get upgrade -y; sudo apt-get autoremove -y'
 
