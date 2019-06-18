@@ -1,7 +1,8 @@
-cask_args appdir: '/Applications'
++----------------------cask_args appdir: '/Applications'
 tap 'homebrew/services'
 
 # Tools
+brew 'autojump'
 brew 'bash'
 brew 'buku'
 brew 'elixir'
@@ -17,6 +18,7 @@ brew 'kubeseal'
 brew 'kustomize'
 brew 'pinentry-mac'
 brew 'python3'
+brew 'sdkman'
 brew 'shellcheck'
 brew 'siege'
 brew 'skaffold'

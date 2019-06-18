@@ -74,6 +74,7 @@ plugins=(
   gpg-agent
   ssh-agent
   kubectl
+  autojump
 )
 
 mac_plugins=(
@@ -98,6 +99,11 @@ source "$ZSH/oh-my-zsh.sh"
 
 autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd (){ la; }
+
+# autojump init per policy reasons
+if is_debian || is_ubuntu; then
+  source /usr/share/autojump/autojump.sh
+fi
 
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/agnoster.zsh-theme
 build_prompt() {
