@@ -6,5 +6,5 @@ fi
 
 if is_ubuntu; then
   sudo snap install slack --classic
-  # flatpak install -y com.slack.Slack
+  # flatpak install -y flathub com.slack.Slack
 fi

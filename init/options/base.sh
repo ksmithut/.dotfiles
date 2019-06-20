@@ -136,7 +136,7 @@ if is_ubuntu_desktop || is_pop_desktop; then
   sudo apt install -y gnome-software-plugin-flatpak
 
   sudo snap install vlc
-  # flatpak install -y org.videolan.VLC
+  # flatpak install -y flathub org.videolan.VLC
 fi
 
 echo 'Installing powerline fonts...'

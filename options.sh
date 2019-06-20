@@ -59,6 +59,7 @@ fi
 if [[ " $@ " =~ " play " ]]; then
   echo 'battle-net'
   echo 'epic-games'
+  echo 'gog-galaxy'
   echo 'league-of-legends'
   echo 'minecraft'
   echo 'steam'

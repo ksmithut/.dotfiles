@@ -6,5 +6,5 @@ fi
 
 if is_ubuntu; then
   sudo snap install discord
-  # flatpak install -y com.discordapp.Discord
+  # flatpak install -y flathub com.discordapp.Discord
 fi

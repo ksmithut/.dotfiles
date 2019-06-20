@@ -6,5 +6,5 @@ fi
 
 if is_ubuntu; then
   sudo snap install postman
-  # flatpak install -y com.getpostman.Postman
+  # flatpak install -y flathub com.getpostman.Postman
 fi
