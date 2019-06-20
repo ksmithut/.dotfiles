@@ -100,7 +100,7 @@ if is_ubuntu; then
 fi
 
 if is_ubuntu_desktop || is_pop_desktop; then
-  suto apt-get install -y \
+  sudo apt-get install -y \
     gnome-shell-extensions \
     gnome-tweak-tool
 
