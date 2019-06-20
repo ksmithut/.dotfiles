@@ -7,6 +7,7 @@ fi
 if is_ubuntu; then
   wget https://github.com/docker/kitematic/releases/download/v0.17.7/Kitematic-0.17.7-Ubuntu.zip -O kitematic.zip
   unzip kitematic.zip -d "$DOTFILES/caches/installers/kitematic.deb"
+  rm kitematic.zip
   sudo dpkg -i "$DOTFILES/caches/installers/kitematic.deb"
   sudo apt-get install -f -y
 fi
