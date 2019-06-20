@@ -55,9 +55,9 @@ function dotfiles_init() {
   local environments=($(${DOTFILES}/options.sh _))
   for environment in "${environments[@]}"; do
     echo -n "Will this be a ${environment} environment? (y/N): "; read -r answer
-    if [ "$answer" == 'y' ]; then
-      selected_environments+=("$environment")
-    fi
+    case $answer in
+      [Yy]* ) selected_environments+=("$environment");;
+    esac
   done
 
   local options=($(${DOTFILES}/options.sh ${selected_environments[@]}))
@@ -81,7 +81,14 @@ function dotfiles_init() {
   mkdir -p "$DOTFILES/caches/installers"
 }
 
+# Keep-alive: update existing `sudo` time stamp until everything has finished
+echo "Enter your password here. You should only have to enter it once through this whole process"
+sudo -v
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 source "$DOTFILES"/source/00_dotfiles.sh
 dotfiles_copy
 dotfiles_link
 dotfiles_init
+
+echo "Restart your computer when you get a chance"

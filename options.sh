@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-#
-
 # This file is for determining what you would like installed when `setup.sh` is
 # run. All you need to do is `echo '{filename}'` to include it, where {filename}
 # is a coresponding file in ./init/options/*.sh but without the file extension.
@@ -51,7 +49,6 @@ if [[ " $@ " =~ " work " ]]; then
   echo 'node'
   echo 'postgres-client'
   echo 'postman'
-  # echo 'sdkman'
   echo 'vscode'
   echo 'zoom'
 fi

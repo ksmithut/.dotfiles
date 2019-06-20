@@ -14,14 +14,14 @@ on your machine.
   xcode-select --install
   ```
 
-- Ubuntu
+- Ubuntu (Desktop)
 
   ```sh
   sudo apt update -y
   sudo apt upgrade -y
   ```
 
-- Pop!\_OS
+- Pop!\_OS (Desktop)
 
   ```sh
   sudo apt update -y
@@ -30,11 +30,60 @@ on your machine.
 
 ```sh
 # Clone it anywhere you want, it should symlink things correctly
-git clone https://github.com/ksmithut/.dotfiles
+git clone https://github.com/ksmithut/.dotfiles.git
 .dotfiles/setup.sh
 ```
 
 ## Project structure
+
+- `bin/` Anything in here gets added to your path. Make sure you `chmod a+x`
+  anything you add so that it's executable.
+
+- `copy/` Anything in here gets copied to your home directory. This would be for
+  things that you would end up changing post-install, such as adding username
+  or machine specific stuff to.
+
+- `init/` All of the `.sh` files in this directory get run on initialization.
+  There is also an `options/` directory in here that we'll explain down further.
+
+- `link/` All of the files here get symlinked to your home directory.
+
+- `source/` All the files in here get run when you start a new shell, but this
+  is really only sourced because of the `link/.zshrc` file.
+
+- `backup.sh` A script to quickly backup your files.
+
+- `setup.sh` The script to run when setting up your system.
+
+- `options.sh` This is where customization comes in. This is how you select how
+  you want your system setup with various environment options. Here's how the
+  file is structure:
+
+  ```sh
+  # If the first argument is '_', then the setup script is trying to determine
+  # the possible environments for this script. You want to
+  # `echo '{environment}'` for each kind of environment you want to support.
+  if [ "$1" == '_' ]; then
+    echo 'work'
+    echo 'play'
+    exit
+  fi
+
+  # Every `echo` after this should corespond to a file in `./init/options`
+  echo 'base'
+  echo 'chromium'
+  echo 'zsh'
+
+  if [[ " $@ " =~ " work " ]]; then
+    echo 'docker'
+    echo 'node'
+    echo 'vscode'
+  fi
+
+  if [[ " $@ " =~ " play " ]]; then
+    echo 'steam'
+  fi
+  ```
 
 ## Create Installation Media
 
