@@ -72,7 +72,7 @@ function dotfiles_init() {
   done
 
   for option in "${options[@]}"; do
-    e_header "Installing ${options}"
+    e_header "Installing ${option}"
     # shellcheck disable=SC1090
     source "${DOTFILES}/init/options/${option}.sh"
     echo "done!"
