@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-local copy_dirs=(
+copy_dirs=(
   ~/.local/share/buku
   ~/.gnupg
   ~/.ssh
@@ -12,18 +12,18 @@ local copy_dirs=(
   ~/Documents
   ~/Pictures
 )
-local DIRECTORY=$1
+DIRECTORY=$1
 if [ ! -d "$DIRECTORY" ]; then
   echo "$DIRECTORY is not a valid directory"
   return
 fi
 # Add /backup to the end of the directory
-local DIRECTORY="$DIRECTORY"/backup
+DIRECTORY="$DIRECTORY"/backup
 # remove any duplicate / from the path for visual reasons
-local DIRECTORY=${DIRECTORY//\/\//\/}
+DIRECTORY=${DIRECTORY//\/\//\/}
 
 for copy_dir in "${copy_dirs[@]}"; do
-  echo "Copying $copy_dir"
+  echo "Copying $copy_dir to $DIRECTORY"
   rsync -rv \
     --exclude=*.DS_Store \
     --exclude=*/node_modules \
