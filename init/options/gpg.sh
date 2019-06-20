@@ -12,6 +12,7 @@ gpg --full-generate-key
 
 KEY_ID="$(gpg --list-secret-keys --keyid-format LONG | grep 'sec   ' | tail -1 | sed -n 's/.*\/\([^ ]*\) .*/\1/p')"
 
+echo ''
 echo 'Open https://github.com/settings/keys'
 echo 'press enter once you have signed into github'
 # shellcheck disable=SC2034

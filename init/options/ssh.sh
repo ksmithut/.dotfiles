@@ -14,6 +14,7 @@ SSH_PATH="${HOME}/.ssh/${SSH_FILENAME}"
 
 ssh-keygen -t rsa -C "${SSH_EMAIL}" -f "${SSH_PATH}"
 
+echo ''
 echo 'Open https://github.com/settings/keys'
 echo 'press enter once you have signed into github'
 # shellcheck disable=SC2034
