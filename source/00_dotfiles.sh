@@ -22,3 +22,7 @@ function is_pop_desktop() {
 function is_zsh() {
   [[ "${ZSH_NAME}" == "zsh" ]] || return 1
 }
+
+function dotfiles {
+  cd "$DOTFILES"
+}
