@@ -28,7 +28,3 @@ for file in "$DOTFILES"/source/*.sh; do source "$file"; done
 # to add things to your $PATH or initialize any scripts. This is dandy, but
 # you should probably reposition it in the appropriate place in your sourced
 # scripts in "$DOTFILES/source"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/ksmithut/.sdkman"
-[[ -s "/Users/ksmithut/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/ksmithut/.sdkman/bin/sdkman-init.sh"
