@@ -14,12 +14,7 @@ SSH_PATH="${HOME}/.ssh/${SSH_FILENAME}"
 
 ssh-keygen -t rsa -C "${SSH_EMAIL}" -f "${SSH_PATH}"
 
-if is_macos; then
-  open https://github.com/settings/keys
-elif is_ubuntu; then
-  xdg-open https://github.com/settings/keys &>/dev/null
-fi
-
+echo 'Open https://github.com/settings/keys'
 echo 'press enter once you have signed into github'
 # shellcheck disable=SC2034
 read -r CONTINUE

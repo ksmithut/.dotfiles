@@ -5,5 +5,5 @@ if is_macos; then
 fi
 
 if is_ubuntu; then
-  flatpak install -y com.valvesoftware.Steam
+  flatpak install -y flathub com.valvesoftware.Steam
 fi
