@@ -21,14 +21,5 @@ brew doctor
 brew update
 brew cleanup
 
-echo "Installing Homebrew/bundle"
-brew tap Homebrew/bundle
-
-echo "Installing brew recipes..."
-brew bundle --global
-
-# Cleaning up again
-brew doctor
-brew update
-brew upgrade
-brew cleanup
+brew install mas
+brew tap homebrew/services

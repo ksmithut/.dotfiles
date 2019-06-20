@@ -4,7 +4,6 @@ echo -n 'github username: '; read -r GITHUB_USER
 echo -n 'github email: '; read -r GITHUB_EMAIL
 echo
 
-
 [[ $GITHUB_USER != "" ]] && git config --global user.name "$GITHUB_USER"
 [[ $GITHUB_EMAIL != "" ]] && git config --global user.email "$GITHUB_EMAIL"
 

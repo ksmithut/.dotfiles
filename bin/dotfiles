@@ -46,7 +46,7 @@ function command_copy() {
 function command_init() {
   mkdir -p "$DOTFILES/caches/installers"
   mkdir -p "$DOTFILES/caches/fonts"
-  for file in "$DOTFILES"/init/*; do
+  for file in "$DOTFILES"/init/*.sh; do
     e_header "Init $(basename "$file")"
     # shellcheck disable=SC1090
     source "$file"

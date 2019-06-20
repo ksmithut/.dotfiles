@@ -1,6 +1,3 @@
-#!/usr/bin/env bash
-# oh-my-zsh
-
 mv ~/.zshrc ~/.zshrc.pre-oh-my-zsh
 
 echo 'Installing oh-my-zsh'

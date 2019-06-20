@@ -31,7 +31,6 @@ elif is_ubuntu || is_debian; then
 fi
 
 echo 'The public ssh key has been copied to your clipboard.'
-echo 'public key copied to clipboard, paste into new ssh key'
 echo 'press enter once you have pasted it in'
 # shellcheck disable=SC2034
 read -r CONTINUE

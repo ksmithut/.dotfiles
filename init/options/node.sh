@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
+
+if is_macos; then
+  brew install yarn
+fi
+
+if is_linux; then
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  sudo apt-get update -y
+  sudo apt-get install -y --no-install-recommends yarn
+fi
+
 # make the required directories
 mkdir ~/.npm
 
@@ -11,7 +23,6 @@ export NVM_DIR="$HOME/.nvm" && (
 ) && \. "$NVM_DIR/nvm.sh"
 
 # install latest version of node
-nvm install 'lts/*'
-nvm alias default 'lts/*'
-
-yarn global add ngrok
+nvm install 10
+nvm install node
+nvm alias default node
