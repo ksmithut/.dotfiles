@@ -86,13 +86,8 @@ ubuntu_plugins=(
   ubuntu
 )
 
-debian_plugins=(
-  debian
-)
-
 is_macos && plugins+=("${mac_plugins[@]}")
 is_ubuntu && plugins+=("${ubuntu_plugins[@]}")
-is_debian && plugins+=("${debian_plugins[@]}")
 
 # shellcheck disable=SC1090
 source "$ZSH/oh-my-zsh.sh"
@@ -101,7 +96,7 @@ autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd (){ la; }
 
 # autojump init per policy reasons
-if is_debian || is_ubuntu; then
+if is_ubuntu; then
   source /usr/share/autojump/autojump.sh
 fi
 

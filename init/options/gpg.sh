@@ -19,7 +19,7 @@ read -r CONTINUE
 
 if is_macos; then
   gpg --armor --export "$KEY_ID" | pbcopy
-elif is_ubuntu || is_debian; then
+elif is_ubuntu; then
   gpg --armor --export "$KEY_ID" | xclip -selection clipboard
 fi
 
@@ -30,6 +30,6 @@ read -r CONTINUE
 
 if is_macos; then
   echo 'pinentry-program /usr/local/bin/pinentry-mac' > ~/.gnupg/gpg-agent.conf
-elif is_ubuntu || is_debian; then
+elif is_ubuntu; then
   echo 'pinentry-program /usr/bin/pinentry-curses' >  ~/.gnupg/gpg-agent.conf
 fi

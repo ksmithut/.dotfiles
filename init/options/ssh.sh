@@ -16,7 +16,7 @@ ssh-keygen -t rsa -C "${SSH_EMAIL}" -f "${SSH_PATH}"
 
 if is_macos; then
   open https://github.com/settings/keys
-elif is_ubuntu || is_debian; then
+elif is_ubuntu; then
   xdg-open https://github.com/settings/keys &>/dev/null
 fi
 
@@ -26,7 +26,7 @@ read -r CONTINUE
 
 if is_macos; then
   pbcopy < "${SSH_PATH}.pub"
-elif is_ubuntu || is_debian; then
+elif is_ubuntu; then
   xclip -selection clipboard < "${SSH_PATH}.pub"
 fi
 

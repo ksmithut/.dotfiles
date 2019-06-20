@@ -76,7 +76,7 @@ if is_macos; then
   defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 fi
 
-if is_linux; then
+if is_ubuntu; then
   sudo apt-get install -y \
     autojump \
     build-essential \

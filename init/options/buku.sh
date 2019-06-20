@@ -4,6 +4,6 @@ if is_macos; then
   brew install buku
 fi
 
-if is_linux; then
+if is_ubuntu; then
   sudo apt-get install -y buku
 fi

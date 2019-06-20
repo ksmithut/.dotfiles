@@ -4,7 +4,7 @@ if is_macos; then
   brew cask install visual-studio-code
 fi
 
-if is_linux; then
+if is_ubuntu; then
   sudo snap install code --classic
   # flatpak install -y com.visualstudio.code
 

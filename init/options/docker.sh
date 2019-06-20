@@ -4,7 +4,7 @@ if is_macos; then
   brew cask install docker
 fi
 
-if is_linux; then
+if is_ubuntu; then
   # Docker
   # Remove prior versions
   sudo apt-get remove docker docker-engine docker.io containerd runc

@@ -4,6 +4,6 @@ if is_macos; then
   brew cask install chromium
 fi
 
-if is_linux; then
+if is_ubuntu; then
   sudo snap install chromium
 fi

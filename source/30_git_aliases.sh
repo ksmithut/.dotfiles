@@ -47,7 +47,7 @@ fi
 
 # Ubuntu/Debian/Pop!_OS aliases/functions
 # =======================================
-if is_ubuntu || is_debian; then
+if is_ubuntu; then
 
   alias clipboard='xclip -selection clipboard'
 

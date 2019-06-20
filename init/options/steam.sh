@@ -4,6 +4,6 @@ if is_macos; then
   brew cask install steam
 fi
 
-if is_linux; then
+if is_ubuntu; then
   flatpak install -y com.valvesoftware.Steam
 fi
