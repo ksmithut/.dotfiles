@@ -54,7 +54,7 @@ function dotfiles_init() {
   local selected_environments=()
   local environments=($(${DOTFILES}/options.sh _))
   for environment in "${environments[@]}"; do
-    echo -n "Will this be a ${environment} environment? (y/n): "; read -r answer
+    echo -n "Will this be a ${environment} environment? (y/N): "; read -r answer
     if [ "$answer" == 'y' ]; then
       selected_environments+=("$environment")
     fi

@@ -8,10 +8,6 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 
 # flatpak
-sudo apt install flatpak
+sudo apt-get install -y snapd
+sudo apt install -y flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-# snap is already installed on ubuntu
-if is_pop_desktop; then
-  sudo apt-get install -y snapd
-fi
