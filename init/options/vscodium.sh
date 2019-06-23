@@ -21,6 +21,7 @@ if is_ubuntu; then
   echo 'fs.inotify.max_user_watches=524288' | sudo tee -a /etc/sysctl.conf
   sudo sysctl -p
 
+  # flatpak install flathub com.visualstudio.code.oss
 fi
 
 codium --install-extension Shan.code-settings-sync

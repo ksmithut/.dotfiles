@@ -14,3 +14,7 @@ fi
 
 # I still haven't figured out all of the kinks involved with installing the
 # kubernetes tools on linux
+
+if is_ubuntu; then
+  sudo snap install kubectl --classic
+fi

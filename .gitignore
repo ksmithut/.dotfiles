@@ -4,4 +4,4 @@ dump.rdb
 .data
 node_modules
 caches
-options.sh
+/options.sh
