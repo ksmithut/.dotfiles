@@ -6,7 +6,7 @@
 #
 # Reload changes into i3 with `$mod + shift + r`
 #
-# This defines which key super maps to on your keyboard.  
+# This defines which key super maps to on your keyboard.
 # Meta(Alt) key is Mod1, and Super(Windows) key is Mod4
 set $mod Mod1
 

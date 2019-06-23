@@ -56,7 +56,7 @@ function dotfiles_options() {
     if [[ -x "$(command -v readlink)" ]]; then
       DOTFILES_OPTIONS_FILE=$(readlink -f $DOTFILES_OPTIONS_FILE)
     elif [[ -x "$(command -v realpath)" ]]; then
-      DOTFILES_OPTIONS_FILE=$(realpath $DOTFILES_OPTIONS_FILE)    
+      DOTFILES_OPTIONS_FILE=$(realpath $DOTFILES_OPTIONS_FILE)
     else
       echo 'Unable to determine path of options file, exiting.'
       exit 1

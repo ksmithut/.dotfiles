@@ -34,6 +34,7 @@ echo 'gpg'
 echo 'keybase'
 echo 'slack'
 echo 'ssh'
+echo 'vlc'
 echo 'yubikey'
 echo 'zsh'
 
