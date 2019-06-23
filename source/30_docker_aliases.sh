@@ -43,6 +43,7 @@ function dock() {
         --volume '/var/run/docker.sock:/var/run/docker.sock' \
         localstack/localstack
       docker stop 'dock_localstack'
+      docker remove 'dock_localstack'
       ;;
 
     # https://hub.docker.com/_/mongo/
@@ -52,9 +53,10 @@ function dock() {
       docker run \
         --name 'dock_mongo' \
         --publish '27017:27017' \
-        # --volume '/data/db' \
         mongo:latest
+        # --volume '/data/db' \
       docker stop 'dock_mongo'
+      docker remove 'dock_mongo'
       ;;
 
     # https://hub.docker.com/_/redis/
@@ -64,9 +66,10 @@ function dock() {
       docker run \
         --name 'dock_redis' \
         --publish '6379:6379' \
-        # --volume '/data' \
         redis:alpine
+        # --volume '/data' \
       docker stop 'dock_redis'
+      docker remove 'dock_redis'
       ;;
 
     # https://hub.docker.com/_/postgres/
@@ -79,9 +82,10 @@ function dock() {
         --env 'POSTGRES_USER=postgres' \
         --env 'POSTGRES_PASSWORD=postgres' \
         --env 'POSTGRES_DB=postgres' \
-        # --volume '/var/lib/postgresql/data' \
         postgres:alpine
+        # --volume '/var/lib/postgresql/data' \
       docker stop 'dock_postgres'
+      docker remove 'dock_postgres'
       ;;
 
     # https://hub.docker.com/_/nats-streaming/
@@ -93,9 +97,10 @@ function dock() {
         --name 'dock_nats-streaming' \
         --publish '4222:4222' \
         --publish '8222:8222' \
-        # --volume '/datastore' \
         nats-streaming:latest -store file -dir '/datastore' -m 8222
+        # --volume '/datastore' \
       docker stop 'dock_nats-streaming'
+      docker remove 'dock_nats-streaming'
       ;;
 
     # https://www.docker.elastic.co
@@ -107,9 +112,10 @@ function dock() {
         --publish '9200:9200' \
         --publish '9300:9300' \
         --env 'discovery.type=single-node' \
-        # --volume '/usr/share/elasticsearch/data' \
         docker.elastic.co/elasticsearch/elasticsearch:7.1.1
+        # --volume '/usr/share/elasticsearch/data' \
       docker stop 'dock_elasticsearch'
+      docker remove 'dock_elasticsearch'
       ;;
 
     # https://danfarrelly.nyc/MailDev/
@@ -122,6 +128,7 @@ function dock() {
         --publish '1025:25' \
         djfarrelly/maildev
       docker stop 'dock_maildev'
+      docker remove 'dock_maildev'
       ;;
 
     *)
