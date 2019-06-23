@@ -10,12 +10,7 @@ function react-setup() {
 
 function eslint-setup() {
   yarn add -D \
-    eslint \
-    eslint-config-standard \
-    eslint-plugin-import \
-    eslint-plugin-node \
-    eslint-plugin-promise \
-    eslint-plugin-standard \
+    standard \
     prettier-eslint-cli
   cat package.json \
     | jq '.scripts.format = "prettier-eslint ''src/**/*.js'' --write"' \
