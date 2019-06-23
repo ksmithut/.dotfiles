@@ -29,10 +29,16 @@ on your machine.
   ```
 
 ```sh
-# Clone it anywhere you want, it should symlink things correctly
-git clone https://github.com/ksmithut/.dotfiles.git
-.dotfiles/setup.sh
+cd ~ && git clone https://github.com/ksmithut/.dotfiles.git && .dotfiles/setup.sh
 ```
+
+> Or by using a custom `options.sh` template not in the .dotfiles directory
+>
+> ```sh
+> cd ~ && git clone https://github.com/ksmithut/.dotfiles.git && .dotfiles/setup.sh ~/.my-options-file.sh
+> ```
+> 
+> If no custom options file argument is given, it will look for a `options.sh` in the `.dotfiles` folder or use the `options.template.sh`.
 
 ## Project structure
 
@@ -55,9 +61,11 @@ git clone https://github.com/ksmithut/.dotfiles.git
 
 - `setup.sh` The script to run when setting up your system.
 
-- `options.sh` This is where customization comes in. This is how you select how
-  you want your system setup with various environment options. Here's how the
-  file is structure:
+- `options.template.sh` This is where customization comes in. Using this template, copy
+  the file and rename it to just `options.sh`. This is how you select how you want your 
+  system setup with various environment options. 
+  
+## Environment Options structure
 
   ```sh
   # If the first argument is '_', then the setup script is trying to determine
