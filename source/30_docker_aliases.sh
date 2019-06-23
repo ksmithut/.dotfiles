@@ -43,7 +43,7 @@ function dock() {
         --volume '/var/run/docker.sock:/var/run/docker.sock' \
         localstack/localstack
       docker stop 'dock_localstack'
-      docker remove 'dock_localstack'
+      docker rm 'dock_localstack'
       ;;
 
     # https://hub.docker.com/_/mongo/
@@ -56,7 +56,7 @@ function dock() {
         mongo:latest
         # --volume '/data/db' \
       docker stop 'dock_mongo'
-      docker remove 'dock_mongo'
+      docker rm 'dock_mongo'
       ;;
 
     # https://hub.docker.com/_/redis/
@@ -69,7 +69,7 @@ function dock() {
         redis:alpine
         # --volume '/data' \
       docker stop 'dock_redis'
-      docker remove 'dock_redis'
+      docker rm 'dock_redis'
       ;;
 
     # https://hub.docker.com/_/postgres/
@@ -85,7 +85,7 @@ function dock() {
         postgres:alpine
         # --volume '/var/lib/postgresql/data' \
       docker stop 'dock_postgres'
-      docker remove 'dock_postgres'
+      docker rm 'dock_postgres'
       ;;
 
     # https://hub.docker.com/_/nats-streaming/
@@ -100,7 +100,7 @@ function dock() {
         nats-streaming:latest -store file -dir '/datastore' -m 8222
         # --volume '/datastore' \
       docker stop 'dock_nats-streaming'
-      docker remove 'dock_nats-streaming'
+      docker rm 'dock_nats-streaming'
       ;;
 
     # https://www.docker.elastic.co
@@ -115,7 +115,7 @@ function dock() {
         docker.elastic.co/elasticsearch/elasticsearch:7.1.1
         # --volume '/usr/share/elasticsearch/data' \
       docker stop 'dock_elasticsearch'
-      docker remove 'dock_elasticsearch'
+      docker rm 'dock_elasticsearch'
       ;;
 
     # https://danfarrelly.nyc/MailDev/
@@ -128,7 +128,7 @@ function dock() {
         --publish '1025:25' \
         djfarrelly/maildev
       docker stop 'dock_maildev'
-      docker remove 'dock_maildev'
+      docker rm 'dock_maildev'
       ;;
 
     *)
