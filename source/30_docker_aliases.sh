@@ -29,17 +29,18 @@ function dock() {
     # SSM at http://localhost:4583
     localstack)
       docker run \
+        --init \
         --name 'dock_localstack' \
         --publish '4567-4583:4567-4583' \
-        --publish '${PORT_WEB_UI-8080}:${PORT_WEB_UI-8080}' \
-        --env 'SERVICES=${SERVICES- }' \
-        --env 'DEBUG=${DEBUG- }' \
-        --env 'DATA_DIR=${DATA_DIR-' \
-        --env 'PORT_WEB_UI=${PORT_WEB_UI- }' \
-        --env 'LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR- }' \
-        --env 'KINESIS_ERROR_PROBABILITY=${KINESIS_ERROR_PROBABILITY- }' \
+        --publish '8080:8080' \
+        --env 'SERVICES= ' \
+        --env 'DEBUG= ' \
+        --env 'DATA_DIR= ' \
+        --env 'PORT_WEB_UI= ' \
+        --env 'LAMBDA_EXECUTOR= ' \
+        --env 'KINESIS_ERROR_PROBABILITY= ' \
         --env 'DOCKER_HOST=unix:///var/run/docker.sock' \
-        --volume '/private${TMPDIR:-/tmp/localstack}:/tmp/localstack' \
+        --volume '/private/tmp/localstack:/tmp/localstack' \
         --volume '/var/run/docker.sock:/var/run/docker.sock' \
         localstack/localstack
       docker stop 'dock_localstack'
