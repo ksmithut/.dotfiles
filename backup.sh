@@ -7,7 +7,7 @@ copy_dirs=(
   ~/.aws
   ~/.npmrc
   ~/.now
-  ~/.bashrc.local
+  ~/.zshrc.local
   ~/Code
   ~/Documents
   ~/Pictures
