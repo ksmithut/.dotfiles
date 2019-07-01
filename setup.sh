@@ -104,7 +104,7 @@ function dotfiles_init() {
     echo "done!"
   done
 
-  mkdir -p "$DOTFILES/caches/installers"
+  rm -rf "$DOTFILES/caches"
 }
 
 # getopts

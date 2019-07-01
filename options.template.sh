@@ -40,6 +40,7 @@ echo 'zsh'
 
 if [[ " $@ " =~ " work " ]]; then
   echo 'docker'
+  echo 'lazydocker'
   echo 'elixir'
   echo 'figma'
   echo 'git'
