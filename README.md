@@ -37,7 +37,7 @@ cd ~ && git clone https://github.com/ksmithut/.dotfiles.git && .dotfiles/setup.s
 > ```sh
 > cd ~ && git clone https://github.com/ksmithut/.dotfiles.git && .dotfiles/setup.sh ~/.my-options-file.sh
 > ```
-> 
+>
 > If no custom options file argument is given, it will look for a `options.sh` in the `.dotfiles` folder or use the `options.template.sh`.
 
 ## Project structure
@@ -62,36 +62,36 @@ cd ~ && git clone https://github.com/ksmithut/.dotfiles.git && .dotfiles/setup.s
 - `setup.sh` The script to run when setting up your system.
 
 - `options.template.sh` This is where customization comes in. Using this template, copy
-  the file and rename it to just `options.sh`. This is how you select how you want your 
-  system setup with various environment options. 
-  
+  the file and rename it to just `options.sh`. This is how you select how you want your
+  system setup with various environment options.
+
 ## Environment Options structure
 
-  ```sh
-  # If the first argument is '_', then the setup script is trying to determine
-  # the possible environments for this script. You want to
-  # `echo '{environment}'` for each kind of environment you want to support.
-  if [ "$1" == '_' ]; then
-    echo 'work'
-    echo 'play'
-    exit
-  fi
+```sh
+# If the first argument is '_', then the setup script is trying to determine
+# the possible environments for this script. You want to
+# `echo '{environment}'` for each kind of environment you want to support.
+if [ "$1" == '_' ]; then
+  echo 'work'
+  echo 'play'
+  exit
+fi
 
-  # Every `echo` after this should corespond to a file in `./init/options`
-  echo 'base'
-  echo 'chromium'
-  echo 'zsh'
+# Every `echo` after this should corespond to a file in `./init/options`
+echo 'base'
+echo 'chromium'
+echo 'zsh'
 
-  if [[ " $@ " =~ " work " ]]; then
-    echo 'docker'
-    echo 'node'
-    echo 'vscode'
-  fi
+if [[ " $@ " =~ " work " ]]; then
+  echo 'docker'
+  echo 'node'
+  echo 'vscode'
+fi
 
-  if [[ " $@ " =~ " play " ]]; then
-    echo 'steam'
-  fi
-  ```
+if [[ " $@ " =~ " play " ]]; then
+  echo 'steam'
+fi
+```
 
 ## Create Installation Media
 
@@ -121,6 +121,39 @@ as the boot drive and continue with installation there.
 
 Download the ISOs from their respective sites and write the images to a bootable
 USB drive using something like [balenaEtcher](https://www.balena.io/etcher/).
+
+Preferred keyboard shortcuts (Might apply to Pop!\_OS)
+
+```sh
+# Keyboard shortcuts
+# ==================
+# Prevent gnome resetting keyboard setting in X
+gsettings set org.gnome.settings-daemon.plugins.keyboard active false
+
+# change workspace movement to ctrl + <- and ctrl + ->
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Control>Left']"
+# Undo gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Control><Alt>Left']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Control>Right']"
+# Undo gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Control><Alt>Right']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Control>Up']"
+# Undo gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Control><Alt>Up']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Control>Down']"
+# Undo gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Control><Alt>Down']"
+
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Control><Shift>Left']"
+# Undo gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Control><Shift>Left']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Control><Shift>Right']"
+# Undo gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Control><Shift>Right']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Control><Shift>Up']"
+# Undo gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Control><Shift>Up']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Control><Shift>Down']"
+# Undo gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Control><Shift>Down']"
+
+
+# swap super and alt
+# setxkbmap -option altwin:swap_lalt_lwin # TODO make this permanent
+# Undo setxkbmap -option
+```
 
 ### Windows
 
