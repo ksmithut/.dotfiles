@@ -8,8 +8,7 @@ if is_macos; then
     kustomize \
     skaffold
   brew cask install \
-    minikube \
-    virtualbox
+    minikube
 fi
 
 # I still haven't figured out all of the kinks involved with installing the
@@ -17,4 +16,11 @@ fi
 
 if is_ubuntu; then
   sudo snap install kubectl --classic
+  sudo snap install helm --classic
+  sudo snap install skaffold
+
+  # Minikube
+  wget https://github.com/kubernetes/minikube/releases/download/v1.2.0/minikube_1.2.0.deb -O "$DOTFILES/caches/installers/minikube.deb"
+  sudo dpkg -i "$DOTFILES/caches/installers/minikube.deb"
+  sudo apt-get install -f -y
 fi

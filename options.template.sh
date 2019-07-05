@@ -51,6 +51,7 @@ if [[ " $@ " =~ " work " ]]; then
   echo 'node'
   echo 'postgres-client'
   echo 'postman'
+  echo 'virtualbox'
   echo 'vscode'
   echo 'zoom'
 fi
@@ -60,6 +61,8 @@ if [[ " $@ " =~ " play " ]]; then
   echo 'epic-games'
   echo 'gog-galaxy'
   echo 'league-of-legends'
+  echo 'lutris'
   echo 'minecraft'
   echo 'steam'
+  echo 'wine'
 fi

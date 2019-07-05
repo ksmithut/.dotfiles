@@ -5,11 +5,11 @@ if is_macos; then
 fi
 
 if is_ubuntu; then
-  # sudo snap install code --classic
+  sudo snap install code --classic
   # flatpak install -y flathub com.visualstudio.code
-  wget 'https://go.microsoft.com/fwlink/?LinkID=760868' -O "$DOTFILES/caches/installers/vscode.deb"
-  sudo dpkg -i "$DOTFILES/caches/installers/vscode.deb"
-  sudo apt-get install -f -y
+  # wget 'https://go.microsoft.com/fwlink/?LinkID=760868' -O "$DOTFILES/caches/installers/vscode.deb"
+  # sudo dpkg -i "$DOTFILES/caches/installers/vscode.deb"
+  # sudo apt-get install -f -y
 
   # https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
   echo 'fs.inotify.max_user_watches=524288' | sudo tee -a /etc/sysctl.conf
