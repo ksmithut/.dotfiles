@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+if [ "$FROM_POWERSHELL" == "true" ]; then
+  DOTFILES_EXTENSION='ps1'
+else
+  DOTFILES_EXTENSION='sh'
+fi
+
 function e_header() {
   echo
   echo "======================================================================="
@@ -90,19 +96,19 @@ function dotfiles_init() {
 
   mkdir -p "$DOTFILES/caches/installers"
   mkdir -p "$DOTFILES/caches/fonts"
-  for file in "$DOTFILES"/init/*.sh; do
+  for file in "$DOTFILES"/init/*."$DOTFILES_EXTENSION"; do
     e_header "Init $(basename $file)"
     # shellcheck disable=SC1090
-    source $file
+    . $file
     echo "done!"
   done
 
   for option in "${options[@]}"; do
-    option_path="${DOTFILES}/init/options/${option}.sh"
+    option_path="${DOTFILES}/init/options/${option}."$DOTFILES_EXTENSION""
     if test -f "$option_path"; then
       e_header "Installing ${option}"
       # shellcheck disable=SC1090
-      source "$option_path"
+      . "$option_path"
       echo "done!"
     fi
   done
@@ -124,7 +130,7 @@ echo "Enter your password here. You should only have to enter it once through th
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-source "${DOTFILES}/source/00_dotfiles.sh"
+. "${DOTFILES}/source/00_dotfiles.sh"
 dotfiles_copy
 dotfiles_link
 dotfiles_options
