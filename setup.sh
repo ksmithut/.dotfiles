@@ -51,12 +51,12 @@ function dotfiles_link() {
 function dotfiles_options() {
   e_header "Searching for options file"
 
-  if [[ -x $DOTFILES_OPTIONS_FILE ]]; then
+  if [[ -x "$DOTFILES_OPTIONS_FILE" ]]; then
     # Use readlink for Linux or realpath for mac_os
     if [[ -x "$(command -v readlink)" ]]; then
-      DOTFILES_OPTIONS_FILE=$(readlink -f $DOTFILES_OPTIONS_FILE)
+      DOTFILES_OPTIONS_FILE="$(readlink -f "$DOTFILES_OPTIONS_FILE")"
     elif [[ -x "$(command -v realpath)" ]]; then
-      DOTFILES_OPTIONS_FILE=$(realpath $DOTFILES_OPTIONS_FILE)
+      DOTFILES_OPTIONS_FILE="$(realpath "$DOTFILES_OPTIONS_FILE")"
     else
       echo 'Unable to determine path of options file, exiting.'
       exit 1
@@ -78,7 +78,7 @@ function dotfiles_init() {
   e_header "Initializing system"
 
   local selected_environments=()
-  local environments=($($DOTFILES_OPTIONS_FILE _))
+  local environments=($("$DOTFILES_OPTIONS_FILE" _))
   for environment in "${environments[@]}"; do
     echo -n "Will this be a ${environment} environment? (y/N): "; read -r answer
     case $answer in
@@ -86,14 +86,14 @@ function dotfiles_init() {
     esac
   done
 
-  local options=($($DOTFILES_OPTIONS_FILE ${selected_environments[@]}))
+  local options=($("$DOTFILES_OPTIONS_FILE" ${selected_environments[@]}))
 
   mkdir -p "$DOTFILES/caches/installers"
   mkdir -p "$DOTFILES/caches/fonts"
   for file in "$DOTFILES"/init/*.sh; do
-    e_header "Init $(basename $file)"
+    e_header "Init $(basename "$file")"
     # shellcheck disable=SC1090
-    source $file
+    source "$file"
     echo "done!"
   done
 
