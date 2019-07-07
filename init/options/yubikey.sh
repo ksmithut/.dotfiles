@@ -5,7 +5,7 @@ if is_macos; then
 fi
 
 if is_ubuntu; then
-  sudo apt-add-repository ppa:yubico/stable
+  sudo apt-add-repository -y ppa:yubico/stable
   sudo apt update -y
   sudo apt install -y yubikey-manager
 fi
