@@ -1,1 +1,1 @@
-choco install 1password
+choco install -y 1password

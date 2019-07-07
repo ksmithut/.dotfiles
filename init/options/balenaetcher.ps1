@@ -1,1 +1,1 @@
-choco install etcher
+choco install -y etcher
