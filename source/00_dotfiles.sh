@@ -23,6 +23,10 @@ function is_zsh() {
   [[ "${ZSH_NAME}" == "zsh" ]] || return 1
 }
 
+function is_windows() {
+  [[ "${OS}" == "Windows_NT" ]] || return 1
+}
+
 function dotfiles {
   cd "$DOTFILES"
 }

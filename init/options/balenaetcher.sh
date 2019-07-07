@@ -21,5 +21,8 @@ if is_ubuntu; then
   # sudo apt-get remove balena-etcher-electron
   # sudo rm /etc/apt/sources.list.d/balena-etcher.list
   # sudo apt-get update
+fi
 
+if is_windows; then
+  choco install -y etcher
 fi

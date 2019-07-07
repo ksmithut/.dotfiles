@@ -11,3 +11,7 @@ if is_ubuntu; then
   sudo dpkg -i "$DOTFILES/caches/installers/kitematic/Kitematic-0.17.7_amd64.deb"
   sudo apt-get install -f -y
 fi
+
+if is_windows; then
+  choco install -y docker-kitematic
+fi

@@ -11,3 +11,7 @@ if is_ubuntu; then
   sudo apt-get install -y esl-erlang
   sudo apt-get install -y elixir
 fi
+
+if is_windows; then
+  choco install -y elixir
+fi

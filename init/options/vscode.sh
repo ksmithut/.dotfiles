@@ -16,4 +16,8 @@ if is_ubuntu; then
   sudo sysctl -p
 fi
 
+if is_windows; then
+  choco install -y vscode
+fi
+
 code --install-extension Shan.code-settings-sync

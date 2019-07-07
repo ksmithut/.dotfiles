@@ -1,3 +1,4 @@
+. "$PSScriptRoot\init\00_pre_windows.ps1"
+
 $env:DOTFILES = $PSScriptRoot
-$env:FROM_POWERSHELL = 'true'
-sh "$PSScriptRoot\test.sh"
+sh "$PSScriptRoot\setup.sh"

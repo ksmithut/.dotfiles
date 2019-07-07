@@ -8,3 +8,7 @@ if is_ubuntu; then
   sudo snap install discord
   # flatpak install -y flathub com.discordapp.Discord
 fi
+
+if is_windows; then
+  choco install -y discord
+fi

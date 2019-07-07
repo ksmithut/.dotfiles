@@ -9,3 +9,7 @@ fi
 #   # sudo apt-get purge -y firefox
 #   # sudo snap install firefox
 # fi
+
+if is_windows; then
+  choco install -y firefox
+fi

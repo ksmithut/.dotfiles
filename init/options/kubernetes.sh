@@ -24,3 +24,11 @@ if is_ubuntu; then
   sudo dpkg -i "$DOTFILES/caches/installers/minikube.deb"
   sudo apt-get install -f -y
 fi
+
+if is_windows; then
+  choco install -y minikube
+  choco install -y kubernetes-cli
+  choco install -y kubernetes-helm
+  choco install -y skaffold
+  choco install -y kustomize
+fi

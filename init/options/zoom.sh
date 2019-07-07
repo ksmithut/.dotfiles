@@ -9,3 +9,7 @@ if is_ubuntu; then
   sudo dpkg -i "$DOTFILES/caches/installers/zoom.deb"
   sudo apt-get install -f -y
 fi
+
+if is_windows; then
+  choco install -y zoom
+fi

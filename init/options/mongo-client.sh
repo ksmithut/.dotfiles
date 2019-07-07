@@ -7,3 +7,7 @@ fi
 # if is_ubuntu; then
 #   # TODO find a mongo client that's easy to install and that I like
 # fi
+
+if is_windows; then
+  choco install -y studio3t
+fi

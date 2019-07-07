@@ -9,3 +9,7 @@ if is_ubuntu; then
   sudo apt-get update -y
   sudo apt-get install -y virtualbox
 fi
+
+if is_windows; then
+  choco install -y virtualbox
+fi

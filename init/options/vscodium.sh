@@ -24,4 +24,8 @@ if is_ubuntu; then
   # flatpak install flathub com.visualstudio.code.oss
 fi
 
+if is_windows; then
+  choco install -y vscodium
+fi
+
 codium --install-extension Shan.code-settings-sync

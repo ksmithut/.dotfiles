@@ -7,3 +7,7 @@ fi
 if is_ubuntu; then
   sudo snap install figma-linux
 fi
+
+if is_windows; then
+  choco install -y figma
+fi
