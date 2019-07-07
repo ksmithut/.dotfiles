@@ -15,7 +15,7 @@ if is_ubuntu; then
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
 
   # Update & Install
-  sudo apt-get update && sudo apt-get install balena-etcher-electron
+  sudo apt-get update -y && sudo apt-get install -y balena-etcher-electron
 
   ## Uninstall
   # sudo apt-get remove balena-etcher-electron
