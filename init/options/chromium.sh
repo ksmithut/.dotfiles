@@ -5,7 +5,8 @@ if is_macos; then
 fi
 
 if is_ubuntu; then
-  sudo snap install chromium
+  # sudo snap install chromium
+  sudo apt-get install chromium-browser
 fi
 
 if is_windows; then

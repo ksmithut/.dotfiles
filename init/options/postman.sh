@@ -5,8 +5,8 @@ if is_macos; then
 fi
 
 if is_ubuntu; then
-  # sudo snap install postman
-  flatpak install -y flathub com.getpostman.Postman
+  sudo snap install postman
+  # flatpak install -y flathub com.getpostman.Postman
 fi
 
 if is_windows; then

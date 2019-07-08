@@ -5,8 +5,8 @@ if is_macos; then
 fi
 
 if is_ubuntu; then
-  # sudo snap install spotify
-  flatpak install flathub com.spotify.Client
+  sudo snap install spotify
+  # flatpak install flathub com.spotify.Client
 fi
 
 if is_windows; then

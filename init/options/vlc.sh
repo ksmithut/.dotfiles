@@ -6,5 +6,6 @@ fi
 
 if is_ubuntu; then
   # sudo snap install vlc
-  flatpak install -y flathub org.videolan.VLC
+  # flatpak install -y flathub org.videolan.VLC
+  sudo apt-get install -y vlc
 fi
