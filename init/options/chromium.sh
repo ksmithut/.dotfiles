@@ -6,7 +6,7 @@ fi
 
 if is_ubuntu; then
   # sudo snap install chromium
-  sudo apt-get install chromium-browser
+  sudo apt-get install -y chromium-browser
 fi
 
 if is_windows; then
