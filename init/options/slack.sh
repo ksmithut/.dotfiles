@@ -5,8 +5,8 @@ if is_macos; then
 fi
 
 if is_ubuntu; then
-  sudo snap install slack --classic
-  # flatpak install -y flathub com.slack.Slack
+  # sudo snap install slack --classic
+  flatpak install -y flathub com.slack.Slack
 fi
 
 if is_windows; then

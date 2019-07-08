@@ -5,8 +5,8 @@ if is_macos; then
 fi
 
 if is_ubuntu; then
-  sudo snap install discord
-  # flatpak install -y flathub com.discordapp.Discord
+  # sudo snap install discord
+  flatpak install -y flathub com.discordapp.Discord
 fi
 
 if is_windows; then
