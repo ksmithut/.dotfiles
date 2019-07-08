@@ -159,24 +159,29 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Contro
 
 Follow the instructions [here](https://support.microsoft.com/en-us/help/15088/windows-10-create-installation-media)
 
-Obviously, this project is meant for mac/linux based on the bash usage, but I'd
-like to have some scripts ready to setup my gaming machines as well.
-Unfortunately, I've failed to find a package manager that has the things I want
-to install (mostly gaming software since I don't do any development on windows).
+Although the setup script should work for windows, it's still experimental.
+Well, the whole project is, but this even more so.
 
-Here's my list of apps and the locations to download them manually:
+First, you'll need to install [`git`](https://git-scm.com/downloads). When you
+get to the "Adjusting your PATH environment" section, select the option "Use Git
+and optional Unix tools from the command Prompt". All the other options you can
+change or leave as needed.
 
-- [Firefox](https://www.mozilla.org/en-US/firefox/new/)
-- [1Password](https://1password.com/downloads/)
-- [Discord](https://discordapp.com/download)
-- [Uplay](https://uplay.ubi.com/)
-- [Steam](https://store.steampowered.com/)
-- [Battle.net](https://us.battle.net/account/download/)
-- [Origin](https://www.origin.com/usa/en-us/store/download)
-- [Epic Launcher](https://www.epicgames.com/unrealtournament/download)
-- [GeForce Experience](https://www.nvidia.com/en-us/geforce/geforce-experience/)
-- [Minecraft](https://minecraft.net/en-us/download/)
-- [Gog Galaxy](https://www.gog.com/galaxy)
+Next, open up Powershell as Administrator. It is suggested that you move to your
+home directory or a directory within your home directory.
+
+Next, clone this onto your machine:
+
+```sh
+git clone https://github.com/ksmithut/.dotfiles.git
+cd .dotfiles
+```
+
+Then run:
+
+```sh
+Set-ExecutionPolicy Bypass -Scope Process -Force; . .\\setup.ps1
+```
 
 Also, in order to play with with time, Windows should be made to use UTC rather
 than local time.
