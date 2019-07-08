@@ -63,6 +63,8 @@ if [[ " $@ " =~ " play " ]]; then
   echo 'league-of-legends'
   echo 'lutris'
   echo 'minecraft'
+  echo 'origin'
   echo 'steam'
+  echo 'uplay'
   echo 'wine'
 fi
