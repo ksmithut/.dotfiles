@@ -26,7 +26,9 @@ if is_ubuntu; then
   curl -L https://git.io/get_helm.sh | bash
 
   # skaffold
-  sudo snap install skaffold
+  curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+  chmod +x skaffold
+  sudo mv skaffold /usr/local/bin
 
   # Minikube
   wget https://github.com/kubernetes/minikube/releases/download/v1.2.0/minikube_1.2.0.deb -O "$DOTFILES/caches/installers/minikube.deb"
