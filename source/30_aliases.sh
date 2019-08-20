@@ -134,7 +134,7 @@ if is_ubuntu; then
   alias clear='clear && echo -en "\e[3J"'
 
   # generates uuid
-  alias uuid='printf "%s" "$(cat /proc/sys/kernel/random/uuid)"'
+  alias uuid='printf "%s" $(cat /proc/sys/kernel/random/uuid)'
 
   # open for linux
   function open() {
