@@ -6,5 +6,5 @@ if is_macos; then
 fi
 
 if is_ubuntu; then
-  # Waiting for https://github.com/jesseduffield/lazydocker/issues/95
+  curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 fi
