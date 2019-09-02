@@ -89,6 +89,8 @@ function colorgrid() {
   echo -en "\033[00m"
 }
 
+alias neo='clear && neofetch'
+
 # macOS aliases/functions
 # =======================
 if is_macos; then
@@ -112,8 +114,6 @@ if is_macos; then
 
   alias uuid='printf "%s" "$(uuidgen | tr '"'"'[:upper:]'"'"' '"'"'[:lower:]'"'"')"'
 fi
-
-alias neo='clear && neofetch'
 
 # Ubuntu/Debian/Pop!_OS aliases/functions
 # =======================================
