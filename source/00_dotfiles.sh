@@ -11,10 +11,6 @@ function is_ubuntu() {
   [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]] || return 1
 }
 
-function is_debian() {
-  [[ "$(cat /etc/issue 2> /dev/null)" =~ Debian ]] || return 1
-}
-
 function is_ubuntu_desktop() {
   dpkg -l ubuntu-desktop >/dev/null 2>&1 || return 1
 }
@@ -25,4 +21,12 @@ function is_pop_desktop() {
 
 function is_zsh() {
   [[ "${ZSH_NAME}" == "zsh" ]] || return 1
+}
+
+function is_windows() {
+  [[ "${OS}" == "Windows_NT" ]] || return 1
+}
+
+function dotfiles {
+  cd "$DOTFILES"
 }
