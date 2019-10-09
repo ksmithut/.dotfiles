@@ -100,6 +100,11 @@ if is_ubuntu; then
   source /usr/share/autojump/autojump.sh
 fi
 
+function prompt_dir_shortened () {
+  # prompt_segment blue $CURRENT_FG '%2~'
+  prompt_segment blue $CURRENT_FG "%$(( $COLUMNS - 50 ))<...<%~%<<"
+}
+
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/agnoster.zsh-theme
 build_prompt() {
   RETVAL=$?
@@ -107,7 +112,8 @@ build_prompt() {
   prompt_virtualenv
   # prompt_aws
   prompt_context
-  prompt_dir
+  # prompt_dir
+  prompt_dir_shortened
   prompt_git
   prompt_bzr
   prompt_hg
