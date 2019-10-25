@@ -5,10 +5,18 @@ function be() {
   printf "%s" "$1" | base64
 }
 
-# base64 decode
-function bd() {
-  printf "%s" "$1" | base64 -D
-}
+
+if is_macos; then
+  # base64 decode
+  function bd() {
+    printf "%s" "$1" | base64 -D
+  }
+else
+  # base64 decode
+  function bd() {
+    printf "%s" "$1" | base64 -d
+  }
+fi
 
 # makes a directory and moves to it
 function dir() {
