@@ -3,7 +3,7 @@
 if is_macos; then
   brew install \
     kubernetes-cli \
-    kubernetes-helm \
+    helm \
     kubeseal \
     kustomize \
     skaffold
