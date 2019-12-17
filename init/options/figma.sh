@@ -6,8 +6,10 @@ fi
 
 if is_ubuntu; then
   # sudo snap install figma-linux
-  wget 'https://github.com/ChugunovRoman/figma-linux/releases/download/v0.5.1/figma-linux_0.5.1_amd64.deb' -O "$DOTFILES/caches/installers/figma.deb"
-  sudo dpkg -i "$DOTFILES/caches/installers/figma.deb"
+  sudo add-apt-repository ppa:chrdevs/figma
+  sudo apt-get update -y
+  sudo apt-key adv --recv-key --keyserver keyserver.ubuntu.com 70F3445E637983CC
+  sudo apt install figma-linux -y
   sudo apt-get install -f -y
 fi
 

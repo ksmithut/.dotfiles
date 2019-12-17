@@ -5,7 +5,7 @@ if is_macos; then
 fi
 
 if is_ubuntu; then
-  wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb -O "$DOTFILES/caches/installers/erlang.deb"
+  wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb -O "$DOTFILES/caches/installers/erlang.deb"
   sudo dpkg -i "$DOTFILES/caches/installers/erlang.deb"
   sudo apt-get update
   sudo apt-get install -y esl-erlang
