@@ -130,24 +130,15 @@ Preferred keyboard shortcuts (Might apply to Pop!\_OS)
 # Prevent gnome resetting keyboard setting in X
 gsettings set org.gnome.settings-daemon.plugins.keyboard active false
 
-# change workspace movement to ctrl + <- and ctrl + ->
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Control>Left']"
-# Undo gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Control><Alt>Left']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Control>Right']"
-# Undo gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Control><Alt>Right']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Control>Up']"
-# Undo gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Control><Alt>Up']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Control>Down']"
-# Undo gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Control><Alt>Down']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Control><Alt>Left']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Control><Alt>Right']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Control><Alt>Up']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Control><Alt>Down']"
 
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Control><Shift>Left']"
-# Undo gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Control><Shift>Left']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Control><Shift>Right']"
-# Undo gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Control><Shift>Right']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Control><Shift>Up']"
-# Undo gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Control><Shift>Up']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Control><Shift>Down']"
-# Undo gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Control><Shift>Down']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Control><Alt><Shift>Left']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Control><Alt><Shift>Right']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Control><Alt><Shift>Up']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Control><Alt><Shift>Down']"
 
 
 # swap super and alt
