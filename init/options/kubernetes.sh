@@ -23,7 +23,7 @@ if is_ubuntu; then
   sudo apt-get install -y kubectl
 
   # helm
-  curl -L https://git.io/get_helm.sh | bash
+  curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
   # skaffold
   curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
