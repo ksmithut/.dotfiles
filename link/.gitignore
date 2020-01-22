@@ -184,4 +184,5 @@ typings/
 # End of https://www.gitignore.io/api/go,node,redis,macos,linux,elixir,visualstudiocode,sass
 
 .env
+scratch.http
 
