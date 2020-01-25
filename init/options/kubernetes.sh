@@ -6,8 +6,7 @@ if is_macos; then
     helm \
     kubeseal \
     kustomize \
-    skaffold
-  brew cask install \
+    skaffold \
     minikube
 fi
 
