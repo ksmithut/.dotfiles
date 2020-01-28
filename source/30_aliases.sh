@@ -99,6 +99,18 @@ function colorgrid() {
 
 alias neo='clear && neofetch'
 
+function asdf-upgrade () {
+  if [[ $(command -v asdf) ]]; then
+    asdf plugin update --all
+    local IFS=$'\n'
+    local plugins=($(asdf plugin list))
+    for plugin in "${plugins[@]}"; do
+      asdf install "${plugin}" latest
+      asdf global "${plugin}" "$(asdf latest ${plugin})"
+    done
+  fi
+}
+
 # macOS aliases/functions
 # =======================
 if is_macos; then
