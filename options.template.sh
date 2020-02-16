@@ -37,6 +37,7 @@ echo 'ssh'
 echo 'vlc'
 echo 'yubikey'
 echo 'zsh'
+echo 'dracula-terminal-theme'
 
 if [[ " $@ " =~ " work " ]]; then
   echo 'docker'
