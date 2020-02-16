@@ -6,7 +6,7 @@ fi
 
 if is_ubuntu; then
   # sudo snap install figma-linux
-  sudo add-apt-repository ppa:chrdevs/figma
+  sudo add-apt-repository -y ppa:chrdevs/figma
   sudo apt-get update -y
   sudo apt-key adv --recv-key --keyserver keyserver.ubuntu.com 70F3445E637983CC
   sudo apt install figma-linux -y

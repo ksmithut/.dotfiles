@@ -48,6 +48,7 @@ if [[ " $@ " =~ " work " ]]; then
   echo 'virtualbox'
   echo 'vscode'
   echo 'zoom'
+  echo 'tableplus'
   echo 'asdf'
   echo 'asdf-node'
   echo 'asdf-elixir'
