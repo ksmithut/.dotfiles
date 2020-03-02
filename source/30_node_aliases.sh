@@ -8,13 +8,13 @@ function react-setup() {
   yarn create gameplan https://github.com/ksmithut/gameplan-react "$1" --prompt
 }
 
-function eslint-setup() {
+function lint-setup() {
   yarn add -D \
     standard \
-    prettier-eslint-cli
+    prettier-standard
   cat package.json \
-    | jq '.scripts.format = "prettier-eslint ''src/**/*.js'' --write"' \
-    | jq '.scripts.lint = "eslint ''src/**/*.js'' && prettier-eslint ''src/**/*.js'' --list-different"' \
+    | jq '.scripts.format = "prettier-standard"' \
+    | jq '.scripts.lint = "prettier-standard --check --lint' \
     | tee package.json
   echo '{}' | jq '.extends = ["standard"]' | tee .eslintrc
 }
