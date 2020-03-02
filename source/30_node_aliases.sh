@@ -14,7 +14,7 @@ function lint-setup() {
     prettier-standard
   cat package.json \
     | jq '.scripts.format = "prettier-standard"' \
-    | jq '.scripts.lint = "prettier-standard --check --lint' \
+    | jq '.scripts.lint = "prettier-standard --check --lint"' \
     | tee package.json
   echo '{}' | jq '.extends = ["standard"]' | tee .eslintrc
 }
