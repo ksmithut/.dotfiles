@@ -185,4 +185,5 @@ typings/
 
 .env
 scratch.http
+scratch.js
 .tool-versions
