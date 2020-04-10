@@ -48,7 +48,6 @@ if [[ " $@ " =~ " work " ]]; then
   echo 'postgres-client'
   echo 'virtualbox'
   echo 'vscode'
-  echo 'zoom'
   echo 'tableplus'
   echo 'asdf'
   echo 'asdf-node'

@@ -12,7 +12,7 @@
 	glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 	git = !exec git
 [merge]
-	ff = only
+	# ff = only
 	conflictstyle = diff3
 [core]
 	excludesfile = ~/.gitignore
