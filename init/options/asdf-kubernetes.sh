@@ -22,7 +22,7 @@ if is_macos || is_ubuntu; then
   asdf global kustomize "$(asdf latest kustomize)"
 
   asdf plugin add minikube
-  asdf install minikube v1.6.2
+  asdf install minikube latest
   asdf global minikube "$(asdf latest minikube)"
 
   asdf plugin add skaffold
