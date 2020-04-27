@@ -50,7 +50,7 @@ if [[ " $@ " =~ " work " ]]; then
   echo 'vscode'
   echo 'tableplus'
   echo 'asdf'
-  echo 'asdf-node'
+  echo 'node'
   echo 'asdf-elixir'
   echo 'asdf-deno'
   echo 'asdf-golang'
