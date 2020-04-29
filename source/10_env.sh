@@ -11,6 +11,7 @@ PATH="/usr/local/sbin:$PATH"
 PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 PATH="$DOTFILES/bin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 export PATH
 
 # Elixir history
