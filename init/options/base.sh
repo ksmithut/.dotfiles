@@ -127,8 +127,8 @@ if is_ubuntu_desktop || is_pop_desktop; then
   }
 
   # Gnome extensions
-  install-gnome-extension 484 # workspace-grid
-  install-gnome-extension 28 # gtile
+  # install-gnome-extension 484 # workspace-grid
+  # install-gnome-extension 28 # gtile
 
   # Remove dock
   sudo apt-get remove gnome-shell-extension-ubuntu-dock -y
