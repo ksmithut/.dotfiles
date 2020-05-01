@@ -5,6 +5,7 @@ if is_macos || is_ubuntu; then
   bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
   asdf install nodejs latest:10
   asdf install nodejs latest:12
+  asdf install nodejs latest:14
   asdf install nodejs latest
   asdf global nodejs "$(asdf latest nodejs)"
 

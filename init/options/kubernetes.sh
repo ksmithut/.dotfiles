@@ -30,7 +30,7 @@ if is_ubuntu; then
   sudo mv skaffold /usr/local/bin
 
   # Minikube
-  wget https://github.com/kubernetes/minikube/releases/download/v1.6.1/minikube_1.6.1.deb -O "$DOTFILES/caches/installers/minikube.deb"
+  wget https://github.com/kubernetes/minikube/releases/download/v1.9.2/minikube_1.9.2.deb -O "$DOTFILES/caches/installers/minikube.deb"
   sudo dpkg -i "$DOTFILES/caches/installers/minikube.deb"
   sudo apt-get install -f -y
 fi
