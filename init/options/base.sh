@@ -6,14 +6,13 @@ if is_macos; then
     bash \
     ffmpeg \
     git \
-    gpg \
+    gnupg \
     grep \
     imagemagick \
     jq \
     neofetch \
     pinentry-mac \
     python \
-    python@2 \
     shellcheck \
     siege \
     tmux \
@@ -41,7 +40,7 @@ if is_macos; then
   defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles -bool false
 
   # Don't prompt new hard drives as backup
-  sudo defaults write /Library/Preferences/com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+  # sudo defaults write /Library/Preferences/com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
   # Unhide ~/Library
   chflags nohidden ~/Library
