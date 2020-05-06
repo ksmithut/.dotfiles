@@ -187,3 +187,5 @@ typings/
 scratch.http
 scratch.js
 .tool-versions
+*.code-workspace
+
