@@ -111,6 +111,10 @@ function asdf-upgrade () {
   fi
 }
 
+function dotenv () {
+  env $(cat .env | xargs) $@
+}
+
 # macOS aliases/functions
 # =======================
 if is_macos; then
