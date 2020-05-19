@@ -111,6 +111,14 @@ function asdf-upgrade () {
   fi
 }
 
+function asdf-install () {
+  if [[ $(command -v asdf) ]]; then
+    asdf plugin add "$1"
+    asdf install "$1" latest
+    asdf global "$1" "$(asdf latest "$1")"
+  fi
+}
+
 function dotenv () {
   env $(cat .env | xargs) $@
 }
