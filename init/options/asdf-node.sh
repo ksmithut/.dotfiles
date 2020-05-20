@@ -10,7 +10,6 @@ if is_macos || is_ubuntu; then
   asdf global nodejs "$(asdf latest nodejs)"
 
   asdf plugin add yarn
-  asdf install nodejs latest:1
   asdf install yarn latest
   asdf global yarn "$(asdf latest yarn)"
 fi

@@ -49,12 +49,21 @@ if [[ " $@ " =~ " work " ]]; then
   echo 'virtualbox'
   echo 'vscode'
   echo 'tableplus'
+  echo 'awscli'
   echo 'asdf'
   echo 'asdf-node'
   echo 'asdf-elixir'
   echo 'asdf-deno'
   echo 'asdf-golang'
-  echo 'asdf-kubernetes'
+  echo 'asdf-eksctl'
+  echo 'asdf-fluxctl'
+  echo 'asdf-helm'
+  echo 'asdf-kops'
+  echo 'asdf-kubectl'
+  echo 'asdf-kubeseal'
+  echo 'asdf-kustomize'
+  echo 'asdf-minikube'
+  echo 'asdf-skaffold'
 fi
 
 if [[ " $@ " =~ " play " ]]; then
