@@ -67,4 +67,4 @@ function install-gnome-extension() {
 # Remove dock
 sudo apt-get remove gnome-shell-extension-ubuntu-dock -y
 # flatpak gnome software
-sudo apt install -y gnome-software-plugin-flatpak
+# sudo apt install -y gnome-software-plugin-flatpak
