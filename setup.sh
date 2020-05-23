@@ -5,9 +5,11 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   os="macos"
 fi
 
-mkdir -p ~/.local/bin
-wget "https://github.com/ksmithut/doted/releases/download/0.0.0/doted-${os}" -O ~/.local/bin/doted
+version="0.0.0"
 
+mkdir -p ~/.local/bin
+wget "https://github.com/ksmithut/doted/releases/download/${version}/doted-${os}" -O ~/.local/bin/doted
+chmod a+x ~/.local/bin/doted
 ~/.local/bin/doted setup
 
 unset os
