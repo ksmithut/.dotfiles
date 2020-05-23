@@ -20,9 +20,9 @@ echo 'press enter once you have signed into github'
 # shellcheck disable=SC2034
 read -r CONTINUE
 
-if is_macos; then
+if [[ "${IS_MACOS}" == "1" ]]; then
   pbcopy < "${SSH_PATH}.pub"
-elif is_ubuntu; then
+elif [[ "${IS_LINUX}" == "1" ]]; then
   xclip -selection clipboard < "${SSH_PATH}.pub"
 fi
 
