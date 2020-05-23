@@ -8,6 +8,6 @@ fi
 mkdir -p ~/.local/bin
 wget "https://github.com/ksmithut/doted/releases/download/0.0.0/doted-${os}" -O ~/.local/bin/doted
 
-doted setup
+~/.local/bin/doted setup
 
 unset os
