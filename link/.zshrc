@@ -6,7 +6,7 @@ if [ -f ~/.zshrc.local ]; then
   . ~/.zshrc.local
 fi
 
-eval "$(doted env)"
+eval "$(~/.local/bin/doted env)"
 
 # Source all of the files in ~/.dotfiles/source
 # shellcheck disable=SC1090
