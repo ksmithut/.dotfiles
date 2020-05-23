@@ -93,3 +93,6 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Save to disk by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+mkdir -p "$TEMP_DIR/caches/installers/"
+mkdir -p "$TEMP_DIR/caches/fonts/"

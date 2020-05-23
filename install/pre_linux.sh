@@ -68,3 +68,6 @@ function install-gnome-extension() {
 sudo apt-get remove gnome-shell-extension-ubuntu-dock -y
 # flatpak gnome software
 # sudo apt install -y gnome-software-plugin-flatpak
+
+mkdir -p "$TEMP_DIR/caches/installers/"
+mkdir -p "$TEMP_DIR/caches/fonts/"
