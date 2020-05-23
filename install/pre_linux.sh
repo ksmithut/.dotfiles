@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 sudo chown -R "$USER":"$USER" /usr/local/bin/
 
@@ -39,7 +39,7 @@ sudo apt-get install -y \
   gnome-shell-extensions \
   gnome-tweak-tool
 
-function install-gnome-extension {
+function install-gnome-extension() {
   local major_version
   local minor_version
   local patch_version
