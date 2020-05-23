@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 mv ~/.zshrc ~/.zshrc.pre-oh-my-zsh
 

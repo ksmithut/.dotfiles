@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 echo 'Installing powerline fonts...'
 mkdir -p "$TEMP_DIR/caches/fonts"

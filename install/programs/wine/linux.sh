@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # enable 32 bit architecture
 sudo dpkg --add-architecture i386

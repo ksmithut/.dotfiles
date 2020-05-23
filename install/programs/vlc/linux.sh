@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # sudo snap install vlc
 # flatpak install -y flathub org.videolan.VLC

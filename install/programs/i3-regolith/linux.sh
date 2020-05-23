@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # https://regolith-linux.org/
 # Add the regolith PPA repository:

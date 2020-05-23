@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Skip gpg until I figure out how to do subkeys properly
 return
@@ -17,8 +17,6 @@ echo 'Open https://github.com/settings/keys'
 echo 'press enter once you have signed into github'
 # shellcheck disable=SC2034
 read -r CONTINUE
-
-if [[ "${IS_MACOS}" == "1" ]]
 
 if [[ "${IS_MACOS}" == "1" ]]; then
   gpg --armor --export "$KEY_ID" | pbcopy

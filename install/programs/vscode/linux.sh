@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # sudo snap install code --classic
 # flatpak install -y flathub com.visualstudio.code

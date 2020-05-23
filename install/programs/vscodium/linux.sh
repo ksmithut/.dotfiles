@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo
 # Add vscodium gpg key:

@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 sudo apt-get install dconf-cli
 git clone https://github.com/dracula/gnome-terminal "$TEMP_DIR/caches/installers/dracula-gnome-terminal"

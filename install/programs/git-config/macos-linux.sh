@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # sets up the git config
 echo -n 'github username: '; read -r GITHUB_USER

@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 sudo apt install -y \
   automake autoconf libreadline-dev \

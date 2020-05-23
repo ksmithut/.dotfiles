@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 brew install \
   coreutils automake autoconf openssl \

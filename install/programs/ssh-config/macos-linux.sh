@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 echo 'Now we are going to generate a new ssh key for this machine.'
 echo ''
