@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Skip gpg until I figure out how to do subkeys properly
-return
-
 # eval "$(gpg-agent --daemon > /dev/null 2>&1)"
 # GPG_TTY=$(tty)
 # export GPG_TTY
