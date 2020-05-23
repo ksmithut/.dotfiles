@@ -28,5 +28,5 @@ function is_windows() {
 }
 
 function dotfiles {
-  cd "$DOTFILES"
+  cd "$DOTFILES_DIR"
 }
