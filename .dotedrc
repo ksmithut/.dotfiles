@@ -59,6 +59,7 @@
       "firefox",
       "slack",
       "1password",
+      "steam",
       "battle-net",
       "epic-games",
       "gog-galaxy",
@@ -66,7 +67,10 @@
       "minecraft",
       "origin",
       "uplay",
-      "wine"
+      "windows-terminal",
+      "ubuntu-wsl",
+      "vscode",
+      "power-toys"
     ]
   }
 }
