@@ -1,1 +1,1 @@
-winget install --exact -id Valve.Steam
+winget install --exact --id Valve.Steam
