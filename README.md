@@ -153,13 +153,43 @@ Follow the instructions [here](https://support.microsoft.com/en-us/help/15088/wi
 Although the setup script should work for windows, it's still experimental.
 Well, the whole project is, but this even more so.
 
-First, you'll need to install [`git`](https://git-scm.com/downloads). When you
-get to the "Adjusting your PATH environment" section, select the option "Use Git
-and optional Unix tools from the command Prompt". All the other options you can
-change or leave as needed.
+First, you'll need to install [`winget`](https://github.com/microsoft/winget-cli)
 
-Next, open up Powershell as Administrator. It is suggested that you move to your
-home directory or a directory within your home directory.
+Next install git:
+
+```ps1
+winget install --exact --id Git.Git
+```
+
+Optionally, you may want to run wsl2 to be able to have a functioning linux
+environment running.
+
+[https://docs.microsoft.com/en-us/windows/wsl/install-win10](instructions from here)
+
+Open powershell as an administrator and run the following commands:
+
+```ps1
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+
+Restart.
+
+The following command may fail stating something about linux kernel stuff.
+You'll need to visit [here](https://aka.ms/wsl2kernel) to download the
+appropriate driver. After that, you should be able to set the default wsl
+version to 2.
+
+```ps1
+wsl --set-default-version 2
+```
+
+It is suggested that you move to your home directory or a directory within your
+home directory.
+
+```sh
+cd $HOME
+```
 
 Next, clone this onto your machine:
 
@@ -171,6 +201,7 @@ cd .dotfiles
 Then run:
 
 ```sh
+$env:Path += ";C:\Program Files\Git\bin"
 Set-ExecutionPolicy Bypass -Scope Process -Force; . .\\setup.ps1
 ```
 
