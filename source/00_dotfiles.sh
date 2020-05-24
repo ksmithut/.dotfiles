@@ -27,6 +27,16 @@ function is_windows() {
   [[ "${OS}" == "Windows_NT" ]] || return 1
 }
 
+function which_os() {
+  if is_macos; then
+    echo 'macos'
+  elif is_windows; then
+    echo 'windows'
+  else
+    echo 'linux'
+  fi
+}
+
 function dotfiles {
-  cd "$DOTFILES_DIR"
+  cd "$DOTFILES"
 }

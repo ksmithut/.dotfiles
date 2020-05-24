@@ -5,8 +5,8 @@ if is_macos; then
 fi
 
 if is_ubuntu; then
-  wget https://zoom.us/client/latest/zoom_amd64.deb -O "$DOTFILES/caches/installers/zoom.deb"
-  sudo dpkg -i "$DOTFILES/caches/installers/zoom.deb"
+  wget https://zoom.us/client/latest/zoom_amd64.deb -O "$DOTFILES_INSTALLERS/zoom.deb"
+  sudo dpkg -i "$DOTFILES_INSTALLERS/zoom.deb"
   sudo apt-get install -f -y
 fi
 

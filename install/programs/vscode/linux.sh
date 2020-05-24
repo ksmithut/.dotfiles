@@ -2,8 +2,8 @@
 
 # sudo snap install code --classic
 # flatpak install -y flathub com.visualstudio.code
-wget 'https://go.microsoft.com/fwlink/?LinkID=760868' -O "$TEMP_DIR/caches/installers/vscode.deb"
-sudo dpkg -i "$TEMP_DIR/caches/installers/vscode.deb"
+wget 'https://go.microsoft.com/fwlink/?LinkID=760868' -O "$DOTFILES_INSTALLERS/vscode.deb"
+sudo dpkg -i "$DOTFILES_INSTALLERS/vscode.deb"
 sudo apt-get install -f -y
 
 # https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc

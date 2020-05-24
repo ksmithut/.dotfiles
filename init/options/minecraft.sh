@@ -5,8 +5,8 @@ if is_macos; then
 fi
 
 if is_ubuntu; then
-  wget 'https://launcher.mojang.com/download/Minecraft.deb' -O "$DOTFILES/caches/installers/minecraft.deb"
-  sudo dpkg -i "$DOTFILES/caches/installers/minecraft.deb"
+  wget 'https://launcher.mojang.com/download/Minecraft.deb' -O "$DOTFILES_INSTALLERS/minecraft.deb"
+  sudo dpkg -i "$DOTFILES_INSTALLERS/minecraft.deb"
   sudo apt-get install -f -y
 fi
 
