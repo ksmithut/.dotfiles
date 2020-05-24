@@ -24,23 +24,21 @@ if [ "$1" == '_' ]; then
 fi
 
 if [[ " $@ " =~ " base " ]]; then
-  echo 'base' # This is required for other installations to work
   echo '1password'
   echo 'apple-configurator'
   echo 'balenaetcher'
-  echo 'bettertouchtool'
+  echo 'better-touch-tool'
   echo 'boostnote'
-  echo 'buku'
   echo 'chromium'
   echo 'discord'
   echo 'firefox'
-  echo 'gpg'
+  echo 'gpg-config'
   echo 'keybase'
   echo 'slack'
-  echo 'ssh'
+  echo 'ssh-config'
   echo 'vlc'
   echo 'yubikey'
-  echo 'zsh'
+  echo 'oh-my-zsh'
   echo 'dracula-terminal-theme'
 fi
 
@@ -83,7 +81,7 @@ if [[ " $@ " =~ " games " ]]; then
 fi
 
 if [[ " $@ " =~ " wsl " ]]; then
-  echo 'gpg-config'
+  echo '-config-config'
   echo 'ssh-config'
   echo 'yubikey'
   echo 'oh-my-zsh'
