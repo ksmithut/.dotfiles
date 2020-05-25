@@ -15,6 +15,9 @@
 # options so the setup script can know what to ask you for.
 
 if [ "$1" == '_' ]; then
+  if is_windows; then
+    exit
+  fi
   echo 'base'
   echo 'work'
   echo 'games'
@@ -104,7 +107,7 @@ if [[ " $@ " =~ " wsl " ]]; then
   echo 'asdf-skaffold'
 fi
 
-if [[ " $@ " =~ " windows " ]]; then
+if is_windows; then
   echo 'discord'
   echo 'firefox'
   echo 'slack'

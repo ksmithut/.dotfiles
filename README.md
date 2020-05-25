@@ -6,6 +6,10 @@ on your machine.
 
 ## Supported Operating Systems
 
+- Windows
+
+  Instructions on how to set that up below
+
 - macOS
 
   Install XCode in it's fullest :(
@@ -49,8 +53,8 @@ cd ~ && git clone https://github.com/ksmithut/.dotfiles.git && .dotfiles/setup.s
   things that you would end up changing post-install, such as adding username
   or machine specific stuff to.
 
-- `init/` All of the `.sh` files in this directory get run on initialization.
-  There is also an `options/` directory in here that we'll explain down further.
+- `install/` All of the `.sh` files in this directory get run on initialization.
+  There is also an `programs/` directory in here that we'll explain down further.
 
 - `link/` All of the files here get symlinked to your home directory.
 
@@ -122,30 +126,6 @@ as the boot drive and continue with installation there.
 Download the ISOs from their respective sites and write the images to a bootable
 USB drive using something like [balenaEtcher](https://www.balena.io/etcher/).
 
-Preferred keyboard shortcuts (Might apply to Pop!\_OS)
-
-```sh
-# Keyboard shortcuts
-# ==================
-# Prevent gnome resetting keyboard setting in X
-gsettings set org.gnome.settings-daemon.plugins.keyboard active false
-
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Control><Alt>Left']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Control><Alt>Right']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Control><Alt>Up']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Control><Alt>Down']"
-
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Control><Alt><Shift>Left']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Control><Alt><Shift>Right']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Control><Alt><Shift>Up']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Control><Alt><Shift>Down']"
-
-
-# swap super and alt
-# setxkbmap -option altwin:swap_lalt_lwin # TODO make this permanent
-# Undo setxkbmap -option
-```
-
 ### Windows
 
 Follow the instructions [here](https://support.microsoft.com/en-us/help/15088/windows-10-create-installation-media)
@@ -191,11 +171,6 @@ home directory.
 
 ```sh
 cd $HOME
-```
-
-Next, clone this onto your machine:
-
-```sh
 git clone https://github.com/ksmithut/.dotfiles.git
 cd .dotfiles
 ```
@@ -203,11 +178,10 @@ cd .dotfiles
 Then run:
 
 ```sh
-$env:Path += ";C:\Program Files\Git\bin"
 Set-ExecutionPolicy Bypass -Scope Process -Force; . .\\setup.ps1
 ```
 
-Also, in order to play with with time, Windows should be made to use UTC rather
+Also, in order to fix time, Windows should be made to use UTC rather
 than local time.
 
 [https://askubuntu.com/questions/169376/clock-time-is-off-on-dual-boot#169384](https://askubuntu.com/questions/169376/clock-time-is-off-on-dual-boot#169384)
@@ -222,16 +196,8 @@ than local time.
 >
 >     sc config w32time start= disabled
 
-Here's my list of apps and the locations to download them manually:
+Here's a list of apps that don't have a `winget` command yet as of writing this:
 
-- [Firefox](https://www.mozilla.org/en-US/firefox/new/)
-- [1Password](https://1password.com/downloads/)
-- [Discord](https://discordapp.com/download)
-- [Uplay](https://uplay.ubi.com/)
-- [Steam](https://store.steampowered.com/)
 - [Battle.net](https://us.battle.net/account/download/)
 - [Origin](https://www.origin.com/usa/en-us/store/download)
-- [Epic Launcher](https://www.epicgames.com/unrealtournament/download)
 - [GeForce Experience](https://www.nvidia.com/en-us/geforce/geforce-experience/)
-- [Minecraft](https://minecraft.net/en-us/download/)
-- [GOG Galaxy](https://www.gog.com/galaxy)
