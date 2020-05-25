@@ -153,14 +153,6 @@ Follow the instructions [here](https://support.microsoft.com/en-us/help/15088/wi
 Although the setup script should work for windows, it's still experimental.
 Well, the whole project is, but this even more so.
 
-First, you'll need to install [`winget`](https://github.com/microsoft/winget-cli)
-
-Next install git:
-
-```ps1
-winget install --exact --id Git.Git
-```
-
 Optionally, you may want to run wsl2 to be able to have a functioning linux
 environment running.
 
@@ -183,6 +175,16 @@ version to 2.
 ```ps1
 wsl --set-default-version 2
 ```
+
+You'll need to install [`winget`](https://github.com/microsoft/winget-cli)
+
+Next install git:
+
+```ps1
+winget install --exact --id Git.Git
+```
+
+You'll need to quite the shell you're currently in to let git
 
 It is suggested that you move to your home directory or a directory within your
 home directory.
