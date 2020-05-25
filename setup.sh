@@ -78,7 +78,7 @@ function dotfiles_install() {
   e_header "Initializing system"
 
   local selected_environments=()
-  local environments=($("$DOTFILES_OPTIONS_FILE" _))
+  local environments=($(source "$DOTFILES_OPTIONS_FILE" _))
   for environment in "${environments[@]}"; do
     echo -n "Will this be a ${environment} environment? (y/N): "; read -r answer
     case $answer in
@@ -86,8 +86,7 @@ function dotfiles_install() {
     esac
   done
 
-  source "${DOTFILES}/source/00_dotfiles.sh"
-  local options=($("$DOTFILES_OPTIONS_FILE" ${selected_environments[@]} | uniq))
+  local options=($(source "$DOTFILES_OPTIONS_FILE" ${selected_environments[@]} | uniq))
   local os="$(which_os)"
   local extension="sh"
   if is_windows; then
