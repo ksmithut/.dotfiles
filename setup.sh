@@ -88,6 +88,10 @@ function dotfiles_install() {
 
   local options=($("$DOTFILES_OPTIONS_FILE" ${selected_environments[@]} | uniq))
   local os="$(which_os)"
+  local extension="sh"
+  if is_windows; then
+    extension="cmd"
+  fi
 
   export DOTFILES_CACHE="$DOTFILES/caches"
   export DOTFILES_INSTALLERS="$DOTFILES_CACHE/installers"
@@ -102,9 +106,9 @@ function dotfiles_install() {
   fi
 
   for option in "${options[@]}"; do
-    for file in "${DOTFILES}/install/programs/${option}"/*${os}*.sh; do
+    for file in "${DOTFILES}/install/programs/${option}"/*${os}*."${extension}"; do
       e_header "Installing ${option}"
-      source "$file"
+      "$file"
       echo "done!"
     done
   done

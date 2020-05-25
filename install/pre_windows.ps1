@@ -1,8 +1,5 @@
 # Most of this came from https://github.com/microsoft/windows-dev-box-setup-scripts
 
-Enable-WindowsOptionalFeature -Online -FeatureName containers -All
-RefreshEnv
-
 #--- Configuring Windows properties ---
 #--- Windows Features ---
 # Show hidden files, Show protected OS files, Show file extensions

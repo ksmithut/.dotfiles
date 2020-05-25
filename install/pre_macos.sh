@@ -11,7 +11,7 @@ if [[ ! $(command -v brew) ]]; then
 fi
 
 # Exit if, for some reason, Homebrew is not installed.
-[[ ! $(command -v brew) ]] && echo "Homebrew failed to install." && return 1
+[[ ! $(command -v brew) ]] && echo "Homebrew failed to install." && exit 1
 
 echo "Updating Homebrew..."
 brew doctor
