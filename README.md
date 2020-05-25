@@ -164,7 +164,7 @@ Next install git:
 winget install --exact --id Git.Git
 ```
 
-You'll need to quite the shell you're currently in to let git
+You'll need to quit the shell you're currently in to let git get its PATH all setup.
 
 It is suggested that you move to your home directory or a directory within your
 home directory.
