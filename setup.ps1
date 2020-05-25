@@ -1,4 +1,5 @@
 . "$PSScriptRoot\install\pre_windows.ps1"
 
+$env:Path = "C:\Program Files\Git\bin;$env:Path"
 $env:DOTFILES = $PSScriptRoot
-"C:\Program Files\Git\bin\bash.exe $PSScriptRoot\setup.sh"
+bash $PSScriptRoot\setup.sh"
