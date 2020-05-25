@@ -18,15 +18,14 @@ if [ "$1" == '_' ]; then
   if is_windows; then
     exit
   fi
-  echo 'base'
+  echo 'gui'
   echo 'work'
   echo 'games'
   echo 'wsl'
-  echo 'windows'
   exit
 fi
 
-if [[ " $@ " =~ " base " ]]; then
+if [[ " $@ " =~ " gui " ]]; then
   echo '1password'
   echo 'apple-configurator'
   echo 'balenaetcher'
