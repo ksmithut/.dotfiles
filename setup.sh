@@ -86,7 +86,8 @@ function dotfiles_install() {
     esac
   done
 
-  local options=($(source "$DOTFILES_OPTIONS_FILE" ${selected_environments[@]} | uniq))
+  source "${DOTFILES}/source/00_dotfiles.sh"
+  local options=($("$DOTFILES_OPTIONS_FILE" ${selected_environments[@]} | uniq))
   local os="$(which_os)"
   local extension="sh"
   if is_windows; then
