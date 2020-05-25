@@ -13,9 +13,15 @@ copy_dirs=(
   ~/Pictures
 )
 DIRECTORY=$1
+
+if [[ "$DIRECTORY" == "" ]]; then
+  echo "You must put in an argument to where to backup. ~/Desktop is a common one"
+  exit 1
+fi
+
 if [ ! -d "$DIRECTORY" ]; then
   echo "$DIRECTORY is not a valid directory"
-  return
+  exit 1
 fi
 # Add /backup to the end of the directory
 DIRECTORY="$DIRECTORY"/backup

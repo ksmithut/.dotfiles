@@ -74,11 +74,11 @@ function dotfiles_options() {
   fi
 }
 
-function dotfiles_init() {
+function dotfiles_install() {
   e_header "Initializing system"
 
   local selected_environments=()
-  local environments=($("$DOTFILES_OPTIONS_FILE" _))
+  local environments=($(source "$DOTFILES_OPTIONS_FILE" _))
   for environment in "${environments[@]}"; do
     echo -n "Will this be a ${environment} environment? (y/N): "; read -r answer
     case $answer in
@@ -86,28 +86,34 @@ function dotfiles_init() {
     esac
   done
 
-  local options=($("$DOTFILES_OPTIONS_FILE" ${selected_environments[@]}))
+  local options=($(source "$DOTFILES_OPTIONS_FILE" ${selected_environments[@]} | uniq))
+  local os="$(which_os)"
+  local extension="sh"
+  if is_windows; then
+    extension="cmd"
+  fi
 
-  mkdir -p "$DOTFILES/caches/installers"
-  mkdir -p "$DOTFILES/caches/fonts"
-  for file in "$DOTFILES"/init/*.sh; do
-    e_header "Init $(basename "$file")"
-    # shellcheck disable=SC1090
-    source "$file"
+  export DOTFILES_CACHE="$DOTFILES/caches"
+  export DOTFILES_INSTALLERS="$DOTFILES_CACHE/installers"
+
+  mkdir -p "$DOTFILES_INSTALLERS"
+
+  init_file="${DOTFILES}/install/pre_${os}.sh"
+  if test -f "${init_file}"; then
+    e_header "Install $(basename "$file")"
+    source "$init_file"
     echo "done!"
-  done
+  fi
 
   for option in "${options[@]}"; do
-    option_path="${DOTFILES}/init/options/${option}.sh"
-    if test -f "$option_path"; then
+    for file in "${DOTFILES}/install/programs/${option}"/*${os}*."${extension}"; do
       e_header "Installing ${option}"
-      # shellcheck disable=SC1090
-      source "$option_path"
+      "$file"
       echo "done!"
-    fi
+    done
   done
 
-  rm -rf "$DOTFILES/caches"
+  rm -rf "$DOTFILES_CACHE"
 }
 
 # getopts
@@ -128,7 +134,7 @@ source "${DOTFILES}/source/00_dotfiles.sh"
 dotfiles_copy
 dotfiles_link
 dotfiles_options
-dotfiles_init
+dotfiles_install
 
 echo "Restart your computer when you get a chance."
 exit

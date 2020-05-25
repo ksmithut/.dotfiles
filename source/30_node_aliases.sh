@@ -11,9 +11,7 @@ function react-setup() {
 }
 
 function lint-setup() {
-  yarn add -D \
-    standard \
-    prettier-standard
+  yarn add -D standard prettier-standard
   cat package.json \
     | jq '.scripts.format = "prettier-standard"' \
     | jq '.scripts.lint = "prettier-standard --check --lint"' \

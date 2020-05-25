@@ -15,37 +15,40 @@
 # options so the setup script can know what to ask you for.
 
 if [ "$1" == '_' ]; then
+  if is_windows; then
+    exit
+  fi
+  echo 'gui'
   echo 'work'
-  echo 'play'
+  echo 'games'
+  echo 'wsl'
   exit
 fi
 
-echo 'base' # This is required for other installations to work
-echo '1password'
-echo 'apple-configurator'
-echo 'balenaetcher'
-echo 'bettertouchtool'
-echo 'boostnote'
-echo 'buku'
-echo 'chromium'
-echo 'discord'
-echo 'firefox'
-echo 'gpg'
-echo 'keybase'
-echo 'slack'
-echo 'ssh'
-echo 'vlc'
-echo 'yubikey'
-echo 'zsh'
-echo 'dracula-terminal-theme'
+if [[ " $@ " =~ " gui " ]]; then
+  echo '1password'
+  echo 'apple-configurator'
+  echo 'balenaetcher'
+  echo 'better-touch-tool'
+  echo 'boostnote'
+  echo 'chromium'
+  echo 'discord'
+  echo 'firefox'
+  echo 'gpg-config'
+  echo 'keybase'
+  echo 'slack'
+  echo 'ssh-config'
+  echo 'vlc'
+  echo 'yubikey'
+  echo 'oh-my-zsh'
+  echo 'dracula-terminal-theme'
+fi
 
 if [[ " $@ " =~ " work " ]]; then
   echo 'docker'
   echo 'lazydocker'
   echo 'figma'
-  echo 'git'
-  echo 'mongo-client'
-  echo 'postgres-client'
+  echo 'robo-3t'
   echo 'virtualbox'
   echo 'vscode'
   echo 'tableplus'
@@ -66,7 +69,7 @@ if [[ " $@ " =~ " work " ]]; then
   echo 'asdf-skaffold'
 fi
 
-if [[ " $@ " =~ " play " ]]; then
+if [[ " $@ " =~ " games " ]]; then
   echo 'battle-net'
   echo 'epic-games'
   echo 'gog-galaxy'
@@ -77,4 +80,47 @@ if [[ " $@ " =~ " play " ]]; then
   echo 'steam'
   echo 'uplay'
   echo 'wine'
+fi
+
+if [[ " $@ " =~ " wsl " ]]; then
+  echo '-config-config'
+  echo 'ssh-config'
+  echo 'yubikey'
+  echo 'oh-my-zsh'
+  echo 'docker'
+  echo 'lazydocker'
+  echo 'awscli'
+  echo 'asdf'
+  echo 'asdf-node'
+  echo 'asdf-elixir'
+  echo 'asdf-deno'
+  echo 'asdf-golang'
+  echo 'asdf-eksctl'
+  echo 'asdf-fluxctl'
+  echo 'asdf-helm'
+  echo 'asdf-kops'
+  echo 'asdf-kubectl'
+  echo 'asdf-kubeseal'
+  echo 'asdf-kustomize'
+  echo 'asdf-minikube'
+  echo 'asdf-skaffold'
+fi
+
+if is_windows; then
+  echo 'discord'
+  echo 'firefox'
+  echo 'slack'
+  echo '1password'
+  echo 'steam'
+  echo 'battle-net'
+  echo 'epic-games'
+  echo 'gog-galaxy'
+  echo 'league-of-legends'
+  echo 'minecraft'
+  echo 'origin'
+  echo 'uplay'
+  echo 'windows-terminal'
+  echo 'ubuntu-wsl'
+  echo 'vscode'
+  echo 'power-toys'
 fi

@@ -1,3 +1,4 @@
+
 #!/usr/bin/env zsh
 # Initialize the DOTFILES variable so other scripts can use it
 
