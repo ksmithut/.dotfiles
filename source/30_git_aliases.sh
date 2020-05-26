@@ -33,3 +33,5 @@ function clone() {
   git clone "$1" "$full_path"
   cd "$full_path"
 }
+
+alias -s git=clone
