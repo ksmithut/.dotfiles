@@ -7,6 +7,14 @@ alias docker-volumes-remove='docker-containers-remove && [[ "$(docker volume ls 
 alias docker-images-remove='[[ "$(docker images -a -q)" != "" ]] && docker rmi -f $(docker images -a -q); true'
 alias docker-clean='docker-containers-stop; docker-containers-remove; docker-volumes-remove; docker-images-remove; docker system prune -f; true'
 
+function docker-restart () {
+  docker container restart $(docker ps | grep $1 | awk '{print $1}')
+}
+
+function docker-logs () {
+  docker logs -f $(docker ps | grep $1 | awk '{print $1}')
+}
+
 function dock() {
   case $1 in
     # https://github.com/localstack/localstack
