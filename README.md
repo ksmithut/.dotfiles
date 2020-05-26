@@ -200,4 +200,3 @@ Here's a list of apps that don't have a `winget` command yet as of writing this:
 
 - [Battle.net](https://us.battle.net/account/download/)
 - [Origin](https://www.origin.com/usa/en-us/store/download)
-- [GeForce Experience](https://www.nvidia.com/en-us/geforce/geforce-experience/)

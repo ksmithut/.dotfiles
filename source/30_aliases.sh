@@ -60,9 +60,6 @@ alias checksum='openssl md5'
 # Generates some self-signed certificates
 alias generate-certs='openssl req -x509 -newkey rsa:2048 -nodes -sha256 -days 9999 -subj "/CN=localhost" -keyout localhost.key -out localhost.cert'
 
-# A slack them I use commonly
-alias slack-theme='echo "#1f1f1f,#303030,#21859c,#FFFFFF,#303030,#FFFFFF,#85d14b,#DB6668" | clipboard; echo "copied!"'
-
 # Get the terminal colors and their numbers
 function colorgrid() {
   iter=16
@@ -122,6 +119,9 @@ function asdf-install () {
 function dotenv () {
   env $(cat .env | xargs) $@
 }
+
+# Type in filename.md or filename.js and it will open up in code
+alias -s {md,js,css,html,json}=code
 
 # macOS aliases/functions
 # =======================

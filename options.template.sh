@@ -15,9 +15,6 @@
 # options so the setup script can know what to ask you for.
 
 if [[ "$1" == '_' ]]; then
-  if is_windows; then
-    exit
-  fi
   if is_linux; then
     echo 'wsl'
     echo 'gui'
@@ -27,9 +24,8 @@ if [[ "$1" == '_' ]]; then
   exit
 fi
 
-if [[ " $@ " =~ " gui " ]] || is_macos; then
+if [[ " $@ " =~ " gui " ]] || is_macos || is_windows; then
   echo '1password'
-  echo 'apple-configurator'
   echo 'balenaetcher'
   echo 'better-touch-tool'
   echo 'boostnote'
@@ -44,6 +40,13 @@ if [[ " $@ " =~ " gui " ]] || is_macos; then
   echo 'yubikey'
   echo 'oh-my-zsh'
   echo 'dracula-terminal-theme'
+  # Linux specific things
+  echo 'vlc'
+  # Apple specific things
+  echo 'apple-configurator'
+  # windows specific things
+  echo 'power-toys'
+  echo 'nvidia'
 fi
 
 if [[ " $@ " =~ " work " ]]; then
@@ -69,6 +72,8 @@ if [[ " $@ " =~ " work " ]]; then
   echo 'asdf-kustomize'
   echo 'asdf-minikube'
   echo 'asdf-skaffold'
+  echo 'windows-terminal'
+  echo 'ubuntu-wsl'
 fi
 
 if [[ " $@ " =~ " games " ]]; then
@@ -85,7 +90,7 @@ if [[ " $@ " =~ " games " ]]; then
 fi
 
 if [[ " $@ " =~ " wsl " ]]; then
-  echo '-config-config'
+  echo 'gpg-config'
   echo 'ssh-config'
   echo 'yubikey'
   echo 'oh-my-zsh'
@@ -106,23 +111,4 @@ if [[ " $@ " =~ " wsl " ]]; then
   echo 'asdf-kustomize'
   echo 'asdf-minikube'
   echo 'asdf-skaffold'
-fi
-
-if is_windows; then
-  echo 'discord'
-  echo 'firefox'
-  echo 'slack'
-  echo '1password'
-  echo 'steam'
-  echo 'battle-net'
-  echo 'epic-games'
-  echo 'gog-galaxy'
-  echo 'league-of-legends'
-  echo 'minecraft'
-  echo 'origin'
-  echo 'uplay'
-  echo 'windows-terminal'
-  echo 'ubuntu-wsl'
-  echo 'vscode'
-  echo 'power-toys'
 fi
