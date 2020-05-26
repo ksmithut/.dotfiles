@@ -14,18 +14,20 @@
 # If the first argument is '_', it's looking for the different environment
 # options so the setup script can know what to ask you for.
 
-if [ "$1" == '_' ]; then
+if [[ "$1" == '_' ]]; then
   if is_windows; then
     exit
   fi
-  echo 'gui'
+  if is_linux; then
+    echo 'wsl'
+    echo 'gui'
+  fi
   echo 'work'
   echo 'games'
-  echo 'wsl'
   exit
 fi
 
-if [[ " $@ " =~ " gui " ]]; then
+if [[ " $@ " =~ " gui " ]] || is_macos; then
   echo '1password'
   echo 'apple-configurator'
   echo 'balenaetcher'
