@@ -136,7 +136,7 @@ Well, the whole project is, but this even more so.
 Optionally, you may want to run wsl2 to be able to have a functioning linux
 environment running.
 
-[https://docs.microsoft.com/en-us/windows/wsl/install-win10](instructions from here)
+[Instructions from here](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
 Open powershell as an administrator and run the following commands:
 
