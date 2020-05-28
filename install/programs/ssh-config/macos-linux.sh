@@ -32,13 +32,13 @@ echo 'press enter once you have pasted it in'
 read -r CONTINUE
 
 eval "$(ssh-agent -s > /dev/null 2>&1)"
-if is_macos; then
+if [[ "${IS_MACOS}" == "1" ]]; then
   ssh-add -K "${SSH_PATH}"
 else
   ssh-add "${SSH_PATH}"
 fi
 
-if is_macos; then
+if [[ "${IS_MACOS}" == "1" ]]; then
   echo "
 Host ${SSH_HOST}
   AddKeysToAgent yes
