@@ -27,6 +27,10 @@ function is_windows() {
   [[ "${OS}" == "Windows_NT" ]] || return 1
 }
 
+function is_linux() {
+  [[ "$(which_os)" == "linux" ]] || return 1
+}
+
 function which_os() {
   if is_macos; then
     echo 'macos'
