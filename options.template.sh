@@ -16,7 +16,6 @@
 
 if [[ "$1" == '_' ]]; then
   if is_linux; then
-    echo 'wsl'
     echo 'gui'
   fi
   echo 'work'
@@ -52,11 +51,6 @@ fi
 if [[ " $@ " =~ " work " ]]; then
   echo 'docker'
   echo 'lazydocker'
-  echo 'figma'
-  echo 'robo-3t'
-  echo 'virtualbox'
-  echo 'vscode'
-  echo 'tableplus'
   echo 'awscli'
   echo 'asdf'
   echo 'asdf-node'
@@ -72,11 +66,18 @@ if [[ " $@ " =~ " work " ]]; then
   echo 'asdf-kustomize'
   echo 'asdf-minikube'
   echo 'asdf-skaffold'
-  echo 'windows-terminal'
-  echo 'ubuntu-wsl'
+  if [[ " $@ " =~ " gui " ]]; then
+    echo 'figma'
+    echo 'robo-3t'
+    echo 'virtualbox'
+    echo 'vscode'
+    echo 'tableplus'
+    echo 'windows-terminal'
+    echo 'ubuntu-wsl'
+  fi
 fi
 
-if [[ " $@ " =~ " games " ]]; then
+if [[ " $@ " =~ " games " ]] && [[ " $@ " =~ " gui " ]]; then
   echo 'battle-net'
   echo 'epic-games'
   echo 'gog-galaxy'
@@ -87,28 +88,4 @@ if [[ " $@ " =~ " games " ]]; then
   echo 'steam'
   echo 'uplay'
   echo 'wine'
-fi
-
-if [[ " $@ " =~ " wsl " ]]; then
-  echo 'gpg-config'
-  echo 'ssh-config'
-  echo 'yubikey'
-  echo 'oh-my-zsh'
-  echo 'docker'
-  echo 'lazydocker'
-  echo 'awscli'
-  echo 'asdf'
-  echo 'asdf-node'
-  echo 'asdf-elixir'
-  echo 'asdf-deno'
-  echo 'asdf-golang'
-  echo 'asdf-eksctl'
-  echo 'asdf-fluxctl'
-  echo 'asdf-helm'
-  echo 'asdf-kops'
-  echo 'asdf-kubectl'
-  echo 'asdf-kubeseal'
-  echo 'asdf-kustomize'
-  echo 'asdf-minikube'
-  echo 'asdf-skaffold'
 fi
