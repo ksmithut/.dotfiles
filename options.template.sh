@@ -23,6 +23,11 @@ if [[ "$1" == '_' ]]; then
   exit
 fi
 
+echo 'ssh-config'
+echo 'gpg-config'
+echo 'yubikey'
+echo 'oh-my-zsh'
+
 if [[ " $@ " =~ " gui " ]] || is_macos || is_windows; then
   echo '1password'
   echo 'balenaetcher'
@@ -31,13 +36,8 @@ if [[ " $@ " =~ " gui " ]] || is_macos || is_windows; then
   echo 'chromium'
   echo 'discord'
   echo 'firefox'
-  echo 'gpg-config'
   echo 'keybase'
   echo 'slack'
-  echo 'ssh-config'
-  echo 'vlc'
-  echo 'yubikey'
-  echo 'oh-my-zsh'
   echo 'dracula-terminal-theme'
   # Linux specific things
   echo 'vlc'
