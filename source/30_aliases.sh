@@ -151,6 +151,18 @@ fi
 # =======================================
 if is_ubuntu; then
 
+  if is_wsl; then
+    alias clipboard='clip.exe'
+    alias open='wslview'
+    alias xdg-open='wslview'
+  else
+    alias clipboard='xclip -selection clipboard'
+    # open for linux
+    function open() {
+      xdg-open "$@" &>/dev/null
+    }
+  fi
+
   alias clipboard='xclip -selection clipboard'
 
   # upgrade/update shortcuts
@@ -167,9 +179,4 @@ if is_ubuntu; then
 
   # generates uuid
   alias uuid='printf "%s" $(cat /proc/sys/kernel/random/uuid)'
-
-  # open for linux
-  function open() {
-    xdg-open "$@" &>/dev/null
-  }
 fi

@@ -23,6 +23,10 @@ function is_linux() {
   [[ "$(which_os)" == "linux" ]] || return 1
 }
 
+function is_wsl() {
+  [[ "$(cat /proc/version 2> /dev/null)" =~ microsoft ]] || return 1
+}
+
 function which_os() {
   if is_macos; then
     echo 'macos'
