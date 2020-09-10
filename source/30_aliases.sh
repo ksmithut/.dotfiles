@@ -165,12 +165,7 @@ if is_ubuntu; then
 
   # upgrade/update shortcuts
   alias apt-upgrade='sudo apt-get update -y; sudo apt-get upgrade -y; sudo apt-get autoremove -y'
-
-  if is_ubuntu; then
-    alias upgrade='apt-upgrade; sudo snap refresh'
-  else
-    alias upgrade='apt-upgrade'
-  fi
+  alias upgrade='apt-upgrade; sudo snap refresh'
 
   # Clear back buffer (like cmd + k)
   alias clear='clear && echo -en "\e[3J"'
