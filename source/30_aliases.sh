@@ -163,8 +163,6 @@ if is_ubuntu; then
     }
   fi
 
-  alias clipboard='xclip -selection clipboard'
-
   # upgrade/update shortcuts
   alias apt-upgrade='sudo apt-get update -y; sudo apt-get upgrade -y; sudo apt-get autoremove -y'
 
