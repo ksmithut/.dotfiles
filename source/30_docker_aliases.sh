@@ -12,7 +12,7 @@ function docker-restart () {
 }
 
 function docker-logs () {
-  docker logs -f $(docker ps | grep $1 | awk '{print $1}')
+  docker logs -f $(docker ps | grep $1 | awk '{print $1}') --tail 10
 }
 
 function dock() {
