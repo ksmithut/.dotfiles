@@ -16,7 +16,7 @@ function lint-setup() {
     | jq '.scripts.format = "prettier-standard"' \
     | jq '.scripts.lint = "prettier-standard --check --lint"' \
     | tee package.json
-  echo '{}' | jq '.extends = ["standard"]' | tee .eslintrc
+  echo '{}' | jq '.extends = ["standard"]' | tee .eslintrc.json
 }
 
 # Upgrade nvm
