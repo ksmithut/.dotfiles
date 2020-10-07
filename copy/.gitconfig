@@ -38,3 +38,5 @@
 	# Detect copies as well as renames
 	renames = copies
 	algorithm = histogram
+[init]
+	defaultBranch = main
