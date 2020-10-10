@@ -62,8 +62,8 @@ function dock() {
       docker run \
         --name 'dock_mongo' \
         --publish '27017:27017' \
+        --volume "$(pwd)/.dock/mongo:/data/db" \
         mongo:latest
-        # --volume '/data/db' \
       docker stop 'dock_mongo'
       docker rm 'dock_mongo'
       ;;
@@ -75,8 +75,8 @@ function dock() {
       docker run \
         --name 'dock_redis' \
         --publish '6379:6379' \
+        --volume "$(pwd)/.dock/redis:/data"
         redis:alpine
-        # --volume '/data' \
       docker stop 'dock_redis'
       docker rm 'dock_redis'
       ;;
@@ -91,8 +91,8 @@ function dock() {
         --env 'POSTGRES_USER=postgres' \
         --env 'POSTGRES_PASSWORD=postgres' \
         --env 'POSTGRES_DB=postgres' \
+        --volume "$(pwd)/.dock/postgres:/var/lib/postgresql/data" \
         postgres:alpine
-        # --volume '/var/lib/postgresql/data' \
       docker stop 'dock_postgres'
       docker rm 'dock_postgres'
       ;;
@@ -106,8 +106,8 @@ function dock() {
         --name 'dock_nats-streaming' \
         --publish '4222:4222' \
         --publish '8222:8222' \
+        --volume "$(pwd)/.dock/nats-streaming:/datastore" \
         nats-streaming:latest -store file -dir '/datastore' -m 8222
-        # --volume '/datastore' \
       docker stop 'dock_nats-streaming'
       docker rm 'dock_nats-streaming'
       ;;
@@ -121,8 +121,8 @@ function dock() {
         --publish '9200:9200' \
         --publish '9300:9300' \
         --env 'discovery.type=single-node' \
+        --volume "$(pwd)/.dock/elasticsearch:/usr/share/elasticsearch/data" \
         docker.elastic.co/elasticsearch/elasticsearch:7.1.1
-        # --volume '/usr/share/elasticsearch/data' \
       docker stop 'dock_elasticsearch'
       docker rm 'dock_elasticsearch'
       ;;

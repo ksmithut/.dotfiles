@@ -189,4 +189,4 @@ scratch.js
 .tool-versions
 *.code-workspace
 build.services.json5
-
+.dock/
