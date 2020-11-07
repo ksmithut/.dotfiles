@@ -48,8 +48,8 @@ function dock() {
         --env 'LAMBDA_EXECUTOR= ' \
         --env 'KINESIS_ERROR_PROBABILITY= ' \
         --env 'DOCKER_HOST=unix:///var/run/docker.sock' \
-        --volume '/private/tmp/localstack:/tmp/localstack' \
-        --volume '/var/run/docker.sock:/var/run/docker.sock' \
+        # --volume '/private/tmp/localstack:/tmp/localstack' \
+        # --volume '/var/run/docker.sock:/var/run/docker.sock' \
         localstack/localstack
       docker stop 'dock_localstack'
       docker rm --volumes 'dock_localstack'
@@ -62,7 +62,7 @@ function dock() {
       docker run \
         --name 'dock_mongo' \
         --publish '27017:27017' \
-        --volume "$(pwd)/.dock/mongo:/data/db" \
+        # --volume "$(pwd)/.dock/mongo:/data/db" \
         mongo:latest
       docker stop 'dock_mongo'
       docker rm --volumes 'dock_mongo'
@@ -75,7 +75,7 @@ function dock() {
       docker run \
         --name 'dock_redis' \
         --publish '6379:6379' \
-        --volume "$(pwd)/.dock/redis:/data"
+        # --volume "$(pwd)/.dock/redis:/data"
         redis:alpine
       docker stop 'dock_redis'
       docker rm --volumes 'dock_redis'
@@ -91,7 +91,7 @@ function dock() {
         --env 'POSTGRES_USER=postgres' \
         --env 'POSTGRES_PASSWORD=postgres' \
         --env 'POSTGRES_DB=postgres' \
-        --volume "$(pwd)/.dock/postgres:/var/lib/postgresql/data" \
+        # --volume "$(pwd)/.dock/postgres:/var/lib/postgresql/data" \
         postgres:alpine
       docker stop 'dock_postgres'
       docker rm --volumes 'dock_postgres'
@@ -106,7 +106,7 @@ function dock() {
         --name 'dock_nats-streaming' \
         --publish '4222:4222' \
         --publish '8222:8222' \
-        --volume "$(pwd)/.dock/nats-streaming:/datastore" \
+        # --volume "$(pwd)/.dock/nats-streaming:/datastore" \
         nats-streaming:latest -store file -dir '/datastore' -m 8222
       docker stop 'dock_nats-streaming'
       docker rm --volumes 'dock_nats-streaming'
@@ -121,7 +121,7 @@ function dock() {
         --publish '9200:9200' \
         --publish '9300:9300' \
         --env 'discovery.type=single-node' \
-        --volume "$(pwd)/.dock/elasticsearch:/usr/share/elasticsearch/data" \
+        # --volume "$(pwd)/.dock/elasticsearch:/usr/share/elasticsearch/data" \
         docker.elastic.co/elasticsearch/elasticsearch:7.1.1
       docker stop 'dock_elasticsearch'
       docker rm --volumes 'dock_elasticsearch'
