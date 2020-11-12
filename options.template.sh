@@ -31,8 +31,7 @@ echo 'oh-my-zsh'
 if [[ " $@ " =~ " gui " ]] || is_macos || is_windows; then
   echo '1password'
   echo 'balenaetcher'
-  echo 'better-touch-tool'
-  echo 'boostnote'
+  echo 'boost-note'
   echo 'chromium'
   echo 'discord'
   echo 'firefox'
@@ -43,6 +42,7 @@ if [[ " $@ " =~ " gui " ]] || is_macos || is_windows; then
   echo 'vlc'
   # Apple specific things
   echo 'apple-configurator'
+  echo 'better-touch-tool'
   # windows specific things
   echo 'power-toys'
   echo 'nvidia'
