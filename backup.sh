@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 copy_dirs=(
-  ~/.local/share/buku
   ~/.gnupg
   ~/.ssh
   ~/.aws
