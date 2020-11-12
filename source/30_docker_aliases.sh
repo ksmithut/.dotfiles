@@ -39,14 +39,8 @@ function dock() {
       docker run \
         --init \
         --name 'dock_localstack' \
-        --publish '4567-4583:4567-4583' \
-        --publish '8080:8080' \
-        --env 'SERVICES= ' \
-        --env 'DEBUG= ' \
-        --env 'DATA_DIR= ' \
-        --env 'PORT_WEB_UI= ' \
-        --env 'LAMBDA_EXECUTOR= ' \
-        --env 'KINESIS_ERROR_PROBABILITY= ' \
+        --publish '4566:4566' \
+        --env 'SERVICES=s3' \
         --env 'DOCKER_HOST=unix:///var/run/docker.sock' \
         localstack/localstack
         # --volume '/private/tmp/localstack:/tmp/localstack' \
@@ -67,6 +61,17 @@ function dock() {
       docker stop 'dock_mongo'
       docker rm --volumes 'dock_mongo'
       ;;
+    mongo-store)
+      echo 'mongodb://localhost:27017'
+      echo ''
+      docker run \
+        --name 'dock_mongo' \
+        --publish '27017:27017' \
+        --volume "$(pwd)/.dock/mongo:/data/db" \
+        mongo:latest
+      docker stop 'dock_mongo'
+      docker rm --volumes 'dock_mongo'
+      ;;
 
     # https://hub.docker.com/_/redis/
     redis)
@@ -77,6 +82,17 @@ function dock() {
         --publish '6379:6379' \
         redis:alpine
         # --volume "$(pwd)/.dock/redis:/data"
+      docker stop 'dock_redis'
+      docker rm --volumes 'dock_redis'
+      ;;
+    redis-store)
+      echo 'redis://127.0.0.1:6359'
+      echo ''
+      docker run \
+        --name 'dock_redis' \
+        --publish '6379:6379' \
+        --volume "$(pwd)/.dock/redis:/data"
+        redis:alpine
       docker stop 'dock_redis'
       docker rm --volumes 'dock_redis'
       ;;
@@ -96,6 +112,20 @@ function dock() {
       docker stop 'dock_postgres'
       docker rm --volumes 'dock_postgres'
       ;;
+    postgres-store)
+      echo 'postgres://postgres:postgres@localhost:5432/postgres'
+      echo ''
+      docker run \
+        --name 'dock_postgres' \
+        --publish '5432:5432' \
+        --env 'POSTGRES_USER=postgres' \
+        --env 'POSTGRES_PASSWORD=postgres' \
+        --env 'POSTGRES_DB=postgres' \
+        --volume "$(pwd)/.dock/postgres:/var/lib/postgresql/data" \
+        postgres:alpine
+      docker stop 'dock_postgres'
+      docker rm --volumes 'dock_postgres'
+      ;;
 
     # https://hub.docker.com/_/nats-streaming/
     nats-streaming)
@@ -111,6 +141,19 @@ function dock() {
       docker stop 'dock_nats-streaming'
       docker rm --volumes 'dock_nats-streaming'
       ;;
+    nats-streaming-store)
+      echo 'nats://localhost:4222'
+      echo 'http://localhost:8222'
+      echo ''
+      docker run \
+        --name 'dock_nats-streaming' \
+        --publish '4222:4222' \
+        --publish '8222:8222' \
+        --volume "$(pwd)/.dock/nats-streaming:/datastore" \
+        nats-streaming:latest -store file -dir '/datastore' -m 8222
+      docker stop 'dock_nats-streaming'
+      docker rm --volumes 'dock_nats-streaming'
+      ;;
 
     # https://www.docker.elastic.co
     elasticsearch)
@@ -123,6 +166,19 @@ function dock() {
         --env 'discovery.type=single-node' \
         docker.elastic.co/elasticsearch/elasticsearch:7.1.1
         # --volume "$(pwd)/.dock/elasticsearch:/usr/share/elasticsearch/data" \
+      docker stop 'dock_elasticsearch'
+      docker rm --volumes 'dock_elasticsearch'
+      ;;
+    elasticsearch-store)
+      echo 'http://elastic:changeme@localhost:9200'
+      echo ''
+      docker run \
+        --name 'dock_elasticsearch' \
+        --publish '9200:9200' \
+        --publish '9300:9300' \
+        --env 'discovery.type=single-node' \
+        --volume "$(pwd)/.dock/elasticsearch:/usr/share/elasticsearch/data" \
+        docker.elastic.co/elasticsearch/elasticsearch:7.1.1
       docker stop 'dock_elasticsearch'
       docker rm --volumes 'dock_elasticsearch'
       ;;
@@ -145,10 +201,14 @@ function dock() {
       echo "supported docks:"
       echo "  localstack"
       echo "  mongo"
+      echo "  mongo-store"
       echo "  redis"
+      echo "  redis-store"
       echo "  postgres"
       echo "  nats-streaming"
+      echo "  nats-streaming-store"
       echo "  elasticsearch"
+      echo "  elasticsearch-store"
       echo "  maildev"
       echo ""
       ;;
