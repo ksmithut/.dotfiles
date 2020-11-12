@@ -164,7 +164,7 @@ function dock() {
         --publish '9200:9200' \
         --publish '9300:9300' \
         --env 'discovery.type=single-node' \
-        docker.elastic.co/elasticsearch/elasticsearch:7.1.1
+        docker.elastic.co/elasticsearch/elasticsearch:7.9.3
         # --volume "$(pwd)/.dock/elasticsearch:/usr/share/elasticsearch/data" \
       docker stop 'dock_elasticsearch'
       docker rm --volumes 'dock_elasticsearch'
@@ -178,7 +178,7 @@ function dock() {
         --publish '9300:9300' \
         --env 'discovery.type=single-node' \
         --volume "$(pwd)/.dock/elasticsearch:/usr/share/elasticsearch/data" \
-        docker.elastic.co/elasticsearch/elasticsearch:7.1.1
+        docker.elastic.co/elasticsearch/elasticsearch:7.9.3
       docker stop 'dock_elasticsearch'
       docker rm --volumes 'dock_elasticsearch'
       ;;
