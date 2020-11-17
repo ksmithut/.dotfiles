@@ -19,7 +19,6 @@ sudo apt-get install -y \
   build-essential \
   curl \
   gnupg2 \
-  gvfs-bin \
   jq \
   libgconf-2-4 \
   neofetch \
