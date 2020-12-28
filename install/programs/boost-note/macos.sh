@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-brew cask install boost-note
+brew install --cask boost-note

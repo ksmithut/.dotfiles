@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-brew cask install league-of-legends
+brew install --cask league-of-legends

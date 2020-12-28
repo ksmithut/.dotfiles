@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-brew cask install gog-galaxy
+brew install --cask gog-galaxy

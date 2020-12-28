@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-brew cask install minecraft
+brew install --cask minecraft

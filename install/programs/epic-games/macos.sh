@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-brew cask install epic-games
+brew install --cask epic-games

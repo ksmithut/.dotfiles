@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-brew cask install vscodium
+brew install --cask vscodium
 
 codium --install-extension Shan.code-settings-sync

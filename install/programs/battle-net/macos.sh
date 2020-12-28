@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-brew cask install battle-net
+brew install --cask battle-net

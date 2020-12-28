@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-brew cask install robo-3t
+brew install --cask robo-3t
