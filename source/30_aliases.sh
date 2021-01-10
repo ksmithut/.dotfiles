@@ -137,7 +137,7 @@ if is_macos; then
   alias myip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
 
   # upgrade/update shortcuts
-  alias brew-upgrade='brew update && brew upgrade && brew upgrade --cask && brew cleanup'
+  alias brew-upgrade='brew update && brew upgrade && brew upgrade --cask --greedy && brew cleanup'
   alias upgrade='brew-upgrade'
 
   # show/hide hidden files in finder
