@@ -164,7 +164,7 @@ if is_ubuntu; then
   fi
 
   # upgrade/update shortcuts
-  alias apt-upgrade='sudo apt-get update -y; sudo apt-get upgrade -y; sudo apt-get autoremove -y'
+  alias apt-upgrade='sudo apt-get update -y; sudo apt-get upgrade --allow-downgrades -y; sudo apt-get autoremove -y'
   alias upgrade='apt-upgrade; sudo snap refresh'
 
   # Clear back buffer (like cmd + k)
