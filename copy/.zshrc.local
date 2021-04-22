@@ -1,3 +1,7 @@
 # This is a non-symlinked bash profile that you can use to add non-shareable
 # shell initialization things like commands you use at your company, or other
 # things like that.
+
+# zsh named directories
+# hash -d code=~/Code
+# hash -d github=~/Code/github
