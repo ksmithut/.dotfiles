@@ -66,10 +66,9 @@ if [[ " $@ " =~ " work " ]]; then
   echo 'asdf-kustomize'
   echo 'asdf-minikube'
   echo 'asdf-skaffold'
-  if [[ " $@ " =~ " gui " ]]; then
+  if [[ " $@ " =~ " gui " ]] || is_macos || is_windows; then
     echo 'figma'
     echo 'robo-3t'
-    echo 'virtualbox'
     echo 'vscode'
     echo 'tableplus'
     echo 'windows-terminal'
@@ -77,7 +76,7 @@ if [[ " $@ " =~ " work " ]]; then
   fi
 fi
 
-if [[ " $@ " =~ " games " ]] && [[ " $@ " =~ " gui " ]]; then
+if [[ " $@ " =~ " games " ]] && ([[ " $@ " =~ " gui " ]] || is_macos || is_windows); then
   echo 'battle-net'
   echo 'epic-games'
   echo 'gog-galaxy'
