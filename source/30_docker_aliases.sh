@@ -183,7 +183,7 @@ function dock() {
       docker rm --volumes 'dock_elasticsearch'
       ;;
 
-    # https://danfarrelly.nyc/MailDev/
+    # https://maildev.github.io/maildev/
     maildev)
       echo 'smtp://localhost:1025/?ignoreTLS=true'
       echo ''
@@ -191,7 +191,7 @@ function dock() {
         --name 'dock_maildev' \
         --publish '1080:80' \
         --publish '1025:25' \
-        djfarrelly/maildev
+        maildev/maildev
       docker stop 'dock_maildev'
       docker rm --volumes 'dock_maildev'
       ;;
