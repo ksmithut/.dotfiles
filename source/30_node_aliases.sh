@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-PATH="$(yarn global bin):$PATH"
-
 function node-setup() {
   yarn create gameplan https://github.com/ksmithut/gameplan-node "$1" --prompt
 }

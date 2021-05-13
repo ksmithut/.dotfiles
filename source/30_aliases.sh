@@ -19,9 +19,10 @@ else
 fi
 
 # makes a directory and moves to it
-function dir() {
-  mkdir -p "${1}" && cd "$_" || exit;
-}
+# replaced with oh-my-zsh's "take"
+# function dir() {
+#   mkdir -p "${1}" && cd "$_" || exit;
+# }
 
 # gpg helpers
 alias gpg-ls='gpg --list-secret-keys --keyid-format LONG'
