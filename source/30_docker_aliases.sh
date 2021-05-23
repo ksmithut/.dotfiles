@@ -53,10 +53,11 @@ function dock() {
     mongo)
       echo 'mongodb://localhost:27017'
       echo ''
+      if is_apple_silicon; then local image="arm64v8/mongo:latest"; else local image="mongo:latest"; fi
       docker run \
         --name 'dock_mongo' \
         --publish '27017:27017' \
-        mongo:latest
+        $image
         # --volume "$(pwd)/.dock/mongo:/data/db" \
       docker stop 'dock_mongo'
       docker rm --volumes 'dock_mongo'
@@ -64,11 +65,12 @@ function dock() {
     mongo-store)
       echo 'mongodb://localhost:27017'
       echo ''
+      if is_apple_silicon; then local image="arm64v8/mongo:latest"; else local image="mongo:latest"; fi
       docker run \
         --name 'dock_mongo' \
         --publish '27017:27017' \
         --volume "$(pwd)/.dock/mongo:/data/db" \
-        mongo:latest
+        $image
       docker stop 'dock_mongo'
       docker rm --volumes 'dock_mongo'
       ;;
@@ -77,10 +79,11 @@ function dock() {
     redis)
       echo 'redis://127.0.0.1:6359'
       echo ''
+      if is_apple_silicon; then local image="arm64v8/redis:alpine"; else local image="redis:alpine"; fi
       docker run \
         --name 'dock_redis' \
         --publish '6379:6379' \
-        redis:alpine
+        $image
         # --volume "$(pwd)/.dock/redis:/data"
       docker stop 'dock_redis'
       docker rm --volumes 'dock_redis'
@@ -88,11 +91,12 @@ function dock() {
     redis-store)
       echo 'redis://127.0.0.1:6359'
       echo ''
+      if is_apple_silicon; then local image="arm64v8/redis:alpine"; else local image="redis:alpine"; fi
       docker run \
         --name 'dock_redis' \
         --publish '6379:6379' \
         --volume "$(pwd)/.dock/redis:/data"
-        redis:alpine
+        $image
       docker stop 'dock_redis'
       docker rm --volumes 'dock_redis'
       ;;
@@ -101,13 +105,14 @@ function dock() {
     postgres)
       echo 'postgres://postgres:postgres@localhost:5432/postgres'
       echo ''
+      if is_apple_silicon; then local image="arm64v8/postgres:alpine"; else local image="postgres:alpine"; fi
       docker run \
         --name 'dock_postgres' \
         --publish '5432:5432' \
         --env 'POSTGRES_USER=postgres' \
         --env 'POSTGRES_PASSWORD=postgres' \
         --env 'POSTGRES_DB=postgres' \
-        postgres:alpine
+        $image
         # --volume "$(pwd)/.dock/postgres:/var/lib/postgresql/data" \
       docker stop 'dock_postgres'
       docker rm --volumes 'dock_postgres'
@@ -115,6 +120,7 @@ function dock() {
     postgres-store)
       echo 'postgres://postgres:postgres@localhost:5432/postgres'
       echo ''
+      if is_apple_silicon; then local image="arm64v8/postgres:alpine"; else local image="postgres:alpine"; fi
       docker run \
         --name 'dock_postgres' \
         --publish '5432:5432' \
@@ -122,7 +128,7 @@ function dock() {
         --env 'POSTGRES_PASSWORD=postgres' \
         --env 'POSTGRES_DB=postgres' \
         --volume "$(pwd)/.dock/postgres:/var/lib/postgresql/data" \
-        postgres:alpine
+        $postgres
       docker stop 'dock_postgres'
       docker rm --volumes 'dock_postgres'
       ;;

@@ -7,6 +7,10 @@ function is_macos() {
   [[ "$OSTYPE" =~ ^darwin ]] || return 1
 }
 
+function is_apple_silicon() {
+  is_macos && [[ "$(arch)" == "arm64" ]] || return 1
+}
+
 function is_ubuntu() {
   [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]] || [[ "$(cat /etc/issue 2> /dev/null)" =~ "Pop!_OS" ]] || return 1
 }
