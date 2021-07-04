@@ -31,7 +31,6 @@ echo 'oh-my-zsh'
 if [[ " $@ " =~ " gui " ]] || is_macos || is_windows; then
   echo '1password'
   echo 'balenaetcher'
-  echo 'boost-note'
   echo 'chromium'
   echo 'discord'
   echo 'firefox'
