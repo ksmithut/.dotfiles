@@ -69,7 +69,6 @@ plugins=(
   asdf
   git
   node
-  nvm
   yarn
   docker
   vscode
