@@ -7,6 +7,7 @@ copy_dirs=(
   ~/.npmrc
   ~/.now
   ~/.zshrc.local
+  ~/.kube
   ~/Code
   ~/Documents
   ~/Pictures

@@ -77,6 +77,7 @@ plugins=(
   gpg-agent
   ssh-agent
   kubectl
+  kubectx
   autojump
 )
 
