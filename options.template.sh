@@ -61,6 +61,7 @@ if [[ " $@ " =~ " work " ]]; then
   echo 'asdf-helm'
   echo 'asdf-kops'
   echo 'asdf-kubectl'
+  echo 'asdf-kubectx'
   echo 'asdf-kubeseal'
   echo 'asdf-kustomize'
   echo 'asdf-minikube'
