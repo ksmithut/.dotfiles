@@ -40,3 +40,5 @@
 	algorithm = histogram
 [init]
 	defaultBranch = main
+# [includeIf "gitdir:~/Code/github.com/org"]
+# 	path = ~/.org.gitconfig
