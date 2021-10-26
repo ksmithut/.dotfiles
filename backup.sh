@@ -37,6 +37,7 @@ for copy_dir in "${copy_dirs[@]}"; do
     --exclude=*/_build \
     --exclude=*/.elixir_ls \
     --exclude=*/coverage \
+    --exclude=*/.cache \
     --exclude=*/.data \
     --exclude=*/dump.rdb \
     --exclude=*/*.log \
