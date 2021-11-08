@@ -82,7 +82,7 @@ plugins=(
 
 mac_plugins=(
   brew
-  osx
+  macos
 )
 
 ubuntu_plugins=(
