@@ -186,6 +186,7 @@ typings/
 .env
 scratch.http
 scratch.js
+scratch.sh
 .tool-versions
 *.code-workspace
 build.services.json5
