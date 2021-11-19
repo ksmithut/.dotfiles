@@ -124,6 +124,17 @@ function dotenv () {
 # Type in filename.md or filename.js and it will open up in code
 alias -s {md,js,css,html,json}=code
 
+# Generate a .gitignore file
+function gi () {
+  curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;
+}
+function gi_node () {
+  curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/macos,windows,linux,node,react ;
+}
+function gi_elixir () {
+  curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/macos,windows,linux,elixir,phoenix ;
+}
+
 # macOS aliases/functions
 # =======================
 if is_macos; then
