@@ -122,7 +122,7 @@ function dotenv () {
 }
 
 # Type in filename.md or filename.js and it will open up in code
-alias -s {md,js,css,html,json}=code
+alias -s {md,js,css,html,json,graphql,sh,http,jsx,prisma}=code
 
 # Generate a .gitignore file
 function gi () {
