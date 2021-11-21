@@ -12,16 +12,16 @@ function react-setup() {
 }
 
 function lint-setup() {
-  yarn add -D standard prettier-standard
+  yarn add -D standard @ksmithut/prettier-standard
   npm set-script 'format' 'prettier-standard --lint'
   npm set-script 'lint' 'prettier-standard --check --lint'
-  echo  '{\n  "extends":["standard","standard-jsx"]\n}' > .eslintrc.json
+  echo  '{\n  "extends":["standard", "standard-jsx"]\n}' > .eslintrc.json
 }
 
 function precommit-setup() {
   yarn add -D husky lint-staged
   yarn prepare
-  npm set-script 'prepare' 'husky install'
+  npm set-script 'prepare' 'husky install || true'
   echo "'use strict'\n\nmodule.exports = {\n  '**/*': 'prettier-standard --lint',\n  '**/*.{js,json}': () => 'tsc'\n}" > .lintstagedrc.cjs
   yarn husky add .husky/pre-commit 'npx lint-staged'
 }

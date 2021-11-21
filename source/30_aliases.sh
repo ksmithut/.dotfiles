@@ -184,4 +184,6 @@ if is_ubuntu; then
 
   # generates uuid
   alias uuid='printf "%s" $(cat /proc/sys/kernel/random/uuid)'
+
+  alias myip='curl ipecho.net/plain; echo'
 fi

@@ -5,10 +5,10 @@ alias docker-containers-stop='[[ "$(docker ps -a -q)" != "" ]] && docker stop $(
 alias docker-containers-remove='docker-containers-stop && [[ "$(docker ps -a -q)" != "" ]] && docker rm $(docker ps -a -q); true'
 alias docker-volumes-remove='docker-containers-remove && [[ "$(docker volume ls -f dangling=true -q)" != "" ]] && docker volume rm $(docker volume ls -f dangling=true -q); true'
 alias docker-images-remove='[[ "$(docker images -a -q)" != "" ]] && docker rmi -f $(docker images -a -q); true'
-alias docker-clean='docker-containers-stop; docker-containers-remove; docker-volumes-remove; docker-images-remove; docker system prune -f; true'
+alias docker-clean='docker-containers-stop; docker-containers-remove; docker-volumes-remove; docker-images-remove; docker system prune -f -a; true'
 
 function docker-restart () {
-  docker container restart $(docker ps | grep $1 | awk '{print $1}')
+  docker container restart $(docker ps -a | grep $1 | awk '{print $1}')
 }
 
 function docker-logs () {
