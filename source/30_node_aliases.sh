@@ -20,9 +20,9 @@ function lint-setup() {
 
 function precommit-setup() {
   yarn add -D husky lint-staged
-  yarn prepare
   npm set-script 'prepare' 'husky install || true'
-  echo "'use strict'\n\nmodule.exports = {\n  '**/*': 'prettier-standard --lint',\n  '**/*.{js,json}': () => 'tsc'\n}" > .lintstagedrc.cjs
+  yarn prepare
+  echo "export default {\n  '**/*': 'prettier-standard --lint',\n  '**/*.{js,json}': () => 'tsc'\n}" > .lintstagedrc.js
   yarn husky add .husky/pre-commit 'npx lint-staged'
 }
 
