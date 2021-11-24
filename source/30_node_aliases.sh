@@ -12,7 +12,7 @@ function react-setup() {
 }
 
 function lint-setup() {
-  yarn add -D standard @ksmithut/prettier-standard
+  yarn add -D eslint-config-standard eslint-config-standard-jsx @ksmithut/prettier-standard
   npm set-script 'format' 'prettier-standard --lint'
   npm set-script 'lint' 'prettier-standard --check --lint'
   echo  '{\n  "extends":["standard", "standard-jsx"]\n}' > .eslintrc.json
