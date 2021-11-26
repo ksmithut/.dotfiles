@@ -10,7 +10,7 @@ echo 'press enter to continue'
 read -r CONTINUE
 
 # Gotta find a more secure way of doing this... perhaps clone and run?
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 rm ~/.zshrc
 mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc

@@ -17,8 +17,5 @@ export NVM_DIR="$HOME/.nvm" && (
 ) && \. "$NVM_DIR/nvm.sh"
 
 # install latest version of node
-nvm install 10
-nvm install 12
-nvm install 14
 nvm install node
 nvm alias default node

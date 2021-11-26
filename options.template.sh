@@ -23,6 +23,7 @@ if [[ "$1" == '_' ]]; then
   exit
 fi
 
+echo 'git-config'
 echo 'ssh-config'
 echo 'gpg-config'
 echo 'yubikey'
@@ -49,7 +50,6 @@ fi
 
 if [[ " $@ " =~ " work " ]]; then
   echo 'docker'
-  echo 'lazydocker'
   echo 'awscli'
   echo 'asdf'
   echo 'asdf-node'
@@ -66,6 +66,11 @@ if [[ " $@ " =~ " work " ]]; then
   echo 'asdf-kustomize'
   echo 'asdf-minikube'
   echo 'asdf-skaffold'
+  if is_macos; then
+    echo 'lazydocker'
+  else
+    echo 'asdf-lazydocker'
+  fi
   if [[ " $@ " =~ " gui " ]] || is_macos || is_windows; then
     echo 'figma'
     echo 'robo-3t'
