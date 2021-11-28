@@ -78,6 +78,7 @@ plugins=(
   kubectl
   kubectx
   autojump
+  web-search
 )
 
 mac_plugins=(
