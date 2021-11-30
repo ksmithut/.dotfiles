@@ -50,27 +50,20 @@ fi
 
 if [[ " $@ " =~ " work " ]]; then
   echo 'docker'
-  echo 'awscli'
   echo 'asdf'
+  echo 'asdf-awscli'
+  echo 'mongo-tools'
   echo 'asdf-node'
   echo 'asdf-elixir'
   echo 'asdf-deno'
   echo 'asdf-golang'
-  echo 'asdf-eksctl'
-  echo 'asdf-fluxctl'
   echo 'asdf-helm'
-  echo 'asdf-kops'
+  echo 'asdf-krew'
   echo 'asdf-kubectl'
   echo 'asdf-kubectx'
-  echo 'asdf-kubeseal'
-  echo 'asdf-kustomize'
   echo 'asdf-minikube'
   echo 'asdf-skaffold'
-  if is_macos; then
-    echo 'lazydocker'
-  else
-    echo 'asdf-lazydocker'
-  fi
+  echo 'asdf-lazydocker'
   if [[ " $@ " =~ " gui " ]] || is_macos || is_windows; then
     echo 'figma'
     echo 'robo-3t'
