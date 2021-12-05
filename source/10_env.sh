@@ -21,4 +21,7 @@ export COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
 # dotnet telemetry optout
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
+# next.js telemetry optout
+export NEXT_TELEMETRY_DISABLED=1
+
 is_macos && export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openssl@1.1)"
