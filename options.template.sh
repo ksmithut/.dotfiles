@@ -20,6 +20,7 @@ if [[ "$1" == '_' ]]; then
   fi
   echo 'work'
   echo 'games'
+  echo 'kubernetes'
   exit
 fi
 
@@ -48,6 +49,15 @@ if [[ " $@ " =~ " gui " ]] || is_macos || is_windows; then
   echo 'nvidia'
 fi
 
+if [[ " $@ " =~ " kubernetes " ]]; then
+  echo 'asdf-helm'
+  echo 'asdf-krew'
+  echo 'asdf-kubectl'
+  echo 'asdf-kubectx'
+  echo 'asdf-minikube'
+  echo 'asdf-skaffold'
+fi
+
 if [[ " $@ " =~ " work " ]]; then
   echo 'docker'
   echo 'asdf'
@@ -57,12 +67,6 @@ if [[ " $@ " =~ " work " ]]; then
   echo 'asdf-elixir'
   echo 'asdf-deno'
   echo 'asdf-golang'
-  echo 'asdf-helm'
-  echo 'asdf-krew'
-  echo 'asdf-kubectl'
-  echo 'asdf-kubectx'
-  echo 'asdf-minikube'
-  echo 'asdf-skaffold'
   echo 'asdf-lazydocker'
   if [[ " $@ " =~ " gui " ]] || is_macos || is_windows; then
     echo 'figma'

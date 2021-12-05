@@ -152,3 +152,5 @@ build_prompt() {
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export ASDF_DIR='/opt/homebrew/opt/asdf/libexec'
