@@ -62,7 +62,7 @@ if [[ " $@ " =~ " work " ]]; then
   echo 'docker'
   echo 'asdf'
   echo 'asdf-awscli'
-  echo 'mongo-tools'
+  echo 'asdf-mongo-tools'
   echo 'asdf-node'
   echo 'asdf-elixir'
   echo 'asdf-deno'
