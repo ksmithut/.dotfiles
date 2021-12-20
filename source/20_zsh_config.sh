@@ -153,4 +153,8 @@ build_prompt() {
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-unset ASDF_DIR
+# unset ASDF_DIR
+if is_macos; then
+  ASDF_DIR="$(brew --prefix asdf)/libexec"
+  . "$ASDF_DIR/asdf.sh"
+fi
