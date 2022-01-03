@@ -22,7 +22,8 @@ sudo apt-get install -y \
   jq \
   libgconf-2-4 \
   neofetch \
-  python \
+  python2 \
+  python3 \
   ruby \
   tmux \
   trash-cli \
@@ -36,7 +37,7 @@ sudo snap install htop
 
 sudo apt-get install -y \
   gnome-shell-extensions \
-  gnome-tweak-tool
+  gnome-tweaks
 
 function install-gnome-extension() {
   local major_version
@@ -64,6 +65,6 @@ function install-gnome-extension() {
 # install-gnome-extension 28 # gtile
 
 # Remove dock
-sudo apt-get remove gnome-shell-extension-ubuntu-dock -y
+# sudo apt-get remove gnome-shell-extension-ubuntu-dock -y
 # flatpak gnome software
 # sudo apt install -y gnome-software-plugin-flatpak
