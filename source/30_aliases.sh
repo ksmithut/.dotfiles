@@ -28,7 +28,7 @@ fi
 alias gpg-ls='gpg --list-secret-keys --keyid-format LONG'
 
 # starts simple http server in current directory
-alias static='python -m SimpleHTTPServer'
+alias static='python3 -m http.server'
 
 # Extract contents from zipped/compressed file
 function extract() {
