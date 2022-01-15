@@ -212,6 +212,7 @@ function dock() {
       echo "  redis"
       echo "  redis-store"
       echo "  postgres"
+      echo "  postgres-store"
       echo "  nats-streaming"
       echo "  nats-streaming-store"
       echo "  elasticsearch"
