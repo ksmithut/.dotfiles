@@ -58,7 +58,7 @@ function dock() {
         --name 'dock_mongo' \
         --publish '27017:27017' \
         $image
-        # --volume "$(pwd)/.dock/mongo:/data/db" \
+        # --volume "$(pwd)/.data/mongo:/data/db" \
       docker stop 'dock_mongo'
       docker rm --volumes 'dock_mongo'
       ;;
@@ -69,7 +69,7 @@ function dock() {
       docker run \
         --name 'dock_mongo' \
         --publish '27017:27017' \
-        --volume "$(pwd)/.dock/mongo:/data/db" \
+        --volume "$(pwd)/.data/mongo:/data/db" \
         $image
       docker stop 'dock_mongo'
       docker rm --volumes 'dock_mongo'
@@ -84,7 +84,7 @@ function dock() {
         --name 'dock_redis' \
         --publish '6379:6379' \
         $image
-        # --volume "$(pwd)/.dock/redis:/data"
+        # --volume "$(pwd)/.data/redis:/data"
       docker stop 'dock_redis'
       docker rm --volumes 'dock_redis'
       ;;
@@ -95,7 +95,7 @@ function dock() {
       docker run \
         --name 'dock_redis' \
         --publish '6379:6379' \
-        --volume "$(pwd)/.dock/redis:/data"
+        --volume "$(pwd)/.data/redis:/data"
         $image
       docker stop 'dock_redis'
       docker rm --volumes 'dock_redis'
@@ -113,10 +113,11 @@ function dock() {
         --env 'POSTGRES_PASSWORD=postgres' \
         --env 'POSTGRES_DB=postgres' \
         $image
-        # --volume "$(pwd)/.dock/postgres:/var/lib/postgresql/data" \
+        # --volume "$(pwd)/.data/postgres:/var/lib/postgresql/data" \
       docker stop 'dock_postgres'
       docker rm --volumes 'dock_postgres'
       ;;
+
     postgres-store)
       echo 'postgres://postgres:postgres@localhost:5432/postgres'
       echo ''
@@ -127,8 +128,8 @@ function dock() {
         --env 'POSTGRES_USER=postgres' \
         --env 'POSTGRES_PASSWORD=postgres' \
         --env 'POSTGRES_DB=postgres' \
-        --volume "$(pwd)/.dock/postgres:/var/lib/postgresql/data" \
-        $postgres
+        --volume "$(pwd)/.data/postgres:/var/lib/postgresql/data" \
+        $image
       docker stop 'dock_postgres'
       docker rm --volumes 'dock_postgres'
       ;;
@@ -143,7 +144,7 @@ function dock() {
         --publish '4222:4222' \
         --publish '8222:8222' \
         nats-streaming:latest -store file -dir '/datastore' -m 8222
-        # --volume "$(pwd)/.dock/nats-streaming:/datastore" \
+        # --volume "$(pwd)/.data/nats-streaming:/datastore" \
       docker stop 'dock_nats-streaming'
       docker rm --volumes 'dock_nats-streaming'
       ;;
@@ -155,7 +156,7 @@ function dock() {
         --name 'dock_nats-streaming' \
         --publish '4222:4222' \
         --publish '8222:8222' \
-        --volume "$(pwd)/.dock/nats-streaming:/datastore" \
+        --volume "$(pwd)/.data/nats-streaming:/datastore" \
         nats-streaming:latest -store file -dir '/datastore' -m 8222
       docker stop 'dock_nats-streaming'
       docker rm --volumes 'dock_nats-streaming'
@@ -171,7 +172,7 @@ function dock() {
         --publish '9300:9300' \
         --env 'discovery.type=single-node' \
         docker.elastic.co/elasticsearch/elasticsearch:7.9.3
-        # --volume "$(pwd)/.dock/elasticsearch:/usr/share/elasticsearch/data" \
+        # --volume "$(pwd)/.data/elasticsearch:/usr/share/elasticsearch/data" \
       docker stop 'dock_elasticsearch'
       docker rm --volumes 'dock_elasticsearch'
       ;;
@@ -183,7 +184,7 @@ function dock() {
         --publish '9200:9200' \
         --publish '9300:9300' \
         --env 'discovery.type=single-node' \
-        --volume "$(pwd)/.dock/elasticsearch:/usr/share/elasticsearch/data" \
+        --volume "$(pwd)/.data/elasticsearch:/usr/share/elasticsearch/data" \
         docker.elastic.co/elasticsearch/elasticsearch:7.9.3
       docker stop 'dock_elasticsearch'
       docker rm --volumes 'dock_elasticsearch'
