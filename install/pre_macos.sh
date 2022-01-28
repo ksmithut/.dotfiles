@@ -10,6 +10,8 @@ if [[ ! $(command -v brew) ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Exit if, for some reason, Homebrew is not installed.
 [[ ! $(command -v brew) ]] && echo "Homebrew failed to install." && exit 1
 
