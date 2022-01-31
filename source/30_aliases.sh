@@ -121,6 +121,8 @@ function dotenv () {
   env $(cat .env | xargs) $@
 }
 
+alias rgb_to_hex='node -p "process.argv.slice(1).flatMap(i=>i.split(\",\")).map(n=>parseInt(n,10).toString(16)).join(\"\")"'
+
 # Type in filename.md or filename.js and it will open up in code
 alias -s {md,js,css,html,json,graphql,http,jsx,prisma}=code
 
