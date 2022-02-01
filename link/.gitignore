@@ -187,6 +187,7 @@ typings/
 scratch.http
 scratch.js
 scratch.sh
+scratch.md
 .tool-versions
 *.code-workspace
 build.services.json5
