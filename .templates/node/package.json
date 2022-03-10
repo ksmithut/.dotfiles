@@ -1,0 +1,19 @@
+{
+  "name": "unnamed",
+  "description": "",
+  "version": "0.0.0",
+  "private": true,
+  "main": "src/index.js",
+  "type": "module",
+  "engines": {
+    "node": ">=16.x"
+  },
+  "scripts": {
+    "start": "node .",
+    "start:dev": "nodemon --inspect=0.0.0.0:9229",
+    "format": "prettier-standard --lint && tsc",
+    "lint": "prettier-standard --check --lint"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

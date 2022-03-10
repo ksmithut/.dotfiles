@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 PATH="/usr/local/sbin:$PATH"
 PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
