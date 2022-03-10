@@ -131,10 +131,35 @@ function gi () {
   curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;
 }
 function gi_node () {
-  curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/macos,windows,linux,node,react ;
+  gi macos,windows,linux,node,react
 }
 function gi_elixir () {
-  curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/macos,windows,linux,elixir,phoenix ;
+  gi macos,windows,linux,elixir,phoenix
+}
+
+function template() {
+  if [ "$1" = "" ]; then
+    ls "${DOTFILES}/.templates" | cut -f1
+    return 0
+  fi
+  if [ "$2" = "" ]; then
+    echo 'You must pass in two arguments'
+    echo 'template <template> <name>'
+    return 1
+  fi
+  local template_path="${DOTFILES}/.templates/$1"
+  if [ -d "${template_path}" ]; then
+    cp -R "${template_path}/" "$2"
+    cd "$2"
+    local init_script_path="./.template.sh"
+    if [ -f "${init_script_path}" ]; then
+      sh "${init_script_path}"
+      rm "${init_script_path}"
+    fi
+  else
+    echo "No template with name '${1}' found"
+    return 1
+  fi
 }
 
 # macOS aliases/functions
