@@ -11,3 +11,5 @@ yarn add -D \
   npm-run-all \
   tailwindcss postcss autoprefixer \
   clsx
+
+echo '/public' >> .gitignore
