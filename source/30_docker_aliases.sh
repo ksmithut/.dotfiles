@@ -77,7 +77,7 @@ function dock() {
 
     # https://hub.docker.com/_/redis/
     redis)
-      echo 'redis://127.0.0.1:6359'
+      echo 'redis://127.0.0.1:6379'
       echo ''
       if is_apple_silicon; then local image="arm64v8/redis:alpine"; else local image="redis:alpine"; fi
       docker run \
@@ -89,7 +89,7 @@ function dock() {
       docker rm --volumes 'dock_redis'
       ;;
     redis-store)
-      echo 'redis://127.0.0.1:6359'
+      echo 'redis://127.0.0.1:6379'
       echo ''
       if is_apple_silicon; then local image="arm64v8/redis:alpine"; else local image="redis:alpine"; fi
       docker run \
