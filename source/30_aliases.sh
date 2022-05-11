@@ -162,6 +162,18 @@ function template() {
   fi
 }
 
+function cidr {
+  node -e '
+    const chunk = (array, chunk_size) => Array(Math.ceil(array.length / chunk_size)).fill().map((_, index) => index * chunk_size).map(begin => array.slice(begin, begin + chunk_size))
+    const [ip, range] = process.argv[1].split("/", 2)
+    const binary = ip.split(".", 4).map(n => Number.parseInt(n, 10).toString(2).padStart(8, "0")).join("")
+    const rangeNumber = Number.parseInt(range, 10)
+    const start = chunk(binary.split("").fill("0", rangeNumber), 8).map(list => Number.parseInt(list.join(""), 2)).join(".")
+    const end = chunk(binary.split("").fill("1", rangeNumber), 8).map(list => Number.parseInt(list.join(""), 2)).join(".")
+    console.log(start, "-", end)
+  ' $1
+}
+
 # macOS aliases/functions
 # =======================
 if is_macos; then
