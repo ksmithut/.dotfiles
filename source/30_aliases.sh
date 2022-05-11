@@ -164,13 +164,19 @@ function template() {
 
 function cidr {
   node -e '
+    const assert = (condition, message) => condition || (console.error(message) || process.exit(1))
     const chunk = (array, size) => Array(Math.ceil(array.length / size)).fill().map((_, index) => index * size).map(begin => array.slice(begin, begin + size))
-    const [ip, range] = process.argv[1].split("/", 2)
-    const binary = ip.split(".", 4).map(n => Number.parseInt(n, 10).toString(2).padStart(8, "0")).join("")
+    const arg = process.argv[1]
+    assert(typeof arg === "string", "You must pass in a valid ip v4 cidr")
+    const [ip, range] = arg.split("/", 2)
+    assert(net.isIPv4(ip), "Not a valid ip v4 cidr")
     const rangeNumber = Number.parseInt(range, 10)
+    assert(rangeNumber >= 0 && rangeNumber <= 32, "Not a valid ip v4 cidr")
+    const binary = ip.split(".", 4).map(n => Number.parseInt(n, 10).toString(2).padStart(8, "0")).join("")
     const start = chunk(binary.split("").fill("0", rangeNumber), 8).map(bits => Number.parseInt(bits.join(""), 2)).join(".")
     const end = chunk(binary.split("").fill("1", rangeNumber), 8).map(bits => Number.parseInt(bits.join(""), 2)).join(".")
-    console.log(start, "-", end)
+    console.log(start)
+    console.log(end)
   ' $1
 }
 
