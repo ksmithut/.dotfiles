@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
-npm set-script 'build' 'vite build'
-npm set-script 'client:dev' 'vite'
-npm set-script 'dev' 'run-p --print-label start:dev client:dev'
+npm pkg set scripts.build="vite build"
+npm pkg set scripts.client:dev="vite"
+npm pkg set scripts.dev="run-p --print-label start:dev client:dev"
 
 yarn add -D \
   vite @vitejs/plugin-react @types/babel__core \

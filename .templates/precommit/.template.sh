@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-npm set-script 'prepare' 'husky install || true'
+npm pkg set scripts.prepare="husky install || true"
 
 yarn add -D \
   husky \

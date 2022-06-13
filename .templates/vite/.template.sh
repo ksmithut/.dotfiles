@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
-npm set-script 'build' 'vite build'
-npm set-script 'dev' 'vite'
+npm pkg set scripts.build="vite build"
+npm pkg set scripts.dev="vite"
 
-npm set-script 'format' 'prettier-standard --lint'
-npm set-script 'lint' 'prettier-standard --check --lint'
+npm pkg set scripts.format="prettier-standard --lint"
+npm pkg set scripts.lint="prettier-standard --check --lint"
 
 yarn add react react-dom clsx
 

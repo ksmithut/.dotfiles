@@ -6,13 +6,11 @@
   "main": "src/index.js",
   "type": "module",
   "engines": {
-    "node": ">=16.x"
+    "node": ">=18.x"
   },
   "scripts": {
     "start": "node .",
-    "start:dev": "nodemon --inspect=0.0.0.0:9229",
-    "format": "prettier-standard --lint && tsc",
-    "lint": "prettier-standard --check --lint"
+    "start:dev": "nodemon --inspect=0.0.0.0:9229"
   },
   "dependencies": {},
   "devDependencies": {}

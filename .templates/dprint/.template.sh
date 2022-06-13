@@ -1,8 +1,6 @@
 #!/usr/bin/env sh
 
-npm set-script 'format' 'dprint fmt'
-npm set-script 'lint' 'standard && dprint check'
+npm pkg set scripts.format="dprint fmt"
+npm pkg set scripts.lint="standard && dprint check"
 
-yarn add -D \
-  dprint \
-  standard
+yarn add -D dprint standard
