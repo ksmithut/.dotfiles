@@ -39,6 +39,7 @@ if [[ " $@ " =~ " gui " ]] || is_macos || is_windows; then
   echo 'keybase'
   echo 'slack'
   echo 'dracula-terminal-theme'
+  echo 'cascadia-font'
   # Linux specific things
   echo 'vlc'
   # Apple specific things
