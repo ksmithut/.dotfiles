@@ -79,6 +79,7 @@ plugins=(
   kubectx
   autojump
   web-search
+  mix-fast
 )
 
 mac_plugins=(
