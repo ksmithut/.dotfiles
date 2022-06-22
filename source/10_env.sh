@@ -6,6 +6,8 @@ PATH="$DOTFILES/bin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="/opt/homebrew/bin:$PATH"
+PATH="/opt/homebrew/sbin:$PATH"
+PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export PATH
 
 # Elixir history

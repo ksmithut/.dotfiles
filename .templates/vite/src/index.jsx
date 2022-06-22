@@ -1,6 +1,12 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const container = document.getElementById('root')
+if (container) {
+  const root = ReactDOM.createRoot(container)
+  root.render(<App />)
+} else {
+  console.error('Could not find root element to mount to')
+}
