@@ -16,7 +16,7 @@ ssh-keygen -t ed25519 -C "${SSH_EMAIL}" -f "${SSH_PATH}"
 
 eval "$(ssh-agent -s > /dev/null 2>&1)"
 if [[ "$OSTYPE" =~ ^darwin ]]; then
-  ssh-add -K "${SSH_PATH}"
+  ssh-add --apple-use-keychain "${SSH_PATH}"
 else
   ssh-add "${SSH_PATH}"
 fi
