@@ -1,0 +1,5 @@
+{
+  "[javascript][javascriptreact][json][markdown][typescript][typescriptreact][dockerfile][toml]": {
+    "editor.defaultFormatter": "dprint.dprint"
+  }
+}
