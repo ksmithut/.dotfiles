@@ -188,6 +188,8 @@ scratch.http
 scratch.js
 scratch.sh
 scratch.md
+scratch.ex
+scratch.exs
 .tool-versions
 *.code-workspace
 build.services.json5
