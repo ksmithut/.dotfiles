@@ -190,6 +190,8 @@ scratch.sh
 scratch.md
 scratch.ex
 scratch.exs
+scratch.txt
+scratch.env
 .tool-versions
 *.code-workspace
 build.services.json5
