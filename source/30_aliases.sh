@@ -117,6 +117,13 @@ function asdf-install () {
   fi
 }
 
+function asdf-update () {
+  if [[ $(command -v asdf) ]]; then
+    asdf install "${1}" latest
+    asdf global "${1}" "$(asdf latest ${1})"
+  fi
+}
+
 function dotenv () {
   env $(cat .env | xargs) $@
 }
