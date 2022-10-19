@@ -186,6 +186,8 @@ typings/
 .env
 scratch.http
 scratch.js
+scratch.mjs
+scratch.*.js
 scratch.sh
 scratch.md
 scratch.ex
@@ -195,4 +197,5 @@ scratch.env
 .tool-versions
 *.code-workspace
 build.services.json5
+build.services.toml
 .dock/
