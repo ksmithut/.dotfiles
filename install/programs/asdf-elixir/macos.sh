@@ -2,7 +2,7 @@
 
 . $HOME/.asdf/asdf.sh
 
-brew install autoconf openssl@1.1 wxwidgets
+brew install autoconf openssl@1.1 wxwidgets libxslt fop
 
 export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openssl@1.1)"
 
