@@ -106,8 +106,8 @@ fi
 Download the version of macOS you want to install directly from the App Store.
 When the download completes, it will prompt you to install/upgrade in a dialog.
 Just `cmd + Q` out of that. You'll also want to have a USB Drive that has been
-formated and named `Untitled` plugged into your computer. Then run the following
-command:
+formated and named `Untitled` plugged into your computer. Make sure it is
+formatted as Mac OS Extended (Journaled). Then run the following command:
 
 ```sh
 # Change /Volumes/Untitled to the volume you want it to be
