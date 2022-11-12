@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "node .",
-    "start:dev": "nodemon --inspect=0.0.0.0:9229"
+    "start:dev": "node --watch --inspect=0.0.0.0:9229 ."
   },
   "dependencies": {},
   "devDependencies": {}
