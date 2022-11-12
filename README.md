@@ -111,9 +111,9 @@ command:
 
 ```sh
 # Change /Volumes/Untitled to the volume you want it to be
-# Or change the "Install\ macOS\ Catalina.app" to the version of mac you want to
+# Or change the "Install\ macOS\ Ventura.app" to the version of mac you want to
 # install
-sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --nointeraction
+sudo /Applications/Install\ macOS\ Ventura.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled
 ```
 
 After that finishes (it will be a while, 20 minutes to an hour maybe?) you'll
