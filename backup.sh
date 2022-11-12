@@ -34,6 +34,7 @@ for copy_dir in "${copy_dirs[@]}"; do
     --exclude=*.DS_Store \
     --exclude=*/node_modules \
     --exclude=*/bower_components \
+    --exclude=*/deps \
     --exclude=*/_build \
     --exclude=*/.elixir_ls \
     --exclude=*/coverage \
