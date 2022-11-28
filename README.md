@@ -101,6 +101,7 @@ fi
 
 ### macOS
 
+[Download help page](https://support.apple.com/en-us/HT211683)
 [Apple Docs](https://support.apple.com/en-us/HT201372)
 
 Download the version of macOS you want to install directly from the App Store.
