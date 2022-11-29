@@ -199,3 +199,5 @@ scratch.env
 build.services.json5
 build.services.toml
 .dock/
+.mix_tasks
+
