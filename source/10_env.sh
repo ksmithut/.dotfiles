@@ -16,6 +16,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # Shell config
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_ENV_HINTS=1
 export EDITOR=vi
 # https://github.com/npm/npm/issues/11696
 export COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
