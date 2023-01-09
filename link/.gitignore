@@ -194,6 +194,7 @@ scratch.ex
 scratch.exs
 scratch.txt
 scratch.env
+/scratch
 .tool-versions
 *.code-workspace
 build.services.json5
