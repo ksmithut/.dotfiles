@@ -35,3 +35,10 @@ Host ${SSH_HOST}
   IdentityFile ~/.ssh/${SSH_FILENAME}
 " >> ~/.ssh/config
 fi
+
+id="$(awk '{ print $1, $2 }' ${SSH_PATH}.pub)"
+git config --global commit.gpgsign true
+git config --global gpg.format ssh
+git config --global user.signingkey "$(awk '{ print $1, $2 }' ${SSH_PATH}.pub)"
+git config --global gpg.ssh.allowedSignersFile ~/.ssh/allowed_signers
+echo "$(awk '{ print $3, $1, $2 }' ${SSH_PATH}.pub)" > ~/.ssh/allowed_signers
