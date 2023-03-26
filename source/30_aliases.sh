@@ -53,7 +53,15 @@ function extract() {
 }
 
 # Open up coverage report
-alias coverage='open coverage/lcov-report/index.html'
+function coverage {
+  if [[ -f 'coverage/lcov-report/index.html' ]]; then
+    open coverage/lcov-report/index.html
+  elif [[ -f 'coverage/index.html' ]]; then
+    open coverage/index.html
+  else
+    echo 'No coverage html file found'
+  fi
+}
 
 # MD5 Checksum
 alias checksum='openssl md5'
