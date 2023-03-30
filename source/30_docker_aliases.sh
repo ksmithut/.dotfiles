@@ -15,6 +15,14 @@ function docker-logs () {
   docker logs -f $(docker ps -a | grep $1 | awk '{print $1}') --tail 100
 }
 
+function docker-image-extract () {
+  docker create --name "$1" "$2"
+  take "$1"
+  docker export "$1" > "$1".tar
+  tar xvf "$1".tar
+  docker rm "$1"
+}
+
 function dock() {
   case $1 in
     # https://github.com/localstack/localstack
