@@ -58,6 +58,8 @@ function coverage {
     open coverage/lcov-report/index.html
   elif [[ -f 'coverage/index.html' ]]; then
     open coverage/index.html
+  elif [[ -f 'cover/excoveralls.html' ]]; then
+    open cover/excoveralls.html
   else
     echo 'No coverage html file found'
   fi
