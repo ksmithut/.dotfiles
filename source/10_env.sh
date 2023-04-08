@@ -8,6 +8,7 @@ PATH="$HOME/.local/bin:$PATH"
 PATH="/opt/homebrew/bin:$PATH"
 PATH="/opt/homebrew/sbin:$PATH"
 PATH="/opt/homebrew/opt/curl/bin:$PATH"
+PATH="$HOME/.docker/bin:$PATH"
 export PATH
 
 # Elixir history
