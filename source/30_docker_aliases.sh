@@ -61,7 +61,7 @@ function dock() {
     mongo)
       echo 'mongodb://localhost:27017'
       echo ''
-      if is_apple_silicon; then local image="arm64v8/mongo:latest"; else local image="mongo:latest"; fi
+      local image="mongo:latest"
       docker run \
         --name 'dock_mongo' \
         --publish '27017:27017' \
@@ -73,7 +73,7 @@ function dock() {
     mongo-store)
       echo 'mongodb://localhost:27017'
       echo ''
-      if is_apple_silicon; then local image="arm64v8/mongo:latest"; else local image="mongo:latest"; fi
+      local image="mongo:latest"
       docker run \
         --name 'dock_mongo' \
         --publish '27017:27017' \
@@ -87,7 +87,7 @@ function dock() {
     redis)
       echo 'redis://127.0.0.1:6379'
       echo ''
-      if is_apple_silicon; then local image="arm64v8/redis:alpine"; else local image="redis:alpine"; fi
+      local image="redis:alpine"
       docker run \
         --name 'dock_redis' \
         --publish '6379:6379' \
@@ -99,7 +99,7 @@ function dock() {
     redis-store)
       echo 'redis://127.0.0.1:6379'
       echo ''
-      if is_apple_silicon; then local image="arm64v8/redis:alpine"; else local image="redis:alpine"; fi
+      local image="redis:alpine"
       docker run \
         --name 'dock_redis' \
         --publish '6379:6379' \
@@ -113,7 +113,7 @@ function dock() {
     postgres)
       echo 'postgres://postgres:postgres@localhost:5432/postgres'
       echo ''
-      if is_apple_silicon; then local image="arm64v8/postgres:alpine"; else local image="postgres:alpine"; fi
+      local image="postgres:alpine"
       docker run \
         --name 'dock_postgres' \
         --publish '5432:5432' \
@@ -129,7 +129,7 @@ function dock() {
     postgres-store)
       echo 'postgres://postgres:postgres@localhost:5432/postgres'
       echo ''
-      if is_apple_silicon; then local image="arm64v8/postgres:alpine"; else local image="postgres:alpine"; fi
+      local image="postgres:alpine"
       docker run \
         --name 'dock_postgres' \
         --publish '5432:5432' \
