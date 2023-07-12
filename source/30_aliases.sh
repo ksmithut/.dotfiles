@@ -18,6 +18,12 @@ else
   }
 fi
 
+if is_macos; then
+  function whos_using_my_port {
+    lsof -i -P | grep LISTEN | grep ":$1 "
+  }
+fi
+
 # makes a directory and moves to it
 # replaced with oh-my-zsh's "take"
 # function dir() {
