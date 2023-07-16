@@ -28,4 +28,6 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 # next.js telemetry optout
 export NEXT_TELEMETRY_DISABLED=1
 
+export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_available
+
 is_macos && export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openssl@1.1)"
