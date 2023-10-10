@@ -12,20 +12,13 @@ on your machine.
 
 - macOS
 
-  Install XCode in it's fullest :(
+  Install XCode command-line tools (to install git)
 
   ```sh
   xcode-select --install
   ```
 
-- Ubuntu (Desktop)
-
-  ```sh
-  sudo apt update -y
-  sudo apt upgrade -y
-  ```
-
-- Pop!\_OS (Desktop)
+- Ubuntu (Desktop)/Pop!\_OS (Desktop)
 
   ```sh
   sudo apt update -y

@@ -2,24 +2,14 @@
 # Initialize the DOTFILES variable so other scripts can use it
 
 pushd . > /dev/null || exit
-SCRIPT_PATH="${(%):-%N}"
-if [ -h "${SCRIPT_PATH}" ]; then
-  while [ -h "${SCRIPT_PATH}" ]; do
-    cd "$(dirname "${SCRIPT_PATH}")" || exit;
-    SCRIPT_PATH="$(readlink "${SCRIPT_PATH}")";
-  done
-fi
-cd "$(dirname "${SCRIPT_PATH}")" > /dev/null || exit
-DOTFILES="$( cd "$(dirname "$SCRIPT_PATH")/../" || exit; pwd -P )"
+DOTFILES="$(builtin cd "$(dirname "$(readlink "${(%):-%N}")")/../" || exit; pwd -P)"
 export DOTFILES
 popd > /dev/null || exit
 
 # Source all of the files in ~/.dotfiles/source
-# shellcheck disable=SC1090
 for file in "$DOTFILES"/source/*.sh; do source "$file"; done
 
 if [ -f ~/.zshrc.local ]; then
-  # shellcheck disable=SC1090
   . ~/.zshrc.local
 fi
 

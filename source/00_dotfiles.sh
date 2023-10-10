@@ -3,35 +3,35 @@
 # the files in this repo, mostly just to detect platform differences.
 
 # OS detection
-function is_macos() {
+is_macos () {
   [[ "$OSTYPE" =~ ^darwin ]] || return 1
 }
 
-function is_apple_silicon() {
+is_apple_silicon () {
   is_macos && [[ "$(arch)" == "arm64" ]] || return 1
 }
 
-function is_ubuntu() {
+is_ubuntu () {
   [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]] || [[ "$(cat /etc/issue 2> /dev/null)" =~ "Pop!_OS" ]] || return 1
 }
 
-function is_zsh() {
+is_zsh () {
   [[ "${ZSH_NAME}" == "zsh" ]] || return 1
 }
 
-function is_windows() {
+is_windows () {
   [[ "${OS}" == "Windows_NT" ]] || return 1
 }
 
-function is_linux() {
+is_linux () {
   [[ "$(which_os)" == "linux" ]] || return 1
 }
 
-function is_wsl() {
+is_wsl () {
   [[ "$(cat /proc/version 2> /dev/null)" =~ microsoft ]] || return 1
 }
 
-function which_os() {
+which_os () {
   if is_macos; then
     echo 'macos'
   elif is_windows; then
@@ -41,6 +41,6 @@ function which_os() {
   fi
 }
 
-function dotfiles {
-  cd "$DOTFILES"
+dotfiles () {
+  cd "$DOTFILES" || exit
 }

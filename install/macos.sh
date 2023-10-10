@@ -19,65 +19,29 @@ echo "Updating Homebrew..."
 brew doctor
 brew update
 brew cleanup
-
 brew install mas
-brew tap homebrew/services
-
-brew install \
-  autojump \
-  bash \
-  ffmpeg \
-  git \
-  gnupg \
-  grep \
-  imagemagick \
-  jq \
-  neofetch \
-  pinentry-mac \
-  python \
-  shellcheck \
-  siege \
-  tmux \
-  trash \
-  tree \
-  watch \
-  watchman \
-  wget \
-  zsh \
-  zsh-completions
+brew bundle install --global --cleanup
 
 # Prevent Photos from opening automatically
-defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+# defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 # to Revert
 # defaults -currentHost delete com.apple.ImageCapture disableHotPlug
 
 # Enable Develop Menu and Web Inspector
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true && \
-defaults write com.apple.Safari IncludeDevelopMenu -bool true && \
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true && \
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true && \
-defaults write -g WebKitDeveloperExtras -bool true
+# defaults write com.apple.Safari IncludeInternalDebugMenu -bool true && \
+# defaults write com.apple.Safari IncludeDevelopMenu -bool true && \
+# defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true && \
+# defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true && \
+# defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 # Disable Java in Safari
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles -bool false
+# defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
+# defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles -bool false
 
 # Don't prompt new hard drives as backup
 # sudo defaults write /Library/Preferences/com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Unhide ~/Library
 chflags nohidden ~/Library
-
-# Show path in Finder
-defaults write com.apple.finder ShowPathbar -bool true
-
-# Show status bar in Finder
-defaults write com.apple.finder ShowStatusBar -bool true
-
-# Makes window resize time instant
-defaults write -g NSWindowResizeTime -float 0.001
-
-# Turn off startup chime
-sudo nvram StartupMute=%01
 
 # Destroy Filevault keys
 # sudo pmset -a destroyfvkeyonstandby 1

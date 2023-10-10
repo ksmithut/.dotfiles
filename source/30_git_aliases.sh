@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # reverts to a given commit
-function oh-crap() {
+oh-crap () {
   if [[ "$1" == "" ]]; then
     echo 'You must pass in a commit id'
     return 1
@@ -11,14 +11,7 @@ function oh-crap() {
   git commit -m "Revert to $1"
 }
 
-function ghclone() {
-  local dirname
-  local dirname="${1##*/}"
-  git clone git@github.com:"$1" || return 1
-  cd "$dirname" || return 1
-}
-
-function clone() {
+clone () {
   if [[ "$1" == "" ]]; then
     echo 'You must pass in a repo name'
     return 1
@@ -38,3 +31,27 @@ function clone() {
 }
 
 alias -s git=clone
+
+git-user () {
+  if [[ "$#" -eq 3 ]]; then
+    local cwd="$(pwd | sed "s#^${HOME}#~#")"
+    local org_config_path="~/.${1}.gitconfig"
+    local full_config_path="${HOME}/.${1}.gitconfig"
+    touch "${full_config_path}"
+    git config --file "${full_config_path}" user.name "${2}"
+    git config --file "${full_config_path}" user.email "${3}"
+    echo "[includeIf \"gitdir:${cwd}\"]
+	path = ${org_config_path}" >> ~/.gitconfig
+    echo
+    echo ".gitconfig"
+    echo
+    cat ~/.gitconfig
+    echo
+    echo "${org_config_path}"
+    echo
+    cat "${full_config_path}"
+  else
+    echo 'Usage: git-user <org-name> <user-name> <user-email>'
+    return 1
+  fi
+}
