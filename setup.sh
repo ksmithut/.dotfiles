@@ -56,7 +56,7 @@ function dotfiles_install() {
 
   for file in "$DOTFILES"/install/*.sh; do
     e_header "Installing $(basename ${file})"
-    bash "${file}"
+    bash -c "${file}"
     echo "done!"
   done
 
