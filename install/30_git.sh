@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-set -e
 is-macos || is-linux || return
+set -e
 
 echo -n 'github username: '; read -r GITHUB_USER
 echo -n 'github email: '; read -r GITHUB_EMAIL
