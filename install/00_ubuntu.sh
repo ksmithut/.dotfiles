@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+echo "checking ubuntu"
 is-ubuntu || return
 set -e
 
