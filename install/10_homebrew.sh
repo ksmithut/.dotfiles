@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 is-macos || is-linux || return
 
-sudo chown -R "$(whoami)" /usr/local
-
 export HOMEBREW_NO_ANALYTICS=1
 
 # Install Homebrew.
