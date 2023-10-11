@@ -45,7 +45,7 @@ cask "keybase"
 cask "slack"
 cask "zoom"
 # cask "figma" # Currently prefering just using the web app
-mas "Apple Configurator", id: 1037126344 if OS.mac?
+# mas "Apple Configurator", id: 1037126344 if OS.mac?
 
 # development tools
 cask "mongodb-compass"
