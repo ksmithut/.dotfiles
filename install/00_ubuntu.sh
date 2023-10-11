@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo "checking ubuntu"
-is-ubuntu || return
+is-ubuntu || return 0
 set -e
 
 sudo chown -R "$USER":"$USER" /usr/local/bin/
