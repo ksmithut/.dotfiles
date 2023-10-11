@@ -56,7 +56,7 @@ function dotfiles_install() {
 
   for file in "$DOTFILES"/install/*.sh; do
     e_header "Installing $(basename ${file})"
-    "$file"
+    source "${file}"
     echo "done!"
   done
 
@@ -68,7 +68,7 @@ echo "Enter your password here. You should only have to enter it once through th
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-. "${DOTFILES}/source/00_dotfiles.sh"
+source "${DOTFILES}/source/00_dotfiles.sh"
 dotfiles_copy
 dotfiles_link
 dotfiles_install
