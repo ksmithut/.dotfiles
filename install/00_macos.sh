@@ -55,7 +55,10 @@ defaults write -g AppleShowAllExtensions
 
 # Set default new finder window
 defaults write com.apple.finder NewWindowTarget -string PfHm
+echo $HOME
+echo "file://${HOME}/"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+echo "after"
 
 # Disable warning before changing an extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
