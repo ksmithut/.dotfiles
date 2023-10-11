@@ -34,7 +34,7 @@ defaults write com.apple.controlcenter "NSStatusItem Visible Battery" -bool true
 defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool true
 defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool true
 defaults write com.apple.controlcenter "NSStatusItem Visible WiFi" -bool true
-defaults delete com.apple.controlcenter "NSStatusItem Visible Item-0"
+# defaults delete com.apple.controlcenter "NSStatusItem Visible Item-0"
 
 # Auto-hide Dock
 defaults write com.apple.dock autohide -bool true
