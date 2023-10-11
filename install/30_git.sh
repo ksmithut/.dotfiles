@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 is-macos || is-linux || return
 
 echo -n 'github username: '; read -r GITHUB_USER

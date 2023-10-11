@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 is-ubuntu || return
-set -e
 
 sudo chown -R "$USER":"$USER" /usr/local/bin/
 

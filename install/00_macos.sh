@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 is-macos || return
 
 # Turn off "Play sound on startup"
