@@ -48,82 +48,20 @@ function dotfiles_link() {
   done
 }
 
-function dotfiles_options() {
-  e_header "Searching for options file"
-
-  if [[ -x "$DOTFILES_OPTIONS_FILE" ]]; then
-    # Use readlink for Linux or realpath for mac_os
-    if [[ -x "$(command -v readlink)" ]]; then
-      DOTFILES_OPTIONS_FILE="$(readlink -f "$DOTFILES_OPTIONS_FILE")"
-    elif [[ -x "$(command -v realpath)" ]]; then
-      DOTFILES_OPTIONS_FILE="$(realpath "$DOTFILES_OPTIONS_FILE")"
-    else
-      echo 'Unable to determine path of options file, exiting.'
-      exit 1
-    fi
-    echo "Using argment passed options file: ${DOTFILES_OPTIONS_FILE}"
-  elif [[ -x "${DOTFILES}/options.sh" ]]; then
-    echo "Using options file: ${DOTFILES}/options.sh"
-    DOTFILES_OPTIONS_FILE="${DOTFILES}/options.sh"
-  elif [[ -x "${DOTFILES}/options.template.sh" ]]; then
-    echo "Using the default options template: ${DOTFILES}/options.template.sh"
-    DOTFILES_OPTIONS_FILE="${DOTFILES}/options.template.sh"
-  else
-    echo "No executable option files found, exiting."
-    exit 1
-  fi
-}
-
 function dotfiles_install() {
   e_header "Initializing system"
-
-  local selected_environments=()
-  local environments=($(source "$DOTFILES_OPTIONS_FILE" _))
-  for environment in "${environments[@]}"; do
-    echo -n "Will this be a ${environment} environment? (y/N): "; read -r answer
-    case $answer in
-      [Yy]* ) selected_environments+=("$environment");;
-    esac
-  done
-
-  local options=($(source "$DOTFILES_OPTIONS_FILE" ${selected_environments[@]} | uniq))
-  local os="$(which_os)"
-  local extension="sh"
-  if is_windows; then
-    extension="cmd"
-  fi
-
   export DOTFILES_CACHE="$DOTFILES/caches"
   export DOTFILES_INSTALLERS="$DOTFILES_CACHE/installers"
-
   mkdir -p "$DOTFILES_INSTALLERS"
 
-  init_file="${DOTFILES}/install/pre_${os}.sh"
-  if test -f "${init_file}"; then
-    e_header "Install $(basename "$file")"
-    source "$init_file"
+  for file in "$DOTFILES"/install/*.sh; do
+    e_header "Installing $(basename ${file})"
+    "$file"
     echo "done!"
-  fi
-
-  for option in "${options[@]}"; do
-    for file in "${DOTFILES}/install/programs/${option}"/*${os}*."${extension}"; do
-      e_header "Installing ${option}"
-      "$file"
-      echo "done!"
-    done
   done
 
   rm -rf "$DOTFILES_CACHE"
 }
-
-# getopts
-while getopts o:e:u: option; do
-  case $option in
-    o) DOTFILES_OPTIONS_FILE=${OPTARG};;
-    e) DOTFILES_ENVIROMENT=${OPTARG};;
-    u) DOTFILES_UPDATE=${OPTARG};;
-  esac
-done
 
 # Keep-alive: update existing `sudo` time stamp until everything has finished
 echo "Enter your password here. You should only have to enter it once through this whole process"

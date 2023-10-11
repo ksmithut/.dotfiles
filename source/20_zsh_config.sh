@@ -1,7 +1,6 @@
 #!/usr/bin/env zsh
-is_zsh || return
 
-is_macos && ZSH_DISABLE_COMPFIX=true
+is-macos && ZSH_DISABLE_COMPFIX=true
 
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
@@ -91,8 +90,8 @@ ubuntu_plugins=(
   ubuntu
 )
 
-is_macos && plugins+=("${mac_plugins[@]}")
-is_ubuntu && plugins+=("${ubuntu_plugins[@]}")
+is-macos && plugins+=("${mac_plugins[@]}")
+is-ubuntu && plugins+=("${ubuntu_plugins[@]}")
 
 # shellcheck disable=SC1090
 source "$ZSH/oh-my-zsh.sh"
@@ -101,7 +100,7 @@ autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd (){ la; }
 
 # autojump init per policy reasons
-if is_ubuntu; then
+if is-ubuntu; then
   source /usr/share/autojump/autojump.sh
 fi
 
@@ -155,7 +154,7 @@ build_prompt() {
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # unset ASDF_DIR
-if is_macos; then
+if is-macos; then
   ASDF_DIR="$(brew --prefix asdf)/libexec"
   . "$ASDF_DIR/asdf.sh"
 fi

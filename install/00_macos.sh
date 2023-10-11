@@ -1,11 +1,13 @@
-# System Settings > Network > Firewall
-# System Settings > Siri & Spotlight > Spotlight > Search results
-# System Settings > Privacy and Security > Security > FileVault
-# Finder Settings > Sidebar > Show these items in the sidebar
+#!/usr/bin/env bash
+is-macos || return
 
+echo 'hello'
 
 # Turn off "Play sound on startup"
 sudo nvram StartupMute=%01
+
+# Unhide ~/Library
+chflags nohidden ~/Library
 
 # Turn off "Play user interface sound effects"
 defaults write -g com.apple.sound.beep.feedback -bool false
@@ -65,4 +67,19 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 # Search current folder when performing a search
 defaults write com.apple.finder FXDefaultSearchScope -string SCcf
 
+# Save to disk by default
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
+# Disable Creation of Metadata Files
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Enable Develop Menu and Web Inspector
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true && \
+defaults write com.apple.Safari IncludeDevelopMenu -bool true && \
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true && \
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true && \
+defaults write -g WebKitDeveloperExtras -bool true
+# Disable Java in Safari
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles -bool false

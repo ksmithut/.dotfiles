@@ -15,9 +15,9 @@
 # # shellcheck disable=SC2034
 # read -r CONTINUE
 
-# if [[ "${IS_MACOS}" == "1" ]]; then
+# if [[ "${is-macos}" == "1" ]]; then
 #   gpg --armor --export "$KEY_ID" | pbcopy
-# elif [[ "${IS_LINUX}" == "1" ]]; then
+# elif [[ "${is-linux}" == "1" ]]; then
 #   gpg --armor --export "$KEY_ID" | xclip -selection clipboard
 # fi
 
@@ -26,8 +26,8 @@
 # # shellcheck disable=SC2034
 # read -r CONTINUE
 
-# if is_macos; then
+# if is-macos; then
 #   echo 'pinentry-program /usr/local/bin/pinentry-mac' > ~/.gnupg/gpg-agent.conf
-# elif is_ubuntu; then
+# elif is-ubuntu; then
 #   echo 'pinentry-program /usr/bin/pinentry-curses' >  ~/.gnupg/gpg-agent.conf
 # fi

@@ -15,7 +15,7 @@
 # options so the setup script can know what to ask you for.
 
 if [[ "$1" == '_' ]]; then
-  if is_linux; then
+  if is-linux; then
     echo 'gui'
   fi
   echo 'work'
@@ -30,7 +30,7 @@ echo 'gpg-config'
 echo 'yubikey'
 echo 'oh-my-zsh'
 
-if [[ " $@ " =~ " gui " ]] || is_macos || is_windows; then
+if [[ " $@ " =~ " gui " ]] || is-macos || is-windows; then
   echo '1password'
   echo 'arc'
   echo 'balenaetcher'
@@ -70,7 +70,7 @@ if [[ " $@ " =~ " work " ]]; then
   echo 'asdf-deno'
   echo 'asdf-golang'
   echo 'asdf-lazydocker'
-  if [[ " $@ " =~ " gui " ]] || is_macos || is_windows; then
+  if [[ " $@ " =~ " gui " ]] || is-macos || is-windows; then
     echo 'figma'
     echo 'robo-3t'
     echo 'vscode'
@@ -80,7 +80,7 @@ if [[ " $@ " =~ " work " ]]; then
   fi
 fi
 
-if [[ " $@ " =~ " games " ]] && ([[ " $@ " =~ " gui " ]] || is_macos || is_windows); then
+if [[ " $@ " =~ " games " ]] && ([[ " $@ " =~ " gui " ]] || is-macos || is-windows); then
   echo 'battle-net'
   echo 'epic-games'
   echo 'gog-galaxy'

@@ -6,7 +6,7 @@ function be() {
 }
 
 
-if is_macos; then
+if is-macos; then
   # base64 decode
   function bd() {
     printf "%s" "$1" | base64 -D
@@ -18,8 +18,8 @@ else
   }
 fi
 
-if is_macos; then
-  function whos_using_my_port {
+if is-macos; then
+  function whos-using-my-port {
     lsof -i -P | grep LISTEN | grep ":$1 "
   }
 fi
@@ -143,21 +143,23 @@ function dotenv () {
   env $(cat .env | xargs) $@
 }
 
-alias rgb_to_hex='node -p "process.argv.slice(1).flatMap(i=>i.split(\",\")).map(n=>parseInt(n,10).toString(16)).join(\"\")"'
-alias decode_jwt='node -e "process.argv[1].split(\".\").slice(0, 2).map(p=>JSON.parse(Buffer.from(p,\"base64\"))).forEach(p=>console.log(p))"'
+alias rgb-to-hex='node -p "process.argv.slice(1).flatMap(i=>i.split(\",\")).map(n=>parseInt(n,10).toString(16)).join(\"\")"'
+alias hex-to-rgb='node -p "process.argv[1].replace(/[^0-9a-f]/gi,\"\").split(\"\").reduce((a,x,i)=>{i=Math.floor(i/2);a[i]??=[];a[i].push(x);return a},[]).map(c=>parseInt(c.join(\"\"),16)).join(\",\")"'
+alias decode-jwt='node -e "process.argv[1].split(\".\").slice(0, 2).map(p=>JSON.parse(Buffer.from(p,\"base64\"))).forEach(p=>console.log(p))"'
+alias jwt-decode='decode-jwt'
 
 # Type in filename.md or filename.js and it will open up in code
 alias -s {md,js,css,html,json,graphql,http,jsx,prisma}=code
 
 # Generate a .gitignore file
-function gi () {
+function gitignore () {
   curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;
 }
-function gi_node () {
-  gi macos,windows,linux,node,react
+function gitignore-node () {
+  gitignore macos,windows,linux,node,react
 }
-function gi_elixir () {
-  gi macos,windows,linux,elixir,phoenix
+function gitignore-elixir () {
+  gitignore macos,windows,linux,elixir,phoenix
 }
 
 function template() {
@@ -205,33 +207,27 @@ function cidr {
 
 # macOS aliases/functions
 # =======================
-if is_macos; then
+if is-macos; then
   alias clipboard='pbcopy'
-  alias chime-off='sudo nvram SystemAudioVolume=%80'
-  alias chime-on='sudo nvram -d SystemAudioVolume'
 
   # beep
   alias beep='echo -e "\a"'
 
   # get ip addresses
-  alias myip='ipconfig getifaddr en0; curl ipecho.net/plain; echo'
+  alias myip='ipconfig getifaddr en0; curl icanhazip.com; echo'
 
   # upgrade/update shortcuts
   alias brew-upgrade='brew update && brew upgrade && brew upgrade --cask --greedy && brew cleanup'
   alias upgrade='brew-upgrade'
 
   # show/hide hidden files in finder
-  alias show='defaults write com.apple.finder AppleShowAllFiles -bool TRUE; killall Finder;'
-  alias hide='defaults write com.apple.finder AppleShowAllFiles -bool FALSE; killall Finder;'
-
   alias uuid='printf "%s" "$(uuidgen | tr '"'"'[:upper:]'"'"' '"'"'[:lower:]'"'"')"'
 fi
 
 # Ubuntu/Debian/Pop!_OS aliases/functions
 # =======================================
-if is_ubuntu; then
-
-  if is_wsl; then
+if is-ubuntu; then
+  if is-wsl; then
     alias clipboard='clip.exe'
     alias open='wslview'
     alias xdg-open='wslview'
@@ -253,5 +249,5 @@ if is_ubuntu; then
   # generates uuid
   alias uuid='printf "%s" $(cat /proc/sys/kernel/random/uuid)'
 
-  alias myip='curl ipecho.net/plain; echo'
+  alias myip='curl icanhazip.com; echo'
 fi

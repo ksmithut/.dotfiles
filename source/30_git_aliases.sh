@@ -34,24 +34,16 @@ alias -s git=clone
 
 git-user () {
   if [[ "$#" -eq 3 ]]; then
-    local cwd="$(pwd | sed "s#^${HOME}#~#")"
-    local org_config_path="~/.${1}.gitconfig"
-    local full_config_path="${HOME}/.${1}.gitconfig"
-    touch "${full_config_path}"
-    git config --file "${full_config_path}" user.name "${2}"
-    git config --file "${full_config_path}" user.email "${3}"
-    echo "[includeIf \"gitdir:${cwd}\"]
-	path = ${org_config_path}" >> ~/.gitconfig
-    echo
-    echo ".gitconfig"
-    echo
-    cat ~/.gitconfig
-    echo
-    echo "${org_config_path}"
-    echo
-    cat "${full_config_path}"
+    local filename=".gitconfig.${1}"
+    local org_config_path="${HOME}/${filename}"
+    touch "${org_config_path}"
+    echo "org_config_path=${org_config_path}"
+    git config --file "${org_config_path}" user.name "${2}"
+    git config --file "${org_config_path}" user.email "${3}"
+    echo "[includeIf \"gitdir:$(pwd)/\"]
+	path = ${org_config_path}" >> ~/.gitconfig.includes
   else
-    echo 'Usage: git-user <org-name> <user-name> <user-email>'
+    echo 'Usage: git-user <org> <user-name> <user-email>'
     return 1
   fi
 }
