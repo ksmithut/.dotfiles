@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 is-macos || is-linux || return
 
 mv ~/.zshrc ~/.zshrc.pre-oh-my-zsh

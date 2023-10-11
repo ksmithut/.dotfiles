@@ -68,10 +68,9 @@ echo "Enter your password here. You should only have to enter it once through th
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-source "${DOTFILES}/source/00_dotfiles.sh"
+. "${DOTFILES}/source/00_dotfiles.sh"
 dotfiles_copy
 dotfiles_link
-dotfiles_options
 dotfiles_install
 
 echo "Restart your computer when you get a chance."
