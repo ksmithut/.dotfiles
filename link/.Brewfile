@@ -24,10 +24,10 @@ brew "zsh"
 
 # fonts
 tap "homebrew/cask-fonts"
-brew "font-cascadia-code"
-brew "font-cascadia-code-pl"
-brew "font-cascadia-mono"
-brew "font-cascadia-mono-pl"
+cask "font-cascadia-code"
+cask "font-cascadia-code-pl"
+cask "font-cascadia-mono"
+cask "font-cascadia-mono-pl"
 
 # Browsers
 cask "arc" if OS.mac?
