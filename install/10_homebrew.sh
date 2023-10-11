@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-is-macos || is-linux || return
 set -e
+is-macos || is-linux || return
 
 sudo chown -R "$(whoami)" /usr/local
 
