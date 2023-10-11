@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 is-macos || return
 
-echo 'hello'
-
 # Turn off "Play sound on startup"
 sudo nvram StartupMute=%01
 
