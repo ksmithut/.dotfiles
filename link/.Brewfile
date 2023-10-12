@@ -1,5 +1,6 @@
 brew "autojump"
 brew "bash"
+brew "bats-core"
 brew "coreutils"
 brew "curl"
 brew "ffmpeg"
@@ -61,7 +62,7 @@ brew "flyctl"
 cask "tableplus"
 cask "utm" if OS.mac?
 cask "visual-studio-code"
-cask "hub"
+brew "hub"
 
 # elixir/erlang
 brew "autoconf"

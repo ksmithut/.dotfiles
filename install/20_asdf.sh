@@ -13,9 +13,6 @@ asdf-install () {
   asdf-latest "$1"
 }
 
-# Shell things
-asdf-install bats
-
 # Golang
 asdf-install golang
 
