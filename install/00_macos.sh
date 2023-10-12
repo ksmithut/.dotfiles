@@ -71,3 +71,6 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Disable Creation of Metadata Files
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Remove all apps from the Dock
+defaults write com.apple.dock 'persistent-apps' -array
