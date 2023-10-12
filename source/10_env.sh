@@ -2,6 +2,7 @@
 
 PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 PATH="/opt/homebrew/opt/curl/bin:$PATH"
+PATH="/opt/homebrew/opt/openjdk/include:$PATH"
 PATH="$HOME/.docker/bin:$PATH"
 export PATH
 

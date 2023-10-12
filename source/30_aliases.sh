@@ -116,7 +116,7 @@ alias neo='clear && neofetch'
 function asdf-latest () {
   if [[ $(command -v asdf) ]]; then
     asdf install "${1}" latest
-    asdf global "${1}" "$(asdf latest ${1})"
+    asdf global "${1}" latest
   fi
 }
 

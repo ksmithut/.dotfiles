@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 is-macos || is-linux || return
 
-. "$HOME/.asdf/asdf.sh"
+. "$(brew --prefix asdf)/libexec/asdf.sh"
 
 asdf-latest () {
   asdf install "$1" latest
-  asdf global "$1" "$(asdf latest "$1")"
+  asdf global "$1" latest
 }
 
 asdf-install () {
@@ -13,16 +13,22 @@ asdf-install () {
   asdf-latest "$1"
 }
 
-asdf-install deno
+# Shell things
+asdf-install bats
+
+# Golang
+asdf-install golang
+
+# Elixir
+export PATH="/opt/homebrew/opt/openjdk/include:$PATH"
 asdf-install erlang
 asdf-install elixir
-asdf-install golang
-asdf-install lazydocker
-asdf-install mongo-tools
 
+# Node/JavaScript
 asdf plugin add nodejs
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf-latest nodejs
 echo 'legacy_version_file = yes' >> ~/.asdfrc
-
 asdf-install yarn
+asdf-install deno
+asdf-install bun
