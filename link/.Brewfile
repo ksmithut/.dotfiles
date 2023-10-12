@@ -1,6 +1,5 @@
 brew "autojump"
 brew "bash"
-brew "bats-core"
 brew "coreutils"
 brew "curl"
 brew "ffmpeg"
@@ -50,18 +49,19 @@ cask "zoom"
 # mas "Apple Configurator", id: 1037126344 if OS.mac?
 
 # development tools
-brew "flyctl"
-brew "dprint"
-cask "mongodb-compass"
-brew "mongodb/brew/mongodb-database-tools"
+tap "mongodb/brew"
+brew "mongodb-database-tools"
 brew "mongosh"
-cask "visual-studio-code"
-cask "tableplus"
-cask "docker" if OS.mac?
+cask "mongodb-compass"
 brew "lazydocker"
-cask "utm" if OS.mac?
-brew "openjdk"
+cask "docker" if OS.mac?
 brew "asdf"
+brew "dprint"
+brew "flyctl"
+cask "tableplus"
+cask "utm" if OS.mac?
+cask "visual-studio-code"
+cask "hub"
 
 # elixir/erlang
 brew "autoconf"
