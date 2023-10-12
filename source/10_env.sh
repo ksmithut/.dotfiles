@@ -2,7 +2,6 @@
 
 PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 PATH="/opt/homebrew/opt/curl/bin:$PATH"
-PATH="/opt/homebrew/opt/openjdk/include:$PATH"
 PATH="$HOME/.docker/bin:$PATH"
 export PATH
 
@@ -25,4 +24,4 @@ export COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
 
 export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_available
 
-# is-macos && export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openssl@1.1)"
+export KERL_CONFIGURE_OPTIONS="--without-javac"

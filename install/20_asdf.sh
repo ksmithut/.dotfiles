@@ -20,7 +20,7 @@ asdf-install bats
 asdf-install golang
 
 # Elixir
-export PATH="/opt/homebrew/opt/openjdk/include:$PATH"
+export KERL_CONFIGURE_OPTIONS="--without-javac"
 asdf-install erlang
 asdf-install elixir
 
