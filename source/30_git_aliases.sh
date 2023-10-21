@@ -37,11 +37,11 @@ git-user () {
     local filename=".gitconfig.${1}"
     local org_config_path="${HOME}/${filename}"
     touch "${org_config_path}"
-    echo "org_config_path=${org_config_path}"
     git config --file "${org_config_path}" user.name "${2}"
     git config --file "${org_config_path}" user.email "${3}"
     echo "[includeIf \"gitdir:$(pwd)/\"]
-	path = ${org_config_path}" >> ~/.gitconfig.includes
+	path = ${org_config_path}
+" >> ~/.gitconfig.local
   else
     echo 'Usage: git-user <org> <user-name> <user-email>'
     return 1

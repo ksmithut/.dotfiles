@@ -12,8 +12,9 @@ touch "${org_config_path}"
 echo "org_config_path=${org_config_path}"
 git config --file "${org_config_path}" user.name "${GITHUB_USER}"
 git config --file "${org_config_path}" user.email "${GITHUB_EMAIL}"
-echo "[includeIf \"gitdir:$(pwd)/\"]
-	path = ${org_config_path}" >> ~/.gitconfig.includes
+echo "[includeIf \"gitdir:~/Code/github.com/\"]
+	path = ${org_config_path}
+" >> ~/.gitconfig.local
 
 SSH_FILENAME="id_github"
 SSH_HOST="github.com"
