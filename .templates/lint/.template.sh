@@ -1,9 +1,11 @@
 #!/usr/bin/env sh
 
-npm pkg set scripts.format="prettier-standard --lint"
-npm pkg set scripts.lint="prettier-standard --check --lint"
+npm pkg set scripts.format="prettier --write ."
+npm pkg set scripts.lint="prettier --check . && eslint . && tsc"
 
-yarn add -D \
-  @ksmithut/prettier-standard \
-  standard
-
+npm install --save-dev \
+  prettier \
+  eslint \
+  eslint-config-standard \
+  eslint-config-standard-jsx \
+  eslint-config-prettier

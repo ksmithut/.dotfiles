@@ -62,7 +62,7 @@ brew "flyctl"
 cask "tableplus"
 cask "utm" if OS.mac?
 cask "visual-studio-code"
-brew "hub"
+brew "gh"
 
 # elixir/erlang
 brew "autoconf"

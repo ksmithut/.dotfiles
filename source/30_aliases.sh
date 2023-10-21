@@ -33,6 +33,9 @@ fi
 # gpg helpers
 alias gpg-ls='gpg --list-secret-keys --keyid-format LONG'
 
+# Change all permissions to 755 for directories and 644 for files
+alias fix-permissions='find . -type d -exec chmod 755 {} \; && find . -type f -exec chmod 644 {} \;'
+
 # starts simple http server in current directory
 alias static='python3 -m http.server'
 

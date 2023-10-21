@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-yarn add -D \
+npm install --save-dev \
   @types/node \
   typescript
 

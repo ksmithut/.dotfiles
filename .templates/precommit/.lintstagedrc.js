@@ -1,4 +1,5 @@
 export default {
-  '**/*': 'prettier-standard --lint',
+  '**/*': 'prettier --write',
+  '**/*.js': 'eslint',
   '**/*.{js,json}': () => 'tsc'
 }
