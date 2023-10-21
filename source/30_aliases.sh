@@ -167,7 +167,7 @@ function gitignore-elixir () {
 
 function template() {
   if [ "$1" = "" ]; then
-    ls "${DOTFILES}/.templates" | cut -f1
+    ls "${DOTFILES}/templates" | cut -f1
     return 0
   fi
   if [ "$2" = "" ]; then
@@ -175,7 +175,7 @@ function template() {
     echo 'template <template> <name>'
     return 1
   fi
-  local template_path="${DOTFILES}/.templates/$1"
+  local template_path="${DOTFILES}/templates/$1"
   if [ -d "${template_path}" ]; then
     cp -R "${template_path}/" "$2"
     cd "$2"
