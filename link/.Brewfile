@@ -46,6 +46,7 @@ cask "discord"
 cask "keybase"
 cask "slack"
 cask "zoom"
+cask "kap"
 # cask "figma" # Currently prefering just using the web app
 # mas "Apple Configurator", id: 1037126344 if OS.mac?
 
