@@ -26,6 +26,7 @@ asdf plugin add nodejs
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf-latest nodejs
 echo 'legacy_version_file = yes' >> ~/.asdfrc
-asdf-install yarn
+corepack enable
+corepack install --global --all
 asdf-install deno
 asdf-install bun
