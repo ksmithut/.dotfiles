@@ -1,15 +1,6 @@
 #!/usr/bin/env zsh
 
-PATH="$(yarn global bin):$PATH"
-export PATH
-
 alias npm-upgrade-interactive='npx -y npm-check-updates@latest --interactive'
-alias yarn="corepack yarn"
-alias yarnpkg="corepack yarnpkg"
-alias pnpm="corepack pnpm"
-alias pnpx="corepack pnpx"
-alias npm="corepack npm"
-alias npx="corepack npx"
 
 # Upgrade nvm
 function nvm-upgrade() {
