@@ -58,6 +58,7 @@ cask "mongodb-compass"
 brew "lazydocker"
 cask "docker" if OS.mac?
 brew "asdf"
+brew "yarn"
 brew "dprint"
 brew "flyctl"
 cask "tableplus"
