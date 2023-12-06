@@ -3,15 +3,15 @@
   "description": "",
   "version": "0.0.0",
   "private": true,
-  "main": "src/index.js",
   "type": "module",
   "engines": {
     "node": ">=20.x"
   },
   "scripts": {
-    "start": "node .",
-    "start:dev": "node --watch --inspect=0.0.0.0:9229 ."
-  },
-  "dependencies": {},
-  "devDependencies": {}
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "format": "prettier --write .",
+    "lint": "prettier --check . && tsc"
+  }
 }
