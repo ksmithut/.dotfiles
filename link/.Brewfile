@@ -51,9 +51,9 @@ cask "kap"
 # mas "Apple Configurator", id: 1037126344 if OS.mac?
 
 # development tools
+brew "mongosh"
 tap "mongodb/brew"
 brew "mongodb-database-tools"
-brew "mongosh"
 cask "mongodb-compass"
 brew "lazydocker"
 cask "docker" if OS.mac?
