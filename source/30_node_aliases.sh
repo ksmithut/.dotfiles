@@ -11,3 +11,5 @@ function nvm-upgrade() {
   # shellcheck disable=SC1090
   \. "$NVM_DIR/nvm.sh"
 }
+
+alias run='node --run'
