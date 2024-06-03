@@ -1,6 +1,5 @@
 brew "autojump"
 brew "bash"
-brew "bats-core"
 brew "coreutils"
 brew "curl"
 brew "ffmpeg"
@@ -40,12 +39,12 @@ cask "firefox"
 
 # apps
 cask "1password"
-cask "balenaetcher" if OS.mac?
+# cask "balenaetcher" if OS.mac?
 cask "bettertouchtool" if OS.mac?
 cask "discord"
-cask "keybase"
+# cask "keybase"
 cask "slack"
-cask "zoom"
+# cask "zoom"
 cask "kap"
 # cask "figma" # Currently prefering just using the web app
 # mas "Apple Configurator", id: 1037126344 if OS.mac?
@@ -58,11 +57,10 @@ cask "mongodb-compass"
 brew "lazydocker"
 cask "docker" if OS.mac?
 brew "asdf"
-brew "yarn"
-brew "dprint"
+# brew "yarn"
 brew "flyctl"
 cask "tableplus"
-cask "utm" if OS.mac?
+# cask "utm" if OS.mac?
 cask "visual-studio-code"
 brew "gh"
 
