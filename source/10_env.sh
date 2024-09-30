@@ -27,3 +27,5 @@ export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_available
 export KERL_CONFIGURE_OPTIONS="--without-javac"
 
 export ASDF_GOLANG_MOD_VERSION_ENABLED=true
+
+ulimit -n 8192
