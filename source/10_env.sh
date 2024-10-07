@@ -22,10 +22,6 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # https://github.com/npm/npm/issues/11696
 export COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
 
-export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_available
-
 export KERL_CONFIGURE_OPTIONS="--without-javac"
-
-export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 
 ulimit -n 8192

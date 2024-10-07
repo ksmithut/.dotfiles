@@ -56,7 +56,7 @@ brew "mongodb-database-tools"
 cask "mongodb-compass"
 brew "lazydocker"
 cask "docker" if OS.mac?
-brew "asdf"
+brew "mise"
 # brew "yarn"
 brew "flyctl"
 cask "tableplus"

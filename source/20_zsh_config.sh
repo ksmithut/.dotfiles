@@ -65,7 +65,6 @@ export DEFAULT_USER=${USER}
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  asdf
   git
   node
   yarn
@@ -79,6 +78,7 @@ plugins=(
   autojump
   web-search
   mix-fast
+  mise
 )
 
 mac_plugins=(
@@ -152,9 +152,3 @@ build_prompt() {
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# unset ASDF_DIR
-if is-macos; then
-  ASDF_DIR="$(brew --prefix asdf)/libexec"
-  . "$ASDF_DIR/asdf.sh"
-fi
