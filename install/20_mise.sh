@@ -10,9 +10,9 @@ mise use --global erlang@latest
 mise use --global elixir@latest
 
 # Node/JavaScript
-muse use --global node@latest
-muse use --global deno@latest
-muse use --global bun@latest
+mise use --global node@latest
+mise use --global deno@latest
+mise use --global bun@latest
 
 # Terraform
-muse use --global terraform@latest
+mise use --global terraform@latest
