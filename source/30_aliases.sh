@@ -116,32 +116,6 @@ function colorgrid() {
 
 alias neo='clear && neofetch'
 
-function asdf-latest () {
-  if [[ $(command -v asdf) ]]; then
-    asdf install "${1}" latest
-    asdf global "${1}" latest
-  fi
-}
-
-function asdf-upgrade () {
-  if [[ $(command -v asdf) ]]; then
-    asdf plugin update --all
-    local IFS=$'\n'
-    local plugins=($(asdf plugin list))
-    for plugin in "${plugins[@]}"; do
-      asdf-latest "${plugin}"
-    done
-  fi
-}
-
-function asdf-install () {
-  if [[ $(command -v asdf) ]]; then
-    asdf plugin add "$1"
-    asdf install "$1" latest
-    asdf global "$1" "$(asdf latest "$1")"
-  fi
-}
-
 function dotenv () {
   env $(cat .env | xargs) $@
 }
