@@ -1,8 +1,8 @@
 # .dotfiles
 
 This is for my personal use. Feel free to use any of these scripts, but run them
-at your own discretion. I am not responsible for any effects of these scripts
-on your machine.
+at your own discretion. I am not responsible for any effects of these scripts on
+your machine.
 
 ## Supported Operating Systems
 
@@ -35,7 +35,8 @@ cd ~ && git clone https://github.com/ksmithut/.dotfiles.git && .dotfiles/setup.s
 > cd ~ && git clone https://github.com/ksmithut/.dotfiles.git && .dotfiles/setup.sh ~/.my-options-file.sh
 > ```
 >
-> If no custom options file argument is given, it will look for a `options.sh` in the `.dotfiles` folder or use the `options.template.sh`.
+> If no custom options file argument is given, it will look for a `options.sh`
+> in the `.dotfiles` folder or use the `options.template.sh`.
 
 ## Project structure
 
@@ -43,11 +44,12 @@ cd ~ && git clone https://github.com/ksmithut/.dotfiles.git && .dotfiles/setup.s
   anything you add so that it's executable.
 
 - `copy/` Anything in here gets copied to your home directory. This would be for
-  things that you would end up changing post-install, such as adding username
-  or machine specific stuff to.
+  things that you would end up changing post-install, such as adding username or
+  machine specific stuff to.
 
 - `install/` All of the `.sh` files in this directory get run on initialization.
-  There is also an `programs/` directory in here that we'll explain down further.
+  There is also an `programs/` directory in here that we'll explain down
+  further.
 
 - `link/` All of the files here get symlinked to your home directory.
 
@@ -58,9 +60,9 @@ cd ~ && git clone https://github.com/ksmithut/.dotfiles.git && .dotfiles/setup.s
 
 - `setup.sh` The script to run when setting up your system.
 
-- `options.template.sh` This is where customization comes in. Using this template, copy
-  the file and rename it to just `options.sh`. This is how you select how you want your
-  system setup with various environment options.
+- `options.template.sh` This is where customization comes in. Using this
+  template, copy the file and rename it to just `options.sh`. This is how you
+  select how you want your system setup with various environment options.
 
 ## Environment Options structure
 
@@ -122,7 +124,8 @@ USB drive using something like [balenaEtcher](https://www.balena.io/etcher/).
 
 ### Windows
 
-Follow the instructions [here](https://support.microsoft.com/en-us/help/15088/windows-10-create-installation-media)
+Follow the instructions
+[here](https://support.microsoft.com/en-us/help/15088/windows-10-create-installation-media)
 
 Although the setup script should work for windows, it's still experimental.
 Well, the whole project is, but this even more so.
@@ -158,7 +161,8 @@ Next install git:
 winget install --exact --id Git.Git
 ```
 
-You'll need to quit the shell you're currently in to let git get its PATH all setup.
+You'll need to quit the shell you're currently in to let git get its PATH all
+setup.
 
 It is suggested that you move to your home directory or a directory within your
 home directory.
@@ -175,18 +179,22 @@ Then run:
 Set-ExecutionPolicy Bypass -Scope Process -Force; . .\\setup.ps1
 ```
 
-Also, in order to fix time, Windows should be made to use UTC rather
-than local time.
+Also, in order to fix time, Windows should be made to use UTC rather than local
+time.
 
 [https://askubuntu.com/questions/169376/clock-time-is-off-on-dual-boot#169384](https://askubuntu.com/questions/169376/clock-time-is-off-on-dual-boot#169384)
 
-> Create a file named WindowsTimeFixUTC.reg with the following contents and then double click on it to merge the contents with the registry:
+> Create a file named WindowsTimeFixUTC.reg with the following contents and then
+> double click on it to merge the contents with the registry:
 >
 >     Windows Registry Editor Version 5.00
 >     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation]
 >          "RealTimeIsUniversal"=dword:00000001
 >
-> Note: Windows Time service will still write local time to the RTC regardless of the registry setting above on shutdown, so it is handy to disable Windows Time service with this command (if time sync is still required while in Windows use any third-party time sync solution):
+> Note: Windows Time service will still write local time to the RTC regardless
+> of the registry setting above on shutdown, so it is handy to disable Windows
+> Time service with this command (if time sync is still required while in
+> Windows use any third-party time sync solution):
 >
 >     sc config w32time start= disabled
 
@@ -194,3 +202,8 @@ Here's a list of apps that don't have a `winget` command yet as of writing this:
 
 - [Battle.net](https://us.battle.net/account/download/)
 - [Origin](https://www.origin.com/usa/en-us/store/download)
+
+Other:
+
+Mac run windows images: https://github.com/TuringSoftware/CrystalFetch Mac run
+mac images: https://ipsw.me/product/Mac
