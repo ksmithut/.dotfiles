@@ -67,7 +67,6 @@ brew "gh"
 # elixir/erlang
 brew "autoconf"
 brew "openssl"
-brew "openssl@1.1"
 brew "wxwidgets"
 brew "libxslt"
 brew "fop"
