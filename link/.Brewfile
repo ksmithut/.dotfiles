@@ -2,13 +2,13 @@ brew "autojump"
 brew "bash"
 brew "coreutils"
 brew "curl"
-brew "ffmpeg"
+# brew "ffmpeg"
 brew "git"
-brew "gnupg"
+# brew "gnupg"
 brew "grep"
-brew "imagemagick"
+# brew "imagemagick"
 brew "jq"
-brew "pinentry-mac" if OS.mac?
+# brew "pinentry-mac" if OS.mac?
 brew "python"
 # brew "shellcheck"
 # brew "siege"
@@ -18,7 +18,7 @@ brew "tree"
 brew "watch"
 brew "watchman"
 brew "wget"
-brew "ykman"
+# brew "ykman"
 brew "zsh-completions"
 brew "zsh"
 
@@ -29,7 +29,7 @@ cask "font-cascadia-mono"
 cask "font-cascadia-mono-pl"
 
 # Browsers
-# cask "arc" if OS.mac?
+cask "arc" if OS.mac?
 cask "firefox"
 # cask "google-chrome"
 # cask "chromium", args: { no_quarantine: true }

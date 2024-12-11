@@ -6,9 +6,9 @@ function e_header() {
   echo -e "\033[1;36m$1\033[0m"
   echo "======================================================================="
 }
-function e_success()  { echo -e " \033[1;32m✔\033[0m  $*"; }
-function e_error()    { echo -e " \033[1;31m✖\033[0m  $*"; }
-function e_arrow()    { echo -e " \033[1;34m➜\033[0m  $*"; }
+function e_success() { echo -e " \033[1;32m✔\033[0m  $*"; }
+function e_error()   { echo -e " \033[1;31m✖\033[0m  $*"; }
+function e_arrow()   { echo -e " \033[1;34m➜\033[0m  $*"; }
 
 if [[ "${DOTFILES}" == "" ]]; then
   DOTFILES="$( cd "$(dirname "$0")/" || exit; pwd -P )"
@@ -68,7 +68,15 @@ echo "Enter your password here. You should only have to enter it once through th
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-. "${DOTFILES}/source/00_dotfiles.sh"
+# OS detection
+is-macos () { [[ "$OSTYPE" =~ ^darwin ]] || return 1; }
+is-apple-silicon () { is-macos && [[ "$(arch)" == "arm64" ]] || return 1; }
+is-ubuntu () { [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]] || [[ "$(cat /etc/issue 2> /dev/null)" =~ "Pop!_OS" ]] || return 1; }
+is-zsh () { [[ "${ZSH_NAME}" == "zsh" ]] || return 1; }
+is-windows () { [[ "${OS}" == "Windows_NT" ]] || return 1; }
+is-linux () { [[ "$(which_os)" == "linux" ]] || return 1; }
+is-wsl () { [[ "$(cat /proc/version 2> /dev/null)" =~ microsoft ]] || return 1; }
+
 dotfiles_copy
 dotfiles_link
 dotfiles_install
