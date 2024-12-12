@@ -14,6 +14,7 @@ is-zsh () { [[ "${ZSH_NAME}" == "zsh" ]] || return 1; }
 is-windows () { [[ "${OS}" == "Windows_NT" ]] || return 1; }
 is-linux () { [[ "$(which_os)" == "linux" ]] || return 1; }
 is-wsl () { [[ "$(cat /proc/version 2> /dev/null)" =~ microsoft ]] || return 1; }
+dotfiles () { cd "${DOTFILES}"; }
 
 # ===============================================
 # env
@@ -469,6 +470,7 @@ git-user () {
 # ===============================================
 
 alias npm-upgrade-interactive='npx -y npm-check-updates@latest --interactive'
+alias run='node --run'
 
 
 # # Source all of the files in ~/.dotfiles/source
