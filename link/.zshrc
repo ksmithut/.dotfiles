@@ -62,7 +62,7 @@ plugins=(
   autojump
   # web-search
   mix-fast
-  # mise
+  mise
 )
 
 # shellcheck disable=SC1090
