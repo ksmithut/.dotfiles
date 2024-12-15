@@ -4,14 +4,13 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "engines": {
-    "node": ">=20.x"
-  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview",
+    "lint": "prettier --check . && tsc",
     "format": "prettier --write .",
-    "lint": "prettier --check . && tsc"
-  }
+    "preview": "vite preview"
+  },
+  "dependencies": {},
+  "devDependencies": {}
 }
