@@ -256,6 +256,7 @@ if is-macos; then
 
   # upgrade/update shortcuts
   alias brew-upgrade='brew update && brew upgrade && brew upgrade --cask && brew cleanup'
+  alias brew-why='brew uses --installed'
   alias upgrade='brew-upgrade'
 
   # show/hide hidden files in finder
