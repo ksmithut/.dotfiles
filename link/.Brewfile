@@ -31,21 +31,13 @@ cask "font-cascadia-mono-pl"
 # Browsers
 cask "arc" if OS.mac?
 cask "firefox"
-# cask "google-chrome"
-# cask "chromium", args: { no_quarantine: true }
-# cask "microsoft-edge"
 
 # apps
 cask "1password"
 # cask "balenaetcher" if OS.mac?
-# cask "bettertouchtool" if OS.mac?
 cask "discord"
-# cask "keybase"
 cask "slack"
-# cask "zoom"
 cask "kap"
-# cask "figma" # Currently prefering just using the web app
-# mas "Apple Configurator", id: 1037126344 if OS.mac?
 
 # development tools
 brew "mongosh"
@@ -55,7 +47,6 @@ cask "mongodb-compass"
 brew "lazydocker"
 cask "docker" if OS.mac?
 brew "mise"
-# brew "yarn"
 brew "flyctl"
 cask "tableplus"
 cask "utm" if OS.mac?
@@ -75,6 +66,3 @@ brew "fop"
 cask "battle-net" if OS.mac?
 cask "minecraft" if OS.mac?
 cask "steam"
-# cask "epic-games" # I don't play many of these games
-# cask "gog-galaxy" # I don't play many of these games
-# cask "league-of-legends" # I rarely play this
