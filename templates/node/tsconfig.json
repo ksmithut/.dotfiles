@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
-    "moduleResolution": "Node",
-    "module": "ESNext",
-    "esModuleInterop": true,
     "target": "ESNext",
+    "module": "NodeNext",
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+    "verbatimModuleSyntax": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
     "alwaysStrict": true,
     "strict": true,
     "sourceMap": true,

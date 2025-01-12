@@ -85,15 +85,9 @@ function be() {
 }
 
 # base64 decode
-if is-macos; then
-  function bd() {
-    printf "%s" "$1" | base64 -D
-  }
-else
-  function bd() {
-    printf "%s" "$1" | base64 -d
-  }
-fi
+function bd() {
+  printf "%s" "$1" | base64 -d
+}
 
 if is-macos; then
   function whos-using-my-port {
@@ -187,17 +181,13 @@ function colorgrid() {
 
 alias neo='clear && neofetch'
 
-function dotenv () {
-  env $(cat .env | xargs) $@
-}
-
 alias rgb-to-hex='node -p "process.argv.slice(1).flatMap(i=>i.split(\",\")).map(n=>parseInt(n,10).toString(16)).join(\"\")"'
 alias hex-to-rgb='node -p "process.argv[1].replace(/[^0-9a-f]/gi,\"\").split(\"\").reduce((a,x,i)=>{i=Math.floor(i/2);a[i]??=[];a[i].push(x);return a},[]).map(c=>parseInt(c.join(\"\"),16)).join(\",\")"'
 alias decode-jwt='node -e "process.argv[1].split(\".\").slice(0, 2).map(p=>JSON.parse(Buffer.from(p,\"base64\"))).forEach(p=>console.log(p))"'
 alias jwt-decode='decode-jwt'
 
 # Type in filename.md or filename.js and it will open up in code
-alias -s {md,js,css,html,json,graphql,http,jsx,prisma}=zed
+alias -s {md,js,jsx,ts,tsx,css,html,json,graphql,http,jsx,prisma}=zed
 
 # Generate a .gitignore file
 function gitignore () {
