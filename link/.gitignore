@@ -184,16 +184,7 @@ typings/
 # End of https://www.gitignore.io/api/go,node,redis,macos,linux,elixir,visualstudiocode,sass
 
 .env
-scratch.http
-scratch.js
-scratch.mjs
-scratch.*.js
-scratch.sh
-scratch.md
-scratch.ex
-scratch.exs
-scratch.txt
-scratch.env
+scratch.*
 /scratch
 *.scratch.*
 .tool-versions
