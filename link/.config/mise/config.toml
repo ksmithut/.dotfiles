@@ -1,0 +1,11 @@
+[tools]
+bun = "latest"
+deno = "latest"
+go = "latest"
+terraform = "latest"
+node = "latest"
+erlang = "latest"
+elixir = "latest"
+
+[settings]
+disable_hints = ["outdated_bump"]

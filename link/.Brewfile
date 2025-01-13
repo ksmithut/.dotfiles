@@ -45,6 +45,7 @@ cask "tableplus"
 cask "utm" if OS.mac?
 cask "crystalfetch" if OS.mac?
 # cask "visual-studio-code"
+cask "ghostty"
 cask "zed"
 brew "gh"
 

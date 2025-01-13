@@ -1,0 +1,12 @@
+# https://ghostty.org/docs/config/reference
+# reload - cmd+shift+,
+
+# ghostty +list-fonts
+font-family = "Cascadia Code PL"
+font-size = 15
+
+# "transparent" "native" "tabs" "hidden"
+macos-titlebar-style = tabs
+
+# ghostty +list-themes
+theme=OneHalfDark

@@ -1,0 +1,12 @@
+*
+!/.gitignore
+
+!/mise
+!/mise/config.toml
+
+!/zed
+!/zed/keymap.json
+!/zed/settings.json
+
+!/ghostty
+!/ghostty/config
