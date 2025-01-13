@@ -207,3 +207,6 @@ Other:
 
 Mac run windows images: https://github.com/TuringSoftware/CrystalFetch Mac run
 mac images: https://ipsw.me/product/Mac
+
+- [Macbook Air M1, Late 2020](https://ipsw.me/MacBookAir10,1)
+- [Macbook Pro M1 Max, 16in 2021](https://ipsw.me/MacBookPro18,2)
