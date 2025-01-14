@@ -17,5 +17,15 @@
     "bindings": {
       // "j k": ["workspace::SendKeystrokes", "escape"]
     }
+  },
+  {
+    "context": "Terminal",
+    "use_key_equivalents": true,
+    "bindings": {
+      "alt-up": "pane::SplitUp",
+      "alt-down": "pane::SplitDown",
+      "alt-left": "pane::SplitLeft",
+      "alt-right": "pane::SplitRight"
+    }
   }
 ]

@@ -49,18 +49,8 @@ export ZSH_THEME="agnoster"
 export DEFAULT_USER=${USER}
 
 plugins=(
-  # git
-  # node
-  # yarn
-  # docker
-  # vscode
-  # tmux
-  # gpg-agent
   ssh-agent
-  # kubectl
-  # kubectx
   autojump
-  # web-search
   mix-fast
   mise
 )
