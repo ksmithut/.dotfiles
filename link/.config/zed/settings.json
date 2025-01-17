@@ -23,6 +23,12 @@
   "languages": {
     "Elixir": {
       "wrap_guides": [100]
+    },
+    "Markdown": {
+      "formatter": "prettier"
     }
+  },
+  "file_types": {
+    "HTML": ["svg"]
   }
 }
