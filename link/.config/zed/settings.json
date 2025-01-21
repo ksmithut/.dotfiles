@@ -20,6 +20,7 @@
     "metrics": false
   },
   "wrap_guides": [80],
+  "format_on_save": "on",
   "languages": {
     "Elixir": {
       "wrap_guides": [100]
