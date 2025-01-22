@@ -7,6 +7,8 @@
 !/zed
 !/zed/keymap.json
 !/zed/settings.json
+!/zed/snippets
+!/zed/snippets/*
 
 !/ghostty
 !/ghostty/config

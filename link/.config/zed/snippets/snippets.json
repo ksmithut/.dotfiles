@@ -1,0 +1,27 @@
+{
+  "Shrug": {
+    "prefix": "shrug",
+    "body": ["¯\\_(ツ)_/¯"],
+    "description": "Print out an ASCII shrug"
+  },
+  "Pino Pretty": {
+    "prefix": "pino-pretty",
+    "body": ["pino-pretty -c -i hostname,pid,time,name"]
+  },
+  "Redis URL": {
+    "prefix": "redis-url",
+    "body": ["redis://127.0.0.1:6379"]
+  },
+  "Mongo URL": {
+    "prefix": "mongo-url",
+    "body": ["mongodb://localhost:27017"]
+  },
+  "Postgres URL": {
+    "prefix": "postgres-url",
+    "body": ["postgres://postgres:postgres@localhost:27017/postgres"]
+  },
+  "mongo-clear": {
+    "prefix": "mongo-clear",
+    "body": ["db.getMongo().getDBNames().filter(name => name.match(/^platform-test-/) || name.match(/^app-identity-test-/)).forEach(name => db.getMongo().getDB(name).dropDatabase())"]
+  }
+}

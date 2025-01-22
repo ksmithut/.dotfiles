@@ -1,0 +1,396 @@
+{
+  "Log JSON": {
+    "prefix": "log-json",
+    "description": "Log the full objects",
+    "body": [
+      "console.log(JSON.stringify(${1:data}, null, 2))"
+    ]
+  },
+  "Custom Error Class": {
+    "prefix": "custom-error",
+    "body": [
+      "class ${1:ErrorClassName} extends Error {",
+      "  constructor (message) {",
+      "    super(message)",
+      "    Error.captureStackTrace(this, this.constructor)",
+      "    this.code = '${2:ERROR_CODE}'",
+      "  }",
+      "}"
+    ]
+  },
+  "Allow bad certs": {
+    "prefix": "tls-reject-unauthorized",
+    "body": [
+      "process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'"
+    ]
+  },
+  "Random number": {
+    "prefix": "rand",
+    "body": [
+      "/**",
+      " * @param {number} min",
+      " * @param {number} max",
+      " */",
+      "function random(min, max) {",
+      "  return Math.floor(Math.random() * (max - min + 1) + min)",
+      "}"
+    ]
+  },
+  "Range": {
+    "prefix": "range",
+    "body": [
+      "/**",
+      " * @param {number} min",
+      " * @param {number} max",
+      " */",
+      "function * range(min, max) {",
+      "  if (min < max) for (let num = Math.ceil(min); num <= max; num++) yield num",
+      "  else for (let num = Math.floor(max); num >= min; num--) yield num",
+      "}"
+    ]
+  },
+  "Wait Promise": {
+    "prefix": "wait",
+    "body": [
+      "/**",
+      " * @param {number} ms",
+      " */",
+      "function wait(ms) {",
+      "  return new Promise(resolve => setTimeout(resolve, ms))",
+      "}"
+    ]
+  },
+  "Deferred Promise": {
+    "prefix": "deferred",
+    "body": [
+      "function createDeferred() {",
+      "  const deferred = {}",
+      "  deferred.promise = new Promise((resolve, reject) => {",
+      "    deferred.resolve = resolve",
+      "    deferred.reject = reject",
+      "  }",
+      "  return deferred",
+      "}"
+    ]
+  },
+  "logger": {
+    "prefix": "logger",
+    "description": "The boilerplate for pino logs",
+    "body": [
+      "import pino from 'pino'",
+      "import { z } from 'zod'",
+      "",
+      "export const logLevelSchema = z.enum([",
+      "  'silent',",
+      "  'trace',",
+      "  'debug',",
+      "  'info',",
+      "  'warn',",
+      "  'error',",
+      "  'fatal'",
+      "])",
+      "",
+      "/**",
+      " * @param {object} options",
+      " * @param {string} options.name",
+      " * @param {string} options.level",
+      " * @param {boolean} [options.pretty=false]",
+      " */",
+      "export function configureLogger ({ name, level, pretty = false }) {",
+      "  return pino({",
+      "    name,",
+      "    level: logLevelSchema.parse(level),",
+      "    prettyPrint: pretty,",
+      "    serializers: {",
+      "      req: pino.stdSerializers.req,",
+      "      res: pino.stdSerializers.res,",
+      "      err: pino.stdSerializers.err",
+      "    },",
+      "    redact: {",
+      "      paths: [",
+      "        'req.headers.authorization',",
+      "        'req.headers.cookie',",
+      "        'res.headers[\"set-cookie\"]'",
+      "      ]",
+      "    }",
+      "  })",
+      "}",
+      ""
+    ]
+  },
+  "bin prefix": {
+    "prefix": "bin",
+    "description": "Puts in the prefix needed for a node binary",
+    "body": [
+      "#!/usr/bin/env node"
+    ]
+  },
+  "http-listen": {
+    "prefix": "http-listen",
+    "body": [
+      "import { once } from 'node:events'",
+      "import { promisify } from 'node:util'",
+      "",
+      "/**",
+      " * @param {import('http').Server} server",
+      " * @param {number} port",
+      " */",
+      "export async function httpListen(server, port) {",
+      "  await once(server.listen(port), 'listening')",
+      "  return promisify(server.close.bind(server))",
+      "}",
+      ""
+    ]
+  },
+  "template-tag": {
+    "prefix": "template-tag",
+    "body": [
+      "/**",
+      " * @param {TemplateStringsArray} strings",
+      " * @param  {...any} exprs",
+      " */",
+      "function ${1:templateTag}(strings, ...exprs) {",
+      "  return strings.reduce((str, part, i) => str + exprs[i - 1] + part)",
+      "}"
+    ]
+  },
+  "timeout": {
+    "prefix": "timeout",
+    "body": [
+      "import { setTimeout as wait } from 'node:timers/promises'",
+      "",
+      "export class Timeout extends Error {",
+      "  constructor(message = 'timeout', code = 'TIMEOUT_ERROR') {",
+      "    super(message)",
+      "    Error.captureStackTrace(this, this.constructor)",
+      "    this.code = code",
+      "  }",
+      "}",
+      "",
+      "/**",
+      " * @template TValue",
+      " * @param {Promise<TValue>} promise",
+      " * @param {number} ms",
+      " * @param {object} [options]",
+      " * @param {string} [options.message]",
+      " * @param {string} [options.code]",
+      " */",
+      "export function timeout(promise, ms, { message, code } = {}) {",
+      "  const ac = new AbortController()",
+      "  return Promise.race([",
+      "    promise.then(value => {",
+      "      ac.abort()",
+      "      return value",
+      "    }),",
+      "    wait(ms, 0, { signal: ac.signal }).then(() =>",
+      "      Promise.reject(new Timeout(message, code))",
+      "    )",
+      "  ])",
+      "}",
+      ""
+    ]
+  },
+  "Graceful Shutdown": {
+    "prefix": "grace",
+    "body": [
+      "let called = false",
+      "function shutdown() {",
+      "  if (called) return",
+      "  called = true",
+      "  stop().then(() => process.exit()).catch(err => {",
+      "    console.error(err)",
+      "    process.exit(1)",
+      "  })",
+      "}",
+      "process.once('SIGINT', shutdown)",
+      "process.once('SIGTERM', shutdown)",
+      "process.once('SIGUSR2', shutdown)"
+    ]
+  },
+  "once": {
+    "prefix": "once",
+    "body": [
+      "/**",
+      " * @template TReturnValue",
+      " * @param {() => TReturnValue} fn",
+      " */",
+      "export function once(fn) {",
+      "  let called = false",
+      "  /** @type {TReturnValue} */",
+      "  let value",
+      "  return () => {",
+      "    if (!called) {",
+      "      value = fn()",
+      "      called = true",
+      "    }",
+      "    return value",
+      "  }",
+      "}",
+      ""
+    ]
+  },
+  "timing": {
+    "prefix": "timing",
+    "body": [
+      "const start = process.hrtime.bigint()",
+      "const end = process.hrtime.bigint()",
+      "const duration = Number(end - start) / 1e6"
+    ]
+  },
+  "keyby": {
+    "prefix": "keyby",
+    "body": [
+      "/**",
+      " * @template TValue",
+      " * @template TKey",
+      " * @param {TValue[]} array",
+      " * @param {(item: TValue) => TKey} getKey",
+      " */",
+      "function keyBy(array, getKey) {",
+      "  return array.reduce(",
+      "    /** @param {Map<TKey, TValue>} map */",
+      "    (map, item) => map.set(getKey(item), item),",
+      "    new Map()",
+      "  )",
+      "}"
+    ]
+  },
+  "groupby": {
+    "prefix": "groupby",
+    "body": [
+      "/**",
+      " * @template TValue",
+      " * @template TKey",
+      " * @param {TValue[]} array",
+      " * @param {(item: TValue) => TKey} getKey",
+      " */",
+      "function groupBy(array, getKey) {",
+      "  return array.reduce(",
+      "    /** @param {Map<TKey, TValue[]>} map */",
+      "    (map, item) => {",
+      "      const key = getKey(item)",
+      "      const items = map.get(key) ?? []",
+      "      items.push(item)",
+      "      return map.set(key, items)",
+      "    },",
+      "    new Map()",
+      "  )",
+      "}"
+    ]
+  },
+  "compose-pipe": {
+    "prefix": "compose-pipe",
+    "body": [
+      "/**",
+      " * @template {any[]} T",
+      " * @template R",
+      " * @param {(...args: T) => R} fn1",
+      " * @param {...((value: R) => R)} fns",
+      " * @returns {(...args: T) => R}",
+      " */",
+      "export function pipe (fn1, ...fns) {",
+      "  const piped = fns.reduce(",
+      "    /**",
+      "    * @param {(value: R) => R} prev",
+      "    * @param {(value: R) => R} next",
+      "    * @returns {(value: R) => R}",
+      "    */",
+      "    (prev, next) => value => next(prev(value)),",
+      "    /** @type {(value: R) => R} */",
+      "    value => value",
+      "  )",
+      "  return (...args) => piped(fn1(...args))",
+      "}",
+      "",
+      "/**",
+      " * @template R",
+      " * @param {(value: R) => R} fn1",
+      " * @param {...((value: R) => R)} fns",
+      " * @returns {(value: R) => R}",
+      " */",
+      "export function compose (fn1, ...fns) {",
+      "  return fns.reduce(",
+      "    /**",
+      "    * @param {(value: R) => R} prev",
+      "    * @param {(value: R) => R} next",
+      "    * @returns {(value: R) => R}",
+      "    */",
+      "    (prev, next) => value => prev(next(value)),",
+      "    fn1",
+      "  )",
+      "}",
+      ""
+    ]
+  },
+  "unlisten": {
+    "prefix": "unlisten",
+    "body": [
+      "/**",
+      " * @param {import('node:http').Server | import('node:https').Server} server",
+      " */",
+      "export default function httpUnlisten(server) {",
+      "  /**",
+      "   * @param {number} timeoutMs",
+      "   */",
+      "  return async function unlisten (timeoutMs = Infinity) {",
+      "    let gracefully = true",
+      "    /** @type {NodeJS.Timeout|null} */",
+      "    let timeout = null",
+      "    if (Number.isFinite(timeoutMs)) {",
+      "      timeout = setTimeout(() => {",
+      "        gracefully = false",
+      "        server.closeAllConnections()",
+      "      }, timeoutMs)",
+      "    }",
+      "    const closePromise = new Promise(resolve => {",
+      "      server.close(() => {",
+      "        if (timeout) clearTimeout(timeout)",
+      "        resolve(null)",
+      "      })",
+      "    })",
+      "    server.closeIdleConnections()",
+      "    await closePromise",
+      "    return gracefully",
+      "  }",
+      "}",
+      ""
+    ]
+  },
+  "timezoneoffset": {
+    "prefix": "timezoneoffset",
+    "body": [
+      "function getTimezoneOffset (timeZone) {",
+      "  const timeZoneName = Intl.DateTimeFormat('ia', {",
+      "    timeZoneName: 'short',",
+      "    timeZone",
+      "  })",
+      "    .formatToParts()",
+      "    .find(i => i.type === 'timeZoneName')?.value",
+      "  const offset = timeZoneName?.slice(3)",
+      "  if (!offset) return 0",
+      "  const matchData = offset.match(/([+-])(\\d+)(?::(\\d+))?/)",
+      "  if (!matchData) throw new Error(`cannot parse timezone name: ${timeZoneName}`)",
+      "",
+      "  const [, sign, hour, minute] = matchData",
+      "  let result = parseInt(hour) * 60",
+      "  if (sign === '-') result *= -1",
+      "  if (minute) result += parseInt(minute)",
+      "",
+      "  return result * 60 * 1000",
+      "}"
+    ]
+  },
+  "json-sort-keys": {
+    "prefix": "jsonsortkeys",
+    "body": [
+      "function sortKeys(key, value) {",
+      "  if (Object.prototype.toString.call(value) !== '[object Object]') return value",
+      "  return Object.fromEntries(",
+      "    Object.keys(value)",
+      "      .sort()",
+      "      .map((key) => [key, value[key]])",
+      "  )",
+      "}"
+    ]
+  }
+}

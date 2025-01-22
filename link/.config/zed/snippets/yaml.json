@@ -1,0 +1,72 @@
+{
+  "Docker Compose": {
+    "prefix": "node-service",
+    "body": [
+      "services:",
+      "  # Application",
+      "  ${1:app-name}:",
+      "    image: ${1:app-name}:dev",
+      "    build:",
+      "      context: .",
+      "      dockerfile: 'Dockerfile.dev'",
+      "    depends_on: []",
+      "    environment:",
+      "      PORT: '3000'",
+      "      LOG_NAME: ''",
+      "      LOG_LEVEL: ''",
+      "      DATABASE_URL: ''",
+      "    volumes:",
+      "      - './:/app' # For nodemon to watch for file changes",
+      "      - '/app/node_modules' # So it doesn't use the local node_modules",
+      "    ports:",
+      "      - '3000:3000'",
+      "      - '9229:9229'",
+      ""
+    ]
+  },
+  "Postgres Docker Compose": {
+    "prefix": "postgres",
+    "body": [
+      "postgres:",
+      "  image: 'postgres:alpine'",
+      "  ports:",
+      "    - '5432:5432'",
+      "  volumes:",
+      "    - './.data/postgres:/var/lib/postgresql/data'",
+      "  environment:",
+      "    POSTGRES_PASSWORD: 'postgres'"
+    ]
+  },
+  "Redis Docker Compose": {
+    "prefix": "redis",
+    "body": [
+      "redis:",
+      "  image: 'redis:alpine'",
+      "  ports:",
+      "    - '6379:6379'",
+      "  volumes:",
+      "    - './.data/redis:/data'"
+    ]
+  },
+  "Maildev Docker Compose": {
+    "prefix": "maildev",
+    "body": [
+      "maildev:",
+      "  image: 'maildev/maildev'",
+      "  ports:",
+      "    - '1080:1080'",
+      "    - '1025:1025'"
+    ]
+  },
+  "Mongo Docker Compose": {
+    "prefix": "mongo",
+    "body": [
+      "mongo:",
+      "  image: 'mongo:latest'",
+      "  ports:",
+      "    - '27017:27017'",
+      "  volumes:",
+      "    - './.data/mongo:/data/db'"
+    ]
+  }
+}
