@@ -14,6 +14,7 @@
     },
     "font_family": "Cascadia Code PL"
   },
+  "tab_size": 2,
   "buffer_font_family": "Cascadia Code PL",
   "telemetry": {
     "diagnostics": false,
@@ -27,6 +28,9 @@
     },
     "Markdown": {
       "formatter": "prettier"
+    },
+    "Python": {
+      "tab_size": 4
     }
   },
   "file_types": {
