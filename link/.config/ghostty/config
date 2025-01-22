@@ -12,3 +12,5 @@ macos-titlebar-style = tabs
 theme=OneHalfDark
 
 confirm-close-surface = false
+shell-integration-features = no-cursor
+cursor-style = block
