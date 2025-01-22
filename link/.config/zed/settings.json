@@ -39,5 +39,6 @@
     "elixir": true,
     "dockerfile": true,
     "git_firefly": true
-  }
+  },
+  "restore_on_startup": "none"
 }
