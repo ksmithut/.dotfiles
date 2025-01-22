@@ -31,5 +31,13 @@
   },
   "file_types": {
     "HTML": ["svg"]
+  },
+  "auto_install_extension": {
+    "html": true,
+    "toml": true,
+    "sql": true,
+    "elixir": true,
+    "dockerfile": true,
+    "git_firefly": true
   }
 }
