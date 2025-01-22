@@ -10,3 +10,5 @@ macos-titlebar-style = tabs
 
 # ghostty +list-themes
 theme=OneHalfDark
+
+confirm-close-surface = false
