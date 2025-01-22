@@ -194,3 +194,4 @@ build.services.toml
 .dock/
 .mix_tasks
 *.har
+.zed
