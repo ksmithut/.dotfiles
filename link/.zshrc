@@ -37,6 +37,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 export KERL_CONFIGURE_OPTIONS="--without-javac"
 # https://github.com/npm/npm/issues/11696
 # export COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
+export XDG_CONFIG_HOME="${HOME}/.config"
 
 ulimit -n 8192
 
@@ -59,11 +60,11 @@ plugins=(
 source "$ZSH/oh-my-zsh.sh"
 
 autoload -U add-zsh-hook
-add-zsh-hook -Uz chpwd (){ la; }
-
-if [ -f ~/.zshrc.local ]; then
-  . ~/.zshrc.local
-fi
+add-zsh-hook -Uz chpwd () {
+  if [[ $PWD != $HOME ]]; then
+    ls -lah
+  fi
+}
 
 # ===============================================
 # functions/aliases
@@ -453,13 +454,13 @@ git-user () {
 alias npm-upgrade-interactive='npx -y npm-check-updates@latest --interactive'
 alias run='node --run'
 
+# ===============================================
+# Finish
+# ===============================================
 
-# # Source all of the files in ~/.dotfiles/source
-# for file in "$DOTFILES"/source/*.sh; do source "$file"; done
-
-# if [ -f ~/.zshrc.local ]; then
-#   . ~/.zshrc.local
-# fi
+if [ -f ~/.zshrc.local ]; then
+  . ~/.zshrc.local
+fi
 
 # REMOVE/REPURPOSE EVERYTHING BELOW HERE (except for the comment)
 # Often, install scripts will append commands to the end of your .bash_profile

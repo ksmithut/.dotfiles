@@ -7,7 +7,9 @@ export const users = pgTable('users', {
 
 export const todos = pgTable('todos', {
   id: uuid('id').primaryKey(),
-  userId: uuid('user_id').notNull().references(users.id),
+  userId: uuid('user_id')
+    .notNull()
+    .references(() => users.id),
 })
 
 export const userRelations = relations(users, ({ many }) => ({
