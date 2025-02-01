@@ -1,0 +1,21 @@
+{
+  "name": "unnamed",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "react-router build",
+    "dev": "react-router dev",
+    "start": "react-router-serve ./build/server/index.js",
+    "typecheck": "react-router typegen && tsc",
+    "format": "prettier --write .",
+    "lint": "prettier --check .",
+    "docker:up": "docker compose up --remove-orphans --detach --renew-anon-volumes",
+    "docker:down": "docker compose down --remove-orphans --volumes",
+    "db:push": "node --env-file-if-exists .env ./node_modules/.bin/drizzle-kit push",
+    "db:generate": "node --env-file-if-exists .env ./node_modules/.bin/drizzle-kit generate",
+    "db:migrate": "node --env-file-if-exists .env ./node_modules/.bin/drizzle-kit migrate",
+    "db:studio": "node --env-file-if-exists .env ./node_modules/.bin/drizzle-kit studio"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
