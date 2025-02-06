@@ -6,6 +6,7 @@ terraform = "latest"
 node = "latest"
 erlang = "latest"
 elixir = "latest"
+caddy = "latest"
 
 [settings]
 disable_hints = ["outdated_bump"]
