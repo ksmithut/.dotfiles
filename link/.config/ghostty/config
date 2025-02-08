@@ -16,6 +16,6 @@ shell-integration-features = no-cursor
 cursor-style = block
 
 # quick terminal
-keybind = global:super+`=toggle_quick_terminal
+keybind = global:alt+space=toggle_quick_terminal
 quick-terminal-position = center
 quick-terminal-animation-duration = 0
