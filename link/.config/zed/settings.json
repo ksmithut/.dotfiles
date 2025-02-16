@@ -7,7 +7,11 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "theme": "One Dark",
+  "theme": {
+    "mode": "system",
+    "dark": "One Dark",
+    "light": "One Light"
+  },
   "terminal": {
     "line_height": {
       "custom": 1.17
@@ -36,13 +40,20 @@
   "file_types": {
     "HTML": ["svg"]
   },
+  "icon_theme": {
+    "mode": "system",
+    "light": "VSCode Icons (Light)",
+    "dark": "VSCode Icons (Dark)"
+  },
   "auto_install_extension": {
     "html": true,
     "toml": true,
+    "dockerfile": true,
+    "git_firefly": true,
     "sql": true,
     "elixir": true,
-    "dockerfile": true,
-    "git_firefly": true
+    "vscode-icons": true,
+    "pug": true
   },
   "restore_on_startup": "none"
 }
