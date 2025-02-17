@@ -53,7 +53,8 @@
     "sql": true,
     "elixir": true,
     "vscode-icons": true,
-    "pug": true
+    "pug": true,
+    "graphql": true
   },
   "restore_on_startup": "none"
 }
