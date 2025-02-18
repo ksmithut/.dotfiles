@@ -22,6 +22,7 @@ dotfiles () { cd "${DOTFILES}"; }
 PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 PATH="/opt/homebrew/opt/curl/bin:$PATH"
 PATH="$HOME/.docker/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 export PATH
 # Shell config
 export HOMEBREW_NO_ANALYTICS=1
