@@ -9,7 +9,7 @@ font-size = 15
 macos-titlebar-style = tabs
 
 # ghostty +list-themes
-theme=OneHalfDark
+theme=light:OneHalfLight,dark:OneHalfDark
 
 confirm-close-surface = false
 shell-integration-features = no-cursor
