@@ -56,5 +56,13 @@
     "pug": true,
     "graphql": true
   },
-  "restore_on_startup": "none"
+  "restore_on_startup": "none",
+  "file_scan_exclusions": [
+    "**/node_modules",
+    "**/_build",
+    "**/cover",
+    "**/deps",
+    "**/build",
+    "**/coverage"
+  ]
 }
