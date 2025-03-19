@@ -63,6 +63,7 @@
     "**/cover",
     "**/deps",
     "**/build",
-    "**/coverage"
+    "**/coverage",
+    "**/*.har"
   ]
 }
