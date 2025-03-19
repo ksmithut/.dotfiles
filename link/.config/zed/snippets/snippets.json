@@ -22,6 +22,12 @@
   },
   "mongo-clear": {
     "prefix": "mongo-clear",
-    "body": ["db.getMongo().getDBNames().filter(name => name.match(/^platform-test-/) || name.match(/^app-identity-test-/)).forEach(name => db.getMongo().getDB(name).dropDatabase())"]
+    "body": [
+      "db.getMongo().getDBNames().filter(name => name.match(/^platform-test-/) || name.match(/^app-identity-test-/)).forEach(name => db.getMongo().getDB(name).dropDatabase())"
+    ]
+  },
+  "unicode": {
+    "prefix": "unicode",
+    "body": ["✘", "✔", "├", "─", "└"]
   }
 }

@@ -52,9 +52,9 @@
     "git_firefly": true,
     "sql": true,
     "elixir": true,
+    "graphql": true,
     "vscode-icons": true,
-    "pug": true,
-    "graphql": true
+    "pug": true
   },
   "restore_on_startup": "none",
   "file_scan_exclusions": [

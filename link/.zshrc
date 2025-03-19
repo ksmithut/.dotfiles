@@ -173,6 +173,8 @@ function colorgrid() {
 
 alias neo='clear && neofetch'
 
+alias gtty='open . -a /Applications/Ghostty.app'
+
 alias rgb-to-hex='node -p "process.argv.slice(1).flatMap(i=>i.split(\",\")).map(n=>parseInt(n,10).toString(16)).join(\"\")"'
 alias hex-to-rgb='node -p "process.argv[1].replace(/[^0-9a-f]/gi,\"\").split(\"\").reduce((a,x,i)=>{i=Math.floor(i/2);a[i]??=[];a[i].push(x);return a},[]).map(c=>parseInt(c.join(\"\"),16)).join(\",\")"'
 alias decode-jwt='node -e "process.argv[1].split(\".\").slice(0, 2).map(p=>JSON.parse(Buffer.from(p,\"base64\"))).forEach(p=>console.log(p))"'
