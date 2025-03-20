@@ -194,6 +194,12 @@ function gitignore-elixir () {
   gitignore macos,windows,linux,elixir,phoenix
 }
 
+# Git prune
+function gitprunelocal () {
+  git fetch --prune
+  git branch -vv | grep 'gone]' | awk '{print $1}' | xargs git branch -D
+}
+
 function template() {
   if [ "$1" = "" ]; then
     ls "${DOTFILES}/templates" | cut -f1
