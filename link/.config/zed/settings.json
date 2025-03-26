@@ -38,7 +38,8 @@
     }
   },
   "file_types": {
-    "HTML": ["svg"]
+    "HTML": ["svg"],
+    "Dockerfile": ["Dockerfile*"]
   },
   "icon_theme": {
     "mode": "system",
