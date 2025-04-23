@@ -6,8 +6,8 @@ terraform = "latest"
 node = "latest"
 erlang = "latest"
 elixir = "latest"
-python = "latest"
 pipx = "latest"
 
 [settings]
 disable_hints = ["outdated_bump"]
+idiomatic_version_file_enable_tools = ["node"]
