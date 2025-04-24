@@ -67,5 +67,6 @@
     "**/coverage",
     "**/*.har"
   ],
-  "private_files": ["**/.env*"]
+  "private_files": ["**/.env*"],
+  "bottom_dock_layout": "full"
 }
