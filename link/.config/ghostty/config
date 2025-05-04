@@ -17,7 +17,5 @@ cursor-style = block
 
 # quick terminal
 keybind = global:alt+space=toggle_quick_terminal
-quick-terminal-position = center
+quick-terminal-position = bottom
 quick-terminal-animation-duration = 0
-
-window-padding-y = 6
