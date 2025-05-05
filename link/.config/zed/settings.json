@@ -13,6 +13,7 @@
     "light": "One Light"
   },
   "terminal": {
+    "max_scroll_history_lines": 100000,
     "line_height": {
       "custom": 1.17
     },
@@ -58,15 +59,6 @@
     "pug": true
   },
   "restore_on_startup": "none",
-  "file_scan_exclusions": [
-    "**/node_modules",
-    "**/_build",
-    "**/cover",
-    "**/deps",
-    "**/build",
-    "**/coverage",
-    "**/*.har"
-  ],
   "private_files": ["**/.env*"],
   "bottom_dock_layout": "full"
 }

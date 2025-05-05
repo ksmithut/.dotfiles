@@ -7,6 +7,7 @@ node = "latest"
 erlang = "latest"
 elixir = "latest"
 pipx = "latest"
+caddy = "latest"
 
 [settings]
 disable_hints = ["outdated_bump"]
