@@ -243,6 +243,17 @@ function cidr {
   ' $1
 }
 
+function run {
+  if [ -f "makefile" ]; then
+    make "$@"
+  elif [ -f "package.json" ]; then
+    node --run "$@"
+  else
+    echo "Nothing to run" >&2
+    return 1
+  fi
+}
+
 # macOS aliases/functions
 # =======================
 if is-macos; then
@@ -461,7 +472,6 @@ git-user () {
 # ===============================================
 
 alias npm-upgrade-interactive='npx -y npm-check-updates@latest --interactive'
-alias run='node --run'
 
 # ===============================================
 # Finish

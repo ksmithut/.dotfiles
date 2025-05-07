@@ -36,11 +36,23 @@
     },
     "Python": {
       "tab_size": 4
+    },
+    "Caddyfile": {
+      "format_on_save": "on",
+      "hard_tabs": true,
+      "tab_size": 2,
+      "formatter": {
+        "external": {
+          "command": "caddy",
+          "arguments": ["fmt", "-"]
+        }
+      }
     }
   },
   "file_types": {
     "HTML": ["svg"],
-    "Dockerfile": ["Dockerfile*"]
+    "Dockerfile": ["Dockerfile*"],
+    "Caddyfile": ["Caddyfile*", "*.caddyfile"]
   },
   "icon_theme": {
     "mode": "system",
@@ -56,7 +68,10 @@
     "elixir": true,
     "graphql": true,
     "vscode-icons": true,
-    "pug": true
+    "pug": true,
+    "make": true,
+    "po": true,
+    "caddyfile": true
   },
   "restore_on_startup": "none",
   "private_files": ["**/.env*"],
