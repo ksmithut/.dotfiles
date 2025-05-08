@@ -8,6 +8,7 @@ erlang = "latest"
 elixir = "latest"
 pipx = "latest"
 caddy = "latest"
+rust = "latest"
 
 [settings]
 disable_hints = ["outdated_bump"]
