@@ -8,6 +8,9 @@ font-size = 15
 # "transparent" "native" "tabs" "hidden"
 macos-titlebar-style = tabs
 
+background-opacity = 0.5
+background-blur = true
+
 # ghostty +list-themes
 theme=light:OneHalfLight,dark:OneHalfDark
 
@@ -17,5 +20,6 @@ cursor-style = block
 
 # quick terminal
 keybind = global:alt+space=toggle_quick_terminal
+quick-terminal-screen = mouse
 quick-terminal-position = bottom
 quick-terminal-animation-duration = 0
