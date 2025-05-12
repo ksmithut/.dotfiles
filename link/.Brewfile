@@ -22,7 +22,7 @@ cask "font-cascadia-mono"
 cask "font-cascadia-mono-pl"
 
 # Browsers
-cask "arc" if OS.mac?
+cask "zen"
 cask "firefox"
 
 # apps
