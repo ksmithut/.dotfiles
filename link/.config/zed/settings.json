@@ -75,5 +75,12 @@
   },
   "restore_on_startup": "none",
   "private_files": ["**/.env*"],
-  "bottom_dock_layout": "full"
+  "bottom_dock_layout": "full",
+  "features": {
+    "edit_prediction_provider": "none"
+  },
+  "agent": {
+    "enabled": false,
+    "version": "2"
+  }
 }
