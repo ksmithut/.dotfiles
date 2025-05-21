@@ -272,6 +272,8 @@ if is-macos; then
 
   # show/hide hidden files in finder
   alias uuid='printf "%s" "$(uuidgen | tr '"'"'[:upper:]'"'"' '"'"'[:lower:]'"'"')"'
+
+  alias dnsflush='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 fi
 
 # Ubuntu/Debian/Pop!_OS aliases/functions
