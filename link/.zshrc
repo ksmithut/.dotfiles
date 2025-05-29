@@ -245,9 +245,11 @@ function cidr {
 
 function run {
   if [ -f "makefile" ]; then
-    make "$@"
+    make $@
+  if [ -f "bun.lock" ]; then
+    bun run $@
   elif [ -f "package.json" ]; then
-    node --run "$@"
+    node --run $@
   else
     echo "Nothing to run" >&2
     return 1
