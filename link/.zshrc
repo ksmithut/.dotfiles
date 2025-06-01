@@ -246,7 +246,7 @@ function cidr {
 function run {
   if [ -f "makefile" ]; then
     make $@
-  if [ -f "bun.lock" ]; then
+  elif [ -f "bun.lock" ]; then
     bun run $@
   elif [ -f "package.json" ]; then
     node --run $@
