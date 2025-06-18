@@ -8,8 +8,8 @@ font-size = 15
 # "transparent" "native" "tabs" "hidden"
 macos-titlebar-style = tabs
 
-background-opacity = 0.7
-background-blur = true
+# background-opacity = 0.7
+# background-blur = true
 
 # ghostty +list-themes
 theme=light:OneHalfLight,dark:OneHalfDark
