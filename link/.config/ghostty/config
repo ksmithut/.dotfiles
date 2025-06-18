@@ -5,8 +5,15 @@
 font-family = "Cascadia Code PL"
 font-size = 15
 
-# "transparent" "native" "tabs" "hidden"
+# transparent, native, tabs, hidden
 macos-titlebar-style = tabs
+
+# official, blueprint, chalkboard, microchip, glass, holographic, paper, retro, xray, custom-style
+macos-icon = custom-style
+# aluminum, beige, plastic, chrome
+macos-icon-frame = plastic
+macos-icon-ghost-color = #FFFFFF
+macos-icon-screen-color = #000000
 
 # background-opacity = 0.7
 # background-blur = true
