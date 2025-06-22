@@ -10,10 +10,10 @@
   "theme": {
     "mode": "system",
     "dark": "One Dark",
-    "light": "One Light"
+    "light": "One Light Custom"
   },
   "terminal": {
-    "max_scroll_history_lines": 100000,
+    "max_scroll_historq_lines": 100000,
     "line_height": {
       "custom": 1.17
     },

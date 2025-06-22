@@ -19,7 +19,7 @@ macos-icon-screen-color = #000000
 # background-blur = true
 
 # ghostty +list-themes
-theme=light:OneHalfLight,dark:OneHalfDark
+theme=light:OneHalfLightCustom,dark:OneHalfDark
 
 confirm-close-surface = false
 shell-integration-features = no-cursor

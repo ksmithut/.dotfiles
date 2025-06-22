@@ -9,6 +9,10 @@
 !/zed/settings.json
 !/zed/snippets
 !/zed/snippets/*
+!/zed/themes
+!/zed/themes/*
 
 !/ghostty
 !/ghostty/config
+!/ghostty/themes
+!/ghostty/themes/*

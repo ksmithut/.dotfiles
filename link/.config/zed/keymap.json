@@ -24,7 +24,9 @@
     "bindings": {
       "cmd-[": "workspace::ActivatePreviousPane",
       "cmd-]": "workspace::ActivateNextPane",
-      "cmd-|": "pane::SplitRight"
+      "cmd-|": "pane::SplitRight",
+      "cmd-D": "pane::SplitDown",
+      "cmd-d": "pane::SplitRight"
     }
   }
 ]
