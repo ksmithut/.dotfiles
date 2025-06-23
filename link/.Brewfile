@@ -38,7 +38,7 @@ tap "mongodb/brew"
 brew "mongodb-database-tools"
 cask "mongodb-compass"
 brew "lazydocker"
-cask "docker" if OS.mac?
+cask "docker-desktop" if OS.mac?
 brew "mise"
 brew "flyctl"
 cask "tableplus"
@@ -48,6 +48,7 @@ cask "crystalfetch" if OS.mac?
 cask "ghostty"
 cask "zed"
 brew "gh"
+cask "tailscale-app"
 
 # elixir/erlang
 brew "autoconf"
