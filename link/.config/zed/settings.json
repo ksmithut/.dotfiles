@@ -18,12 +18,12 @@
   "terminal": {
     "max_scroll_historq_lines": 100000,
     "line_height": {
-      "custom": 1.17
+      "custom": 1.22
     },
-    "font_family": "Cascadia Code PL"
+    "font_family": "Hack Nerd Font"
   },
   "tab_size": 2,
-  "buffer_font_family": "Cascadia Code PL",
+  "buffer_font_family": "Hack Nerd Font",
   "telemetry": {
     "diagnostics": false,
     "metrics": false

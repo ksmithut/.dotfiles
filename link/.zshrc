@@ -47,7 +47,7 @@ ulimit -n 8192
 # ===============================================
 ZSH_DISABLE_COMPFIX=true
 export ZSH="${HOME}/.oh-my-zsh"
-export ZSH_THEME="agnoster"
+# export ZSH_THEME="agnoster"
 export DEFAULT_USER=${USER}
 
 plugins=(
@@ -66,6 +66,8 @@ add-zsh-hook -Uz chpwd () {
     ls -lah
   fi
 }
+
+eval "$(starship init zsh)"
 
 # ===============================================
 # functions/aliases

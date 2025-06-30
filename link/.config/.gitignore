@@ -16,3 +16,5 @@
 !/ghostty/config
 !/ghostty/themes
 !/ghostty/themes/*
+
+!/starship.toml

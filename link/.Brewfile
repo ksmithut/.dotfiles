@@ -20,6 +20,7 @@ cask "font-cascadia-code"
 cask "font-cascadia-code-pl"
 cask "font-cascadia-mono"
 cask "font-cascadia-mono-pl"
+cask "font-hack-nerd-font"
 
 # Browsers
 cask "zen"
