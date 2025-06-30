@@ -29,9 +29,9 @@ $python\
 $docker_context\
 $conda\
 $pixi\
+$cmd_duration\
 [](fg:color_bg3 bg:color_bg1)\
 $time\
-$cmd_duration\
 [ ](fg:color_bg1)\
 $line_break$character"""
 
@@ -107,6 +107,11 @@ format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [bun]
 symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[elixir]
+symbol = ""
 style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
