@@ -55,6 +55,7 @@ plugins=(
   autojump
   mix-fast
   mise
+  starship
 )
 
 # shellcheck disable=SC1090
@@ -66,8 +67,6 @@ add-zsh-hook -Uz chpwd () {
     ls -lah
   fi
 }
-
-eval "$(starship init zsh)"
 
 # ===============================================
 # functions/aliases
