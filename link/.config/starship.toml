@@ -28,7 +28,6 @@ $python\
 $docker_context\
 $conda\
 $pixi\
-$cmd_duration\
 [](fg:color_bg3 bg:color_bg1)\
 $time\
 [ ](fg:color_bg1)\
@@ -174,12 +173,13 @@ style = "bg:color_bg3"
 format = '[[ $symbol( $version)( $environment) ](fg:color_fg0 bg:color_bg3)]($style)'
 
 [cmd_duration]
-min_time = 0
+min_time = 2_000
+style = "fg:color_fg1"
 disabled = false
 show_notifications = true
 show_milliseconds = true
 min_time_to_notify = 30_000
-format = '[took $duration]($style) '
+format = '[󱎫 $duration]($style) '
 
 [time]
 disabled = false
