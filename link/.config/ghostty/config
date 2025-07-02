@@ -15,8 +15,8 @@ macos-icon-frame = plastic
 macos-icon-ghost-color = #FFFFFF
 macos-icon-screen-color = #000000
 
-background-opacity = 0.7
-background-blur = true
+# background-opacity = 0.7
+# background-blur = true
 
 # ghostty +list-themes
 theme=light:OneHalfLightCustom,dark:OneHalfDark
