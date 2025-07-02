@@ -177,7 +177,6 @@ min_time = 2_000
 style = "fg:color_fg1"
 disabled = false
 show_notifications = true
-show_milliseconds = true
 min_time_to_notify = 30_000
 format = '[󱎫 $duration]($style) '
 
