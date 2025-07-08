@@ -7,7 +7,7 @@ format = """
 [](fg:color_user bg:color_location)\
 [$directory](bg:color_location fg:color_fg0)\
 [](fg:color_location bg:color_git)\
-[$git_branch$git_status$git_state](bg:color_git fg:color_fg0)\
+[$git_branch$git_status$git_commit$git_state](bg:color_git fg:color_fg0)\
 [](fg:color_git bg:color_runtime)\
 [\
 $c\
@@ -97,6 +97,9 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = ""
 format = " $symbol $branch "
+
+[git_commit]
+format = '(\($hash$tag\) )'
 
 [git_status]
 modified = '•'
