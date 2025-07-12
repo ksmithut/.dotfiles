@@ -226,6 +226,23 @@ function template() {
   fi
 }
 
+function port {
+  case "$1" in
+    ssh)           echo "22"    ;;
+    smtp)          echo "25"    ;;
+    dns)           echo "53"    ;;
+    http)          echo "80"    ;;
+    irc)           echo "194"   ;;
+    https)         echo "443"   ;;
+    mysql)         echo "3306"  ;;
+    nats)          echo "4222\n8222 (monitoring)" ;;
+    postgres(|ql)) echo "5432"  ;;
+    couch(|db))    echo "5984"  ;;
+    redis)         echo "6379"  ;;
+    mongo(|db))    echo "27017" ;;
+  esac
+}
+
 function cidr {
   node -e '
     const assert = (condition, message) => condition || (console.error(message) || process.exit(1))
