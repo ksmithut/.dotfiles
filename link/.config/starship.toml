@@ -2,34 +2,13 @@
 
 # https://starship.rs/presets/gruvbox-rainbow
 format = """
-[](color_user)\
-[$os$username](bg:color_user fg:color_fg0)\
-[](fg:color_user bg:color_location)\
-[$directory](bg:color_location fg:color_fg0)\
-[](fg:color_location bg:color_git)\
-[$git_branch$git_status$git_commit$git_state](bg:color_git fg:color_fg0)\
-[](fg:color_git bg:color_runtime)\
-[\
-$c\
-$cpp\
-$rust\
-$golang\
-$bun\
-$nodejs\
-$elixir\
-$gleam\
-$php\
-$java\
-$kotlin\
-$haskell\
-$python\
-](bg:color_runtime fg:color_fg0)\
-[](fg:color_runtime bg:color_context)\
-[$aws](bg:color_context fg:color_fg0)\
-[](fg:color_context bg:color_duration)\
-[$cmd_duration](bg:color_duration fg:color_fg0)\
-[](fg:color_duration bg:color_clock)\
-[$time](bg:color_clock fg:color_fg0)\
+[](color_user)[$os$username](bg:color_user fg:color_fg0)\
+[](fg:color_user bg:color_location)[$directory](bg:color_location fg:color_fg0)\
+[](fg:color_location bg:color_git)[$git_branch$git_status$git_commit$git_state](bg:color_git fg:color_fg0)\
+[](fg:color_git bg:color_runtime)[$c$cpp$rust$golang$bun$nodejs$elixir$gleam$php$java$kotlin$haskell$python](bg:color_runtime fg:color_fg0)\
+[](fg:color_runtime bg:color_context)[$aws](bg:color_context fg:color_fg0)\
+[](fg:color_context bg:color_duration)[$cmd_duration](bg:color_duration fg:color_fg0)\
+[](fg:color_duration bg:color_clock)[$time](bg:color_clock fg:color_fg0)\
 [ ](fg:color_clock)\
 $line_break$character"""
 
