@@ -84,6 +84,5 @@
   },
   "agent": {
     "enabled": false,
-    "version": "2"
   }
 }
