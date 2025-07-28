@@ -4,14 +4,14 @@ command_timeout = 2000
 
 # https://starship.rs/presets/gruvbox-rainbow
 format = """
-[](color_user)[$os$username](bg:color_user fg:color_fg0)\
-[](fg:color_user bg:color_location)[$directory](bg:color_location fg:color_fg0)\
-[](fg:color_location bg:color_git)[$git_branch$git_status$git_commit$git_state](bg:color_git fg:color_fg0)\
-[](fg:color_git bg:color_runtime)[$c$cpp$rust$golang$bun$nodejs$elixir$gleam$php$java$kotlin$haskell$python](bg:color_runtime fg:color_fg0)\
-[](fg:color_runtime bg:color_context)[$aws](bg:color_context fg:color_fg0)\
-[](fg:color_context bg:color_duration)[$cmd_duration](bg:color_duration fg:color_fg0)\
-[](fg:color_duration bg:color_clock)[$time](bg:color_clock fg:color_fg0)\
-[ ](fg:color_clock)\
+[](color_user_bg)[$os$username](bg:color_user_bg fg:color_user_fg)\
+[](fg:color_user_bg bg:color_location_bg)[$directory](bg:color_location_bg fg:color_location_fg)\
+[](fg:color_location_bg bg:color_git_bg)[$git_branch$git_status$git_commit$git_state](bg:color_git_bg fg:color_git_fg)\
+[](fg:color_git_bg bg:color_runtime_bg)[$c$cpp$rust$golang$bun$nodejs$elixir$gleam$php$java$kotlin$haskell$python](bg:color_runtime_bg fg:color_runtime_fg)\
+[](fg:color_runtime_bg bg:color_context_bg)[$aws](bg:color_context_bg fg:color_context_fg)\
+[](fg:color_context_bg bg:color_duration_bg)[$cmd_duration](bg:color_duration_bg fg:color_duration_fg)\
+[](fg:color_duration_bg bg:color_clock_bg)[$time](bg:color_clock_bg fg:color_clock_fg)\
+[ ](fg:color_clock_bg)\
 $line_break$character"""
 
 palette = 'gruvbox_dark'
@@ -28,13 +28,20 @@ color_purple = '#b16286'
 color_red = '#cc241d'
 color_yellow = '#d79921'
 
-color_user = '#3c3836'
-color_location = '#d65d0e'
-color_git = '#d79921'
-color_runtime = '#689d6a'
-color_context = '#458588'
-color_duration = '#665c54'
-color_clock = '#3c3836'
+color_user_bg = '#3c3836'
+color_user_fg = '#fbf1c7'
+color_location_bg = '#d65d0e'
+color_location_fg = '#fbf1c7'
+color_git_bg = '#d79921'
+color_git_fg = '#fbf1c7'
+color_runtime_bg = '#689d6a'
+color_runtime_fg = '#fbf1c7'
+color_context_bg = '#458588'
+color_context_fg = '#fbf1c7'
+color_duration_bg = '#665c54'
+color_duration_fg = '#fbf1c7'
+color_clock_bg = '#3c3836'
+color_clock_fg = '#fbf1c7'
 
 [os]
 disabled = false
