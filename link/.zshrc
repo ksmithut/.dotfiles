@@ -325,6 +325,13 @@ if is-ubuntu; then
 fi
 
 # ===============================================
+# Podman
+# ===============================================
+alias podman-containers-stop='podman stop --all'
+alias podman-containers-remove='podman stop --all && podman rm --all'
+alias podman-volumes-remove='podman stop --all && podman rm --all && podman volume rm --all'
+
+# ===============================================
 # Docker functions aliases
 # ===============================================
 

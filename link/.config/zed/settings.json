@@ -83,6 +83,6 @@
     "edit_prediction_provider": "none"
   },
   "agent": {
-    "enabled": false,
+    "enabled": false
   }
 }
