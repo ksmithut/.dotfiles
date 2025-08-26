@@ -342,6 +342,9 @@ alias docker-volumes-remove='docker-containers-remove && [[ "$(docker volume ls 
 alias docker-images-remove='[[ "$(docker images -a -q)" != "" ]] && docker rmi -f $(docker images -a -q); true'
 alias docker-clean='docker-containers-stop; docker-containers-remove; docker-volumes-remove; docker-images-remove; docker system prune -f -a; true'
 
+alias compose-up='docker compose up --build --detach --remove-orphans --renew-anon-volumes'
+alias compose-down='docker compose down --remove-orphans'
+
 function docker-restart () {
   docker container restart $(docker ps -a | grep $1 | awk '{print $1}')
 }
