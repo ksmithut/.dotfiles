@@ -86,6 +86,7 @@ if is-macos; then
   function whos-using-my-port {
     lsof -i -P | grep LISTEN | grep ":$1 "
   }
+  alias lsports='lsof -i -P | grep LISTEN'
 fi
 
 # gpg helpers
