@@ -32,7 +32,8 @@
   "format_on_save": "on",
   "languages": {
     "Elixir": {
-      "wrap_guides": [100]
+      "wrap_guides": [100],
+      "language_servers": ["expert", "!elixir-ls", "!next-ls", "!lexical"]
     },
     "Markdown": {
       "formatter": "prettier"
