@@ -28,5 +28,11 @@
       "cmd-D": "pane::SplitDown",
       "cmd-d": "pane::SplitRight"
     }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-A": "agent::OpenHistory"
+    }
   }
 ]
