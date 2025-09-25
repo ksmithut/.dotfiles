@@ -34,5 +34,24 @@
     "bindings": {
       "cmd-A": "agent::OpenHistory"
     }
+  },
+  // Collapse entries
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-shift-c": "project_panel::CollapseAllEntries"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "cmd-shift-c": "project_panel::CollapseAllEntries"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-shift-c": "project_panel::CollapseAllEntries"
+    }
   }
 ]
