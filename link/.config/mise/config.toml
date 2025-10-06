@@ -9,6 +9,7 @@ elixir = "latest"
 pipx = "latest"
 caddy = "latest"
 rust = "latest"
+pnpm = "latest"
 
 [settings]
 disable_hints = ["outdated_bump"]

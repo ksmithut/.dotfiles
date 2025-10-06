@@ -267,6 +267,10 @@ function run {
     make $@
   elif [ -f "bun.lock" ]; then
     bun run $@
+  elif [ -f "yarn.lock" ]; then
+    yarn run $@
+  elif [ -f "pnpm-lock.yaml" ]; then
+    pnpm run $@
   elif [ -f "package.json" ]; then
     node --run $@
   else
