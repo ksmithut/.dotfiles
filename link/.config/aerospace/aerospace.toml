@@ -207,6 +207,8 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
     if.app-id="com.mitchellh.ghostty"
-    run= [
-      "layout floating",
-    ]
+    run=["layout floating"]
+
+[[on-window-detected]]
+    if.app-id="us.zoom.xos"
+    run=["layout floating"]
