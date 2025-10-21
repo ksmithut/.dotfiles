@@ -30,3 +30,5 @@ keybind = global:alt+space=toggle_quick_terminal
 quick-terminal-screen = mouse
 quick-terminal-position = bottom
 quick-terminal-animation-duration = 0
+
+keybind = performable:super+shift+backslash=new_split:right
