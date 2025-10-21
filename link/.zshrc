@@ -509,6 +509,20 @@ git-user () {
 # ===============================================
 
 alias npm-upgrade-interactive='npx -y npm-check-updates@latest --interactive'
+function module-upgrade-interactive() {
+  if [ -f "bun.lock" ]; then
+    bun update --interactive --latest
+  elif [ -f "yarn.lock" ]; then
+    yarn upgrade-interactive --latest
+  elif [ -f "pnpm-lock.yaml" ]; then
+    pnpm update --interactive --latest
+  elif [ -f "package.json" ]; then
+    npx -y npm-check-updates@latest --interactive
+  else
+    echo "Nothing to run" >&2
+    return 1
+  fi
+}
 
 # ===============================================
 # Finish
