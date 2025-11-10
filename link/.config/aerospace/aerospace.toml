@@ -60,14 +60,14 @@ automatically-unhide-macos-hidden-apps = false
 
 [workspace-to-monitor-force-assignment]
     1 = 'main'
-    2 = 'secondary'
+    2 = 'main'
     3 = 'main'
-    4 = 'secondary'
-    5 = 'main'
+    4 = 'main'
+    5 = 'secondary'
     6 = 'secondary'
-    7 = 'main'
+    7 = 'secondary'
     8 = 'secondary'
-    9 = 'main'
+    9 = 'secondary'
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
