@@ -12,7 +12,7 @@ format = """
 [](fg:color_context_bg bg:color_duration_bg)[$cmd_duration](bg:color_duration_bg fg:color_duration_fg)\
 [](fg:color_duration_bg bg:color_clock_bg)[$time](bg:color_clock_bg fg:color_clock_fg)\
 [ ](fg:color_clock_bg)\
-$line_break$character"""
+$line_break$character$reset"""
 
 palette = 'gruvbox_dark'
 
