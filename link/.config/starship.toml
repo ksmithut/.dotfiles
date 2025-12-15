@@ -11,7 +11,7 @@ format = """
 [](fg:color_runtime_bg bg:color_context_bg)[$aws](bg:color_context_bg fg:color_context_fg)\
 [](fg:color_context_bg bg:color_duration_bg)[$cmd_duration](bg:color_duration_bg fg:color_duration_fg)\
 [](fg:color_duration_bg bg:color_clock_bg)[$time](bg:color_clock_bg fg:color_clock_fg)\
-[ ](fg:color_clock_bg)\
+[ ](fg:color_clock_bg)$reset\
 $line_break$character$reset"""
 
 palette = 'gruvbox_dark'
