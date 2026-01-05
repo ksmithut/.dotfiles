@@ -32,3 +32,4 @@ quick-terminal-position = bottom
 quick-terminal-animation-duration = 0
 
 keybind = performable:super+shift+backslash=new_split:right
+keybind = shift+enter=text:\x1b\r
