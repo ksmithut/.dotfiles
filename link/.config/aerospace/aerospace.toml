@@ -63,11 +63,12 @@ automatically-unhide-macos-hidden-apps = false
     2 = 'main'
     3 = 'main'
     4 = 'main'
-    5 = 'secondary'
+    5 = 'main'
     6 = 'secondary'
     7 = 'secondary'
     8 = 'secondary'
     9 = 'secondary'
+    10 = 'secondary'
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -132,6 +133,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-7 = 'workspace 7'
     alt-8 = 'workspace 8'
     alt-9 = 'workspace 9'
+    alt-0 = 'workspace 10'
     # alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
     # alt-b = 'workspace B'
     # alt-c = 'workspace C'
@@ -165,6 +167,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
     alt-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
     alt-shift-9 = 'move-node-to-workspace 9 --focus-follows-window'
+    alt-shift-0 = 'move-node-to-workspace 10 --focus-follows-window'
     # alt-shift-a = 'move-node-to-workspace A --focus-follows-window'
     # alt-shift-b = 'move-node-to-workspace B --focus-follows-window'
     # alt-shift-c = 'move-node-to-workspace C --focus-follows-window'
