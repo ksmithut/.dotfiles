@@ -7,39 +7,66 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "auto_install_extensions": {
+    "html": true,
+    "toml": true,
+    "dockerfile": true,
+    "sql": true,
+    "elixir": true,
+    "vscode-icons": true,
+    "graphql": true,
+  },
+  "show_edit_predictions": false,
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+      },
+      "enable_lsp_tasks": true,
+    },
+  },
   "debugger": {
-    "dock": "right"
+    "dock": "right",
   },
   "theme": {
     "mode": "system",
     "dark": "One Dark",
-    "light": "One Light Custom"
+    "light": "One Light Custom",
   },
   "terminal": {
     "max_scroll_history_lines": 100000,
     "line_height": {
-      "custom": 1.22
+      "custom": 1.22,
     },
-    "font_family": "Hack Nerd Font"
+    "font_family": "Hack Nerd Font",
   },
   "tab_size": 2,
   "buffer_font_family": "Hack Nerd Font",
   "telemetry": {
     "diagnostics": false,
-    "metrics": false
+    "metrics": false,
   },
   "wrap_guides": [80],
   "format_on_save": "on",
   "languages": {
     "Elixir": {
       "wrap_guides": [100],
-      "language_servers": ["expert", "!elixir-ls", "!next-ls", "!lexical"]
+      "language_servers": ["expert", "!elixir-ls", "!next-ls", "!lexical"],
     },
     "Markdown": {
-      "formatter": "prettier"
+      "formatter": "prettier",
     },
     "Python": {
-      "tab_size": 4
+      "tab_size": 4,
     },
     "Caddyfile": {
       "format_on_save": "on",
@@ -48,42 +75,25 @@
       "formatter": {
         "external": {
           "command": "caddy",
-          "arguments": ["fmt", "-"]
-        }
-      }
-    }
+          "arguments": ["fmt", "-"],
+        },
+      },
+    },
   },
   "file_types": {
     "HTML": ["svg"],
     "Dockerfile": ["Dockerfile*"],
-    "Caddyfile": ["Caddyfile*", "*.caddyfile"]
+    "Caddyfile": ["Caddyfile*", "*.caddyfile"],
   },
   "icon_theme": {
     "mode": "system",
     "light": "VSCode Icons (Light)",
-    "dark": "VSCode Icons (Dark)"
+    "dark": "VSCode Icons (Dark)",
   },
-  "auto_install_extension": {
-    "html": true,
-    "toml": true,
-    "dockerfile": true,
-    "git_firefly": true,
-    "sql": true,
-    "elixir": true,
-    "graphql": true,
-    "vscode-icons": true,
-    "pug": true,
-    "make": true,
-    "po": true,
-    "caddyfile": true
-  },
-  "restore_on_startup": "none",
+  "restore_on_startup": "empty_tab",
   "private_files": ["**/.env*"],
   "bottom_dock_layout": "full",
-  "features": {
-    "edit_prediction_provider": "none"
-  },
   "agent": {
-    "enabled": false
-  }
+    "enabled": false,
+  },
 }
