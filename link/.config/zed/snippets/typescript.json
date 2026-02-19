@@ -11,5 +11,15 @@
       "  }",
       "}"
     ]
+  },
+  "Map Get Or Insert": {
+    "prefix": "get-or-insert",
+    "body": [
+      "function getOrInsert<K, V>(map: Map<K, V>, key: K, defaultValue: V): V {",
+      "  if (map.has(key)) return map.get(key) as V",
+      "  map.set(key, defaultValue)",
+      "  return defaultValue",
+      "}"
+    ]
   }
 }

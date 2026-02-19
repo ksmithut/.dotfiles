@@ -2,9 +2,7 @@
   "Log JSON": {
     "prefix": "log-json",
     "description": "Log the full objects",
-    "body": [
-      "console.log(JSON.stringify(${1:data}, null, 2))"
-    ]
+    "body": ["console.log(JSON.stringify(${1:data}, null, 2))"]
   },
   "Custom Error Class": {
     "prefix": "custom-error",
@@ -20,9 +18,7 @@
   },
   "Allow bad certs": {
     "prefix": "tls-reject-unauthorized",
-    "body": [
-      "process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'"
-    ]
+    "body": ["process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'"]
   },
   "Random number": {
     "prefix": "rand",
@@ -121,9 +117,7 @@
   "bin prefix": {
     "prefix": "bin",
     "description": "Puts in the prefix needed for a node binary",
-    "body": [
-      "#!/usr/bin/env node"
-    ]
+    "body": ["#!/usr/bin/env node"]
   },
   "http-listen": {
     "prefix": "http-listen",
@@ -390,6 +384,23 @@
       "      .sort()",
       "      .map((key) => [key, value[key]])",
       "  )",
+      "}"
+    ]
+  },
+  "Map get or insert": {
+    "prefix": "get-or-insert",
+    "body": [
+      "/**",
+      " * @template K, V",
+      " * @param {Map<K, V>} map",
+      " * @param {K} key",
+      " * @param {V} defaultValue",
+      " * @returns {V}",
+      " */",
+      "function getOrInsert(map, key, defaultValue) {",
+      "  if (map.has(key)) return map.get(key)",
+      "  map.set(key, defaultValue)",
+      "  return defaultValue",
       "}"
     ]
   }
