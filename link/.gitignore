@@ -195,3 +195,4 @@ build.services.toml
 .mix_tasks
 *.har
 .zed
+.claude/settings.local.json
