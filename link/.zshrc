@@ -39,6 +39,7 @@ export KERL_CONFIGURE_OPTIONS="--without-javac"
 # https://github.com/npm/npm/issues/11696
 # export COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
 export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
 
 ulimit -n 8192
 
