@@ -1,23 +1,4 @@
-// Zed keymap
-//
-// For information on binding keys, see the Zed
-// documentation: https://zed.dev/docs/key-bindings
-//
-// To see the default key bindings run `zed: open default keymap`
-// from the command palette.
 [
-  {
-    "context": "Workspace",
-    "bindings": {
-      // "shift shift": "file_finder::Toggle"
-    }
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      // "j k": ["workspace::SendKeystrokes", "escape"]
-    }
-  },
   {
     "context": "Terminal",
     "use_key_equivalents": true,
@@ -26,32 +7,32 @@
       "cmd-]": "workspace::ActivateNextPane",
       "cmd-|": "pane::SplitRight",
       "cmd-D": "pane::SplitDown",
-      "cmd-d": "pane::SplitRight"
-    }
+      "cmd-d": "pane::SplitRight",
+    },
   },
   {
     "context": "Editor",
     "bindings": {
-      "cmd-A": "agent::OpenHistory"
-    }
+      "cmd-A": "agent::OpenHistory",
+    },
   },
   // Collapse entries
   {
     "context": "Editor",
     "bindings": {
-      "cmd-shift-c": "project_panel::CollapseAllEntries"
-    }
+      "cmd-shift-c": "project_panel::CollapseAllEntries",
+    },
   },
   {
     "context": "ProjectPanel",
     "bindings": {
-      "cmd-shift-c": "project_panel::CollapseAllEntries"
-    }
+      "cmd-shift-c": "project_panel::CollapseAllEntries",
+    },
   },
   {
     "context": "Pane",
     "bindings": {
-      "cmd-shift-c": "project_panel::CollapseAllEntries"
-    }
-  }
+      "shift-enter": ["terminal::SendText", "\u001b\r"],
+    },
+  },
 ]
