@@ -14,6 +14,15 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Exit if, for some reason, Homebrew is not installed.
 [[ ! $(command -v brew) ]] && echo "Homebrew failed to install." && exit 1
 
+features=()
+
+read -p "Install games? [y/N] " -n 1 -r
+echo
+[[ $REPLY =~ ^[Yy]$ ]] && features+=("games")
+
+# Or save to file for future runs
+echo "${features[*]}" > ~/.config/brew-features
+
 echo "Updating Homebrew..."
 brew doctor
 brew update
