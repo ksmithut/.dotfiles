@@ -36,7 +36,7 @@ cask "kap"
 # development tools
 brew "mongosh"
 tap "mongodb/brew"
-brew "mongodb-database-tools"
+brew "mongodb/brew/mongodb-database-tools"
 cask "mongodb-compass"
 brew "lazydocker"
 cask "docker-desktop" if OS.mac?

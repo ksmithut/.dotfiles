@@ -18,5 +18,4 @@ echo "Updating Homebrew..."
 brew doctor
 brew update
 brew cleanup
-brew install mas
 brew bundle install --global --cleanup
