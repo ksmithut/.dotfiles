@@ -18,9 +18,6 @@ defaults write com.apple.menuextra.clock ShowSeconds -bool true
 # Turn on day of the week
 defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
 
-# Dark Mode
-defaults write -g AppleInterfaceStyle -string Dark
-
 # Disable shake mouse pointer
 defaults write -g CGDisableCursorLocationMagnification -bool true
 

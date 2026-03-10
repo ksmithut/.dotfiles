@@ -47,20 +47,52 @@ ulimit -n 8192
 # zsh config
 # ===============================================
 ZSH_DISABLE_COMPFIX=true
-export ZSH="${HOME}/.oh-my-zsh"
+# export ZSH="${HOME}/.oh-my-zsh"
 # export ZSH_THEME="agnoster"
 export DEFAULT_USER=${USER}
 
-plugins=(
-  ssh-agent
-  autojump
-  mix-fast
-  mise
-  starship
-)
+# plugins=(
+#   ssh-agent
+#   autojump
+#   mix-fast
+#   mise
+#   starship
+# )
 
 # shellcheck disable=SC1090
-source "$ZSH/oh-my-zsh.sh"
+# source "$ZSH/oh-my-zsh.sh"
+
+# mise
+eval "$(mise activate zsh)"
+
+# autojump
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && source /opt/homebrew/etc/profile.d/autojump.sh
+
+# starship
+eval "$(starship init zsh)"
+
+# ls variants
+alias ll='ls -lah'          # long listing, all files, human-readable sizes
+alias la='ls -A'            # all files except . and ..
+alias l='ls -CF'            # compact with indicators
+
+# navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# safety nets
+alias rm='rm -i'            # confirm before delete (some people hate this)
+alias mv='mv -i'            # confirm before overwrite
+alias cp='cp -i'
+
+# misc
+alias grep='grep --color=auto'
+alias ports='lsof -i -P -n | grep LISTEN'
+
+function take() {
+  mkdir -p "$1" && cd "$1"
+}
 
 autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd () {
