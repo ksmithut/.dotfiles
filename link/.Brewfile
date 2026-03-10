@@ -32,6 +32,7 @@ cask "1password"
 cask "discord"
 cask "slack"
 cask "kap"
+cask "nikitabobko/tap/aerospace"
 
 # development tools
 brew "mongosh"
@@ -41,6 +42,7 @@ cask "mongodb-compass"
 brew "lazydocker"
 cask "docker-desktop" if OS.mac?
 brew "mise"
+brew "starship"
 brew "flyctl"
 cask "tableplus"
 cask "utm" if OS.mac?
