@@ -1,3 +1,9 @@
+features = (File.read("#{Dir.home}/.config/brew-features") rescue "").split
+
+def feature?(name, features)
+  features.include?(name)
+end
+
 brew "autojump"
 brew "bash"
 brew "coreutils"
@@ -28,7 +34,6 @@ cask "firefox"
 
 # apps
 cask "1password"
-# cask "balenaetcher" if OS.mac?
 cask "discord"
 cask "slack"
 cask "kap"
@@ -47,7 +52,6 @@ brew "flyctl"
 cask "tableplus"
 cask "utm" if OS.mac?
 cask "crystalfetch" if OS.mac?
-# cask "visual-studio-code"
 cask "ghostty"
 cask "zed"
 brew "gh"
@@ -61,6 +65,8 @@ brew "libxslt"
 brew "fop"
 
 # Games
-cask "battle-net" if OS.mac?
-cask "minecraft" if OS.mac?
-cask "steam"
+if feature?("games", features)
+  cask "battle-net" if OS.mac?
+  cask "minecraft" if OS.mac?
+  cask "steam"
+end
