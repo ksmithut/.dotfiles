@@ -38,6 +38,7 @@ cask "1password"
 cask "discord"
 cask "slack"
 cask "kap"
+tap "nikitabobko/tap"
 cask "nikitabobko/tap/aerospace"
 cask "tailscale-app" if features.include?("chrome")
 
