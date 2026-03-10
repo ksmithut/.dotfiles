@@ -31,6 +31,7 @@ cask "font-hack-nerd-font"
 # Browsers
 cask "zen"
 cask "firefox"
+cask "google-chrome" if features.include?("chrome")
 
 # apps
 cask "1password"
@@ -38,34 +39,43 @@ cask "discord"
 cask "slack"
 cask "kap"
 cask "nikitabobko/tap/aerospace"
+cask "tailscale-app" if features.include?("chrome")
 
 # development tools
-brew "mongosh"
-tap "mongodb/brew"
-brew "mongodb/brew/mongodb-database-tools"
-cask "mongodb-compass"
-brew "lazydocker"
-cask "docker-desktop" if OS.mac?
 brew "mise"
 brew "starship"
 brew "flyctl"
 cask "tableplus"
-cask "utm" if OS.mac?
-cask "crystalfetch" if OS.mac?
 cask "ghostty"
 cask "zed"
 brew "gh"
-cask "tailscale-app"
 
-# elixir/erlang
-brew "autoconf"
-brew "openssl"
-brew "wxwidgets"
-brew "libxslt"
-brew "fop"
+if features.include?("virtualization")
+  cask "utm" if OS.mac?
+  cask "crystalfetch" if OS.mac?
+end
 
-# Games
-if feature?("games", features)
+if features.include?("mongo")
+  brew "mongosh"
+  tap "mongodb/brew"
+  brew "mongodb/brew/mongodb-database-tools"
+  cask "mongodb-compass"
+end
+
+if features.include?("docker")
+  brew "lazydocker"
+  cask "docker-desktop" if OS.mac?
+end
+
+if features.include?("elixir")
+  brew "autoconf"
+  brew "openssl"
+  brew "wxwidgets"
+  brew "libxslt"
+  brew "fop"
+end
+
+if features.include?("games")
   cask "battle-net" if OS.mac?
   cask "minecraft" if OS.mac?
   cask "steam"
