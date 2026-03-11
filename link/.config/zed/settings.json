@@ -15,6 +15,7 @@
     "elixir": true,
     "vscode-icons": true,
     "graphql": true,
+    "json5": true,
   },
   "show_edit_predictions": false,
   "lsp": {
