@@ -38,7 +38,7 @@ for feature in "${possible_features[@]}"; do
 done
 
 # Or save to file for future runs
-printf '%s\n' "${features[@]}" > ~/.config/brew-features
+printf '%s\n' "${features[@]}" > ~/.brew-features
 
 echo "Installing Brew bundle"
 brew bundle install --global --cleanup
