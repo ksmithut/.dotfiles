@@ -1,4 +1,4 @@
-features = (File.read("#{Dir.home}/.brew-features") rescue "").split
+features = (File.read("#{Dir.home}/.Brewfile-features") rescue "").split
 
 def feature?(name, features)
   features.include?(name)
