@@ -40,7 +40,7 @@ cask "slack"
 cask "kap"
 tap "nikitabobko/tap"
 cask "nikitabobko/tap/aerospace"
-cask "tailscale-app" if features.include?("chrome")
+cask "tailscale-app" if features.include?("tailscale")
 
 # development tools
 brew "mise"

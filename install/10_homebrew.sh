@@ -19,31 +19,26 @@ brew doctor
 brew update
 brew cleanup
 
+possible_features=(
+  "games"
+  "docker"
+  "mongo"
+  "virtualization"
+  "elixir"
+  "chrome"
+  "tailscale"
+)
+
 features=()
 
-read -p "Install games? [y/N] " -n 1 -r
-[[ $REPLY =~ ^[Yy]$ ]] && features+=("games")
-
-read -p "Install docker? [y/N] " -n 1 -r
-[[ $REPLY =~ ^[Yy]$ ]] && features+=("docker")
-
-read -p "Install mongo tools? [y/N] " -n 1 -r
-[[ $REPLY =~ ^[Yy]$ ]] && features+=("mongo")
-
-read -p "Install virtualization tools? [y/N] " -n 1 -r
-[[ $REPLY =~ ^[Yy]$ ]] && features+=("virtualization")
-
-read -p "Install elixir tools? [y/N] " -n 1 -r
-[[ $REPLY =~ ^[Yy]$ ]] && features+=("elixir")
-
-read -p "Install Google Chrome? [y/N] " -n 1 -r
-[[ $REPLY =~ ^[Yy]$ ]] && features+=("chrome")
-
-read -p "Install Tailscale? [y/N] " -n 1 -r
-[[ $REPLY =~ ^[Yy]$ ]] && features+=("tailscale")
+for feature in "${possible_features[@]}"; do
+  read -p "Install ${feature}? [y/N] " -n 1 -r
+  echo
+  [[ $REPLY =~ ^[Yy]$ ]] && features+=("$feature")
+done
 
 # Or save to file for future runs
-echo "${features[*]}" > ~/.config/brew-features
+printf '%s\n' "${features[@]}" > ~/.config/brew-features
 
 echo "Installing Brew bundle"
 brew bundle install --global --cleanup
