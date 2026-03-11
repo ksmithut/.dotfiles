@@ -9,14 +9,15 @@
     "moduleResolution": "nodenext",
     "alwaysStrict": true,
     "strict": true,
+    "noUncheckedIndexedAccess": true,
     "sourceMap": true,
     "outDir": "dist",
     "allowJs": true,
     "checkJs": true,
     "noEmit": true,
     "jsx": "react",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
   },
   "include": ["src/**/*", "*.js", "*.cjs", "*.json"],
-  "exclude": []
+  "exclude": [],
 }
