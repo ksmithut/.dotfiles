@@ -41,6 +41,8 @@ cask "kap"
 tap "nikitabobko/tap"
 cask "nikitabobko/tap/aerospace"
 cask "tailscale-app" if features.include?("tailscale")
+cask "claude-code" if features.include?("claude")
+cask "ollama-app" if features.include?("ollama")
 
 # development tools
 brew "mise"

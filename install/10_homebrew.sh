@@ -27,6 +27,8 @@ possible_features=(
   "elixir"
   "chrome"
   "tailscale"
+  "claude"
+  "ollama"
 )
 
 features=()
