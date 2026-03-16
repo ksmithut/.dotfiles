@@ -52,6 +52,7 @@ cask "tableplus"
 cask "ghostty"
 cask "zed"
 brew "gh"
+brew "httpyac"
 
 if features.include?("virtualization")
   cask "utm" if OS.mac?
