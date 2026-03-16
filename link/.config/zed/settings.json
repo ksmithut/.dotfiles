@@ -97,8 +97,8 @@
   },
   "icon_theme": {
     "mode": "system",
-    "light": "VSCode Icons (Light)",
-    "dark": "VSCode Icons (Dark)",
+    "light": "VSCode Icons for Zed (Light)",
+    "dark": "VSCode Icons for Zed (Dark)",
   },
   "restore_on_startup": "empty_tab",
   "private_files": ["**/.env*"],
