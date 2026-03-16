@@ -78,8 +78,15 @@ alias l='ls -CF'            # compact with indicators
 
 # navigation
 alias ..='cd ..'
+alias ../='cd ..'
+alias ../..='cd ../..'
+alias ../../='cd ../..'
+alias ../../..='cd ../../..'
+alias ../../../='cd ../../..'
 alias ...='cd ../..'
+alias .../='cd ../..'
 alias ....='cd ../../..'
+alias ..../='cd ../../..'
 
 # safety nets
 alias rm='rm -i'            # confirm before delete (some people hate this)
