@@ -114,8 +114,29 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # Up/Down searches history starting with current input
-bindkey '^[[A' history-beginning-search-backward
-bindkey '^[[B' history-beginning-search-forward
+history-beginning-search-backward-end() {
+  local saved=$CURSOR
+  CURSOR=${_history_search_cursor:-$CURSOR}
+  _history_search_cursor=$CURSOR
+  zle history-beginning-search-backward
+  CURSOR=${#BUFFER}
+}
+history-beginning-search-forward-end() {
+  local saved=$CURSOR
+  CURSOR=${_history_search_cursor:-$CURSOR}
+  _history_search_cursor=$CURSOR
+  zle history-beginning-search-forward
+  CURSOR=${#BUFFER}
+}
+reset-history-search() {
+  unset _history_search_cursor
+}
+zle -N history-beginning-search-backward-end
+zle -N history-beginning-search-forward-end
+autoload -U add-zle-hook-widget
+add-zle-hook-widget line-init reset-history-search
+bindkey '^[[A' history-beginning-search-backward-end
+bindkey '^[[B' history-beginning-search-forward-end
 
 # ===============================================
 # functions/aliases
