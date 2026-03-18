@@ -8,6 +8,7 @@ copy_dirs=(
   ~/.now
   ~/.zshrc.local
   ~/.kube
+  ~/.saml2aws
   ~/Code
   ~/Documents
   ~/Pictures
