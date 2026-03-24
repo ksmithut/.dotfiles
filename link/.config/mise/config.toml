@@ -4,6 +4,11 @@ node = "latest"
 erlang = "latest"
 elixir = "latest"
 caddy = "latest"
+go = "latest"
+deno = "latest"
+terraform = "latest"
+pnpm = "latest"
+d2 = "latest"
 
 [settings]
 disable_hints = ["outdated_bump"]
