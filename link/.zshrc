@@ -113,6 +113,8 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
+bindkey -e
+
 # Up/Down searches history starting with current input
 history-beginning-search-backward-end() {
   local saved=$CURSOR
