@@ -88,11 +88,6 @@ alias .../='cd ../..'
 alias ....='cd ../../..'
 alias ..../='cd ../../..'
 
-# safety nets
-alias rm='rm -i'            # confirm before delete (some people hate this)
-alias mv='mv -i'            # confirm before overwrite
-alias cp='cp -i'
-
 # misc
 alias grep='grep --color=auto'
 alias ports='lsof -i -P -n | grep LISTEN'
