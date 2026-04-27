@@ -34,3 +34,5 @@ quick-terminal-animation-duration = 0
 keybind = performable:super+shift+backslash=new_split:right
 keybind = performable:super+shift+-+=new_split:down
 keybind = shift+enter=text:\x1b\r
+
+background-opacity = 1.00
