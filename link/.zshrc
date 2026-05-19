@@ -136,6 +136,15 @@ bindkey '^[[A' history-beginning-search-backward-end
 bindkey '^[[B' history-beginning-search-forward-end
 
 # ===============================================
+# pnpm
+# ===============================================
+export PNPM_HOME="/Users/ksmithut/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+
+# ===============================================
 # functions/aliases
 # ===============================================
 
