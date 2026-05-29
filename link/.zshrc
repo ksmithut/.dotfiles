@@ -40,6 +40,8 @@ export KERL_CONFIGURE_OPTIONS="--without-javac"
 # export COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_STATE_HOME="${HOME}/.local/state"
 
 ulimit -n 8192
 
