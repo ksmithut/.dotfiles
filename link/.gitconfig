@@ -15,8 +15,6 @@
 [merge]
 	# ff = only
 	conflictstyle = diff3
-[core]
-	excludesfile = ~/.gitignore
 [push]
 	default = simple
 	followTags = true

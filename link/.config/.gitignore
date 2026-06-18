@@ -1,8 +1,11 @@
 *
 !/.gitignore
 
+!/git
+!/git/*
+
 !/mise
-!/mise/config.toml
+!/mise/*
 
 !/zed
 !/zed/keymap.json
@@ -13,11 +16,9 @@
 !/zed/themes/*
 
 !/ghostty
-!/ghostty/config
-!/ghostty/themes
-!/ghostty/themes/*
+!/ghostty/*
 
 !/starship.toml
 
 !/aerospace
-!/aerospace/aerospace.toml
+!/aerospace/*
