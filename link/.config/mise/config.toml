@@ -9,6 +9,7 @@ deno = "latest"
 terraform = "latest"
 pnpm = "latest"
 d2 = "latest"
+devcontainer-cli = "latest"
 
 [settings]
 disable_hints = ["outdated_bump"]
