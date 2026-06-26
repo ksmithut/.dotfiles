@@ -53,6 +53,7 @@ cask "ghostty"
 cask "zed"
 brew "gh"
 brew "httpyac"
+brew "d2"
 
 if features.include?("virtualization")
   cask "utm" if OS.mac?
@@ -67,6 +68,7 @@ if features.include?("mongo")
 end
 
 if features.include?("docker")
+  brew "devcontainer"
   brew "lazydocker"
   cask "docker-desktop" if OS.mac?
 end
