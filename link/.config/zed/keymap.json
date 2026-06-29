@@ -21,6 +21,7 @@
     "context": "ProjectPanel",
     "bindings": {
       "cmd-shift-c": "project_panel::CollapseAllEntries",
+      "cmd-w": null, // Turn off closing project panel with cmd-w
     },
   },
   {
