@@ -1,9 +1,5 @@
 features = (File.read("#{Dir.home}/.Brewfile-features") rescue "").split
 
-def feature?(name, features)
-  features.include?(name)
-end
-
 brew "autojump"
 brew "bash"
 brew "coreutils"
@@ -38,8 +34,8 @@ cask "1password"
 cask "discord"
 cask "slack"
 cask "kap"
-tap "nikitabobko/tap"
-cask "nikitabobko/tap/aerospace"
+tap "nikitabobko/tap", trusted: true
+cask "nikitabobko/tap/aerospace", trusted: true
 cask "tailscale-app" if features.include?("tailscale")
 cask "claude-code" if features.include?("claude")
 cask "ollama-app" if features.include?("ollama")
@@ -62,8 +58,8 @@ end
 
 if features.include?("mongo")
   brew "mongosh"
-  tap "mongodb/brew"
-  brew "mongodb/brew/mongodb-database-tools"
+  tap "mongodb/brew", trusted: true
+  brew "mongodb/brew/mongodb-database-tools", trusted: true
   cask "mongodb-compass"
 end
 
