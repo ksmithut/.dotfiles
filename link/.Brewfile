@@ -70,7 +70,8 @@ end
 if features.include?("docker")
   brew "devcontainer"
   brew "lazydocker"
-  cask "docker-desktop" if OS.mac?
+  brew "docker"
+  brew "colima" if OS.mac?
 end
 
 if features.include?("elixir")
