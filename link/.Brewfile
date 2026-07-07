@@ -67,6 +67,8 @@ if features.include?("docker")
   brew "devcontainer"
   brew "lazydocker"
   brew "docker"
+  brew "docker-compose"
+  brew "docker-buildx"
   brew "colima" if OS.mac?
 end
 
