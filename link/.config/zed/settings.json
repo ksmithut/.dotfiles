@@ -9,22 +9,22 @@
 {
   "cli_default_open_behavior": "new_window",
   "project_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "outline_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "collaboration_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "git_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "auto_install_extensions": {
     "html": true,
+    "git-firefly": true,
     "toml": true,
     "dockerfile": true,
-    "git-firefly": true,
     "sql": true,
     "make": true,
     "xml": true,
@@ -33,8 +33,9 @@
     "vscode-icons": true,
     "graphql": true,
     "mermaid": true,
-    "caddyfile": true,
     "json5": true,
+    "caddyfile": true,
+    "tsgo": true,
     "http": true,
     "d2": true,
     "po": true,
