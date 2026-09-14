@@ -1,3 +1,4 @@
+config-version = 2
 # Place a copy of this config to ~/.aerospace.toml
 # After that, you can edit ~/.aerospace.toml to your liking
 
@@ -53,10 +54,10 @@ automatically-unhide-macos-hidden-apps = false
 [gaps]
     inner.horizontal = 8
     inner.vertical =   8
-    outer.left =       0
+    outer.left =       [{monitor."Odyssey G95NC" = 256}, 0]
+    outer.right =      [{monitor."Odyssey G95NC" = 256}, 0]
     outer.bottom =     0
     outer.top =        0
-    outer.right =      0
 
 [workspace-to-monitor-force-assignment]
     1 = 'main'

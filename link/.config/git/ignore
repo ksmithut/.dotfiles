@@ -196,3 +196,5 @@ build.services.toml
 *.har
 .zed
 .claude/settings.local.json
+
+**/.claude/.cc-writes/
