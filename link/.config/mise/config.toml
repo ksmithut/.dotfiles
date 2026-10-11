@@ -8,6 +8,7 @@ go = "latest"
 deno = "latest"
 terraform = "latest"
 pnpm = "latest"
+uv = "latest"
 
 [settings]
 disable_hints = ["outdated_bump"]
