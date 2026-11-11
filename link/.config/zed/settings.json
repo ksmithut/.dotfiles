@@ -30,6 +30,7 @@
     "xml": true,
     "terraform": true,
     "elixir": true,
+    "emmet": true,
     "vscode-icons": true,
     "graphql": true,
     "mermaid": true,
