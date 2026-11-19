@@ -60,16 +60,16 @@ outer.bottom = 0
 outer.top = 0
 
 [workspace-to-monitor-force-assignment]
-1 = 'main'
-2 = 'main'
-3 = 'main'
-4 = 'main'
-5 = 'main'
-6 = 'secondary'
-7 = 'secondary'
-8 = 'secondary'
-9 = 'secondary'
-10 = 'secondary'
+# 1 = 'main'
+# 2 = 'main'
+# 3 = 'main'
+# 4 = 'main'
+# 5 = 'main'
+# 6 = 'secondary'
+# 7 = 'secondary'
+# 8 = 'secondary'
+# 9 = 'secondary'
+# 10 = 'secondary'
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -127,6 +127,8 @@ alt-shift-minus = 'resize smart -150'
 alt-shift-equal = 'resize smart +150'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+alt-cmd-rightSquareBracket = 'workspace next --wrap-around'
+alt-cmd-leftSquareBracket = 'workspace prev --wrap-around'
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
@@ -161,6 +163,8 @@ alt-0 = 'workspace 10'
 # alt-z = 'workspace Z'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+alt-shift-cmd-rightSquareBracket = 'move-node-to-workspace next --wrap-around --focus-follows-window'
+alt-shift-cmd-leftSquareBracket = 'move-node-to-workspace prev --wrap-around --focus-follows-window'
 alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
 alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
 alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
